@@ -51,6 +51,23 @@ router.get('/employeeList', async (req, res) => {
             listOfEmployees
         }
     });
+    
+});
+router.get('/employeeData/:parameter', async (req, res) => {
+    const id=req.params.parameter;
+
+    const employeeData = await Employee.findOne({_id:id}).select("-password");
+
+
+    console.log(employeeData, 'printing employee data');
+
+    res.send({
+        success: true,
+        array: {
+            employeeData
+        }
+    });
+    
 });
 
 module.exports = router;
