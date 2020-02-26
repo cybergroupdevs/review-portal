@@ -89,4 +89,23 @@ router.patch('/update/:parameter', async (req, res) => {
     });
 });
 
+router.delete('/deletion/:parameter', async (req, res) => {
+    const id = req.params.parameter;
+    
+
+    console.log(await  Employee.find( ));
+
+    await Employee.deleteOne({_id:id});
+
+    console.log(await  Employee.find( ));
+
+    res.send({
+        success: true,
+        status: 
+            "deleted"
+        
+    });
+});
+
+
 module.exports = router;
