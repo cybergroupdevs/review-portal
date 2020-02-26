@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const mongoose = require('mongoose');
 
 
 const Employee = require('../schemas/employee');
@@ -38,9 +37,12 @@ router.post('/signup', async (req, res) => {
 });
 
 
+
+
 router.get('/employeeList', async (req, res) => {
-    const listOfEmployees = await Employee.find({},{"name":1, 'email':1, 'designation':1, 'reviewer':1, "qualityAnalyst":1});
-    
+    const listOfEmployees = await Employee.find().select("-password");
+
+
     console.log(listOfEmployees, 'hereeeeeeeeeee');
 
     res.send({
