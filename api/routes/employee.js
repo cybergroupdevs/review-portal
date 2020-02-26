@@ -53,4 +53,23 @@ router.get('/employeeList', async (req, res) => {
     });
 });
 
+
+router.patch('/update/:parameter', async (req, res) => {
+    const id = req.params.parameter;
+    let updatedDetails = req.body
+
+    console.log(await  Employee.findOne({_id:id}), "before update" )
+
+    await Employee.updateOne({_id:id},updatedDetails);
+
+    console.log( await Employee.findOne({_id:id}), "after update" )
+
+    res.send({
+        success: true,
+        detailsUpdated: {
+            updatedDetails
+        }
+    });
+});
+
 module.exports = router;
