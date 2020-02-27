@@ -1,4 +1,6 @@
 
+
+
 module.exports={
 firstName:{
 type:String,
@@ -46,7 +48,14 @@ previousExperience:{
 },
 skills:[{
     type:String
-}]
+}],
+
+reviewer:{
+    type:String
+},
+qualityAnalyst:{
+    type:String
+}
  
 }
 

@@ -36,7 +36,8 @@ class Employee {
     // });
 
     let employeeObj ={
-        name:req.body.name,
+        firstName: req.body.firstName,
+        lastName : req.body.lastName,
         email: req.body.email,
         designation: req.body.designation,
         password:hashedPassword,
