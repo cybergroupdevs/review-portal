@@ -30,7 +30,7 @@ default:null
 designation:{
 type:String,
 default:'Consultant 1',
-enum: ['Consultant 1','Consultant 2','Associate 1','Associate 2']
+enum: ["HR",'Consultant 1','Consultant 2','Associate 1','Associate 2']
 },
 division: {
     type:String,
