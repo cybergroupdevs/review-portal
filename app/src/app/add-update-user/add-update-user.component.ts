@@ -24,13 +24,13 @@ export class AddUpdateUserComponent implements OnInit {
   userArray: any;
   firstName: String;
   lastName: String;
-  email: String;
+  //email: String;
   password: String;
-  location:String;
-  designation:String;
-  division: String;
+  //location:String;
+  //designation:String;
+  //division: String;
   joined: String;
-  competenceManager: String;
+  //competenceManager: String;
   
    ngOnInit() {
      this.loadEmployeeData()

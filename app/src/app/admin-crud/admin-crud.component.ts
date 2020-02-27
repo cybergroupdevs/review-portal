@@ -1,3 +1,4 @@
+import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCrudComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _service: ServicesService) { }
+
+  usersArray: any;
 
   ngOnInit() {
+    this.loadUsers();
+  }
+  
+  loadUsers(){
+    this._service.showAllEmployees().subscribe(res => {
+      // console.log(res);
+      this.usersArray = res;
+      console.log(this.usersArray);
+    });
   }
 
 }
