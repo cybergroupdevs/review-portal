@@ -45,5 +45,3 @@ setEmployeeData(){
   this.competenceManager=this.userArray.array.employeeData.competenceManager;
   }
 }
-
-
