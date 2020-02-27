@@ -33,7 +33,6 @@ export class AddUpdateUserComponent implements OnInit {
   });
 }
 setEmployeeData(){
- 
   this.firstName= this.userArray.array.employeeData.firstName;
   this.lastName=this.userArray.array.employeeData.lastName;
   this.email =this.userArray.array.employeeData.email;
