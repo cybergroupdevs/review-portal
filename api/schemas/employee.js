@@ -1,39 +1,52 @@
 
-
-
 module.exports={
-name:{
+firstName:{
 type:String,
 default:null
 },
+lastName:{
+    type:String,
+    default:null
+    },
 email:{
 type:String,
-required:true
+required:true,
+unique:true
 },
-phoneNo:{
+password:{
+    type:String
+},
+// phoneNo:{
+// type:String,
+// default:null
+// },
+location:{
 type:String,
 default:null
-},
-address:{
-city:{
-type:String,
-default:null
-},
-state:{
-type:String,
-default:null
-},
-pincode:{
-type:String,
-default:null
-}
 },
 designation:{
 type:String,
 default:'Consultant 1',
 enum: ['Consultant 1','Consultant 2','Associate 1','Associate 2']
 },
-technology: [{type:String}]
+division: {
+    type:String
+},
+joined:
+{
+    type:Date,
+    default:Date.now()
+
+},
+totalExperience:{
+    type:Number
+},
+previousExperience:{
+    type:Number
+},
+skills:[{
+    type:String
+}]
  
 }
 
