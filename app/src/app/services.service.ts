@@ -48,6 +48,12 @@ export class ServicesService {
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
+  createUser(obj): Observable<any>{
+    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
+      tap(_ => this.log("added user")),
+      catchError(this.handleError<any>('Some Error Occurred'))
+    );
+  }
 
   updateData(object): Observable<any>{
     return this.http.patch("http://localhost:3001/employees/",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(

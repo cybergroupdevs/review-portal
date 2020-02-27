@@ -21,6 +21,7 @@ export class AddUpdateUserComponent implements OnInit {
   @ViewChild('qualityAnalyst', {static: false}) qualityAnalyst: ElementRef;
   
   constructor(private _service:ServicesService) { }
+  
   userArray: any;
   firstName: String;
   lastName: String;
