@@ -1,4 +1,3 @@
-
 module.exports={
     cgiCode:{
         type:String,
@@ -20,7 +19,10 @@ module.exports={
     password:{
         type:String
     },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 45c2b8dd226370aece099a5872be632d4a055b19
     location:{
         type:String,
         default:null
@@ -28,7 +30,11 @@ module.exports={
     designation:{
         type:String,
         default:'Consultant 1',
+<<<<<<< HEAD
         enum: ['Consultant 1','Consultant 2','Associate 1','Associate 2']
+=======
+        enum: ['Intern','Consultant 1','Consultant 2','Associate 1','Associate 2']
+>>>>>>> 45c2b8dd226370aece099a5872be632d4a055b19
     },
     joined: {
         type:Date,
@@ -60,5 +66,4 @@ module.exports={
     qualityAnalyst: {
         type: String,
     }
- 
 }

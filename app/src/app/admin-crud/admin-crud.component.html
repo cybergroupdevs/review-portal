@@ -18,35 +18,37 @@
 					<strong>ADMIN</strong>
 					<button class="btn btn-primary add-user-btn" type="button">Add User</button>
 				</div>
-				<!-- <div class="panel-heading col-lg-1"></div> -->
-				<!-- <button class="col-lg-1" type="button">Add user</button> -->
-				<!-- <div class="panel-heading col-lg-1">
-					
-						<button class="col-lg-1 btn add-user-btn" type="button">Find By</button>
-						<span class="caret"></span></button>
-						<ul class="dropdown-menu">
-							<a href="#"><li>id</li></a>
-						    <a href="#"><li>name</li></a>
-						    <a href="#"><li>project</li></a>
-						    
-						</ul> 
-					
-				</div> -->
 				
 				<!-- <div class="panel-body">
 				  <div>
 					<table class="table">
 						<thead>
 						<tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Age</th>
+                            <th scope="col">CGI Code</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Job Role</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Competence Manager</th>
 						</tr>
 						</thead>
-						<tbody id="adminTable">
-						
+						<tbody id="adminTable" *ngFor = "let employee of usersArray">
+							<tr>
+								<td>
+									{{employee.cgiCode}}
+								</td>
+								<td>
+									{{employee.email}}
+								</td>
+								<td>
+									{{employee.firstName}}
+								</td>
+								<td>
+									{{employee.designation}}
+								</td>
+								<td>
+									{{employee.competenceManager}}
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				  </div>

@@ -33,7 +33,8 @@ class Employee {
     // });
 
     let employeeObj ={
-        name:req.body.name,
+        firstName: req.body.firstName,
+        lastName : req.body.lastName,
         email: req.body.email,
         designation: req.body.designation,
         password:hashedPassword,
@@ -56,7 +57,7 @@ class Employee {
 
 async index(req,res){
     const employeeList = await model.employee.get();
-    res.send(employeeList)
+    res.send(employeeList);
 }
 
 async showUser(req,res){
