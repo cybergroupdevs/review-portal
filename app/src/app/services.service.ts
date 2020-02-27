@@ -17,6 +17,8 @@ export class ServicesService {
     console.log(message);
   }
 
+  header_token: HttpHeaders = new HttpHeaders().set("token", localStorage.getItem("JwtHrms"));
+
   jsonDecoder = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -26,14 +28,12 @@ export class ServicesService {
     return JSON.parse(jsonPayload);
   };
 
-
-  
-  // employeeData(): Observable<any>{
-  //   return this.http.get("http://localhost:3001/employees/5e57661081422dfa10d2a0ee").pipe(
-  //     tap(_ => this.log("showing details")),
-  //     catchError(this.handleError<any>('error in details')
-  //   ));
-  // }
+  showAllEmployees(): Observable<any>{
+    return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token}).pipe(
+      tap(_ => this.log("showing details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
 
   employeeData(): Observable<any>{
     return this.http.get("http://localhost:3001/employees/"+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
@@ -48,12 +48,14 @@ export class ServicesService {
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
+
   updateData(object): Observable<any>{
     return this.http.patch("http://localhost:3001/employees/",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   

@@ -13,6 +13,7 @@ import { from } from 'rxjs';
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
+import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
     LoginComponent,
     HeaderComponent,
     AdminCrudComponent,
-    AddUpdateUserComponent
+    AddUpdateUserComponent,
+    AdminOptionsComponent
 
   ],
   imports: [

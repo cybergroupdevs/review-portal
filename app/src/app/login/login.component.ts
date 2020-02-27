@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       let decodedToken = this._service.jsonDecoder(token);
       console.log(decodedToken);
       let designation = decodedToken.data.designation;
-      if(designation == "ADMIN"){
+      if(designation == "Associate 2"){
         this._router.navigate(['/admin']);
       }
       else{
