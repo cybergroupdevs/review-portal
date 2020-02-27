@@ -5,8 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path:"", component: LoginComponent, pathMatch:'full'},
-  {path:"admin", component:AdminCrudComponent}
+
+  {path: "", redirectTo: "login", pathMatch: "full"},
+  {path: "login", component: LoginComponent},
+  {path: "admin", component:AdminCrudComponent}
 ];
 
 @NgModule({
