@@ -2,7 +2,13 @@ const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 class Employee {
     constructor(){
+ console.log("reached Employee Controller");
+    }
 
+    async show(req,res){
+        console.log("Reached SHOW");
+        const employee = await model.employee.get({"_id": req.params.id})
+        res.send(employee);
     }
 
     async login(req, res) {
@@ -29,4 +35,4 @@ class Employee {
         }
     }
 }
-module.exports = new Employee();
+module.exports = new Employee() 

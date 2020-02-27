@@ -1,68 +1,35 @@
-const mongoose = require('mongoose');
-// const FileType = require('file-type');
-// const Schema = mongoose.Schema;
-
 module.exports = {
-    firstName: {
+    name: {
         type: String,
-        max: 40,
-        required: true
-    },
-    lastName: {
-        type: String,
-        max: 40,
-        required: true
+        default: null
     },
     email: {
         type: String,
-        max: 40,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        max: 255,
-        required: true,
-    },
-    totalExperience: {
-        type: Number,
- 
-    },
-    previousExperience: {
-        type:Number
-    },
-    skills: [{
-        type: String
-    }],
-    location: {
-        type: String
-    },
-    designation: {
-        type: String
-    },
-    division: {
-        type: String
-    },
-    joined: {
-        type:Date,
-        default: Date.now()
+        required: true
     },
     phoneNo: {
         type: String,
-        max: 10
+        default: null
     },
-    competenceManager: {
-        type: String
+    address: {
+        city: {
+            type: String,
+            default: null
+        },
+        state: {
+            type: String,
+            default: null
+        },
+        pincode: {
+            type: String,
+            default: null
+        }
     },
-    projectOwners: {
-        type: String
+    designation: {
+        type: String,
+        default: 'Consultant 1',
+        enum: ['Consultant 1', 'Consultant 2', 'Associate 1', 'Associate 2']
     },
-    reviewer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
-    },
-    qualityAnalyst: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
-    }
+    technology: [{type: String}]
+
 }
