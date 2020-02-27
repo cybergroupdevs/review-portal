@@ -12,3 +12,4 @@ export class AddUpdateUserComponent implements OnInit {
 
   ngOnInit() {
 }
+}
