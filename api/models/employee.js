@@ -6,14 +6,23 @@ class Employee{
     constructor(){
         this.model = mongoose.model('Employee', employeeSchema)
     }
+
+    async get(criteria={}){
+        return this.model.find(criteria).select("-password")
+    }
     async get(criteria={}, columns={}){
         return this.model.find(criteria, columns)
+
     }
     async save(employeeObj){
         return this.model.create(employeeObj)
     }
     async update(criteria={}, updateObj){
         return this.model.update(criteria, updateObj)
+    }
+    async delete(criteria={})
+    {
+        return this.model.deleteOne(criteria)
     }
 }
 

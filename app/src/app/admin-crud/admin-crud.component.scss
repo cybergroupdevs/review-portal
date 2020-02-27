@@ -1,0 +1,28 @@
+.user-list{
+    font-size: 50px;
+    font-family:"Open Sans", sans-serif;
+    margin-left: 35%;
+    color: rgb(148, 63, 17);
+}
+.logo-img{
+    width: 75px;
+    height: 75px;
+    
+}
+.panel{
+    background-color:#ECEEF1;
+}
+.panel > .panel-heading {
+    line-height: 2.5;
+    background-color: #6C7A8D;
+    color: #C3CEDD;
+    height: 55px;
+
+}
+.add-user-btn{
+    float:right;
+}
+
+.panel-info{
+    border: 0;
+}
