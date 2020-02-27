@@ -1,0 +1,30 @@
+.company-logo{
+    font-size: 5rem;
+    font-family:"Open Sans", sans-serif;
+    text-align: center;
+    color: rgb(148, 63, 17);
+}
+
+.panel{
+    border: 0px; border-radius: 5%;
+    background-color:#ECEEF1;
+    
+}
+.panel > .panel-heading{
+    background-color: #6C7A8D;   
+}
+.panel > .panel-heading h5{
+    font-size: large;
+    text-align: center;
+    color: #C3CEDD;
+    font-family: "Open Sans", sans-serif;
+    
+    
+}
+
+#loginBtn{
+    margin:0 38%; 
+}
+.logo-img{
+    width: 20%; height: 20%; margin-left: 40%; margin-bottom: 5%;
+}
