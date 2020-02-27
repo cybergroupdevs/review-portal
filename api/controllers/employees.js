@@ -6,8 +6,10 @@ const config = require('config');
 // const Employee = require('../schemas/employee');
 
 const model = require('../models')
+const jwtHandler = require('../jwtHandler');
 class Employee {
     constructor(){
+
         console.log("reached controller")
     }
 
@@ -42,10 +44,19 @@ class Employee {
         reviewer : req.body.reviewer,
         qualityAnalyst : req.body.qualityAnalyst,
     }
+
+    
     console.log(employeeObj)
             const employee= await model.employee.save(employeeObj)
             res.send(employee)
 };
+  
+  async show(req,res){
+        console.log("Reached SHOW");
+        const employee = await model.employee.get({"_id": req.params.id})
+        res.send(employee);
+    }
+
 
 async index(req,res){
     const employeeList = await model.employee.get();
@@ -63,5 +74,28 @@ async delete(req,res){
     const employee =await model.employee.delete({_id: req.params.parameter})
     res.send("deleted")
 }
+    async login(req, res) {
+        //Verify token here
+        let user = await model.employee.get({$and : [{"email": req.body.email},{"password": req.body.password}]
+                                                }, 
+                                                {"email": 1,
+                                                "firstName": 1,
+                                                "lastName": 1,
+                                                "totalExperience": 1,
+                                                "phoneNo": 1,
+                                                "_id": 1,
+                                                "designation": 1
+                                            });
+        console.log(user);
+        if(user != null || user != []){
+            let token = jwtHandler.tokenGenerator(user);
+            if(token != null){
+                res.status(200).send(token);
+            }
+        }
+        else{
+            res.status(401).send("Unauthorized, Invalid Username or Password");
+        }
+    }
 }
-module.exports = new Employee();
+module.exports = new Employee() 
