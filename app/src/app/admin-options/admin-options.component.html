@@ -1,4 +1,4 @@
- 
+ <app-header></app-header>
 <div class="container">
     <div class="col-lg-9 col-sm-9 col-md-9" style="height: 70%; border-right: 2px solid gray;">
         <img src="https://dbservices.com/wp-content/uploads/2018/01/charts-image-300x196.png" alt="" srcset="">
@@ -8,12 +8,15 @@
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5 col-sm-3 col-sm-offset-5 col-md-3 col-md-offset-5">
-                <button type="button" class="btn btn-info" onclick="viewEmployee">View All Employees</button>
+                <button type="button" class="btn btn-info" (click)="viewEmployee()">View All Employees</button>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5 col-sm-3 col-sm-offset-5 col-md-3 col-md-offset-5">
+
                 <button type="button" class="btn btn-success" routerLink='/addUser'>Add New Employee</button>
+
+                
             </div>
         </div>  
     </div>
