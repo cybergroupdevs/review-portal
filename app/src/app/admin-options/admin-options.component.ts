@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-options',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminOptionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
+  }
+
+  viewEmployee(){
+    this._router.navigate(["/employees"]);
+  }
+
+  addEmployee(){
+    this._router.navigate(["/user"]);
   }
 
 }
