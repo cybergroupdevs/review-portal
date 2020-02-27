@@ -16,7 +16,8 @@ required:true,
 unique:true
 },
 password:{
-    type:String
+    type:String,
+    unique:true
 },
 // phoneNo:{
 // type:String,
@@ -32,7 +33,8 @@ default:'Consultant 1',
 enum: ['Consultant 1','Consultant 2','Associate 1','Associate 2']
 },
 division: {
-    type:String
+    type:String,
+    default:null
 },
 joined:
 {
@@ -41,20 +43,25 @@ joined:
 
 },
 totalExperience:{
-    type:Number
+    type:Number,
+    default:0
 },
 previousExperience:{
-    type:Number
+    type:Number,
+    default:0
 },
 skills:[{
-    type:String
+    type:String,
+    default:null
 }],
 
 reviewer:{
-    type:String
+    type:String,
+    default:null
 },
 qualityAnalyst:{
-    type:String
+    type:String,
+    default:null
 }
  
 }
