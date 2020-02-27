@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const FileType = require('file-type');
+// const Schema = mongoose.Schema;
  
-const userSchema = Schema({
+const employeeSchema = new mongoose.Schema({
     firstName: {
         type: String,
         max: 40,
@@ -24,14 +25,15 @@ const userSchema = Schema({
         required: true,
     },
     totalExperience: {
+        type: Number,
  
     },
     previousExperience: {
-        
+        type:Number
     },
-    skills: {
+    skills: [{
         type: String
-    },
+    }],
     location: {
         type: String
     },
@@ -49,28 +51,28 @@ const userSchema = Schema({
         type: String,
         max: 10
     },
-    resume:{
-        type: File,
-    },
+    // resume:{
+    //     type: File,
+    // },
     competenceManager: {
         type: String
     },
     projectOwners: {
         type: String
     },
-    project: [{
-        type: Schema.Types.ObjectId,
-        ref: "Project"
-    }],
+    // project: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Project"
+    // }],
     reviewer: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Employee"
     },
     qualityAnalyst: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Employee"
     },
 });
  
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Employee = mongoose.model('Employee', employeeSchema);
+module.exports = Employee;

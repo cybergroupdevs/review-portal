@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
+import {AddUpdateUserComponent} from '../app/add-update-user/add-update-user.component'
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
@@ -12,7 +13,9 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminCrudComponent
+    AdminCrudComponent,
+    AddUpdateUserComponent
+
   ],
   imports: [
     RouterModule,
