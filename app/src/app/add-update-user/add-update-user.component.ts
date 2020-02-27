@@ -1,5 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
 
 
 @Component({
@@ -9,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUpdateUserComponent implements OnInit {
   constructor(private _service:ServicesService) { }
+  
   userArray: any;
   firstName: String
   lastName: String
@@ -19,6 +22,8 @@ export class AddUpdateUserComponent implements OnInit {
   division: String
   joined: String
   competenceManager: String
+
+  res:any;
   
    ngOnInit() {
      this.loadEmployeeData()
@@ -40,4 +45,5 @@ setEmployeeData(){
   this.joined=this.userArray.joined;
   this.competenceManager=this.userArray.competenceManager;
   }
+
 }
