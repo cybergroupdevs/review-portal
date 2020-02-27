@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router, 
+    private _service: ServicesService) { }
 
+    firstName: String;
   ngOnInit() {
+    this.getUserName();
+  }
+
+  getUserName(){
+    let name = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.firstName;
+    this.firstName = name;
   }
 
   myProfile(){
