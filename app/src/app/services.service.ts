@@ -16,7 +16,7 @@ export class ServicesService {
   private log(message: string) {
     console.log(message);
   }
-  
+
   jsonDecoder = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -26,8 +26,17 @@ export class ServicesService {
     return JSON.parse(jsonPayload);
   };
 
+
+  
+  // employeeData(): Observable<any>{
+  //   return this.http.get("http://localhost:3001/employees/5e57661081422dfa10d2a0ee").pipe(
+  //     tap(_ => this.log("showing details")),
+  //     catchError(this.handleError<any>('error in details')
+  //   ));
+  // }
+
   employeeData(): Observable<any>{
-    return this.http.get("http://localhost:3001/api/employee/employeeData/5e56fe4aeb1fac17400f4016").pipe(
+    return this.http.get("http://localhost:3001/employees/"+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
