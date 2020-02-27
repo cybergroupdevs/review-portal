@@ -26,8 +26,8 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
-   ],
-   
+
+  ],
   providers: [ServicesService],
   bootstrap: [AppComponent]
 })

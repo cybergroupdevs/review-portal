@@ -26,7 +26,7 @@ export class ServicesService {
   };
 
   employeeData(): Observable<any>{
-    return this.http.get("http://localhost:3001/api/employee/employeeData/:").pipe(
+    return this.http.get("http://localhost:3001/api/employee/employeeData/5e56fe4aeb1fac17400f4016").pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));

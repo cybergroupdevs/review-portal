@@ -5,9 +5,10 @@ body{
 .form-control{
     background-color: #eeeeee;
     height: 3vh;
-    width: 21vw;
+    width: 33vw;
     border-radius: 9%;
     border: hidden !important;
+    font-size: 1rem;
 }
 .form-control :hover{
 }
@@ -27,6 +28,7 @@ label{
 input[type=file]
 {
     background-color: white;
+    
 }
 input[type=textbox]{
     height: 15vh;
