@@ -1,76 +1,35 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
- 
-const userSchema = Schema({
-    firstName: {
+module.exports = {
+    name: {
         type: String,
-        max: 40,
-        required: true
-    },
-    lastName: {
-        type: String,
-        max: 40,
-        required: true
+        default: null
     },
     email: {
         type: String,
-        max: 40,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        max: 255,
-        required: true,
-    },
-    totalExperience: {
- 
-    },
-    previousExperience: {
-        
-    },
-    skills: {
-        type: String
-    },
-    location: {
-        type: String
-    },
-    designation: {
-        type: String
-    },
-    division: {
-        type: String
-    },
-    joined: {
-        type:Date,
-        default: Date.now()
+        required: true
     },
     phoneNo: {
         type: String,
-        max: 10
+        default: null
     },
-    resume:{
-        type: File,
+    address: {
+        city: {
+            type: String,
+            default: null
+        },
+        state: {
+            type: String,
+            default: null
+        },
+        pincode: {
+            type: String,
+            default: null
+        }
     },
-    competenceManager: {
-        type: String
+    designation: {
+        type: String,
+        default: 'Consultant 1',
+        enum: ['Consultant 1', 'Consultant 2', 'Associate 1', 'Associate 2']
     },
-    projectOwners: {
-        type: String
-    },
-    project: [{
-        type: Schema.Types.ObjectId,
-        ref: "Project"
-    }],
-    reviewer: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
-    qualityAnalyst: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
-});
- 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+    technology: [{type: String}]
+
+}
