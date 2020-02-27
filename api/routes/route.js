@@ -3,12 +3,12 @@ module.exports=(app) =>
 { 
     app.get("/employee/employeeList", controller.employees.index)
     app.delete("/employee/deletion/:parameter",controller.employees.delete)
-    // app.get("/employee/:parameter",controller.employee.show)
+    app.get("/employee/:parameter",controller.employees.show)
     app.patch("/employee/update/:parameter",controller.employees.update)
     app.post("/employee/signup",controller.employees.create)
 
 
-    app.get("/employees/:id",controller.employees.show)
+    app.get("/employees/:id",controller.employees.showUser)
     
     app.post("/login", controller.employees.login);
 

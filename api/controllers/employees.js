@@ -62,6 +62,12 @@ async index(req,res){
     const employeeList = await model.employee.get();
     res.send(employeeList)
 }
+
+async showUser(req,res){
+    const employee = await model.employee.get({_id: req.params.parameter})
+    res.send(employee[0])
+}
+
 async update(req,res) {
     let updateObj= req.body
     console.log(updateObj)
