@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path:"login", component: LoginComponent, pathMatch:'full'},
+  {path:"", component: LoginComponent, pathMatch:'full'},
   {path:"admin", component:AdminCrudComponent}
 ];
 

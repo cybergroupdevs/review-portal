@@ -10,5 +10,5 @@ export class AddUpdateUserComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
 }
