@@ -1,11 +1,14 @@
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AddUpdateUserComponent} from '../app/add-update-user/add-update-user.component';
-import { HeaderComponent } from './header/header.component'
+import {AddUpdateUserComponent} from '../app/add-update-user/add-update-user.component'
+import{ServicesService} from './services.service';
+import { from } from 'rxjs';
+
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
@@ -22,8 +25,9 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
     RouterModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
