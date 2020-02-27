@@ -20,8 +20,8 @@ class Employee {
 
     //     employee = new Employee(details);
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    // const salt = await bcrypt.genSalt(10);
+    // const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     // employee.password = hashedPassword;
 
@@ -37,7 +37,7 @@ class Employee {
         lastName : req.body.lastName,
         email: req.body.email,
         designation: req.body.designation,
-        password:hashedPassword,
+        password:req.body.password,
         reviewer : req.body.reviewer,
         qualityAnalyst : req.body.qualityAnalyst,
     }
