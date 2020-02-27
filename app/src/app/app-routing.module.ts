@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: "employees", component:AdminCrudComponent},
   {path: "user", component: AddUpdateUserComponent},
   {path: "admin", component: AdminOptionsComponent},
-  {path: "addUser", component:AddUserComponent}
+  {path: "addUser", component: AddUserComponent}
 ];
 
 @NgModule({
