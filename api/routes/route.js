@@ -1,13 +1,15 @@
 const controller = require('../controllers');
+module.exports=(app) =>
+{ 
+    app.get("/employee/employeeList", controller.employees.index)
+    app.delete("/employee/deletion/:parameter",controller.employees.delete)
+    app.get("/employee/:parameter",controller.employees.show)
+    app.patch("/employee/update/:parameter",controller.employees.update)
+    app.post("/employee/signup",controller.employees.create)
 
-module.exports = (app) => {
 
-    //     const employee = new controller.employees()
-    //     app.post("/test", (req,res) =>{
-    //     console.log(req.body)
-    //     res.send({session: `Testing HRMS`})
-    // });
-    app.get("/employees/:id",controller.employees.show)
+    app.get("/employees/:id",controller.employees.showUser)
     
     app.post("/login", controller.employees.login);
+
 }

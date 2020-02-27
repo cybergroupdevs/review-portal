@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-add-update-user',
   templateUrl: './add-update-user.component.html',
   styleUrls: ['./add-update-user.component.css']
-  // providers:[ServicesService]
-
 })
 export class AddUpdateUserComponent implements OnInit {
-
   constructor(private _service:ServicesService) { }
   userArray: any;
   firstName: String
@@ -28,20 +25,19 @@ export class AddUpdateUserComponent implements OnInit {
  }
  loadEmployeeData(){
   this._service.employeeData().subscribe(res => {
-    this.userArray = res;
+    this.userArray = res[0];
     console.log(res);
     this.setEmployeeData();
   });
 }
 setEmployeeData(){
- 
-  this.firstName= this.userArray.array.employeeData.firstName;
-  this.lastName=this.userArray.array.employeeData.lastName;
-  this.email =this.userArray.array.employeeData.email;
-  this.location=this.userArray.array.employeeData.location;
-  this.designation=this.userArray.array.employeeData.designation;
-  this.division=this.userArray.array.employeeData.division;
-  this.joined=this.userArray.array.employeeData.joined;
-  this.competenceManager=this.userArray.array.employeeData.competenceManager;
+  this.firstName= this.userArray.firstName;
+  this.lastName=this.userArray.lastName;
+  this.email =this.userArray.email;
+  this.location=this.userArray.location;
+  this.designation=this.userArray.designation;
+  this.division=this.userArray.division;
+  this.joined=this.userArray.joined;
+  this.competenceManager=this.userArray.competenceManager;
   }
 }
