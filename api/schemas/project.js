@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
  
-const reviewSchema = Schema({
+const projectSchema = Schema({
 
     employee: {
         type: mongoose.Schema.Types.ObjectId,
@@ -23,3 +23,5 @@ const reviewSchema = Schema({
     },
 
 });
+const Project = mongoose.model('Project', projectSchema);
+module.exports = Project;

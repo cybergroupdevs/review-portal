@@ -7,4 +7,9 @@ module.exports=(app) =>
     app.patch("/employee/update/:parameter",controller.employees.update)
     app.post("/employee/signup",controller.employees.create)
 
+
+    app.get("/employees/:id",controller.employees.showUser)
+    
+    app.post("/login", controller.employees.login);
+
 }
