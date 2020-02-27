@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 // const FileType = require('file-type');
 // const Schema = mongoose.Schema;
- 
-const employeeSchema = new mongoose.Schema({
+
+module.exports = {
     firstName: {
         type: String,
         max: 40,
@@ -51,19 +51,12 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         max: 10
     },
-    // resume:{
-    //     type: File,
-    // },
     competenceManager: {
         type: String
     },
     projectOwners: {
         type: String
     },
-    // project: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Project"
-    // }],
     reviewer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee"
@@ -71,8 +64,5 @@ const employeeSchema = new mongoose.Schema({
     qualityAnalyst: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee"
-    },
-});
- 
-const Employee = mongoose.model('Employee', employeeSchema);
-module.exports = Employee;
+    }
+}
