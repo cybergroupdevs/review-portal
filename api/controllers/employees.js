@@ -57,7 +57,7 @@ class Employee {
 
 async index(req,res){
     const employeeList = await model.employee.get();
-    res.send(employeeList)
+    res.send(employeeList);
 }
 async update(req,res) {
     let updateObj= req.body
