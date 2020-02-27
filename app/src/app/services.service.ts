@@ -16,6 +16,7 @@ export class ServicesService {
   private log(message: string) {
     console.log(message);
   }
+  
   jsonDecoder = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -31,6 +32,14 @@ export class ServicesService {
       catchError(this.handleError<any>('error in details')
     ));
   }
+
+  checkUser(object): Observable<any>{
+    return this.http.post("http://localhost:3001/login", object, {responseType: 'text'}).pipe(
+      tap(_ => this.log("showing details")),
+      catchError(this.handleError<any>('checkUser ?'))
+      );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
