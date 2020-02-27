@@ -18,7 +18,7 @@ export class AdminOptionsComponent implements OnInit {
   }
 
   addEmployee(){
-    this._router.navigate(["/user"]);
+    this._router.navigate(["/addUser"]);
   }
 
 }
