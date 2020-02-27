@@ -8,7 +8,6 @@ const config = require('config');
 const Employee = require('../schemas/employee');
 
 router.post('/signup', async (req, res) => {
-    
     // if(error) return res.status(400).send({
     //     success: false,
     //     error: error.details[0].message
@@ -41,8 +40,6 @@ router.post('/signup', async (req, res) => {
 
 router.get('/employeeList', async (req, res) => {
     const listOfEmployees = await Employee.find().select("-password");
-
-
     console.log(listOfEmployees, 'hereeeeeeeeeee');
 
     res.send({
