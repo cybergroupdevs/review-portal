@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row  company-logo">
-        <strong>CyberGroup</strong>
+        <div class="col-lg-4 col-lg-offset-4"><strong>CyberGroup</strong></div>
     </div>
     
 </div>
@@ -14,22 +14,31 @@
               <div class="panel-body">
               <img class="logo-img" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFSk7W1KUiG0w/company-logo_200_200/0?e=2159024400&v=beta&t=dToUex9P08LphNIkkj5aT6ZhSC17M8orhdt784fwwjE">
               <form class="form-horizontal" action="\">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-lg-2 control-label">Email</label>
+                    
+                        <!-- <label for="inputEmail3" class="col-lg-2 control-label">Email</label> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div>
+                            <input type="button" value="Log In" (click)="checkUser()" id="loginBtn" class="btn btn-primary">
+                        </div>
+                    <!-- <div class="form-group">    
                         <div class="col-lg-10">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input #email type="text" class="form-control" name="email" placeholder="abc@xyz.com" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-lg-2 control-label">Password</label>
                         <div class="col-lg-10">
-                            <input #password type="password" class="form-control" name="email" placeholder="abc@xyz.com" required="required">
+                            <input #password type="password" class="form-control" name="email" placeholder="password" required="required">
                         </div>
-                    </div>
-
-                    <div>
-                        <input type="button" value="Log In" (click)="checkUser()" id="loginBtn" class="btn btn-primary">
-                    </div>
+                    </div> -->
               </form>      
 
               </div>
