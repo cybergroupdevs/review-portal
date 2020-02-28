@@ -10,8 +10,8 @@ import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
   styleUrls: ['./add-update-user.component.css']
 })
 export class AddUpdateUserComponent implements OnInit {
-  @ViewChild('firstName', {static: false}) firstname: ElementRef;
-  @ViewChild('lastName', {static: false}) lastname: ElementRef;
+  @ViewChild('firstName', {static: false}) firstName: ElementRef;
+  @ViewChild('lastName', {static: false}) lastName: ElementRef;
   @ViewChild('password', {static: false}) password: ElementRef;
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('location', {static: false}) location: ElementRef;
@@ -23,23 +23,24 @@ export class AddUpdateUserComponent implements OnInit {
   constructor(private _service:ServicesService) { }
   
   userArray: any;
-  firstName: String;
-  lastName: String;
+  // firstName: String;
+  // lastName: String;
   // email: String;
   // password: String;
   // location:String;
   // designation:String;
   // division: String;
   // joined: String;
-  // competenceManager: String;
+ 
   
    ngOnInit() {
      this.loadEmployeeData()
  }
  loadEmployeeData(){
   this._service.employeeData().subscribe(res => {
-    this.userArray = res[0];
     console.log(res);
+
+    this.userArray = res[0];
     this.setEmployeeData();
   });
 }
@@ -56,8 +57,10 @@ setEmployeeData(){
 
   updateData(){
     let userObj = {
-      firstName: this.firstname.nativeElement.value,
-      lastName: this.lastname.nativeElement.value,
+      
+      
+      firstName: this.firstName.nativeElement.value,
+      lastName: this.lastName.nativeElement.value,
       password: this. password.nativeElement.value,
       email: this.email.nativeElement.value,
       location: this.location.nativeElement.value,

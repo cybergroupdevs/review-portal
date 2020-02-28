@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
@@ -36,7 +36,8 @@ export class ServicesService {
   }
 
   employeeData(): Observable<any>{
-    return this.http.get("http://localhost:3001/employees/"+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
+    const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
+    return this.http.get("http://localhost:3001/employees").pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -57,7 +58,7 @@ export class ServicesService {
 
 
   updateData(object): Observable<any>{
-    return this.http.patch("http://localhost:3001/employee/update",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
+    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
