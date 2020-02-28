@@ -55,13 +55,13 @@ export class ServicesService {
     );
   }
 
+
   updateData(object): Observable<any>{
     return this.http.patch("http://localhost:3001/employees/",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
-
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
