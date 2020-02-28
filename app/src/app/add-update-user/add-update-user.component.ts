@@ -10,28 +10,28 @@ import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
   styleUrls: ['./add-update-user.component.css']
 })
 export class AddUpdateUserComponent implements OnInit {
-  @ViewChild('firstname', {static: false}) firstname: ElementRef;
-  @ViewChild('lastname', {static: false}) lastname: ElementRef;
+  @ViewChild('firstName', {static: false}) firstname: ElementRef;
+  @ViewChild('lastName', {static: false}) lastname: ElementRef;
+  @ViewChild('password', {static: false}) password: ElementRef;
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('location', {static: false}) location: ElementRef;
   @ViewChild('designation', {static: false}) designation: ElementRef;
   @ViewChild('division', {static: false}) division: ElementRef;
-  @ViewChild('competenceManager', {static: false}) competenceManager: ElementRef;
-  @ViewChild('reviewer', {static: false}) reviewer: ElementRef;
-  @ViewChild('qualityAnalyst', {static: false}) qualityAnalyst: ElementRef;
+  @ViewChild('joined', {static: false}) joined: ElementRef;
+  res:any;
   
   constructor(private _service:ServicesService) { }
   
   userArray: any;
   firstName: String;
   lastName: String;
-  //email: String;
-  password: String;
-  //location:String;
-  //designation:String;
-  //division: String;
-  joined: String;
-  //competenceManager: String;
+  // email: String;
+  // password: String;
+  // location:String;
+  // designation:String;
+  // division: String;
+  // joined: String;
+  // competenceManager: String;
   
    ngOnInit() {
      this.loadEmployeeData()
@@ -51,32 +51,32 @@ setEmployeeData(){
   this.designation=this.userArray.designation;
   this.division=this.userArray.division;
   this.joined=this.userArray.joined;
-  this.competenceManager=this.userArray.competenceManager;
+  //this.competenceManager=this.userArray.competenceManager;
   }
 
-  update(){
+  updateData(){
     let userObj = {
-      "firstname": this.firstname.nativeElement.value,
-      "lastname": this.lastname.nativeElement.value,
-      "email": this.email.nativeElement.value,
-      "location": this.location.nativeElement.value,
-      "designation": this.designation.nativeElement.value,
-      "division": this.division.nativeElement.value,
-      "competenceManager": this.competenceManager.nativeElement.value,
-      "reviewer": this.reviewer.nativeElement.value,
-      "qualityAnalyst": this.qualityAnalyst.nativeElement.value
+      firstName: this.firstname.nativeElement.value,
+      lastName: this.lastname.nativeElement.value,
+      password: this. password.nativeElement.value,
+      email: this.email.nativeElement.value,
+      location: this.location.nativeElement.value,
+      designation: this.designation.nativeElement.value,
+      division: this.division.nativeElement.value,
+      joined: this.joined.nativeElement.value,
+      
      
     }
-    console.log(userObj);
-    this._service.updateData(userObj).subscribe(res => {
-    console.log(res);
+    //console.log(userObj);
+    this._service.updateData(userObj).subscribe(res =>  {
+    console.log(this.res);
     if(res.status==200){
-      console.log('Successful login');
+      console.log('Successful update!!');
 
     }
     else if(res.status == 401){
       console.log('Unauthorized');
-
+     
     }
 
 });
