@@ -11,8 +11,7 @@ body{
     border: hidden !important;
     font-size: 1rem;
 }
-.form-control :hover{
-}
+
 
 .required{
     color: #e02222;
