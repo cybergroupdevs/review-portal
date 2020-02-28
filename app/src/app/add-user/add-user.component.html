@@ -1,17 +1,10 @@
 <app-header></app-header>
-
-<div class="row employee-details">
-    <div class="col-lg-3">
-        <h4>&#x26F9; EMPLOYEE DETAILS</h4>
-        <br>
-    </div>
-</div>
-
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<form>
 <div class="options">
-    <input type="button" value="update" (click)="updateData()">
+    <input type="button" value="add" (click)="createUser()" >
+ 
 </div>
-
 <div class="row">
     <!-- <span class="required">*</span> -->
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
@@ -31,13 +24,19 @@
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Location:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #location  class="form-control input-medium" value="">
+        <input type="text" #location class="form-control input-medium" value="">
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
         <input type="text" #email class="form-control input-medium" value="">
+    </div>
+</div>
+<div class="row">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password:</label>
+    <div class="col-md-10 col-sm-9 col-xs-12">
+        <input type="text" #password class="form-control input-medium" value="">
     </div>
 </div>
 
@@ -71,27 +70,11 @@
         <input type="text" #previousExperience class="form-control input-medium" value="">
     </div>
 </div>
-<!-- <div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Resume:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="file" class="form-control input-medium" value="">
-    </div>
-</div> -->
+
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Skills:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
         <input type="textbox" #skills class="form-control input-medium" value="">
     </div>
 </div>
-<!-- <div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Competence Manager:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="competenceManager"class="form-control input-medium" value="{{competenceManager}}">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Project owners:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="projectOwners"class="form-control input-medium" value="">
-    </div>
-</div> -->
+</form>
