@@ -57,7 +57,7 @@ export class ServicesService {
 
 
   updateData(object): Observable<any>{
-    return this.http.patch("http://localhost:3001/employees/",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
+    return this.http.patch("http://localhost:3001/employee/update",object+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
