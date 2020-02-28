@@ -42,6 +42,15 @@ createUser(){
   // console.log(userObj);
   this._service.createUser(userObj).subscribe(res => this.res = res);
   console.log(this.res);
+  if (this.res.status==200){
+
+    
+  
+  }
+  else{
+    console.log("error occured");
+    
+  }
   
   
 }
