@@ -20,6 +20,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
+import { SelfReviewComponent } from './self-review/self-review.component';
 
 
 @NgModule({
@@ -36,7 +37,11 @@ import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 
 
 
-    ReviewerQaerComponent
+    ReviewerQaerComponent,
+
+
+
+    SelfReviewComponent
 
 
   ],
