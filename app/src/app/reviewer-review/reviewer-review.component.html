@@ -1,13 +1,13 @@
 <style>
-           table, th, td { 
+        table, th, td { 
             border: 1px solid black; 
             border-collapse: collapse; 
             padding: 6px; 
 
         } 
         table{
-            width: 20vw;
-            margin-left: 40vw;
+            margin: auto;
+            width: 50%;
             margin-top: 10vh;
         }
         #headers{
@@ -19,15 +19,19 @@
             outline: none;
             resize: none;
         }
-        
-        
-    </style> 
-        <form #reviewerForm="ngForm" (ngSubmit)="addReviewerReview(reviewerForm)">
+</style> 
+
         <form #reviewerForm>
             <table >  
                 <tr id="headers">  
                     <td colspan="3">
                         Key Result Area
+                    </td>
+                    <td colspan=5>  
+                        Self Evaluation 
+                    </td>
+                    <td >  
+                        Self Assessment  
                     </td>
                     <td colspan=5>  
                         Reviewer Evaluation 
@@ -38,15 +42,25 @@
                 </tr>  
                 <tr> 
                     <td colspan="3">  
-                        <p #review rows="4" cols="50" align="center">Technical Skills</p>  
+                        <p rows="4" cols="50" align="center">Technical Skills</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td>   
-                    
-                           
-                    <td align="center" rowspan="5">
-                           <select #assessment required>        
+                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                    </td>                      
+                     
+                    <td align="center">
+                           <select #assessmentSelf required>        
+                                <option value="satisfied">meets expectations</option>
+                                <option value="needs improvement">needs improvement</option>
+                           </select>
+                                
+                    </td>  
+                    <td colspan="5">  
+                        <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                    </td>                      
+                     
+                    <td align="center">
+                           <select #assessmentReviewer required>        
                                 <option value="satisfied">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
@@ -58,37 +72,111 @@
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center"></p>  
                     </td>   
-                    <td>  
+                    <td colspan="5">  
                         <textarea #review rows="4" cols="50"></textarea>  
+                    </td>                      
+                     
+                    <td align="center">
+                           <select #assessment required>        
+                                <option value="satisfied">meets expectations</option>
+                                <option value="needs improvement">needs improvement</option>
+                           </select>
+                                
                     </td>  
+                    <td colspan="5">  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>                      
+                     
+                    <td align="center">
+                           <select #assessment required>        
+                                <option value="satisfied">meets expectations</option>
+                                <option value="needs improvement">needs improvement</option>
+                           </select>
+                                
+                    </td>   
                 </tr>
                 <tr>  
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center"></p>  
-                    </td> 
-                    <td>  
+                    </td>   
+                    <td colspan="5">  
                         <textarea #review rows="4" cols="50"></textarea>  
-                    </td>  
+                    </td> 
+                    <td align="center">
+                        <select #assessment required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>  
+                 <td colspan="5">  
+                     <textarea #review rows="4" cols="50"></textarea>  
+                 </td>                      
+               
+                 <td align="center">
+                        <select #assessment required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>                        
+                     
+                    
                 </tr>
                 <tr> 
                     <td colspan="3">  
-                        <p #review rows="4" cols="50" align="center">Communication Skills</p>  
-                    </td>  
-                    <td>  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td>  
+                        <p  rows="4" cols="50" align="center">Communication Skills</p>  
+                    </td>   
+                    <td colspan="5">  
+                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                    </td> 
+                    <td align="center">
+                        <select #assessmentSelf required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>  
+                 <td colspan="5">  
+                     <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                 </td>                      
+               
+                 <td align="center">
+                        <select #assessmentReviewer required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>    
                 </tr>
                 <tr>  
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td>  
+                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                    </td> 
+                    <td align="center">
+                        <select #assessmentSelf required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>  
+                 <td colspan="5">  
+                     <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                 </td>                      
+               
+                 <td align="center">
+                        <select #assessmentReviewer required>        
+                             <option value="satisfied">meets expectations</option>
+                             <option value="needs improvement">needs improvement</option>
+                        </select>
+                             
+                 </td>    
                 </tr>
-                
- 
-            </table>  
+                </table>  
+                <!-- <button (click)=addReviewerReview()>submit</button> -->
         </form>
       
 
