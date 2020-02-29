@@ -20,36 +20,75 @@ const reviewSchema = new mongoose.Schema({
         required:true
     },
     technicalSkill:{
-        comment:{
-            type:String,
-            default:null
+        selfEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         },
-        binaryReview:{
-            type:String,
-            default:' Needs Improvement',
-            enum: ['Needs Improvement','Meets expectation']
+        reviewerEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         }
     },
     personality:{
-        comment:{
-            type:String,
-            default:null
+        selfEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         },
-        binaryReview:{
-            type:String,
-            default:' Needs Improvement',
-            enum: ['Needs Improvement','Meets expectation']
+        reviewerEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         }
     },
     communication:{
-        content:{
-            type:String,
-            default:null
+        selfEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         },
-        binaryReview:{
-            type:String,
-            default:' Needs Expectation',
-            enum: ['Needs Expectation','Meets expectation']
+        reviewerEvaluation:{
+            comment:{
+                type:String,
+                default:null
+            },
+            assessment:{
+                type:String,
+                default:' Needs Improvement',
+                enum: ['Needs Improvement','Meets expectation']
+            }
         }
     },
 
@@ -68,10 +107,12 @@ const reviewSchema = new mongoose.Schema({
         enum:["saved self appraisal","Pending-Reviewer","Pending-QAer", "close"]
     },
     reviewCycle:{
-        type:String
+        type:String,
+        default:null
     },
     promotionCycle:{
-        type:String
+        type:String,
+        default:null
     }
 
 });
