@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const config = require('config');
 // const Employee = require('../schemas/employee');
-
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 class Employee {
@@ -11,27 +10,7 @@ class Employee {
     }
 
     async create(req,res) {
-    //     const details = req.body ;
-    // let employee = await Employee.findOne({ "email": details.email });
-    // if(employee) return res.status(401).send({
-    //     success: false,
-    //     error: 'User with this email already registered'
-    // });
-
-    //     employee = new Employee(details);
-
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    // employee.password = hashedPassword;
-
-    // employee = await employee.save();
-
-    // res.send({
-    //     success: true,
-    //     data: employee
-    // });
-
+    
     let employeeObj ={
         firstName: req.body.firstName,
         lastName : req.body.lastName,

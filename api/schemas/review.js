@@ -6,15 +6,18 @@ const reviewSchema = new mongoose.Schema({
 
     employeeId: {
         type: Schema.Types.ObjectId,
-        ref: "Employee"
+        ref: "Employee",
+        required:true
     },
     reviewer: {
         type: Schema.Types.ObjectId,
-        ref: "Employee"
+        ref: "Employee",
+        required:true
     },
     qualityAnalyst: {
         type: Schema.Types.ObjectId,
-        ref: "Employee"
+        ref: "Employee",
+        required:true
     },
     technicalSkill:{
         comment:{
