@@ -18,6 +18,8 @@ import { AddUserComponent } from './add-user/add-user.component';
 
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
+import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,11 @@ import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
     AddUserComponent,
 
-    AdminOptionsComponent
+    AdminOptionsComponent,
+
+
+
+    ReviewerQaerComponent
 
 
   ],
