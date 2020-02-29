@@ -1,8 +1,9 @@
 .company-logo{
     font-size: 5rem;
+    line-height: 10rem;
     font-family:"Open Sans", sans-serif;
     text-align: center;
-    color: rgb(148, 63, 17);
+    color: rgba(0, 0, 0, 0.774);
 }
 
 .panel{
@@ -11,23 +12,40 @@
     
 }
 .panel > .panel-heading{
-    background-color: #6C7A8D;   
+    background-color: rgba(0, 0, 0, 0.774);   
 }
 .panel > .panel-heading h5{
     font-size: large;
     text-align: center;
     color: #C3CEDD;
-    font-family: "Open Sans", sans-serif;
-    
+    font-family: "Open Sans", sans-serif;   
+}
+.input-group{
+    margin-bottom: 3rem;
+}
+.input-group-addon{
+    border-radius: 30px; 
+    background-color: white;
     
 }
+.form-control{
+    border-radius: 30px;
+    border-left: none;
+}
+.form-control:focus {
+    border-color: #CCCCCC;
+    box-shadow: none;
+       
+  }
 
 #loginBtn{
-    margin:0 38%; 
+    padding: 6px 40px ;
+    margin:0 135px; 
+    border-radius: 30px;
 }
 .logo-img{
-    width: 20%; 
-    height: 20%; 
-    margin-left: 40%;
-    margin-bottom: 5%;
+    width: 6rem; 
+    height: 7rem; 
+    margin-left: 162px;
+    
 }

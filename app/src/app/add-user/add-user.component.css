@@ -11,8 +11,7 @@ body{
     border: hidden !important;
     font-size: 1rem;
 }
-.form-control :hover{
-}
+
 
 .required{
     color: #e02222;
@@ -30,9 +29,11 @@ input[type=file]
 {
     background-color: white;
     
+    
 }
 input[type=textbox]{
     height: 15vh;
+    
 }
 input[type=button]{
     border-radius: 20%;
@@ -42,4 +43,14 @@ input[type=button]{
     border: none;
     margin-left: 3rem;
     
+    
 }
+
+form{
+    width: 2rem;
+}
+
+/* .col-md-2 col-sm-3 col-xs-12{
+    font-size: 90%;
+    font-weight: bolder;
+} */
