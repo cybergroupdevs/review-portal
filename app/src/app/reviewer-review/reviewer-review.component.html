@@ -1,0 +1,96 @@
+<style>
+           table, th, td { 
+            border: 1px solid black; 
+            border-collapse: collapse; 
+            padding: 6px; 
+
+        } 
+        table{
+            width: 20vw;
+            margin-left: 40vw;
+            margin-top: 10vh;
+        }
+        #headers{
+            background-color: lightgray;
+            color:solid black;
+        }
+        textarea{
+            border: hidden;
+            outline: none;
+            resize: none;
+        }
+        
+        
+    </style> 
+        <form #reviewerForm="ngForm" (ngSubmit)="addReviewerReview(reviewerForm)">
+        <form #reviewerForm>
+            <table >  
+                <tr id="headers">  
+                    <td colspan="3">
+                        Key Result Area
+                    </td>
+                    <td colspan=5>  
+                        Reviewer Evaluation 
+                    </td>  
+                    <td colspan=3>  
+                        Reviewer Assessment  
+                    </td>  
+                </tr>  
+                <tr> 
+                    <td colspan="3">  
+                        <p #review rows="4" cols="50" align="center">Technical Skills</p>  
+                    </td> 
+                    <td colspan="5">  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>   
+                    
+                           
+                    <td align="center" rowspan="5">
+                           <select #assessment required>        
+                                <option value="satisfied">meets expectations</option>
+                                <option value="needs improvement">needs improvement</option>
+                           </select>
+                                
+                    </td>  
+                </tr> 
+                
+                <tr>
+                    <td colspan="3">  
+                        <p #review rows="4" cols="50" align="center"></p>  
+                    </td>   
+                    <td>  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>  
+                </tr>
+                <tr>  
+                    <td colspan="3">  
+                        <p #review rows="4" cols="50" align="center"></p>  
+                    </td> 
+                    <td>  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>  
+                </tr>
+                <tr> 
+                    <td colspan="3">  
+                        <p #review rows="4" cols="50" align="center">Communication Skills</p>  
+                    </td>  
+                    <td>  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>  
+                </tr>
+                <tr>  
+                    <td colspan="3">  
+                        <p #review rows="4" cols="50" align="center">Personality</p>  
+                    </td> 
+                    <td colspan="5">  
+                        <textarea #review rows="4" cols="50"></textarea>  
+                    </td>  
+                </tr>
+                
+ 
+            </table>  
+        </form>
+      
+
+                       
+    
