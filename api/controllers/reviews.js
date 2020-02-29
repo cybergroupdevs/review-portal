@@ -14,19 +14,13 @@ class Review {
         res.send(review[0]);
     }
 
-
-async index(req,res){
-    console.log("Reached INDEX");
-    const reviewList = await model.review.get();
-    res.send(reviewList);
-}
-
 async update(req,res) {
+    console.log("Reached UPDATE");
     let updateObj= req.body
     console.log(updateObj)
-    const employee= await model.review.update({_id: req.params.parameter},  updateObj)
-    res.send(employee)
-
+    const review= await model.review.update({_id: req.params.parameter},  updateObj)
+    res.send(review)
 }    
 }
+
 module.exports = new Review() 

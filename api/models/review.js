@@ -12,8 +12,8 @@ class Review{
     }
     
     
-    async update(criteria={}, reviewObj){
-        return this.model.update(criteria, reviewObj)
+    async update(criteria={}, updateObj){
+        return this.model.update(criteria, updateObj)
     }
     // async delete(criteria={})
     // {
