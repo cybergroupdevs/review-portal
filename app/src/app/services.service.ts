@@ -63,6 +63,13 @@ export class ServicesService {
       catchError(this.handleError<any>('error in details')
     ));
   }
+  reviewData(): Observable<any>{
+    //const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
+    return this.http.get("http://localhost:3001/review/5e5b85cdb4f6bcd838db5e06").pipe(
+      tap(_ => this.log("showing review details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
