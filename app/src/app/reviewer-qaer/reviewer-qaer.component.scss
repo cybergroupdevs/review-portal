@@ -5,13 +5,25 @@
     background-color: #1c314d;
     background-size: cover;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 .card-banner .card-body {
     background-size: cover;
     position: relative;
     z-index: 10;
+    
+  
+}
+ .form-group{
+        height: 1px;  
+ }
+ .form-group::after{
+    color: gray;  
 }
 
+.card-body{
+    margin-right: 1px;
+}
 
 /* overlay effects */
 .overlay-cover {
@@ -49,11 +61,5 @@
      opacity: .9;
 }
 
-// .form-horizontal{
-//     max-width: 1000px;
-//     max-height: 200px;
-// }
 
-.card-body{
-    height:1000px;
-}
+

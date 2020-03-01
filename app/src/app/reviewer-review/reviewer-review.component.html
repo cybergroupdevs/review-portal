@@ -21,7 +21,7 @@
         }
 </style> 
 
-        <form #reviewerForm>
+        <!-- <form #reviewerForm> -->
             <table >  
                 <tr id="headers">  
                     <td colspan="3">
@@ -45,22 +45,22 @@
                         <p rows="4" cols="50" align="center">Technical Skills</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                        <textarea rows="4" cols="50" >{{reviewSelfTS}}</textarea>  
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentSelf required>        
+                           <select #assessmentSelfTS required>        
                                 <option value="satisfied">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
                                 
                     </td>  
                     <td colspan="5">  
-                        <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                        <textarea rows="4" cols="50">{{reviewReviewerTS}}</textarea>  
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentReviewer required>        
+                           <select #assessmentReviewerTS required>        
                                 <option value="satisfied">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
@@ -128,21 +128,21 @@
                         <p  rows="4" cols="50" align="center">Communication Skills</p>  
                     </td>   
                     <td colspan="5">  
-                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                        <textarea #reviewSelf rows="4" cols="50">{{reviewSelfCS}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelf required>        
+                        <select #assessmentSelfCS required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
                  </td>  
                  <td colspan="5">  
-                     <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                     <textarea #reviewReviewer rows="4" cols="50">{{reviewReviewerCS}}</textarea>  
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewer required>        
+                        <select #assessmentReviewerCS required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
@@ -154,21 +154,21 @@
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea #reviewSelf rows="4" cols="50"></textarea>  
+                        <textarea #reviewSelf rows="4" cols="50">{{reviewSelfP}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelf required>        
+                        <select #assessmentSelfP required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
                  </td>  
                  <td colspan="5">  
-                     <textarea #reviewReviewer rows="4" cols="50"></textarea>  
+                     <textarea #reviewReviewer rows="4" cols="50">{{reviewReviewerP}}</textarea>  
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewer required>        
+                        <select #assessmentReviewerP required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
@@ -177,7 +177,7 @@
                 </tr>
                 </table>  
                 <!-- <button (click)=addReviewerReview()>submit</button> -->
-        </form>
+        <!-- </form> -->
       
 
                        
