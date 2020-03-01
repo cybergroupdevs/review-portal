@@ -45,7 +45,7 @@
                         <p rows="4" cols="50" align="center">Technical Skills</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea rows="4" cols="50" >{{reviewSelfTS}}</textarea>  
+                        <textarea rows="4" cols="50" #rsTS>{{reviewSelfTS}}</textarea>  
                     </td>                      
                      
                     <td align="center">
@@ -56,7 +56,7 @@
                                 
                     </td>  
                     <td colspan="5">  
-                        <textarea rows="4" cols="50">{{reviewReviewerTS}}</textarea>  
+                        <textarea rows="4" cols="50" #rrTS>{{reviewReviewerTS}}</textarea>  
                     </td>                      
                      
                     <td align="center">
@@ -154,7 +154,7 @@
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea #reviewSelf rows="4" cols="50">{{reviewSelfP}}</textarea>  
+                        <textarea  rows="4" cols="50">{{reviewSelfP}}</textarea>  
                     </td> 
                     <td align="center">
                         <select #assessmentSelfP required>        
@@ -164,7 +164,7 @@
                              
                  </td>  
                  <td colspan="5">  
-                     <textarea #reviewReviewer rows="4" cols="50">{{reviewReviewerP}}</textarea>  
+                     <textarea  rows="4" cols="50">{{reviewReviewerP}}</textarea>  
                  </td>                      
                
                  <td align="center">
@@ -176,7 +176,7 @@
                  </td>    
                 </tr>
                 </table>  
-                <!-- <button (click)=addReviewerReview()>submit</button> -->
+                <button (click)=updateReviewDetails()>submit</button>
         <!-- </form> -->
       
 
