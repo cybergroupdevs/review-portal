@@ -8,11 +8,11 @@ class Employee{
     }
 
     async getUserData(criteria={}){
-        console.log("mera get")
+        
         return this.model.find(criteria).select("-password")
     }
     async get(criteria={}, columns={}){
-        console.log("faizan ka get")
+        
         return this.model.find(criteria, columns)
 
     }
