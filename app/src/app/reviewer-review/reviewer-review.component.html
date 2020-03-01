@@ -19,6 +19,7 @@
             outline: none;
             resize: none;
         }
+        
 </style> 
 
         <!-- <form #reviewerForm> -->
@@ -128,7 +129,7 @@
                         <p  rows="4" cols="50" align="center">Communication Skills</p>  
                     </td>   
                     <td colspan="5">  
-                        <textarea #reviewSelf rows="4" cols="50">{{reviewSelfCS}}</textarea>  
+                        <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
                     </td> 
                     <td align="center">
                         <select #assessmentSelfCS required>        
@@ -138,7 +139,7 @@
                              
                  </td>  
                  <td colspan="5">  
-                     <textarea #reviewReviewer rows="4" cols="50">{{reviewReviewerCS}}</textarea>  
+                     <textarea #rrCS rows="4" cols="50">{{reviewReviewerCS}}</textarea>  
                  </td>                      
                
                  <td align="center">
@@ -154,7 +155,7 @@
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea  rows="4" cols="50">{{reviewSelfP}}</textarea>  
+                        <textarea  rows="4" cols="50" #rsP>{{reviewSelfP}}</textarea>  
                     </td> 
                     <td align="center">
                         <select #assessmentSelfP required>        
@@ -164,7 +165,7 @@
                              
                  </td>  
                  <td colspan="5">  
-                     <textarea  rows="4" cols="50">{{reviewReviewerP}}</textarea>  
+                     <textarea  rows="4" cols="50" #rrP>{{reviewReviewerP}}</textarea>  
                  </td>                      
                
                  <td align="center">

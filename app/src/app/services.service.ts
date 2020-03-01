@@ -73,8 +73,7 @@ export class ServicesService {
   }
 
   updateReviewData(userObj): Observable<any>{
-    //const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
-    return this.http.get("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06").pipe(
+    return this.http.patch("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06",userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));
