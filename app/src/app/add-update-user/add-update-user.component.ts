@@ -18,6 +18,10 @@ export class AddUpdateUserComponent implements OnInit {
   @ViewChild('designation', {static: false}) designation: ElementRef;
   @ViewChild('division', {static: false}) division: ElementRef;
   @ViewChild('joined', {static: false}) joined: ElementRef;
+  @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
+  @ViewChild('skills', {static: false}) skills: ElementRef;
+  @ViewChild('competenceManager', {static: false}) competenceManager: ElementRef;
+  @ViewChild('projectOwners', {static: false}) projectOwners: ElementRef;
   res:any;
   
   constructor(private _service:ServicesService) { }
@@ -52,8 +56,12 @@ setEmployeeData(){
   this.designation=this.userArray.designation;
   this.division=this.userArray.division;
   this.joined=this.userArray.joined;
-  //this.competenceManager=this.userArray.competenceManager;
+  this.previousExperience=this.userArray.previousExperience;
+  this.skills=this.userArray.skills;
+  this.competenceManager=this.userArray.competenceManager;
+  this.projectOwners=this.userArray.projectOwners;
   }
+  
 
   updateData(){
     let userObj = {
@@ -65,6 +73,10 @@ setEmployeeData(){
       designation: this.designation.nativeElement.value,
       division: this.division.nativeElement.value,
       joined: this.joined.nativeElement.value,
+      previousExperience: this.previousExperience.nativeElement.value,
+      skills: this.skills.nativeElement.value,
+      competenceManager: this.competenceManager.nativeElement.value,
+      projectOwners: this.projectOwners.nativeElement.value,
       }
     //console.log(userObj);
     this._service.updateData(userObj).subscribe(res =>  {
