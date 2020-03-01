@@ -57,8 +57,6 @@ setEmployeeData(){
 
   updateData(){
     let userObj = {
-      
-      
       firstName: this.firstName.nativeElement.value,
       lastName: this.lastName.nativeElement.value,
       password: this. password.nativeElement.value,
@@ -67,9 +65,7 @@ setEmployeeData(){
       designation: this.designation.nativeElement.value,
       division: this.division.nativeElement.value,
       joined: this.joined.nativeElement.value,
-      
-     
-    }
+      }
     //console.log(userObj);
     this._service.updateData(userObj).subscribe(res =>  {
     console.log(this.res);
