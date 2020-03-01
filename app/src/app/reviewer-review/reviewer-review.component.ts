@@ -13,6 +13,10 @@ export class ReviewerReviewComponent implements OnInit {
   res:any;
   @ViewChild('rsTS', {static: false}) rsTS: ElementRef;
   @ViewChild('rrTS', {static: false}) rrTS: ElementRef;
+  @ViewChild('rsCS', {static: false}) rsCS: ElementRef;
+  @ViewChild('rrCS', {static: false}) rrCS: ElementRef;
+  @ViewChild('rsP', {static: false}) rsP: ElementRef;
+  @ViewChild('rrP', {static: false}) rrP: ElementRef;
   
   constructor(private _service : ServicesService) { }
   reviewArray:any;
@@ -71,19 +75,42 @@ export class ReviewerReviewComponent implements OnInit {
               "comment": this.rrTS.nativeElement.value,
               "assessment": "Needs Improvement"
           }
-      
-        
-      }}
+        },
+       "communication": {
+         "selfEvaluation": {
+             "comment": this.rsCS.nativeElement.value,
+             "assessment": " Needs Improvement"
+          },
+        "reviewerEvaluation": {
+            "comment": this.rrCS.nativeElement.value,
+            "assessment": "Needs Improvement"
+        }
+    },
+    "personality": {
+      "selfEvaluation": {
+          "comment": this.rsP.nativeElement.value,
+          "assessment": " Needs Improvement"
+      },
+      "reviewerEvaluation": {
+          "comment": this.rrP.nativeElement.value,
+          "assessment": "Needs Improvement"
+      }
+  }
+
+  }
       console.log(userObj);
-      this._service.updateReviewData(userObj).subscribe(res => this.res = res);
-      console.log(this.res);
-      if (this.res.status==200){
-         console.log("update successfull")
-      }
-      else{
-        console.log("error occured");
-        
-      }
+      this._service.updateReviewData(userObj).subscribe(res =>  {
+        console.log(this.res);
+        if(this.res.status==200){
+          console.log('Successful update!!');
+    
+        }
+        else {
+          console.log('unsuccessful');
+         
+        }
+    
+    });
       
       
     }
