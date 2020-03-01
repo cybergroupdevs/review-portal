@@ -8,11 +8,13 @@ import { faEdit, faFile, faCheck, faAngleDoubleRight } from '@fortawesome/free-s
 })
 export class ReviewNavbarComponent implements AfterViewInit {
   ngAfterViewInit(){
-    this.getNavHeight();
+    // this.getNavHeight();
   }
 
   @ViewChild('mainnav', {static: false}) mNav: ElementRef;
   @ViewChild('sidenav', {static: false}) mSide: ElementRef;
+  @ViewChild('navColumn',{static: false}) nColumn: ElementRef;
+
 
   constructor() { }
 

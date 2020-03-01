@@ -35,13 +35,13 @@ export class ReviewTableComponent implements OnInit {
       "FormName": "Associate 1",
       "Cycle": "Annual 2022",
       "TargetDate": "9-03-2022",
-      "Status": "Closed"
+      "Status": "QAer Pending"
     },
     {
       "FormName": "Associate 2",
       "Cycle": "Annual 2023",
       "TargetDate": "9-03-2023",
-      "Status": "QAer Pending"
+      "Status": "Self Review"
     }
   ]
   

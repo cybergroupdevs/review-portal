@@ -1,49 +1,99 @@
-<div #mainnav>
+<div>
     <app-header></app-header>
 </div>
 
-<div>
-    <nav class="navbar bg-primary" #sidenav>
+<div class="row m-auto">
+    <div class="col-md-3 col-lg-3">
         <ul class="navbar-nav">
-
-          <li class="logo">
-            <a class="nav-link">
-              <span class="link-text">Reviews</span>
-              <fa-icon [icon]="faRight"></fa-icon>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="faFile"></fa-icon>
-                <span class="link-text">Self-Reviews</span>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <fa-icon [icon]="faEdit"></fa-icon>
-              <span class="link-text">Pending By Reviewer</span>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="faEdit"></fa-icon>
-              <span class="link-text">Pending By QAer</span>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="faFileSignature"></fa-icon>
-                <span class="link-text">Closed</span>
-            </a>
-          </li>
-
+        
+            <li class="logo">
+                <a class="nav-link-heading">
+                    <span class="">Review Tab</span>
+                    <fa-icon [icon]="faRight"></fa-icon>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <fa-icon [icon]="faFile"></fa-icon>
+                    <span class="link-text">Self-Reviews</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                    <span class="link-text">Pending By Reviewer</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                    <span class="link-text">Pending By QAer</span>
+                </a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <fa-icon [icon]="faFileSignature"></fa-icon>
+                    <span class="link-text">Closed</span>
+                </a>
+            </li>
+        
         </ul>
-    </nav>
+    </div>
+    
+    <div class="col-md-9 col-lg-9 p-1 table">
+        <app-review-table></app-review-table>
+    </div>
 </div>
-<main>
-    <app-review-table></app-review-table>
-</main>
+
+<!-- <div class="d-none d-sm-block d-md-none d-block d-sm-none">
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+            <ul class="navbar-nav">
+        
+                <li class="logo">
+                    <a class="nav-link-heading">
+                        <span class="">Review Tab</span>
+                        <fa-icon [icon]="faRight"></fa-icon>
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <fa-icon [icon]="faFile"></fa-icon>
+                        <span class="link-text">Self-Reviews</span>
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                        <span class="link-text">Pending By Reviewer</span>
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                        <span class="link-text">Pending By QAer</span>
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <fa-icon [icon]="faFileSignature"></fa-icon>
+                        <span class="link-text">Closed</span>
+                    </a>
+                </li>
+        
+            </ul>
+        </div>
+    
+        <div class="col-md-9 col-lg-9 p-0">
+            <app-review-table></app-review-table>
+        </div>
+    </div>
+</div> -->
