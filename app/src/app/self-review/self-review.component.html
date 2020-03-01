@@ -21,10 +21,16 @@
  .form{
      padding: 4em 5em;
  }
+
+ .buttons{
+     display: flex;
+ }
+
+ 
  
 </style> 
 
- <form #reviewerForm="ngForm" (ngSubmit)="addReviewerReview(reviewerForm)">
+ <form  >
  <form #reviewerForm class="form">  
      <table >  
          <tr id="headers">  
@@ -43,7 +49,7 @@
                  <p #review rows="4" cols="50" align="center">Technical Skills</p>  
              </td> 
              <td colspan="5">  
-                 <textarea #review rows="4" cols="50">{{reviewSelfTS}}</textarea>  
+                 <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>  
              </td>   
              
                     
@@ -91,7 +97,7 @@
                  <p #review rows="4" cols="50" align="center">Communication Skills</p>  
              </td>  
              <td colspan="5">  
-                 <textarea #review rows="4" cols="50">{{reviewSelfCS}}</textarea>  
+                 <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
              </td>  
              <td align="center" >
                 <select #assessment required>        
@@ -106,7 +112,7 @@
                  <p #review rows="4" cols="50" align="center">Personality</p>  
              </td> 
              <td colspan="5">  
-                 <textarea #review rows="4" cols="50">{{reviewSelfPS}}</textarea>  
+                 <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>  
              </td>  
              <td align="center" >
                 <select #assessment required>        
@@ -118,10 +124,11 @@
          </tr>
 
      </table>  
-
-     <table>
-
-     </table>
+     <div class="buttons" >
+     <div><button type="Submit" class="btn btn-primary">Cancel</button></div>
+     <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
+     <div><button type="Submit" class="btn btn-primary" (click)="submitReview()">Submit</button></div>
+    </div>
  </form>
 
 
