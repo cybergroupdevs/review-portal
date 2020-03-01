@@ -1,3 +1,4 @@
+import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { AddUpdateUserComponent } from './add-update-user/add-update-user.component';
@@ -7,8 +8,6 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "login", component: LoginComponent},
@@ -16,7 +15,8 @@ const routes: Routes = [
   {path: "user", component: AddUpdateUserComponent},
   {path: "admin", component: AdminOptionsComponent},
   {path: "addUser", component: AddUserComponent},
-  {path: "reviewerqaer", component: ReviewerQaerComponent}
+  {path: "reviewerqaer", component: ReviewerQaerComponent},
+  {path: "nav", component: ReviewNavbarComponent}
 ];
 
 @NgModule({

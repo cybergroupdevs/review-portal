@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">{{key[0]}}</th>
+            <th scope="col">{{key[1]}}</th>
+            <th scope="col">{{key[2]}}</th>
+            <th scope="col">{{key[3]}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let row of dummyJson">
+            <td>{{row.FormName}}</td>
+            <td>{{row.Cycle}}</td>
+            <td>{{row.TargetDate}}</td>
+            <td>{{row.Status}}</td>
+        </tr>
+    </tbody>
+</table>
