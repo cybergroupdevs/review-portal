@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from './../services.service';
 
 @Component({
   selector: 'app-self-review',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelfReviewComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _service: ServicesService) { }
+  
   ngOnInit() {
+    this.getReview();
   }
 
-
+  getReview() {
+    this._service.getReviewById()
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 
 }
