@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { __param } from 'tslib';
@@ -26,6 +26,7 @@ export class ServicesService {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     return JSON.parse(jsonPayload);
+    console.log(token);
   };
 
   showAllEmployees(): Observable<any>{
@@ -97,6 +98,12 @@ export class ServicesService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
       };
+    }
+
+    getReviewById(id:any): Observable<any> {
+      console.log("in service section");
+      return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
+        retry(3), catchError(this.handleError<any>('error in review details')));
     }
   }
   

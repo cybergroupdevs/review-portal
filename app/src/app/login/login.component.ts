@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     if(token != null){
       localStorage.setItem("JwtHrms", token);
       let decodedToken = this._service.jsonDecoder(token);
-      console.log(decodedToken);
+      console.log(decodedToken, "my token");
       let designation = decodedToken.data.designation;
       if(designation == "Associate 2"){
         this._router.navigate(['/admin']);
