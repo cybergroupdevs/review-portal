@@ -34,6 +34,15 @@ main {
   filter: grayscale(0%) opacity(1);
 }
 
+.nav-link:active{
+  filter: none;
+}
+
+.active, .nav-link:active{
+  filter: none;
+}
+
+
 .link-text {
   display: inline;
   margin-left: 1rem;

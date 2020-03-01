@@ -1,3 +1,4 @@
+import { ReviewTableComponent } from './../review-table/review-table.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { faEdit, faFile, faCheck, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -29,6 +30,10 @@ export class ReviewNavbarComponent implements AfterViewInit {
     const styles = {'margin-top' : this.height};
     console.log(this.height);
     this.mSide.nativeElement.style.marginTop = this.height+"px";
+  }
+
+  getReviews(status: number){
+    new ReviewTableComponent().getData(status);
   }
 
 }
