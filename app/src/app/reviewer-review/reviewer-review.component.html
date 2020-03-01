@@ -19,6 +19,10 @@
             outline: none;
             resize: none;
         }
+        .self{
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         
 </style> 
 
@@ -46,11 +50,11 @@
                         <p rows="4" cols="50" align="center">Technical Skills</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea rows="4" cols="50" #rsTS>{{reviewSelfTS}}</textarea>  
+                        <textarea rows="4" cols="50" #rsTS class="self">{{reviewSelfTS}}</textarea>  
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentSelfTS required>        
+                           <select #assessmentSelfTS class="self"required>        
                                 <option value="satisfied">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
@@ -129,10 +133,10 @@
                         <p  rows="4" cols="50" align="center">Communication Skills</p>  
                     </td>   
                     <td colspan="5">  
-                        <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
+                        <textarea #rsCS rows="4" cols="50" class="self">{{reviewSelfCS}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelfCS required>        
+                        <select #assessmentSelfCS class="self"required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
@@ -155,10 +159,10 @@
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
                     <td colspan="5">  
-                        <textarea  rows="4" cols="50" #rsP>{{reviewSelfP}}</textarea>  
+                        <textarea  rows="4" cols="50" #rsP class="self">{{reviewSelfP}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelfP required>        
+                        <select #assessmentSelfP class="self"required>        
                              <option value="satisfied">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
