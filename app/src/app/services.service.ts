@@ -72,6 +72,13 @@ export class ServicesService {
     ));
   }
 
+  updateReviewData(userObj): Observable<any>{
+    return this.http.patch("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06",userObj).pipe(
+      tap(_ => this.log("updated review details")),
+      catchError(this.handleError<any>('error in updating details')
+    ));
+  }
+
   empData(): Observable<any>{
     return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
       tap(_ => this.log("received employee details")),
