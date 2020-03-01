@@ -105,6 +105,11 @@ export class ServicesService {
       return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
+
+    editReview(id:any): Observable<any> {
+      console.log("in section update review");
+      return this.http.patch("http://localhost:3001/reviews/update/" + id, {headers: this.header_token} ).pipe(
+        retry(3), catchError(this.handleError<any>('error in review details')));
+    }
   }
   
-

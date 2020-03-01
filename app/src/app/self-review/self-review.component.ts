@@ -16,6 +16,7 @@ export class SelfReviewComponent implements OnInit {
   assessmentSelfCS: String;
   reviewSelfPS:String;
   assessmentSelfPS: String;
+  array : Object;
   ngOnInit() {
     const id = "5e5bc9889dafbe6380096ca6";
     this.getReview(id);
@@ -28,13 +29,13 @@ export class SelfReviewComponent implements OnInit {
         //console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
 
         this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
-    
     this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
+    this.array = [1,2,3];
+
     this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
-    
     this.assessmentSelfCS=this.reviewArray.communication.selfEvaluation.assessment;
+
     this.reviewSelfPS= this.reviewArray.personality.selfEvaluation.comment;
-    
     this.assessmentSelfPS=this.reviewArray.personality.selfEvaluation.assessment;
 
       });
