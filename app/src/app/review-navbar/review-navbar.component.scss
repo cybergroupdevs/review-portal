@@ -1,13 +1,3 @@
-:root {
-    font-size: 16px;
-    font-family: 'Open Sans';
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececec;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
-    --transition-speed: 600ms;
-  }
-
   div {
     color: black;
     background-color: white;
@@ -15,28 +5,15 @@
     padding: 0;
   }
   
-  div::-webkit-scrollbar {
-    width: 0.25rem;
-  }
-  
-  div::-webkit-scrollbar-track {
-    background: #1e1e24;
-  }
-  
-  div::-webkit-scrollbar-thumb {
-    background: #6649b8;
-  }
-  
   main {
-    margin-left: 5rem;
+    margin-left: 60px;
     padding: 1rem;
   }
   
   .navbar {
     position: fixed;
-    // margin-top: 62;
     padding-right: 5rem;
-    background-color: var(--bg-primary);
+    // background-color: var(--bg-primary);
     transition: width 200ms ease;
   }
   
@@ -152,7 +129,11 @@
       width: 5rem;
       height: 100vh;
     }
-  
+    
+    main{
+      margin-left: 160px;
+    }
+
     .navbar:hover {
       width: 16rem;
     }

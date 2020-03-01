@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './review-table.component.html',
   styleUrls: ['./review-table.component.scss']
 })
+
 export class ReviewTableComponent implements OnInit {
 
   constructor() { }
@@ -16,7 +17,6 @@ export class ReviewTableComponent implements OnInit {
   key: any;
   dummyJson: any;
   
-
   feedTable(){
     this.dummyJson = [
       {
@@ -49,5 +49,4 @@ export class ReviewTableComponent implements OnInit {
     console.log(this.key);
   }
   
-
 }

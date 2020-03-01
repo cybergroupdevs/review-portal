@@ -12,7 +12,7 @@ export class ReviewNavbarComponent implements AfterViewInit {
   }
 
   @ViewChild('mainnav', {static: false}) mNav: ElementRef;
-  @ViewChild('sidenav', {static: false}) sNav: ElementRef;
+  @ViewChild('sidenav', {static: false}) mSide: ElementRef;
 
   constructor() { }
 
@@ -24,7 +24,9 @@ export class ReviewNavbarComponent implements AfterViewInit {
 
   getNavHeight(){
     this.height = this.mNav.nativeElement.offsetHeight;
+    const styles = {'margin-top' : this.height};
     console.log(this.height);
+    this.mSide.nativeElement.style.marginTop = this.height+"px";
   }
 
 }

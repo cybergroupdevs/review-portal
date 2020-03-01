@@ -35,15 +35,15 @@ class Employee {
     let employeeObj ={
         firstName: req.body.firstName,
         lastName : req.body.lastName,
-        email: req.body.email,
-        designation: req.body.designation,
-        password:req.body.password,
+        email : req.body.email,
+        designation : req.body.designation,
+        password : req.body.password,
         reviewer : req.body.reviewer,
         qualityAnalyst : req.body.qualityAnalyst,
     }
 
     
-    console.log(employeeObj)
+    console.log(employeeObj);
             const employee= await model.employee.save(employeeObj)
             res.send(employee)
 };
