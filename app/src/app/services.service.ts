@@ -71,15 +71,15 @@ export class ServicesService {
     ));
   }
 
-  empData(object): Observable<any>{
-    return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+  empData(): Observable<any>{
+    return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
       tap(_ => this.log("received employee details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
 
-  reviewerData(object): Observable<any>{
-    return this.http.get(`http://localhost:3001/review/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+  reviewerData(): Observable<any>{
+    return this.http.get(`http://localhost:3001/review/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
       tap(_ => this.log("received reviewer details")),
       catchError(this.handleError<any>('error in details')
     ));
