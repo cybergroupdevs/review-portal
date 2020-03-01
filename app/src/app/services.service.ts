@@ -100,8 +100,9 @@ export class ServicesService {
       };
     }
 
-    getReviewById(): Observable<any> {
-      return this.http.get<any>("http://localhost:3001/review" + "5e5a73a19dafbe6380096ca0").pipe(
+    getReviewById(id:any): Observable<any> {
+      console.log("in service section");
+      return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
   }
