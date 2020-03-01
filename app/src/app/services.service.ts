@@ -73,7 +73,7 @@ export class ServicesService {
   }
 
   updateReviewData(userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06",userObj).pipe(
+    return this.http.patch("http://localhost:3001/reviews/update/5e5bc9889dafbe6380096ca6",userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));
@@ -113,10 +113,12 @@ export class ServicesService {
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
 
-    editReview(id:any): Observable<any> {
-      console.log("in section update review");
-      return this.http.patch("http://localhost:3001/reviews/update/" + id, {headers: this.header_token} ).pipe(
-        retry(3), catchError(this.handleError<any>('error in review details')));
+    updateSelfReview(id,reviwObj): Observable<any>{
+      return this.http.patch("http://localhost:3001/reviews/update/" + id ,reviwObj).pipe(
+        tap(_ => this.log("updated review details")),
+        catchError(this.handleError<any>('error in updating details')
+      ));
     }
+
   }
   
