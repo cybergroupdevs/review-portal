@@ -32,12 +32,20 @@ export class ReviewerQaerComponent implements OnInit {
  }
  loadData(){
   this._service.reviewerData().subscribe(res => {
+  
     console.log(res);
 
     this.reviewQaerArray = res;
     console.log(this.reviewQaerArray)
     this.setData();
   });
+  this._service.empData().subscribe(res=> {
+    console.log(res);
+
+    this.reviewQaerArray = res;
+    console.log(this.reviewQaerArray)
+    this.setData();
+});
 }
 setData(){
   this.empCode= this.reviewQaerArray.empCode;
