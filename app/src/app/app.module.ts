@@ -21,6 +21,7 @@ import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
+import { CreateReviewComponent } from './create-review/create-review.component';
 
 
 @NgModule({
@@ -41,7 +42,11 @@ import { SelfReviewComponent } from './self-review/self-review.component';
 
 
 
-    SelfReviewComponent
+    SelfReviewComponent,
+
+
+
+    CreateReviewComponent
 
 
   ],

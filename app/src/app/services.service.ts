@@ -120,5 +120,12 @@ export class ServicesService {
       ));
     }
 
+    createReview(object): Observable<any>{
+      return this.http.post("http://localhost:3001/createReview", object).pipe(
+        tap(_ => this.log("added review")),
+        catchError(this.handleError<any>('Some Error Occurred'))
+      );
+    }
+
   }
   

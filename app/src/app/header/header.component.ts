@@ -24,4 +24,9 @@ export class HeaderComponent implements OnInit {
     console.log(name);
     this.firstName = name;
   }
+
+  createReview(){
+    this._router.navigate(["/createReview"])
+  }
+
 }

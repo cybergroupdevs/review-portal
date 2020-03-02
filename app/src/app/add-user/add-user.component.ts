@@ -29,29 +29,26 @@ export class AddUserComponent implements OnInit {
  }
  
 createUser(){
-  let userObj = {
-    firstName: this.firstName.nativeElement.value,
-    lastName: this.lastName.nativeElement.value,
-    email: this.email.nativeElement.value,
-    password: this.password.nativeElement.value,
-    location: this.location.nativeElement.value,
-    designation: this.designation.nativeElement.value,
-    division: this.division.nativeElement.value,
-    joined: this.joined.nativeElement.value,
-  }
-  // console.log(userObj);
-  this._service.createUser(userObj).subscribe(res => this.res = res);
-  console.log(this.res);
-  if (this.res.status==200){
+    let userObj = {
+      firstName: this.firstName.nativeElement.value,
+      lastName: this.lastName.nativeElement.value,
+      email: this.email.nativeElement.value,
+      password: this.password.nativeElement.value,
+      location: this.location.nativeElement.value,
+      designation: this.designation.nativeElement.value,
+      division: this.division.nativeElement.value,
+      joined: this.joined.nativeElement.value,
+    }
+    // console.log(userObj);
+    this._service.createUser(userObj).subscribe(res => this.res = res);
+    console.log(this.res);
+    if (this.res.status==200){
 
-    
-  
+    }
+    else{
+      console.log("error occured");
+      
+    }
+
   }
-  else{
-    console.log("error occured");
-    
-  }
-  
-  
-}
 }
