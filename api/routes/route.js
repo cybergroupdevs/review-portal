@@ -8,4 +8,6 @@ module.exports=(app) =>
     app.post("/employee/signup",controller.employees.create);
     app.get("/employees/:id",controller.employees.show);
     app.post("/login", controller.employees.login);
+    app.get("/review/:id", controller.reviews.show);
+    app.patch("/reviews/update/:parameter", controller.reviews.update);
 }

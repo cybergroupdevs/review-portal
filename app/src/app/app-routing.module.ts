@@ -1,4 +1,6 @@
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
+import { SelfReviewComponent } from './self-review/self-review.component';
+import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
 import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { AddUpdateUserComponent } from './add-update-user/add-update-user.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path: "admin", component: AdminOptionsComponent},
   {path: "addUser", component: AddUserComponent},
   {path: "reviewerqaer", component: ReviewerQaerComponent},
-  {path: "nav", component: ReviewNavbarComponent}
+  {path: "nav", component: ReviewNavbarComponent},
+  {path: "review", component: ReviewerReviewComponent},
+  {path: "selfReview", component:SelfReviewComponent}
 ];
 
 @NgModule({
