@@ -1,32 +1,50 @@
 <style>
         table, th, td { 
-            border: 1px solid black; 
+            border: 1px solid white; 
             border-collapse: collapse; 
             padding: 6px; 
+            background-color: #1c314d;
+            color: white;
 
         } 
         table{
             margin: auto;
             width: 50%;
-            margin-top: 10vh;
+            margin-top: 5vh;
         }
         #headers{
-            background-color: lightgray;
-            color:solid black;
+            background-color:#1c314d;
+            color:white;
         }
         textarea{
             border: hidden;
             outline: none;
             resize: none;
+            color: black;
         }
         .self{
             cursor: not-allowed;
-            pointer-events: none;
+            pointer-events: none; 
+        }
+        button{
+            background-color: #1c314d;
+            color: white;
+            border-radius: 10%;
+            border: none;
+            margin-top: 2rem;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        select{
+            color: black;
+        }
+        #headers{
+            font-weight: bold;
         }
         
 </style> 
 
-        <!-- <form #reviewerForm> -->
+        
             <table >  
                 <tr id="headers">  
                     <td colspan="3">
@@ -187,13 +205,14 @@
                  </td>    
                 </tr>
                 </table>  
+                <button (click)=updateReviewDetails()>save</button> 
                 <button (click)=updateReviewDetails()>submit</button>
-                <p>{{selectedAssessment}}<br>
+                <!-- <p>{{selectedAssessment}}<br>
                    {{selectedAssessmentCS}}<BR>
                    {{selectedAssessmentP}}
                    {{assessmentSelfTS}}
-                </p>
-        <!-- </form> -->
+                </p> -->
+        
       
 
                        

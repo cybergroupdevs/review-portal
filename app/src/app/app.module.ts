@@ -22,7 +22,10 @@ import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+
+
+import { CreateReviewComponent } from './create-review/create-review.component';
+
 
 @NgModule({
   declarations: [
@@ -35,11 +38,15 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     AddUserComponent,
     AdminOptionsComponent,
     ReviewerQaerComponent,
+    CreateReviewComponent
     ReviewNavbarComponent,
     MyReviewsComponent,
     ReviewTableComponent,
+
     SelfReviewComponent,
-    ChangePasswordComponent
+    
+    SelfReviewComponent
+
   ],
   imports: [
     RouterModule,

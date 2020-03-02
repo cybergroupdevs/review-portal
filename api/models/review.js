@@ -11,9 +11,11 @@ class Review{
         return this.model.find(criteria)
     }
     
-    
     async update(criteria={}, updateObj){
         return this.model.update(criteria, updateObj)
+    }
+    async save(reviewObject){
+        return this.model.create(reviewObject)
     }
     // async delete(criteria={})
     // {
