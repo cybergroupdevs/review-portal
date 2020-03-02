@@ -1,3 +1,4 @@
+import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: "reviewerqaer", component: ReviewerQaerComponent},
   {path: "nav", component: ReviewNavbarComponent},
   {path: "review", component: ReviewerReviewComponent},
-  {path: "selfReview", component:SelfReviewComponent}
+  {path: "selfReview", component:SelfReviewComponent},
+  {path: "createReview", component:CreateReviewComponent}
 ];
 
 @NgModule({
