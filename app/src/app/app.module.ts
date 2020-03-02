@@ -35,7 +35,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     AddUserComponent,
     AdminOptionsComponent,
     ReviewerQaerComponent,
-    CreateReviewComponent
+    CreateReviewComponent,
     ReviewNavbarComponent,
     MyReviewsComponent,
     ReviewTableComponent,
