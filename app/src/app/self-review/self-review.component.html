@@ -1,17 +1,20 @@
 <style>
     table, th, td { 
-     border: 1px solid black; 
+     border: 1px solid white; 
      border-collapse: collapse; 
      padding: 6px; 
 
  } 
  table{
      width: 100%;
+     background-color: #1c314d;
      
  }
  #headers{
-     background-color: lightgray;
-     color:solid black;
+     background-color: #1c314d;
+     color:  white;
+     height: 5rem;
+      font-weight: bold;
  }
  textarea{
      border: hidden;
@@ -24,9 +27,31 @@
 
  .buttons{
      display: flex;
+     align-items: right !important;
+      padding: 1rem ;
+      
  }
 
- 
+ button{
+     /* padding: 1rem 1rem 0 1rem; */
+     font-weight: bold;
+     background-color: #1c314d !important; 
+     margin-left: 1rem;
+     margin-right: 1rem;
+ }
+
+select{
+ width: 17rem;
+    height: 3rem;
+}
+
+textarea{
+    width: 87rem;
+}
+
+.col1{
+    color: white;
+}
  
 </style> 
 
@@ -34,19 +59,19 @@
  <form #reviewerForm class="form">  
      <table >  
          <tr id="headers">  
-             <td colspan="3">
+             <td colspan="2">
                  Key Result Area
              </td>
              <td colspan=5>  
-                 Reviewer Evaluation 
+                 Self Evaluation 
              </td>  
              <td colspan=3>  
-                 Reviewer Assessment  
+                Self Assessment  
              </td>  
          </tr>  
          <tr > 
-             <td colspan="3">  
-                 <p #review rows="4" cols="50" align="center">Technical Skills</p>  
+             <td colspan="2">  
+                 <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>  
              </td> 
              <td colspan="5">  
                  <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>  
@@ -54,8 +79,10 @@
              
                     
              <td align="center" >
-                    <select #assessmentSelfTS required>        
-                         <option value="satisfied">meets expectations</option>
+                
+                    <select  required (change)="selectChangeHandlerTS($event)"> 
+                        <option #assessmentSelfT>{{assessmentSelfTS}}</option>          
+                         <option value="meets expectations">meets expectations</option>
                          <option value="needs improvement">needs improvement</option>
                     </select>
                          
@@ -63,60 +90,64 @@
          </tr> 
          
          <tr>
-             <td colspan="3">  
+             <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center"></p>  
              </td>   
              <td colspan="5">  
                  <textarea #review rows="4" cols="50"></textarea>  
              </td>
              <td align="center" >
-                <select #assessment required>        
-                     <option value="satisfied">meets expectations</option>
+                <select  required>        
+                    <!-- <option>{{assessmentSelfCS}}</option>    -->
+                     <option value="meets expectations">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
                      
             </td>   
          </tr>
          <tr>  
-             <td colspan="3">  
+             <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center"></p>  
              </td> 
              <td colspan="5">  
                  <textarea #review rows="4" cols="50"></textarea>  
              </td>  
              <td align="center" >
-                <select #assessment required>        
-                     <option value="satisfied">meets expectations</option>
+                <select #assessment required >
+                    <!-- <option></option>            -->
+                     <option value="meets expectations">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
                      
             </td> 
          </tr>
          <tr> 
-             <td colspan="3">  
+             <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center">Communication Skills</p>  
              </td>  
              <td colspan="5">  
                  <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
              </td>  
              <td align="center" >
-                <select #assessmentSelfCS required>        
-                     <option value="satisfied">meets expectations</option>
+                <select  required (change)="selectChangeHandlerCS($event)">  
+                    <option #assessmentSelfC>{{assessmentSelfCS}}</option>      
+                     <option value="meets expectations">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
                      
          </td> 
          </tr>
          <tr>  
-             <td colspan="3">  
+             <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center">Personality</p>  
              </td> 
              <td colspan="5">  
                  <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>  
              </td>  
              <td align="center" >
-                <select #assessmentSelfP required>        
-                     <option value="satisfied">meets expectations</option>
+                <select  required (change)="selectChangeHandlerPS($event)">   
+                         <option #assessmentSelfP>{{assessmentSelfPS}}</option>
+                     <option value="meets expectations">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
                      
@@ -129,9 +160,7 @@
      <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
      <div><button type="Submit" class="btn btn-primary" (click)="submitReview()">Submit</button></div>
     </div>
-    <p>{{selectedAssessment}}<br>
-        {{selectedAssessmentCS}}<BR>
-        {{selectedAssessmentP}}</p>
+    
  </form>
 
 
