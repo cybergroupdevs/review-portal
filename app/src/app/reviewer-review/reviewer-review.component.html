@@ -66,7 +66,8 @@
                     </td>                      
                      
                     <td align="center">
-                           <select  required (change)="selectChangeHandler($event)">  
+                           <select  required (change)="selectChangeHandler($event)"> 
+                               <option>{{assessmentReviewerTS}}</option> 
                                 <option value="meets expectations">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
@@ -149,7 +150,8 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerCS required (change)="selectChangeHandlerCS($event)">        
+                        <select required (change)="selectChangeHandlerCS($event)"> 
+                             <option>{{assessmentReviewerCS}}</option>       
                              <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
@@ -176,7 +178,8 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerP required (change)="selectChangeHandlerP($event)">        
+                        <select  required (change)="selectChangeHandlerP($event)"> 
+                             <option>{{assessmentReviewerP}}</option>       
                              <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>

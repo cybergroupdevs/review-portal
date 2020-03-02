@@ -33,9 +33,9 @@ export class ReviewerReviewComponent implements OnInit {
   reviewReviewerP: String;
   assessmentReviewerP: String;
 
-  selectedAssessment: String = ''
-  selectedAssessmentCS: String = ''
-  selectedAssessmentP: String = ''
+  selectedAssessment: String = this.assessmentReviewerTS
+  selectedAssessmentCS: String = this.assessmentReviewerCS
+  selectedAssessmentP: String = this.assessmentReviewerP
   assessmentSelected: String = ''
 
   ngOnInit() {
