@@ -43,8 +43,6 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     MyReviewsComponent,
     ReviewTableComponent,
 
-    SelfReviewComponent,
-    
     SelfReviewComponent
 
   ],

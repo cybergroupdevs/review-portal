@@ -10,8 +10,9 @@ class Review {
     }
       
   async show(req,res){
-        console.log("Reached SHOW");
-        const review = await model.review.get({"_id": req.params.id})
+        console.log(req.params.id);
+        const review = await model.review.get({"employeeId": req.params.id})
+        console.log(review);
         res.send(review[0]);
     }
 
