@@ -121,9 +121,11 @@ export class ReviewerReviewComponent implements OnInit {
     selectChangeHandler(event: any){
       this.selectedAssessment = event.target.value;
     }
+  
     selectChangeHandlerCS(event: any){
       this.selectedAssessmentCS = event.target.value;
     }
+
     selectChangeHandlerP(event: any){
       this.selectedAssessmentP = event.target.value;
     }

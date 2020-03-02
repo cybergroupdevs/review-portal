@@ -13,7 +13,10 @@ export class SelfReviewComponent implements OnInit {
   @ViewChild('rsTS', {static: false}) rsTS: ElementRef;
   @ViewChild('rsCS', {static: false}) rsCS: ElementRef;
   @ViewChild('rsP', {static: false}) rsP: ElementRef;
-
+  // @ViewChild('assessmentSelfP', {static: false}) assessmentSelfP: ElementRef;
+  // @ViewChild('assessmentSelfT', {static: false}) assessmentSelfT: ElementRef;
+  // @ViewChild('assessmentSelfC', {static: false}) assessmentSelfC: ElementRef;
+  
   constructor(private _service: ServicesService) { }
   
   reviewArray: any;
@@ -23,8 +26,14 @@ export class SelfReviewComponent implements OnInit {
   assessmentSelfCS: String;
   reviewSelfPS:String;
   assessmentSelfPS: String;
-  array : Object;
+  // array : Object;
   id = "5e5bc9889dafbe6380096ca6";
+
+
+  selectedAssessmentTS: String = this.assessmentSelfTS
+  selectedAssessmentCS: String = this.assessmentSelfCS
+  selectedAssessmentPS: String = this.assessmentSelfPS
+  //  assessmentSelected: String = ''
 
   ngOnInit() {
     console.log("inside oninit")
@@ -36,9 +45,9 @@ export class SelfReviewComponent implements OnInit {
     this._service.getReviewById(id)
       .subscribe(res => {
         this.reviewArray = res;
-        //console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
-
-        this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
+        console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
+//console.log(this.reviewArray.technicalSkill.selfEvaluation.comment, "here");
+    this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
     this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
     
     this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
@@ -72,34 +81,34 @@ export class SelfReviewComponent implements OnInit {
 
   updateSelfReview(){
     console.log((this.rsTS , "idhar dekh"));
-    let reviwObj = {
+    let reviewObj = {
       "technicalSkill": {
         "selfEvaluation": {
         
           
             "comment": this.rsTS.nativeElement.value,
-            "assessment": " Needs Improvement"
+            "assessment": this.selectedAssessmentTS
         },
         
       },
      "communication": {
        "selfEvaluation": {
            "comment": this.rsCS.nativeElement.value,
-           "assessment": " Needs Improvement"
+           "assessment": this.selectedAssessmentCS
         },
       
     },
   "personality": {
     "selfEvaluation": {
         "comment": this.rsP.nativeElement.value,
-        "assessment": " Needs Improvement"
+        "assessment": this.selectedAssessmentPS
     }
     
   }
 
 }
-console.log(reviwObj);
-this._service.updateSelfReview(this.id, reviwObj).subscribe(res =>  {
+console.log(reviewObj);
+this._service.updateSelfReview(this.id, reviewObj).subscribe(res =>  {
   console.log(this.res , "this is res");
   if(this.res.ok==1){
     console.log('Successful update!!');
@@ -114,4 +123,15 @@ this._service.updateSelfReview(this.id, reviwObj).subscribe(res =>  {
 
 
 }
+
+selectChangeHandlerTS(event: any){
+  this.selectedAssessmentTS = event.target.value;
+}
+selectChangeHandlerCS(event: any){
+  this.selectedAssessmentCS = event.target.value;
+}
+selectChangeHandlerPS(event: any){
+  this.selectedAssessmentPS = event.target.value;
+}
+
 }
