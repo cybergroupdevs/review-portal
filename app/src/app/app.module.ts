@@ -36,7 +36,7 @@ import { SelfReviewComponent } from './self-review/self-review.component';
     ReviewerQaerComponent,
     ReviewNavbarComponent,
     MyReviewsComponent,
-    ReviewTableComponent
+    ReviewTableComponent,
     SelfReviewComponent
   ],
   imports: [
@@ -44,7 +44,7 @@ import { SelfReviewComponent } from './self-review/self-review.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule
   ],
