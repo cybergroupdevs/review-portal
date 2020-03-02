@@ -3,6 +3,7 @@ const config = require('config');
 // const Employee = require('../schemas/employee');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
+
 class Employee {
     
     constructor(){

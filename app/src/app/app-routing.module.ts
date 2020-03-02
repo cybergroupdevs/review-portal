@@ -1,4 +1,5 @@
 import { from } from 'rxjs';
+import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path: "nav", component: ReviewNavbarComponent},
   {path: "review", component: ReviewerReviewComponent},
   {path: "selfReview", component:SelfReviewComponent},
-  {path: "personal-info", component:UpdatePersonalInfoComponent}
+  {path: "personal-info", component:UpdatePersonalInfoComponent},
+  {path: "createReview", component:CreateReviewComponent}
+
 ];
 
 @NgModule({

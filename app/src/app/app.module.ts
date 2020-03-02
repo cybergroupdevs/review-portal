@@ -24,6 +24,10 @@ import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { UpdatePersonalInfoComponent } from './update-personal-info/update-personal-info.component';
 
+
+import { CreateReviewComponent } from './create-review/create-review.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +39,7 @@ import { UpdatePersonalInfoComponent } from './update-personal-info/update-perso
     AddUserComponent,
     AdminOptionsComponent,
     ReviewerQaerComponent,
+    CreateReviewComponent
     ReviewNavbarComponent,
     MyReviewsComponent,
     ReviewTableComponent,

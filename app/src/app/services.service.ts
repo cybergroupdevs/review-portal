@@ -80,7 +80,7 @@ export class ServicesService {
   }
 
   empData(): Observable<any>{
-    return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
+    return this.http.get("http://localhost:3001/employees/5e5c905453b4ed3cda5b1d8e").pipe(
       tap(_ => this.log("received employee details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -118,6 +118,20 @@ export class ServicesService {
         tap(_ => this.log("updated review details")),
         catchError(this.handleError<any>('error in updating details')
       ));
+    }
+
+    createReview(object): Observable<any>{
+      return this.http.post("http://localhost:3001/createReview", object).pipe(
+        tap(_ => this.log("added review")),
+        catchError(this.handleError<any>('Some Error Occurred'))
+      );
+    }
+
+    getByCgiCodeReviewValues(cgiCode): Observable<any>{
+      return this.http.get("http://localhost:3001/review/values/" + cgiCode).pipe(
+      tap(_ => this.log("got cgi code for review values")),
+      catchError(this.handleError<any>('error in details'))
+      );
     }
 
   }
