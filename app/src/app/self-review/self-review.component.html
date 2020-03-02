@@ -54,7 +54,7 @@
              
                     
              <td align="center" >
-                    <select #assessment required>        
+                    <select #assessmentSelfTS required>        
                          <option value="satisfied">meets expectations</option>
                          <option value="needs improvement">needs improvement</option>
                     </select>
@@ -100,7 +100,7 @@
                  <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
              </td>  
              <td align="center" >
-                <select #assessment required>        
+                <select #assessmentSelfCS required>        
                      <option value="satisfied">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
@@ -115,7 +115,7 @@
                  <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>  
              </td>  
              <td align="center" >
-                <select #assessment required>        
+                <select #assessmentSelfP required>        
                      <option value="satisfied">meets expectations</option>
                      <option value="needs improvement">needs improvement</option>
                 </select>
@@ -129,6 +129,9 @@
      <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
      <div><button type="Submit" class="btn btn-primary" (click)="submitReview()">Submit</button></div>
     </div>
+    <p>{{selectedAssessment}}<br>
+        {{selectedAssessmentCS}}<BR>
+        {{selectedAssessmentP}}</p>
  </form>
 
 

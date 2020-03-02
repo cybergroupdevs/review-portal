@@ -26,6 +26,12 @@ export class SelfReviewComponent implements OnInit {
   array : Object;
   id = "5e5bc9889dafbe6380096ca6";
 
+
+  selectedAssessment: String = ''
+  selectedAssessmentCS: String = ''
+  selectedAssessmentP: String = ''
+  assessmentSelected: String = ''
+
   ngOnInit() {
     console.log("inside oninit")
     
@@ -114,4 +120,15 @@ this._service.updateSelfReview(this.id, reviwObj).subscribe(res =>  {
 
 
 }
+
+selectChangeHandler(event: any){
+  this.selectedAssessment = event.target.value;
+}
+selectChangeHandlerCS(event: any){
+  this.selectedAssessmentCS = event.target.value;
+}
+selectChangeHandlerP(event: any){
+  this.selectedAssessmentP = event.target.value;
+}
+
 }
