@@ -1,3 +1,4 @@
+import { ReviewTableComponent } from './review-table/review-table.component';
 import { from } from 'rxjs';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
@@ -21,7 +22,25 @@ const routes: Routes = [
   {path: "admin", component: AdminOptionsComponent},
   {path: "addUser", component: AddUserComponent},
   {path: "reviewerqaer", component: ReviewerQaerComponent},
-  {path: "nav", component: ReviewNavbarComponent},
+  {
+    path: "nav", component: ReviewNavbarComponent, children: [
+      {
+        path: "", redirectTo: 'allReviews', pathMatch: 'full'
+      },
+      {
+        path: "allReviews", component: ReviewTableComponent
+      },
+      {
+        path: "pendingByReviewer", component: ReviewTableComponent
+      },
+      {
+        path: "pendingByQAer", component: ReviewTableComponent
+      },
+      {
+        path: "closed", component: ReviewTableComponent
+      }
+    ]
+  },
   {path: "review", component: ReviewerReviewComponent},
   {path: "selfReview", component:SelfReviewComponent},
   {path: "personal-info", component:UpdatePersonalInfoComponent},
