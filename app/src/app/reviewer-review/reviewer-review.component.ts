@@ -36,7 +36,6 @@ export class ReviewerReviewComponent implements OnInit {
   selectedAssessment: String = this.assessmentReviewerTS
   selectedAssessmentCS: String = this.assessmentReviewerCS
   selectedAssessmentP: String = this.assessmentReviewerP
-  assessmentSelected: String = ''
 
   ngOnInit() {
     this.loadExistingData()
@@ -72,30 +71,30 @@ export class ReviewerReviewComponent implements OnInit {
     updateReviewDetails(){
       let userObj = {
         "technicalSkill": {
-          "selfEvaluation": {
-              "comment": this.rsTS.nativeElement.value,
-              //"assessment": " Needs Improvement"
-          },
+          // "selfEvaluation": {
+          //     "comment": this.rsTS.nativeElement.value,
+          //     "assessment": " Needs Improvement"
+          // },
           "reviewerEvaluation": {
               "comment": this.rrTS.nativeElement.value,
               "assessment": this.selectedAssessment
           }
         },
        "communication": {
-         "selfEvaluation": {
-             "comment": this.rsCS.nativeElement.value,
-             //"assessment": "needs improvement"
-          },
+        //  "selfEvaluation": {
+        //      "comment": this.rsCS.nativeElement.value,
+        //      "assessment": "needs improvement"
+        //   },
         "reviewerEvaluation": {
             "comment": this.rrCS.nativeElement.value,
             "assessment": this.selectedAssessmentCS
         }
     },
     "personality": {
-      "selfEvaluation": {
-          "comment": this.rsP.nativeElement.value,
-          //"assessment": " Needs Improvement"
-      },
+      // "selfEvaluation": {
+      //     "comment": this.rsP.nativeElement.value,
+      //     "assessment": " Needs Improvement"
+      // },
       "reviewerEvaluation": {
           "comment": this.rrP.nativeElement.value,
           "assessment": this.selectedAssessmentP
