@@ -31,14 +31,14 @@ export class ReviewerQaerComponent implements OnInit {
      this.loadData()
  }
  loadData(){
-  this._service.reviewerData().subscribe(res => {
+  // this._service.reviewerData().subscribe(res => {
   
-    console.log(res);
+  //   console.log(res);
 
-    this.reviewQaerArray = res;
-    console.log(this.reviewQaerArray)
-    this.setData();
-  });
+  //   this.reviewQaerArray = res;
+  //   console.log(this.reviewQaerArray)
+  //   this.setData();
+  // });
   this._service.empData().subscribe(res=> {
     console.log(res);
 

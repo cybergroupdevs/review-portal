@@ -33,6 +33,11 @@ export class ReviewerReviewComponent implements OnInit {
   reviewReviewerP: String;
   assessmentReviewerP: String;
 
+  selectedAssessment: String = this.assessmentReviewerTS
+  selectedAssessmentCS: String = this.assessmentReviewerCS
+  selectedAssessmentP: String = this.assessmentReviewerP
+  assessmentSelected: String = ''
+
   ngOnInit() {
     this.loadExistingData()
   }
@@ -69,31 +74,31 @@ export class ReviewerReviewComponent implements OnInit {
         "technicalSkill": {
           "selfEvaluation": {
               "comment": this.rsTS.nativeElement.value,
-              "assessment": " Needs Improvement"
+              //"assessment": " Needs Improvement"
           },
           "reviewerEvaluation": {
               "comment": this.rrTS.nativeElement.value,
-              "assessment": "Needs Improvement"
+              "assessment": this.selectedAssessment
           }
         },
        "communication": {
          "selfEvaluation": {
              "comment": this.rsCS.nativeElement.value,
-             "assessment": " Needs Improvement"
+             //"assessment": "needs improvement"
           },
         "reviewerEvaluation": {
             "comment": this.rrCS.nativeElement.value,
-            "assessment": "Needs Improvement"
+            "assessment": this.selectedAssessmentCS
         }
     },
     "personality": {
       "selfEvaluation": {
           "comment": this.rsP.nativeElement.value,
-          "assessment": " Needs Improvement"
+          //"assessment": " Needs Improvement"
       },
       "reviewerEvaluation": {
           "comment": this.rrP.nativeElement.value,
-          "assessment": "Needs Improvement"
+          "assessment": this.selectedAssessmentP
       }
   }
 
@@ -113,5 +118,14 @@ export class ReviewerReviewComponent implements OnInit {
     });
       
       
+    }
+    selectChangeHandler(event: any){
+      this.selectedAssessment = event.target.value;
+    }
+    selectChangeHandlerCS(event: any){
+      this.selectedAssessmentCS = event.target.value;
+    }
+    selectChangeHandlerP(event: any){
+      this.selectedAssessmentP = event.target.value;
     }
 }

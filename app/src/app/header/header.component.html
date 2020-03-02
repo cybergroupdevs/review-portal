@@ -1,62 +1,32 @@
-  <div class="container">
-    <div class="row user-list">
-      <strong>CyberGroup</strong>
-      <img class="logo-img" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFSk7W1KUiG0w/company-logo_200_200/0?e=2159024400&v=beta&t=dToUex9P08LphNIkkj5aT6ZhSC17M8orhdt784fwwjE">
-    </div>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary mb-0">
+    <a class="navbar-brand">{{firstName}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
-  
-  <div>
-    <nav class="navbar navbar-inverse" id="navbar">
-      <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">{{firstName}}</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active mr-2">
+          <a class="nav-link" href="#">My Review <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/nav']">My Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">My Project Hierarchy</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Manage Resume</a>
           </div>
-          <div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+        </li>
         
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Profile &#x25BC; </a>
-                    <div class="dropdown-menu" >
-                      <a class="dropdown-item" (click)="myProfile()">My Profile</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">My Project Hierarchy</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Manage Resume</a>
-                    </div>
-                  </li>
-                 
-                  <li><a href="#"> Personal Time Off</a></li>
-  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Review &#x25BC; </a>
-                    <div class="dropdown-menu" >
-                      <a class="dropdown-item" href="#">My Review</a>
-                    </div>
-                  </li>
+        <li><a (click)="createReview()"> Create Review </a></li>
 
-                  <li><a (click)="createReview()"> Create Review </a></li>
+      </ul>
+    </div>
 
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span onclick="logoutFunc()" class="glyphicon glyphicon-user"></span> Logout</a></li>
-                </ul>
-            </div>
-          </div>
-        </div>
-    </nav>
-  </div>
-  
-  <router-outlet></router-outlet>
-  
-  
+  </nav>

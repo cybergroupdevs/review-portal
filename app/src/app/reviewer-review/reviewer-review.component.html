@@ -54,7 +54,8 @@
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentSelfTS class="self"required>        
+                           <select class="self"required>   
+                                <option>{{assessmentSelfTS}}</option>     
                                 <option value="satisfied">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
@@ -65,8 +66,9 @@
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentReviewerTS required>        
-                                <option value="satisfied">meets expectations</option>
+                           <select  required (change)="selectChangeHandler($event)"> 
+                               <option>{{assessmentReviewerTS}}</option> 
+                                <option value="meets expectations">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
                                 
@@ -136,8 +138,9 @@
                         <textarea #rsCS rows="4" cols="50" class="self">{{reviewSelfCS}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelfCS class="self"required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select class="self"required>   
+                             <option>{{assessmentSelfCS}}</option>     
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -147,8 +150,9 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerCS required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select required (change)="selectChangeHandlerCS($event)"> 
+                             <option>{{assessmentReviewerCS}}</option>       
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -162,8 +166,9 @@
                         <textarea  rows="4" cols="50" #rsP class="self">{{reviewSelfP}}</textarea>  
                     </td> 
                     <td align="center">
-                        <select #assessmentSelfP class="self"required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select class="self"required>   
+                            <option>{{assessmentSelfP}}</option>     
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -173,8 +178,9 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerP required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select  required (change)="selectChangeHandlerP($event)"> 
+                             <option>{{assessmentReviewerP}}</option>       
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -182,6 +188,11 @@
                 </tr>
                 </table>  
                 <button (click)=updateReviewDetails()>submit</button>
+                <p>{{selectedAssessment}}<br>
+                   {{selectedAssessmentCS}}<BR>
+                   {{selectedAssessmentP}}
+                   {{assessmentSelfTS}}
+                </p>
         <!-- </form> -->
       
 
