@@ -13,13 +13,14 @@ export class HeaderComponent implements OnInit {
     private _router: Router, 
     private _service: ServicesService) { }
 
-    firstName: String;
+  firstName: String;
   ngOnInit() {
     this.getUserName();
   }
 
   getUserName(){
     let name = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.firstName;
+    console.log(name);
     this.firstName = name;
   }
 

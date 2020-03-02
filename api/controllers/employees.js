@@ -100,5 +100,18 @@ async delete(req,res){
             res.status(401).send("Unauthorized, Invalid Username or Password");
         }
     }
+
+    async createReview(req, res) {
+        let employeeReview={
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            cgiCode: req.body.cgiCode,
+            reviewer: req.body.reviewer,
+            qualityAnalyst: req.body.qualityAnalyst
+        }
+        const review = await model.employee.save(employeeReview)
+        res.send(review)
+    }
 }
 module.exports = new Employee() 
