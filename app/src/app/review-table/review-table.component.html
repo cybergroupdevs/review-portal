@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor = "let elem of key">{{elem}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let row of dummy">
+            <td *ngFor = "let td of getValues(row)">{{td}}</td>
+        </tr>
+    </tbody>
+</table>

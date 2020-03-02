@@ -4,8 +4,8 @@ const config = require('config');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 class Employee {
+    
     constructor(){
-
         console.log("reached controller")
     }
 
@@ -13,7 +13,6 @@ class Employee {
     
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
         let employeeObj ={
             firstName: req.body.firstName,
             lastName : req.body.lastName,
@@ -23,12 +22,10 @@ class Employee {
             reviewer : req.body.reviewer,
             qualityAnalyst : req.body.qualityAnalyst,
         }
-
-    
-        console.log(employeeObj)
+        console.log(employeeObj);
         const employee= await model.employee.save(employeeObj)
         res.send(employee)
-    };
+    }
   
     async show(req,res){
         console.log("Reached SHOW");
@@ -38,24 +35,28 @@ class Employee {
 
 
     async index(req,res){
-    const employeeList = await model.employee.getUserData();
-    res.send(employeeList);
+        const employeeList = await model.employee.get();
+        res.send(employeeList);
+    }
+
+    async showUser(req,res){
+        const employee = await model.employee.get({_id: req.params.parameter})
+        res.send(employee[0])
     }
 
     async update(req,res) {
-        let updateObj= req.body
-        console.log(updateObj)
-        const employee= await model.employee.update({_id: req.params.parameter},  updateObj)
-        res.send(employee)
-
+        let updateObj= req.body;
+        console.log(updateObj);
+        const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
+        res.send(employee);
     }    
 
     async delete(req,res){
-        console.log(req.params.parameter)
-        const employee =await model.employee.delete({_id: req.params.parameter})
-        res.send("deleted")
+        console.log(req.params.parameter);
+        const employee =await model.employee.delete({_id: req.params.parameter});
+        res.send("deleted");
     }
-
+ 
     async login(req, res) {
         //Verify token here
         let user = await model.employee.get({$and : [{"email": req.body.email},{"password": req.body.password}]
@@ -82,5 +83,5 @@ class Employee {
         }
     }
 }
-module.exports = new Employee() 
 
+module.exports = new Employee();
