@@ -1,0 +1,135 @@
+<style>
+    table, th, td { 
+     border: 1px solid black; 
+     border-collapse: collapse; 
+     padding: 6px; 
+
+ } 
+ table{
+     width: 100%;
+     
+ }
+ #headers{
+     background-color: lightgray;
+     color:solid black;
+ }
+ textarea{
+     border: hidden;
+     outline: none;
+     resize: none;
+ }
+ .form{
+     padding: 4em 5em;
+ }
+
+ .buttons{
+     display: flex;
+ }
+
+ 
+ 
+</style> 
+
+ <form  >
+ <form #reviewerForm class="form">  
+     <table >  
+         <tr id="headers">  
+             <td colspan="3">
+                 Key Result Area
+             </td>
+             <td colspan=5>  
+                 Reviewer Evaluation 
+             </td>  
+             <td colspan=3>  
+                 Reviewer Assessment  
+             </td>  
+         </tr>  
+         <tr > 
+             <td colspan="3">  
+                 <p #review rows="4" cols="50" align="center">Technical Skills</p>  
+             </td> 
+             <td colspan="5">  
+                 <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>  
+             </td>   
+             
+                    
+             <td align="center" >
+                    <select #assessment required>        
+                         <option value="satisfied">meets expectations</option>
+                         <option value="needs improvement">needs improvement</option>
+                    </select>
+                         
+             </td>  
+         </tr> 
+         
+         <tr>
+             <td colspan="3">  
+                 <p #review rows="4" cols="50" align="center"></p>  
+             </td>   
+             <td colspan="5">  
+                 <textarea #review rows="4" cols="50"></textarea>  
+             </td>
+             <td align="center" >
+                <select #assessment required>        
+                     <option value="satisfied">meets expectations</option>
+                     <option value="needs improvement">needs improvement</option>
+                </select>
+                     
+            </td>   
+         </tr>
+         <tr>  
+             <td colspan="3">  
+                 <p #review rows="4" cols="50" align="center"></p>  
+             </td> 
+             <td colspan="5">  
+                 <textarea #review rows="4" cols="50"></textarea>  
+             </td>  
+             <td align="center" >
+                <select #assessment required>        
+                     <option value="satisfied">meets expectations</option>
+                     <option value="needs improvement">needs improvement</option>
+                </select>
+                     
+            </td> 
+         </tr>
+         <tr> 
+             <td colspan="3">  
+                 <p #review rows="4" cols="50" align="center">Communication Skills</p>  
+             </td>  
+             <td colspan="5">  
+                 <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
+             </td>  
+             <td align="center" >
+                <select #assessment required>        
+                     <option value="satisfied">meets expectations</option>
+                     <option value="needs improvement">needs improvement</option>
+                </select>
+                     
+         </td> 
+         </tr>
+         <tr>  
+             <td colspan="3">  
+                 <p #review rows="4" cols="50" align="center">Personality</p>  
+             </td> 
+             <td colspan="5">  
+                 <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>  
+             </td>  
+             <td align="center" >
+                <select #assessment required>        
+                     <option value="satisfied">meets expectations</option>
+                     <option value="needs improvement">needs improvement</option>
+                </select>
+                     
+         </td> 
+         </tr>
+
+     </table>  
+     <div class="buttons" >
+     <div><button type="Submit" class="btn btn-primary">Cancel</button></div>
+     <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
+     <div><button type="Submit" class="btn btn-primary" (click)="submitReview()">Submit</button></div>
+    </div>
+ </form>
+
+
+                

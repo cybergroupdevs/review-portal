@@ -1,11 +1,15 @@
-module.exports={
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const employeeSchema = new mongoose.Schema({
     cgiCode:{
         type:String,
-        default:null
+        default:null,
+        unique:true
     },
     firstName:{
         type:String,
-        default:null
+        required:true
     },
     lastName:{
         type:String,
@@ -17,7 +21,8 @@ module.exports={
         unique:true
     },
     password:{
-        type:String
+        type:String,
+        required:true,
     },
     location:{
         type:String,
@@ -52,10 +57,8 @@ module.exports={
     project: [{
         type: String
     }],
-    reviewer: {
-        type: String,
-    },
-    qualityAnalyst: {
-        type: String,
-    }
-}
+    
+})
+
+const Employee = mongoose.model('Employee', employeeSchema);
+module.exports = Employee;

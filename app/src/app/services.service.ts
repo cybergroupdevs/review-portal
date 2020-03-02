@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { __param } from 'tslib';
@@ -26,6 +26,7 @@ export class ServicesService {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     return JSON.parse(jsonPayload);
+    console.log(token);
   };
 
   showAllEmployees(): Observable<any>{
@@ -36,7 +37,8 @@ export class ServicesService {
   }
 
   employeeData(): Observable<any>{
-    return this.http.get("http://localhost:3001/employees/"+this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).pipe(
+    const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
+    return this.http.get("http://localhost:3001/employees").pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -55,7 +57,41 @@ export class ServicesService {
     );
   }
 
-  
+
+  updateData(object): Observable<any>{
+    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+      tap(_ => this.log("updating details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
+  reviewData(): Observable<any>{
+    //const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
+    return this.http.get("http://localhost:3001/review/5e5b85cdb4f6bcd838db5e06").pipe(
+      tap(_ => this.log("showing review details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
+
+  updateReviewData(userObj): Observable<any>{
+    return this.http.patch("http://localhost:3001/reviews/update/5e5bc9889dafbe6380096ca6",userObj).pipe(
+      tap(_ => this.log("updated review details")),
+      catchError(this.handleError<any>('error in updating details')
+    ));
+  }
+
+  empData(): Observable<any>{
+    return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
+      tap(_ => this.log("received employee details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
+
+  reviewerData(): Observable<any>{
+    return this.http.get(`http://localhost:3001/review/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
+      tap(_ => this.log("received reviewer details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -70,6 +106,19 @@ export class ServicesService {
       return of(result as T);
       };
     }
+
+    getReviewById(id:any): Observable<any> {
+      console.log("in service section");
+      return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
+        retry(3), catchError(this.handleError<any>('error in review details')));
+    }
+
+    updateSelfReview(id,reviwObj): Observable<any>{
+      return this.http.patch("http://localhost:3001/reviews/update/" + id ,reviwObj).pipe(
+        tap(_ => this.log("updated review details")),
+        catchError(this.handleError<any>('error in updating details')
+      ));
+    }
+
   }
   
-

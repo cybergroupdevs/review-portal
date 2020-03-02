@@ -9,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(
-    private _router: Router, 
-    private _service: ServicesService) { }
-
+  constructor(private _service: ServicesService, private _router: Router) { }
   firstName: String;
   ngOnInit() {
     this.getUserName();
+  }
+
+  myProfile(){
+    this._router.navigate(["/user"])
   }
 
   getUserName(){
@@ -23,9 +24,4 @@ export class HeaderComponent implements OnInit {
     console.log(name);
     this.firstName = name;
   }
-
-  myProfile(){
-    this._router.navigate(["/user"])
-  }
-
 }

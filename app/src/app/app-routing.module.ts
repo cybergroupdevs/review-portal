@@ -1,3 +1,6 @@
+import { SelfReviewComponent } from './self-review/self-review.component';
+import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
+import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { AddUpdateUserComponent } from './add-update-user/add-update-user.component';
 import { AddUserComponent} from './add-user/add-user.component'
@@ -14,12 +17,16 @@ const routes: Routes = [
   {path: "employees", component:AdminCrudComponent},
   {path: "user", component: AddUpdateUserComponent},
   {path: "admin", component: AdminOptionsComponent},
-  {path: "addUser", component: AddUserComponent}
+  {path: "addUser", component: AddUserComponent},
+  {path: "reviewerqaer", component: ReviewerQaerComponent},
+  {path: "review", component: ReviewerReviewComponent},
+  {path: "selfReview", component:SelfReviewComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
 export const routingComponents=[AdminCrudComponent]

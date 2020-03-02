@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
-const schema = require('../schemas');
-const employeeSchema = mongoose.Schema(schema.employee)
+const employeeSchema = require('../schemas/employee').schema;
+//const employeeSchema = mongoose.Schema(schema.employee)
 
 class Employee{
     constructor(){
         this.model = mongoose.model('Employee', employeeSchema)
     }
 
-    async get(criteria={}){
+    async getUserData(criteria={}){
+        
         return this.model.find(criteria).select("-password")
     }
     async get(criteria={}, columns={}){
+        
         return this.model.find(criteria, columns)
 
     }

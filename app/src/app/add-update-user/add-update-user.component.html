@@ -8,15 +8,15 @@
 </div>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<!-- <div class="options">
-    <input type="button" value="add" (click)="createUser()" >
-    <input type="button" value="update">
-</div> -->
+<div class="options">
+    <input type="button" value="update" (click)="updateData()">
+</div>
+
 <div class="row">
     <!-- <span class="required">*</span> -->
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-firstName" class="form-control input-medium" value="{{firstName}}">
+        <input type="text" class="form-control input-medium" value="">{{firstName}}
     </div>
 </div>
 <div class="row">
@@ -25,52 +25,52 @@
     </span> -->
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-lastName" class="form-control input-medium" value="{{lastName}}">
+        <input type="text" class="form-control input-medium" value="">{{lastName}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Location:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-location" class="form-control input-medium" value="{{location}}">
+        <input type="text" class="form-control input-medium" value="">{{location}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-email" class="form-control input-medium" value="{{email}}">
+        <input type="text" class="form-control input-medium" value="">{{email}}
     </div>
 </div>
 
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-designation"class="form-control input-medium" value="{{designation}}">
+        <input type="text"class="form-control input-medium" value="">{{designation}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Division:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-division" class="form-control input-medium" value="{{division}}">
+        <input type="text" class="form-control input-medium" value="">{{division}}
     </div>
 </div>
 <div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Total experience:</label>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-totalExperience" class="form-control input-medium" value="{{totalExperience}}">
+        <input type="text" class="form-control input-medium" value="">{{Password}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Date of Joining:</label>
     <div class="col-md-10 col-sm-9 col-xs-12 datepicker">
-        <input type="text" id="user-joined" class="form-control input-medium" value="{{joined}}">
+        <input type="text" class="form-control input-medium" value="">{{joined}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Previous experience:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="user-previousExperience" class="form-control input-medium" value="{{previousExperience}}">
+        <input type="text" class="form-control input-medium" value="">{{previousExperience}}
     </div>
-</div>
+</div> 
 <!-- <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Resume:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
@@ -80,18 +80,18 @@
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Skills:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="textbox" id="user-skills" class="form-control input-medium" value="">
+        <input type="textbox" class="form-control input-medium" value="">{{skills}}
     </div>
 </div>
-<!-- <div class="row">
+<div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Competence Manager:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="competenceManager"class="form-control input-medium" value="{{competenceManager}}">
+        <input type="text" id="competenceManager"class="form-control input-medium" value="">{{competenceManager}}
     </div>
 </div>
 <div class="row">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Project owners:</label>
     <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" id="projectOwners"class="form-control input-medium" value="">
+        <input type="text" id="projectOwners"class="form-control input-medium" value="">{{projectOwners}}
     </div>
-</div> -->
+</div>

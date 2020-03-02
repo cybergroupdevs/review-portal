@@ -11,5 +11,8 @@ module.exports=(app) =>
     
     app.post("/login", controller.employees.login);
     app.post("/createReview", controller.employees.createReview);
+    app.get("/review/:id", controller.reviews.show);
+    app.patch("/reviews/update/:parameter", controller.reviews.update);
+    
 
 }
