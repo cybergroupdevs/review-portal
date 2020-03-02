@@ -1,3 +1,4 @@
+import { from } from 'rxjs';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
@@ -10,6 +11,7 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {UpdatePersonalInfoComponent} from './update-personal-info/update-personal-info.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: "nav", component: ReviewNavbarComponent},
   {path: "review", component: ReviewerReviewComponent},
   {path: "selfReview", component:SelfReviewComponent},
+  {path: "personal-info", component:UpdatePersonalInfoComponent},
   {path: "createReview", component:CreateReviewComponent}
+
 ];
 
 @NgModule({
