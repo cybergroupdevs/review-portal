@@ -45,6 +45,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     ReviewTableComponent,
     SelfReviewComponent,
     UpdatePersonalInfoComponent
+
   ],
   imports: [
     RouterModule,

@@ -10,6 +10,11 @@ const reviewSchema = new mongoose.Schema({
         // required:true
         type: String
     },
+    divisionName:{
+        type:String,
+        default:null
+    },
+    
     reviewer: {
         // type: Schema.Types.ObjectId,
         // ref: "Employee",
