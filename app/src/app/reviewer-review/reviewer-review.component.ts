@@ -74,7 +74,7 @@ export class ReviewerReviewComponent implements OnInit {
         "technicalSkill": {
           "selfEvaluation": {
               "comment": this.rsTS.nativeElement.value,
-              "assessment": " Needs Improvement"
+              //"assessment": " Needs Improvement"
           },
           "reviewerEvaluation": {
               "comment": this.rrTS.nativeElement.value,
@@ -84,21 +84,21 @@ export class ReviewerReviewComponent implements OnInit {
        "communication": {
          "selfEvaluation": {
              "comment": this.rsCS.nativeElement.value,
-             "assessment": this.selectedAssessmentCS
+             //"assessment": "needs improvement"
           },
         "reviewerEvaluation": {
             "comment": this.rrCS.nativeElement.value,
-            "assessment": this.selectedAssessmentP
+            "assessment": this.selectedAssessmentCS
         }
     },
     "personality": {
       "selfEvaluation": {
           "comment": this.rsP.nativeElement.value,
-          "assessment": " Needs Improvement"
+          //"assessment": " Needs Improvement"
       },
       "reviewerEvaluation": {
           "comment": this.rrP.nativeElement.value,
-          "assessment": "Needs Improvement"
+          "assessment": this.selectedAssessmentP
       }
   }
 
