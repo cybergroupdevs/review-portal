@@ -38,8 +38,10 @@ export class SelfReviewComponent implements OnInit {
         this.reviewArray = res;
         //console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
 
-        this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
+    this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
     this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
+
+    
     
     this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
     this.assessmentSelfCS=this.reviewArray.communication.selfEvaluation.assessment;
