@@ -38,7 +38,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     CreateReviewComponent
     ReviewNavbarComponent,
     MyReviewsComponent,
-    ReviewTableComponent
+    ReviewTableComponent,
     SelfReviewComponent
   ],
   imports: [
@@ -46,7 +46,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule
   ],
