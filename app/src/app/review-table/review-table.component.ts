@@ -1,3 +1,4 @@
+import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 
@@ -9,17 +10,26 @@ import { identifierModuleUrl } from '@angular/compiler';
 
 export class ReviewTableComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-    this.getData(1);
+  constructor() { 
   }
 
+  ngOnInit() {
+    console.log("Hi there");
+    this.feedTable(this.getData(this.status));
+  }
+
+  status: number = 1;
+  temp: any;
   key: any;
   dummy: any;
 
   dummyJsonForAllReviews: any;
   dummyJsonForPendingByReviewer: any;
+
+  refreshComponent(status: number){
+    this.status = status;
+    this.ngOnInit();
+  }
 
   getData(status: number){
     //service to be called here
@@ -49,6 +59,7 @@ export class ReviewTableComponent implements OnInit {
         "Status": "Self Review"
       }
     ];
+    
     this.dummyJsonForPendingByReviewer = [
       {
         "FormName": "Consultant 1",
@@ -65,13 +76,17 @@ export class ReviewTableComponent implements OnInit {
         "Status": "Closed"
       }
     ];
+
     if(status == 1){
-      //call a service for fetching all 
-      this.feedTable(this.dummyJsonForAllReviews);
+      return(this.dummyJsonForAllReviews);
     }
     else if(status == 2){
-      this.feedTable(this.dummyJsonForPendingByReviewer);
+      return(this.dummyJsonForPendingByReviewer);
     }
+  }
+
+  getValues(temp: any){
+    return (Object.values(temp));
   }
 
   feedTable(obj: any){

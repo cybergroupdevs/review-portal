@@ -6,11 +6,7 @@
     </thead>
     <tbody>
         <tr *ngFor = "let row of dummy">
-            <td>{{row.FormName}}</td>
-            <td>{{row.Cycle}}</td>
-            <td>{{row.TargetDate}}</td>
-            <td>{{row.ReviewerName}}</td>
-            <td>{{row.Status}}</td>
+            <td *ngFor = "let td of getValues(row)">{{td}}</td>
         </tr>
     </tbody>
 </table>

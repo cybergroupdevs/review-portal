@@ -33,7 +33,8 @@ export class ReviewNavbarComponent implements AfterViewInit {
   }
 
   getReviews(status: number){
-    new ReviewTableComponent().getData(status);
+    // console.log(status);
+    new ReviewTableComponent().refreshComponent(status);
   }
 
 }
