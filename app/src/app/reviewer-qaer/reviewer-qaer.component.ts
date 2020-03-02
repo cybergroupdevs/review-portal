@@ -13,9 +13,10 @@ export class ReviewerQaerComponent implements OnInit {
   constructor(private _service:ServicesService) { }
   
   reviewQaerArray: any;
-  empCode: String;
-  reviewerName: String;
-  rDesignation: String;
+  reviewQaerArray2: any;
+  empCode: string = null;
+  reviewerName: string=null;
+  rDesignation: string=null;
   divisionName: String;
   rJoined:Date;
   rcgExperience:number;
@@ -36,10 +37,11 @@ export class ReviewerQaerComponent implements OnInit {
     console.log(res);
 
     this.reviewQaerArray = res;
-    console.log(this.reviewQaerArray)
+    console.log(this.reviewQaerArray, "hiiiiii");
     this.setData();
   });
-  this._service.empData().subscribe(res=> {
+
+  this._service.employeeData().subscribe(res=> {
     console.log(res);
 
     this.reviewQaerArray = res;
@@ -47,14 +49,18 @@ export class ReviewerQaerComponent implements OnInit {
     this.setData();
 });
 }
+
+onChange(ev) {
+  console.log(ev);
+}
 setData(){
-  this.empCode= this.reviewQaerArray.empCode;
+  this.empCode= this.reviewQaerArray.cgiCode;
   this.reviewerName=this.reviewQaerArray.reviewerName;
-  this. rDesignation =this.reviewQaerArray. rDesignation;
+  this.rDesignation =this.reviewQaerArray.designation;
   this.divisionName=this.reviewQaerArray.divisionName;
   this.rJoined=this.reviewQaerArray.rJoined;
   this.rcgExperience=this.reviewQaerArray.rcgExperience;
-  this.empName=this.reviewQaerArray.empName;
+  this.empName=this.reviewQaerArray.lastName;
   this.qaerName=this.reviewQaerArray.qaerName;
   this.eDesignation=this.reviewQaerArray.eDesignation;
   this.reviewCycle=this.reviewQaerArray.reviewCycle;
