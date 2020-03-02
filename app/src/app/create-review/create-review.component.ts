@@ -9,7 +9,7 @@ import { ServicesService } from './../services.service';
 })
 export class CreateReviewComponent implements OnInit {
 
-  constructor(private _service:ServicesService) { }
+  constructor(private _service: ServicesService) { }
 
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
@@ -22,7 +22,31 @@ export class CreateReviewComponent implements OnInit {
 
   res:any;
 
+  sendReq(cgiCodeValue){
+    return this._service.getByCgiCodeReviewValues(cgiCodeValue);
+  }
+
   ngOnInit() {
+    const input = document.querySelector('input');
+    const log = document.getElementById('cgiCodeField');
+    input.addEventListener('input', this.cgiValue.bind(this));    
+  }
+
+  cgiValue(e) {
+    console.log(e.target.value);
+    let cgiCodeValue = e.target.value;
+    this.sendReq(cgiCodeValue).subscribe( res => {
+      console.log(res);
+      if (res.status===200){
+        console.log(res);
+      }
+      else{
+        console.log("error occured");
+        
+      }
+    });
+    
+  
   }
 
   createReview(){
@@ -46,6 +70,7 @@ export class CreateReviewComponent implements OnInit {
       console.log("error occured");
       
     }
+
   }
 
 }

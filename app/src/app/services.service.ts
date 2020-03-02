@@ -127,5 +127,12 @@ export class ServicesService {
       );
     }
 
+    getByCgiCodeReviewValues(cgiCode): Observable<any>{
+      return this.http.get("http://localhost:3001/review/values/" + cgiCode).pipe(
+      tap(_ => this.log("got cgi code for review values")),
+      catchError(this.handleError<any>('error in details'))
+      );
+    }
+
   }
   

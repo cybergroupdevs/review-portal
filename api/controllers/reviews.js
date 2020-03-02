@@ -37,7 +37,13 @@ class Review {
         console.log("reached create review")
         const review = await model.review.save(addReview)
         res.send(review)
-    }  
+    }
+    
+    async getByCgiCode(req,res){
+        console.log("Reached Get CGI Code");
+        const reviewValues = await model.review.get({"cgiCode": req.params.cgiCode})
+        res.send(reviewValues);
+    }
 }
 
 module.exports = new Review() 

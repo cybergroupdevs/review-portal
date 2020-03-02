@@ -22,6 +22,18 @@ const reviewSchema = new mongoose.Schema({
         // required:true
         type: String
     },
+    cgiCode: {
+        type: String
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    email: {
+        type: String
+    }
     // technicalSkill:{
     //     selfEvaluation:{
     //         comment:{
