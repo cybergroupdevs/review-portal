@@ -65,8 +65,8 @@
                     </td>                      
                      
                     <td align="center">
-                           <select #assessmentReviewerTS required>        
-                                <option value="satisfied">meets expectations</option>
+                           <select  required (change)="selectChangeHandler($event)">        
+                                <option value="meets expectations">meets expectations</option>
                                 <option value="needs improvement">needs improvement</option>
                            </select>
                                 
@@ -137,7 +137,7 @@
                     </td> 
                     <td align="center">
                         <select #assessmentSelfCS class="self"required>        
-                             <option value="satisfied">meets expectations</option>
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -147,8 +147,8 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerCS required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select #assessmentReviewerCS required (change)="selectChangeHandlerCS($event)">        
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -163,7 +163,7 @@
                     </td> 
                     <td align="center">
                         <select #assessmentSelfP class="self"required>        
-                             <option value="satisfied">meets expectations</option>
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -173,8 +173,8 @@
                  </td>                      
                
                  <td align="center">
-                        <select #assessmentReviewerP required>        
-                             <option value="satisfied">meets expectations</option>
+                        <select #assessmentReviewerP required (change)="selectChangeHandlerP($event)">        
+                             <option value="meets expectations">meets expectations</option>
                              <option value="needs improvement">needs improvement</option>
                         </select>
                              
@@ -182,6 +182,9 @@
                 </tr>
                 </table>  
                 <button (click)=updateReviewDetails()>submit</button>
+                <p>{{selectedAssessment}}<br>
+                   {{selectedAssessmentCS}}<BR>
+                   {{selectedAssessmentP}}</p>
         <!-- </form> -->
       
 
