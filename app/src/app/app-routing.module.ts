@@ -1,4 +1,5 @@
 import { ActionBarComponent } from './action-bar/action-bar.component';
+import { from } from 'rxjs';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
@@ -11,6 +12,7 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {UpdatePersonalInfoComponent} from './update-personal-info/update-personal-info.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: "selfReview", component:SelfReviewComponent},
   {path: "createReview", component:CreateReviewComponent},
   {path: "actionBar", component:ActionBarComponent},
+
+  {path: "personal-info", component:UpdatePersonalInfoComponent},
 ];
 
 @NgModule({

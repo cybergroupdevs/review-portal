@@ -22,8 +22,12 @@ import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
+import { UpdatePersonalInfoComponent } from './update-personal-info/update-personal-info.component';
+
+
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { ActionBarComponent } from './action-bar/action-bar.component';
     MyReviewsComponent,
     ReviewTableComponent,
     SelfReviewComponent,
-    ActionBarComponent
+    ActionBarComponent,
+    UpdatePersonalInfoComponent
   ],
   imports: [
     RouterModule,
