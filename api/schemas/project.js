@@ -19,7 +19,8 @@ const projectSchema = Schema({
         type: String
     },
     date: {
-        type: Date
+        type: Date, 
+        default:Date.now()
     },
 
 });

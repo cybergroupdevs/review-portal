@@ -5,12 +5,19 @@
     background-color: #1c314d;
     background-size: cover;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 .card-banner .card-body {
     background-size: cover;
     position: relative;
     z-index: 10;
+    
+  
 }
+ .form-group{
+        height: 1px;  
+ }
+
 
 
 /* overlay effects */
@@ -48,4 +55,6 @@
 .overlay-grad:hover:before{
      opacity: .9;
 }
+
+
 
