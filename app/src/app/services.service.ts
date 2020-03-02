@@ -80,7 +80,7 @@ export class ServicesService {
   }
 
   empData(): Observable<any>{
-    return this.http.get(`http://localhost:3001/employee/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
+    return this.http.get("http://localhost:3001/employees/5e5c905453b4ed3cda5b1d8e").pipe(
       tap(_ => this.log("received employee details")),
       catchError(this.handleError<any>('error in details')
     ));
