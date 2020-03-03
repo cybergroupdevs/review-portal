@@ -66,7 +66,7 @@ const routes: Routes = [
   },
   {path: "review", component: ReviewerReviewComponent},
   {path: "createReview", component: CreateReviewComponent},
-  {path: "adminHeader", component: AdminHeaderComponent}
+  {path: "adminHeader", component: AdminHeaderComponent},
   {path: "selfReview", component:SelfReviewComponent},
   {path: "personal-info", component:UpdatePersonalInfoComponent},
 ];

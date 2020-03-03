@@ -47,7 +47,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     ReviewTableComponent,
     SelfReviewComponent,
     AdminHeaderComponent,
-    AdminMainComponent
+    AdminMainComponent,
     UpdatePersonalInfoComponent
   ],
   imports: [
