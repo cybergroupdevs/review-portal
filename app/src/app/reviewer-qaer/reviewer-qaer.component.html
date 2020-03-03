@@ -2,121 +2,116 @@
   <app-header></app-header>
 </div>
 
-<!-- <div class="row m-auto">
-  <div class="col-md-3 col-lg-3">
-      <ul class="navbar-nav">
-      
-         
-      </ul>
-  </div> -->
-  
-
-<div class="container-fluid" style="margin-top: 20px;">
-  
-<aside class="col-sm-6" >
-                
-
-<div class="card-banner  overlay-grad" style="position:absolute; left:240px; height:210px; width:420px; background-image: url('http://bootstrap-ecommerce.com/main/images/posts/1.jpg');">
-  <div class="card-body text-white">
-
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-4 control-label" >Emp Code</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="empCode" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Reviewer Name</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="reviewerName" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Designation</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="rDesignation" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Division Name</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="divisionName" type="text">
-          </div>
-        </div>
-       
-        <div class="form-group">
-          <label class="col-md-4 control-label">Date of Joining</label>
-          <div class="col-md-6">
-            <input class="form-control input-sm" [value]="rJoined" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label">CG Experience</label>
-            <div class="col-md-6">
-              <input class="form-control input-sm" [value]="rcgExperience" type="text">
+<div class="container reviewer-container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card-banner">
+        <div class="card-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Emp Code</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="empCode" type="text"/>
+              </div>
             </div>
-          </div>
-       
-        
-      </form>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewer Name</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="reviewerName" type="text"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Designation</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="rDesignation" type="text"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Division Name</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="divisionName" type="text"/>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Date of Joining</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input
+                  class="form-control input-sm"
+                  [value]="rJoined"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">CG Experience</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input
+                  class="form-control input-sm"
+                  [value]="rcgExperience"
+                  type="text"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card-banner">
+        <div class="card-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewee Name</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="empName" type="text"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">QA'er Name</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="qaerName" type="text"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Designation</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="eDesignation" type="text"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Review Cycle</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input class="form-control input-sm" [value]="reviewCycle" type="text"/>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Promotion Cycle</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input
+                  class="form-control input-sm"
+                  [value]="promotionCycle"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">CG Experience</label>
+              <div class="col-lg-7 col-md-8 col-xs-12">
+                <input
+                  class="form-control input-sm"
+                  [value]="ecgExperience"
+                  type="text"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
   </div>
-</div> <!-- card.// -->
-
-            </aside>
-            <aside class="col-sm-6">
-                
-
-                <div class="card-banner  overlay-grad" style="height:210px; width:420px; background-image: url('http://bootstrap-ecommerce.com/main/images/posts/1.jpg');">
-                  <div class="card-body text-white">
-                  
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Reviewee Name</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="empName" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">QA'er Name </label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="qaerName" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Designation</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="eDesignation" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Review Cycle</label>
-          <div class="col-lg-6">
-            <input class="form-control input-sm" [value]="reviewCycle" type="text">
-          </div>
-        </div>
-       
-        <div class="form-group">
-          <label class="col-md-4 control-label">Promotion Cycle</label>
-          <div class="col-md-6">
-            <input class="form-control input-sm" [value]="promotionCycle" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label">CG Experience</label>
-            <div class="col-md-6">
-              <input class="form-control input-sm" [value]="ecgExperience" type="text">
-            </div>
-          </div>
-        
-      </form>
-  
-                  </div>
-                </div> <!-- card.// -->
-
-            </aside>
-          
-        </div>
-
+</div>
 
 

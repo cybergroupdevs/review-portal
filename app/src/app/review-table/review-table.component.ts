@@ -15,10 +15,9 @@ export class ReviewTableComponent implements OnInit {
     private _router: Router, 
     private _service: ServicesService
     ) { }
- 
+
   reviewArray = ["...", "...", "...", "...", "..."];
   keys = ["FormName", "Cycle", "TargetDate", "Status", "CreatedAt"];
- 
   ngOnInit() {
     let current_route = this._router.url.split("/")[3];
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
@@ -52,7 +51,6 @@ export class ReviewTableComponent implements OnInit {
       this.getKeys(this.reviewArray[0]);
     });
   }
- 
   getValues(temp: any){
     if(temp != null || temp != undefined)
       return (Object.values(temp));

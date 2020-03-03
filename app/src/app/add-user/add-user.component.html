@@ -1,79 +1,73 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<form>
-<div class="options">
-    <input type="button" value="add" (click)="createUser()" >
- 
-</div>
-<div class="row">
-    <!-- <span class="required">*</span> -->
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #firstName class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <!-- <span class="required">
-    *
-    </span> -->
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #lastName class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Location:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #location class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #email class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #password class="form-control input-medium" value="">
-    </div>
-</div>
 
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #designation class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Division:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #division class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Total experience:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #totalExperience class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Date of Joining:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12 datepicker">
-        <input type="text" #joined class="form-control input-medium" value="">
-    </div>
-</div>
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Previous experience:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="text" #previousExperience class="form-control input-medium" value="">
-    </div>
-</div>
+    <div class="panel-body">
+        <form>
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="name">First Name	</label>
+                <input type="text" class="form-control input-sm" #firstName placeholder="">
+            </div>
 
-<div class="row">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Skills:</label>
-    <div class="col-md-10 col-sm-9 col-xs-12">
-        <input type="textbox" #skills class="form-control input-medium" value="">
-    </div>
+           <div class="form-group col-md-6 col-sm-6">
+                <label for="name">Last Name	</label>
+                <input type="text" class="form-control input-sm" #lastName placeholder="">
+            </div>
+       
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control input-sm" #email placeholder="">
+            </div>
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="cgiCode">CGI code</label>
+                <input type="email" class="form-control input-sm" #cgiCode placeholder="">
+            </div>
+    
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="mobile">Password</label>
+                <input type="text" class="form-control input-sm" #password placeholder="">
+            </div>
+
+            
+        
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="city">Designation</label>
+                <input type="text" class="form-control input-sm" #designation placeholder="">
+            </div>
+        
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="state">Division</label>
+                <input type="text" class="form-control input-sm" #division placeholder="">
+            </div>
+    
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="country">Total Experience</label>
+                <input type="text" class="form-control input-sm" #totalExperience placeholder="">
+            </div>
+    
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="pincode">Date of Joining</label>
+                <input type="text" class="form-control input-sm" #joined placeholder="">
+            </div>
+    
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="arrival">Previous Experience</label>
+                <input type="text" class="form-control input-sm datepicker" #previousExperience placeholder="">
+            </div>
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="Location">Location</label>
+                <input type="text" class="form-control input-sm" #location rows="3">
+             </div>
+             <div class="form-group col-md-6 col-sm-6">
+                <label for="arrival">Skills</label>
+                <textarea class="form-control input-sm datepicker" #skills placeholder=""></textarea>
+            </div>
+            
 </div>
+    
+    <div class="col-md-12 col-sm-12" id="addblock">
+        <div class="form-group col-md-3 col-sm-3">
+            <input type='button' class="btn btn-primary" value="add"  (click)="createUser()"/>
+        </div>
+    </div>
+    
 </form>

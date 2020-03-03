@@ -13,19 +13,18 @@ export class ReviewerQaerComponent implements OnInit {
   constructor(private _service:ServicesService) { }
   
   reviewQaerArray: any;
-  reviewQaerArray2: any;
   empCode: string = null;
   reviewerName: string=null;
   rDesignation: string=null;
-  divisionName: String;
-  rJoined:Date;
-  rcgExperience:number;
-  empName: String;
-  qaerName: String;
-  eDesignation: String;
-  reviewCycle: String;
-  promotionCycle: String;
-  ecgExperience: number;
+  divisionName: string=null;
+  rJoined:Date=null;
+  rcgExperience:number=null;
+  empName: string=null;
+  qaerName: string=null;
+  eDesignation: string=null;
+  reviewCycle: string=null;
+  promotionCycle: string=null;
+  ecgExperience: number=null;
  
   
    ngOnInit() {
@@ -50,22 +49,22 @@ export class ReviewerQaerComponent implements OnInit {
 });
 }
 
-onChange(ev) {
-  console.log(ev);
-}
+// onChange(ev) {
+//   console.log(ev);
+// }
 setData(){
   this.empCode= this.reviewQaerArray.cgiCode;
   this.reviewerName=this.reviewQaerArray.reviewerName;
   this.rDesignation =this.reviewQaerArray.designation;
   this.divisionName=this.reviewQaerArray.divisionName;
-  this.rJoined=this.reviewQaerArray.rJoined;
-  this.rcgExperience=this.reviewQaerArray.rcgExperience;
-  this.empName=this.reviewQaerArray.lastName;
+  this.rJoined=this.reviewQaerArray.joined;
+  this.rcgExperience=this.reviewQaerArray.totalExperience;
+  this.empName=this.reviewQaerArray.firstName;
   this.qaerName=this.reviewQaerArray.qaerName;
-  this.eDesignation=this.reviewQaerArray.eDesignation;
+  this.eDesignation=this.reviewQaerArray.designation;
   this.reviewCycle=this.reviewQaerArray.reviewCycle;
   this.promotionCycle=this.reviewQaerArray.promotionCycle;
-  this.ecgExperience=this.reviewQaerArray.ecgExperience;
+  this.ecgExperience=this.reviewQaerArray.totalExperience;
  }
 
 }

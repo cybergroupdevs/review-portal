@@ -28,10 +28,10 @@ import { UpdatePersonalInfoComponent } from './update-personal-info/update-perso
 
 
 import { CreateReviewComponent } from './create-review/create-review.component';
+import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MyReviewsComponent,
     ReviewTableComponent,
     SelfReviewComponent,
+    ActionBarComponent,
     AdminHeaderComponent,
     AdminMainComponent,
     UpdatePersonalInfoComponent,
