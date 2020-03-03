@@ -3,13 +3,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ActionBarComponent } from './action-bar/action-bar.component';
-
 import { HeaderComponent } from './header/header.component';
 import { ReviewTableComponent } from './review-table/review-table.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { CreateReviewComponent } from './create-review/create-review.component';
-
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
