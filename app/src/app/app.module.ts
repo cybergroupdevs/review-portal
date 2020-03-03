@@ -1,3 +1,5 @@
+import { RoleGuardService } from './guards/role-guard.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
@@ -29,6 +31,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     ActionBarComponent,
     AdminHeaderComponent,
     AdminMainComponent,
-    UpdatePersonalInfoComponent
+    UpdatePersonalInfoComponent,
+    ErrorPageComponent
   ],
   imports: [
     RouterModule,
@@ -60,7 +64,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ServicesService],
+  providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

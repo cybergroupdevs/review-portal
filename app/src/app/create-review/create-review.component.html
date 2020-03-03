@@ -36,7 +36,7 @@
         <div class="row">
             <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Reviewer:</label>
             <div class="col-md-6 col-sm-9 col-xs-12">
-                <input type="text" #reviewer class="form-control input-medium" value="" #searchBox id="search-box" (input)="search(searchBox.value)">
+            <input type="text" #reviewer class="form-control input-medium" value="" #searchBox id="search-box" (input)="search(searchBox.value)">
                 <ul class="search-result">
                     <li *ngFor="let user of emp$ | async" >
                       <a routerLink="/">

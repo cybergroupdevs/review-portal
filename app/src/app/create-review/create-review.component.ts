@@ -70,8 +70,12 @@ export class CreateReviewComponent implements OnInit {
         
       }
     });
-  
   }
+
+  onKey(getReviewer: any) { 
+    console.log("reached get reviewer")
+  }
+
   // getValues(res){
   //  let employeeValues = res;
   //  let firstName = employeeValues[0].firstName;
