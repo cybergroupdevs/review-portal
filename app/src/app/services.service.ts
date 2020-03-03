@@ -143,5 +143,15 @@ export class ServicesService {
       );
     }
 
+    searchEmp(term: string): Observable<any> {
+      if (!term.trim()) {
+        return of([]);
+      }
+      return this.http.get(`http://localhost:3001/emp?firstName=${term}`, {headers: this.header_token}).pipe(
+        tap(_ => this.log("getting emp by name")),
+        catchError(this.handleError<any>('error in loading'))
+      );
+    }
+
   }
   
