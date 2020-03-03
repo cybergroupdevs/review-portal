@@ -104,8 +104,8 @@ export class ReviewerReviewComponent implements OnInit {
   }
       console.log(userObj);
       this._service.updateReviewData(userObj).subscribe(res =>  {
-        console.log(this.res);
-        if(this.res.status==200){
+        console.log(res);
+        if(res!=''){
           console.log('Successful update!!');
     
         }
@@ -128,5 +128,24 @@ export class ReviewerReviewComponent implements OnInit {
 
     selectChangeHandlerP(event: any){
       this.selectedAssessmentP = event.target.value;
+    }
+    submitReviewDetails(){
+      let userObj =  {
+        "submitted" :true
+      }
+      this._service.updateReviewData(userObj).subscribe(res =>  {
+        console.log(res);
+        if(this.res.status!=0){
+          console.log('Successful update!!');
+      
+        }
+        else {
+          console.log('unsuccessful');
+         
+        }
+      
+      });
+      this.updateReviewDetails();
+  
     }
 }

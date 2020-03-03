@@ -43,9 +43,9 @@ export class ReviewTableComponent implements OnInit {
       }
     });
 
-  getValues(temp: any){
-    return (Object.values(temp));
-  }
+  // getValues(temp: any){
+  //   return (Object.values(temp));
+  // }
 
   // feedTable(obj: any){
   //   this.key = Object.keys(obj[0]);
@@ -53,4 +53,5 @@ export class ReviewTableComponent implements OnInit {
   //   this.dummy = obj;
   // }
   
+}
 }
