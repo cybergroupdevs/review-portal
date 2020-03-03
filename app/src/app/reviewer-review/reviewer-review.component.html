@@ -1,27 +1,31 @@
 <style>
-        table, th, td { 
-            /* border: 2px solid #f5f5f6 ;  */
+        /* table, th, td { 
+            border: 2px solid black ; 
             border-collapse: collapse; 
             padding: 6px; 
             width: 80%;
 
-        } 
-        .technicalSkill , .extra2, .personality{
-            background-color: #f5f5f6!important;
-            color: black;
+        }  */
+        table { 
+             width: 100%; 
+             border-collapse: collapse; 
         }
-        .extra1, .communicationSkill {
-            background-color: #e1e2e1;
-            color: black;
+
+        th { 
+            background: #311a91; 
+            color: white; 
+            font-weight: bold; 
+                }
+        td, th { 
+          padding: 6px; 
+          border: 1px solid #ccc; 
+          text-align: left; 
         }
-        extra1 p{
-            background-color: #e1e2e1;
+        tr:nth-of-type(odd) { 
+             background: #f5f5f6;
         }
-        extra1 select{
-            background-color: #e1e2e1 ;
-        }
-        .communicationSkill p {
-            background-color: #e1e2e1  ;
+        tr:nth-of-type(even) {
+             background: #e1e2e1; 
         }
         p{
             background-color: white;
@@ -81,43 +85,82 @@
             margin: auto;
             border-radius: 50%;
         }
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+        left: -9999px;
+        background-color: #311a91;
+
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Key Result Area"; }
+	td:nth-of-type(2):before { content: "Self Evaluation"; }
+	td:nth-of-type(3):before { content: "Self Assessment"; }
+	td:nth-of-type(4):before { content: "Reviewer Evaluation"; }
+	td:nth-of-type(5):before { content: "Reviewer Assessment"; }
+	
+}
        
 
-/* if the browser window is at least 800px-s wide: */
-@media screen and (min-width: 800px) {
-  tr td {
-  width: 90%;}
-}
 
-/* if the browser window is at least 1000px-s wide: */
-@media screen and (min-width: 1000px) {
-  tr td {
-  width: 80%;}
-}
-        
-        
 </style> 
 
         <div class="container-fluid mt-3">
             <div class="panel-body">
             <table class="table">  
+                <thead>
                 <tr id="headers">  
-                    <td colspan="3">
+                    <th colspan="3">
                         Key Result Area
-                    </td>
-                    <td colspan=5>  
+                    </th>
+                    <th colspan=5>  
                         Self Evaluation 
-                    </td>
-                    <td >  
+                    </th>
+                    <th>  
                         Self Assessment  
-                    </td>
-                    <td colspan=5>  
+                    </th>
+                    <th colspan=5>  
                         Reviewer Evaluation 
-                    </td>  
-                    <td colspan=3>  
+                    </th>  
+                    <th colspan=3>  
                         Reviewer Assessment  
-                    </td>  
+                    </th>  
+                
                 </tr>  
+                </thead>
                 <tr class="technicalSkill"> 
                     <td colspan="3">  
                         <p rows="4" cols="50" align="center">Technical Skills</p>  
