@@ -73,8 +73,8 @@ export class ServicesService {
     ));
   }
 
-  reviewData2(id: string): Observable<any>{
-    return this.http.get("http://localhost:3001/review/"+id).pipe(
+  reviewData2(id: string, searchBy: string): Observable<any>{
+    return this.http.get("http://localhost:3001/review/"+id+"?searchParameter="+searchBy).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));

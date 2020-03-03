@@ -19,6 +19,10 @@ const reviewSchema = new mongoose.Schema({
         ref: "Employee",
         required:true
     },
+    formName: {
+        type: String,
+        required: true
+    },
     technicalSkill:{
         selfEvaluation:{
             comment:{
@@ -96,6 +100,12 @@ const reviewSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+
+    targetDate: {
+        type: Date,
+        required
+    },
+
     status:{
         type:String,
         default:"Pending-Self-Appraisal",
@@ -111,6 +121,7 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+
     flag:{
         type: Number,
         default: 0

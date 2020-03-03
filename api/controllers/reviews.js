@@ -8,14 +8,26 @@ class Review {
         console.log("reached controller")
     }
       
-    async show(req,res){
-        const review = await model.review.get({"_id": req.params.id});
-        console.log(review);
-        res.send(review);
-    }
+    // async show(req,res){
+    //     const review = await model.review.get({"_id": req.params.id});
+    //     console.log(review);
+    //     res.send(review);
+    // }
 
     async show(req,res){
-        const review = await model.review.get({"employeeId": req.params.id});
+        // let searchParameter1 = "_id";
+        // let searchParameter2 = "employeeId";
+        // let searchParameter3 = "cgiCode";
+        // let searchParameter4 = "reviewer";
+        // let searchParameter5 = "qualityAnalyst";
+        var searchParam = req.query.searchParameter;
+
+        console.log(searchParam);
+        console.log(req.params.id);
+        let criteria = { };
+        criteria[searchParam] = req.params.id;
+        console.log(criteria);
+        const review = await model.review.get(criteria);
         console.log(review);
         res.send(review);
     }

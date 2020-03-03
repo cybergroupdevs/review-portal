@@ -19,7 +19,7 @@ export class ReviewNavbarComponent implements OnInit {
   faRight = faAngleDoubleRight;
 
   ngOnInit(){
-    this._service.reviewData2(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id).subscribe(res => {
+    this._service.reviewData2(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId").subscribe(res => {
       console.log(res);
     })
   }
