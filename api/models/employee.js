@@ -14,8 +14,13 @@ class Employee{
     async get(criteria={}, columns={}){
         
         return this.model.find(criteria, columns)
-
     }
+    async getEmp(criteria={}, columns={}){
+        
+        
+        return this.model.find({"name": `/^$columns/i`}).exec(callback);
+    }
+
     async save(employeeObj){
         return this.model.create(employeeObj)
     }
