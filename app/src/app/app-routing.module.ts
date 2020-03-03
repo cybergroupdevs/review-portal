@@ -1,5 +1,5 @@
 
-import { ChangePasswordComponent } from './change-password/change-password.component';
+
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ActionBarComponent } from './action-bar/action-bar.component';
@@ -103,7 +103,7 @@ const routes: Routes = [
 
 
   {path: "selfReview", component:SelfReviewComponent},
-  {path: "changePassword", component:ChangePasswordComponent},
+
 
   {path: "createReview", component: CreateReviewComponent},
   {path: "adminHeader", component: AdminHeaderComponent},

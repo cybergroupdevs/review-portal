@@ -1,17 +1,21 @@
  <form  >
- <form #reviewerForm class="form">  
-     <table >  
+ <form #reviewerForm class="form">
+    <div class="container-fluid mt-3">
+    <div class="panel-body">
+     <table class="table">
+         <thead>
          <tr id="headers">  
-             <td colspan="2">
+             <th colspan="2">
                  Key Result Area
-             </td>
-             <td colspan=5>  
+             </th>
+             <th colspan=5>  
                  Self Evaluation 
-             </td>  
-             <td colspan=3>  
+             </th>  
+             <th colspan=3>  
                 Self Assessment  
-             </td>  
+             </th>  
          </tr>  
+        </thead>
          <tr > 
              <td colspan="2">  
                  <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>  
@@ -64,7 +68,7 @@
                      
             </td> 
          </tr>
-         <tr> 
+         <tr class="communicationSkill"> 
              <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center">Communication Skills</p>  
              </td>  
@@ -80,7 +84,7 @@
                      
          </td> 
          </tr>
-         <tr>  
+         <tr class="personality">  
              <td colspan="2" class="col1">  
                  <p #review rows="4" cols="50" align="center">Personality</p>  
              </td> 
@@ -97,7 +101,9 @@
          </td> 
          </tr>
 
-     </table>  
+     </table>
+    </div> 
+</div>   
      <div class="buttons" >
      <div><button type="Submit" class="btn btn-primary">Cancel</button></div>
      <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
