@@ -11,3 +11,19 @@
 .remove_field:hover{
 	text-decoration:none;
 }
+/* .form-control{
+    margin-left: 100px;
+} */
+label {
+    float: left;
+    font-size: large;
+}
+span {
+    display: block;
+    overflow: hidden;
+    padding: 0 4px 0 6px
+}
+.form-control {
+    width: 100%;
+}
+
