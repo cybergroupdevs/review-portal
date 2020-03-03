@@ -15,27 +15,32 @@
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
                         <label for="name">First Name	</label>
-                        <input type="text" class="form-control input-sm" id="firstName" placeholder="">
+                        <input type="text" class="form-control input-sm" id="firstName" placeholder=""
+                        maxlength="20">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label for="name">Last Name	</label>
-                        <input type="text" class="form-control input-sm" id="lastName" placeholder="">
+                        <input type="text" class="form-control input-sm" id="lastName" placeholder=""
+                        maxlength="20">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control input-sm" id="email" placeholder="">
+                    <input type="email" class="form-control input-sm" id="email" placeholder=""
+                    maxlength="20">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="mobile">Password</label>
-                    <input type="text" class="form-control input-sm" id="password" placeholder="">
+                    <input type="password" class="form-control input-sm" id="password" placeholder=""
+                    maxlength="20">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="arrival">Skills</label>
-                    <input type="text" class="form-control input-sm datepicker" id="skills" placeholder="">
+                    <input type="text" class="form-control input-sm datepicker" id="skills" placeholder=""
+                    maxlength="100">
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
@@ -45,12 +50,13 @@
                 
                 <div class="form-group col-md-6 col-sm-6">
                         <label for="state">Division</label>
-                        <input type="text" class="form-control input-sm" id="devision" placeholder="">
+                        <input type="text" class="form-control input-sm" id="division" placeholder="">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
-                        <label for="country">Total Experience</label>
-                        <input type="text" class="form-control input-sm" id="totalExperience" placeholder="">
+                        <label>Total Experience</label>
+                        <input type="number" class="form-control input-sm" id="totalExperience" placeholder=""
+                        maxlength="2">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
@@ -59,12 +65,14 @@
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="arrival">Previous Experience</label>
-                    <input type="text" class="form-control input-sm datepicker" id="previousExperience" placeholder="">
+                    <label>Previous Experience</label>
+                    <input type="number" class="form-control input-sm" id="previousExperience" placeholder=""
+                    maxlength="2">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="address">Address</label>
-                    <textarea class="form-control input-sm" id="address" rows="3"></textarea>
+                    <textarea class="form-control input-sm" id="address" rows="3"
+                    maxlength="200"></textarea>
                 </div>
                 <div class="form-group col-md-3 col-sm-3">
                     <label for="photo">Resume*</label>
@@ -74,7 +82,7 @@
             </div>
             
             <div class="col-md-12 col-sm-12" id="addblock">
-                <div class="form-group col-md-3 col-sm-3">
+                <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
                     <input type='button' class="btn btn-primary" value="Update" id="update"/>
                 </div>
             </div>
