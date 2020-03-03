@@ -1,32 +1,28 @@
+
   <nav class="navbar navbar-expand-lg navbar-light mb-0">
     <a class="navbar-brand">{{firstName}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <span class="navbar-toggler-icon"></span>
+  </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-right">
 
-        <li class="nav-item active mr-2">
-          <a class="nav-link" href="#">My Review <span class="sr-only">(current)</span></a>
-        </li>
+          <li class="nav-item mr-4">
+              <a href="javascript: void(0)" routerLink="profile" class="nav-link">My Profile</a>
+          </li>
+      
+          <li class="nav-item mr-4">
+            <a href="javascript: void(0)" routerLink="reviews" class="nav-link">Reviews</a>
+          </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Profile
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/nav']">My Profile</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">My Project Hierarchy</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Manage Resume</a>
-          </div>
-        </li>
-        
-        <li><a (click)="createReview()"> Create Review </a></li>
+          <li class="nav-item mr-2">
+              <a class="nav-link" href="#">Logout</a>
+          </li>
 
       </ul>
-    </div>
+  </div>
 
-  </nav>
+</nav>
+
+<router-outlet></router-outlet>

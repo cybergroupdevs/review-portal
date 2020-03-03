@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
@@ -11,9 +12,11 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('password', {static: false}) password: ElementRef;
+
   constructor(
     private _service: ServicesService,
-    private _router: Router) { }
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -24,7 +27,14 @@ export class LoginComponent implements OnInit {
       "password": this.password.nativeElement.value
     };
     let token = this._service.checkUser(user).subscribe(res => {
-      this.onLogin(res);
+      console.log(res.status);
+      console.log(res);
+      // if(res.status == 200){
+        this.onLogin(res.token);
+      // }
+      // else{
+      //   alert("Unauthorized");
+      // }
     });    
   }
 
@@ -32,7 +42,7 @@ export class LoginComponent implements OnInit {
     if(token != null){
       localStorage.setItem("JwtHrms", token);
       let decodedToken = this._service.jsonDecoder(token);
-      console.log(decodedToken, "my token");
+      // console.log(decodedToken, "my token");
       let designation = decodedToken.data.designation;
       if(designation == "Associate 2"){
         this._router.navigate(['/admin']);

@@ -22,9 +22,12 @@ import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
+import { UpdatePersonalInfoComponent } from './update-personal-info/update-personal-info.component';
 
 
 import { CreateReviewComponent } from './create-review/create-review.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminMainComponent } from './admin-main/admin-main.component';
 
 
 @NgModule({
@@ -42,9 +45,10 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     ReviewNavbarComponent,
     MyReviewsComponent,
     ReviewTableComponent,
-
-    SelfReviewComponent
-
+    SelfReviewComponent,
+    AdminHeaderComponent,
+    AdminMainComponent,
+    UpdatePersonalInfoComponent
   ],
   imports: [
     RouterModule,

@@ -31,7 +31,7 @@ const employeeSchema = new mongoose.Schema({
     designation:{
         type:String,
         default:'Consultant 1',
-        enum: ['Intern','Consultant 1','Consultant 2','Associate 1','Associate 2']
+        enum: ['Intern','Consultant 1','Consultant 2','Associate 1','Associate 2','ADMIN']
     },
     joined: {
         type:Date,
@@ -57,6 +57,22 @@ const employeeSchema = new mongoose.Schema({
     project: [{
         type: String
     }],
+    aadharNumber:{
+        type: String
+    },
+    pancardNumber:{
+        type: String
+    },
+    passportNumber:{
+        type: String
+    },
+    bloodGroup:{
+        type: String
+    },
+    personalEmailId:{
+        type: String
+    },
+    
     
 })
 

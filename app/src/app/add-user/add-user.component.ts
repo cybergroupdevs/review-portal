@@ -19,6 +19,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('designation', {static: false}) designation: ElementRef;
   @ViewChild('division', {static: false}) division: ElementRef;
   @ViewChild('joined', {static: false}) joined: ElementRef;
+  @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
 
   
   
@@ -38,6 +39,7 @@ createUser(){
       designation: this.designation.nativeElement.value,
       division: this.division.nativeElement.value,
       joined: this.joined.nativeElement.value,
+      cgiCode: this.cgiCode.nativeElement.value
     }
     // console.log(userObj);
     this._service.createUser(userObj).subscribe(res => this.res = res);

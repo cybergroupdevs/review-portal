@@ -1,69 +1,162 @@
 <style>
-        table, th, td { 
-            border: 1px solid #E1E2E1; 
-            border-collapse: collapse; 
-            padding: 6px; 
-            background-color: white;
-            color: white;
-
-        } 
-        table{
-            margin: auto;
-            width: 50%;
-            margin-top: 5vh;
+        table { 
+             width: 100%; 
+             border-collapse: collapse; 
         }
+
+        th { 
+            background: #311a91; 
+            color: white; 
+            font-weight: bold; 
+                }
+        td, th { 
+          padding: 6px; 
+          border: 1px solid #ccc; 
+          text-align: left; 
+        }
+        tr:nth-of-type(odd) { 
+             background: #f5f5f6;
+        }
+        
+        tr:nth-of-type(even) {
+             background: #e1e2e1; 
+        }
+        p{
+            background-color: white;
+            color: black;
+        }
+        
         #headers{
-            background-color:#1c314d;
-            color:white;
+            height: 10vh;
+            font-size: medium;
+            background-color: #311a91;
+            color: white;
         }
         textarea{
             border: hidden;
             outline: none;
             resize: none;
             color: black;
+            background-color:#f5f5f6;
+            text-align: center;
+        }
+        select{
+            background-color: #f5f5f6;
+        }
+        p{
+            background-color: #f5f5f6;
         }
         .self{
             cursor: not-allowed;
             pointer-events: none; 
         }
         button{
-            background-color: #1c314d;
+            background-color: #311a91;
             color: white;
             border-radius: 10%;
             border: none;
             margin-top: 2rem;
             margin-right: 1rem;
             font-weight: bold;
+            padding: 1rem;
+
+        }
+        .buttons{
+            position: absolute;
+            float: left;
         }
         select{
             color: black;
         }
         #headers{
             font-weight: bold;
+            text-align: center;
         }
-        
+        table{
+            position: relative;
+            margin: auto;
+            border-radius: 50%;
+        }
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+    }
+    textarea{
+        width: -webkit-fill-available;
+    }
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+        left: -9999px;
+        background-color: #311a91;
+
+	}
+	
+    tr { border: 1px solid #ccc; 
+        margin-bottom: 5rem;}
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Key Result Area"; }
+	td:nth-of-type(2):before { content: "Self Evaluation"; }
+	td:nth-of-type(3):before { content: "Self Assessment"; }
+	td:nth-of-type(4):before { content: "Reviewer Evaluation"; }
+	td:nth-of-type(5):before { content: "Reviewer Assessment"; }
+	
+}
+       
+
+
 </style> 
 
-        
-            <table >  
+        <div class="container-fluid mt-3">
+            <div class="panel-body">
+            <table class="table">  
+                <thead>
                 <tr id="headers">  
-                    <td colspan="3">
+                    <th colspan="3">
                         Key Result Area
-                    </td>
-                    <td colspan=5>  
+                    </th>
+                    <th colspan=5>  
                         Self Evaluation 
-                    </td>
-                    <td >  
+                    </th>
+                    <th>  
                         Self Assessment  
-                    </td>
-                    <td colspan=5>  
+                    </th>
+                    <th colspan=5>  
                         Reviewer Evaluation 
-                    </td>  
-                    <td colspan=3>  
+                    </th>  
+                    <th colspan=3>  
                         Reviewer Assessment  
-                    </td>  
+                    </th>  
+                
                 </tr>  
-                <tr> 
+                </thead>
+                <tr class="technicalSkill"> 
                     <td colspan="3">  
                         <p rows="4" cols="50" align="center">Technical Skills</p>  
                     </td> 
@@ -74,8 +167,8 @@
                     <td align="center">
                            <select class="self"required>   
                                 <option>{{assessmentSelfTS}}</option>     
-                                <option value="satisfied">meets expectations</option>
-                                <option value="needs improvement">needs improvement</option>
+                                <option value="Meets Expectations">Meets Expectations</option>
+                                <option value="Needs Improvement">Needs Improvement</option>
                            </select>
                                 
                     </td>  
@@ -86,14 +179,14 @@
                     <td align="center">
                            <select  required (change)="selectChangeHandler($event)"> 
                                <option>{{assessmentReviewerTS}}</option> 
-                                <option value="meets expectations">meets expectations</option>
-                                <option value="needs improvement">needs improvement</option>
+                                <option value="Meets Expectations">Meets Expectations</option>
+                                <option value="Needs Improvement">Needs Improvement</option>
                            </select>
                                 
                     </td>  
                 </tr> 
                 
-                <tr>
+                <tr  class="extra1">
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center"></p>  
                     </td>   
@@ -103,8 +196,8 @@
                      
                     <td align="center">
                            <select #assessment required>        
-                                <option value="satisfied">meets expectations</option>
-                                <option value="needs improvement">needs improvement</option>
+                                <option value="satisfied">Meets Expectations</option>
+                                <option value="needs improvement">Needs Improvement</option>
                            </select>
                                 
                     </td>  
@@ -114,13 +207,13 @@
                      
                     <td align="center">
                            <select #assessment required>        
-                                <option value="satisfied">meets expectations</option>
-                                <option value="needs improvement">needs improvement</option>
+                                <option value="satisfied">Meets Expectations</option>
+                                <option value="needs improvement">Needs Improvement</option>
                            </select>
                                 
                     </td>   
                 </tr>
-                <tr>  
+                <tr class="extra2">  
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center"></p>  
                     </td>   
@@ -129,8 +222,8 @@
                     </td> 
                     <td align="center">
                         <select #assessment required>        
-                             <option value="satisfied">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="satisfied">Meets Expectations</option>
+                             <option value="needs improvement">Needs Improvement</option>
                         </select>
                              
                  </td>  
@@ -140,15 +233,15 @@
                
                  <td align="center">
                         <select #assessment required>        
-                             <option value="satisfied">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="satisfied">Meets Expectations</option>
+                             <option value="needs improvement">Needs Improvement</option>
                         </select>
                              
                  </td>                        
                      
                     
                 </tr>
-                <tr> 
+                <tr class="communicationSkill"> 
                     <td colspan="3">  
                         <p  rows="4" cols="50" align="center">Communication Skills</p>  
                     </td>   
@@ -158,8 +251,8 @@
                     <td align="center">
                         <select class="self"required>   
                              <option>{{assessmentSelfCS}}</option>     
-                             <option value="meets expectations">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="Meets Expectations">Meets Expectations</option>
+                             <option value="Needs Improvement">Needs Improvement</option>
                         </select>
                              
                  </td>  
@@ -170,13 +263,13 @@
                  <td align="center">
                         <select required (change)="selectChangeHandlerCS($event)"> 
                              <option>{{assessmentReviewerCS}}</option>       
-                             <option value="meets expectations">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="Meets Expectations">Meets Expectations</option>
+                             <option value="Needs Improvement">Needs Improvement</option>
                         </select>
                              
                  </td>    
                 </tr>
-                <tr>  
+                <tr class="personality">  
                     <td colspan="3">  
                         <p #review rows="4" cols="50" align="center">Personality</p>  
                     </td> 
@@ -186,8 +279,8 @@
                     <td align="center">
                         <select class="self"required>   
                             <option>{{assessmentSelfP}}</option>     
-                             <option value="meets expectations">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="Meets Expectations">Meets Expectations</option>
+                             <option value="Needs Improvement">Needs Improvement</option>
                         </select>
                              
                  </td>  
@@ -198,15 +291,20 @@
                  <td align="center">
                         <select  required (change)="selectChangeHandlerP($event)"> 
                              <option>{{assessmentReviewerP}}</option>       
-                             <option value="meets expectations">meets expectations</option>
-                             <option value="needs improvement">needs improvement</option>
+                             <option value="Meets Expectations">Meets Expectations</option>
+                             <option value="Needs Improvement">Needs Improvement</option>
                         </select>
                              
                  </td>    
                 </tr>
-                </table>  
-                <button (click)=updateReviewDetails()>save</button> 
-                <button (click)=updateReviewDetails()>submit</button>
+                <div class="buttons">
+                    <button class="btn btn-primary add-user-btn"(click)=updateReviewDetails()>save</button> 
+                    <button class="btn btn-primary add-user-btn"(click)=updateReviewDetails()>submit</button>
+                  </div>
+                </table> 
+                </div>
+            </div> 
+                
                 <!-- <p>{{selectedAssessment}}<br>
                    {{selectedAssessmentCS}}<BR>
                    {{selectedAssessmentP}}

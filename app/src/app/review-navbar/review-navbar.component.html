@@ -1,7 +1,3 @@
-<div>
-    <app-header></app-header>
-</div>
-
 <div class="row m-auto">
     <div class="col-md-3 col-lg-3">
         <ul class="navbar-nav">
@@ -14,28 +10,28 @@
             </li>
             
             <li class="nav-item ">
-                <a href="javascipt: void(0)" class="nav-link active" (click)="getReviews(1)">
+                <a href="javascipt: void(0)" routerLink="allReviews" class="nav-link active">
                     <fa-icon [icon]="faFile"></fa-icon>
                     <span class="link-text">Self-Reviews</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a href="javascipt: void(0)" class="nav-link" (click)="getReviews(2)">
+                <a href="javascipt: void(0)" routerLink="pendingByReviewer" class="nav-link">
                     <fa-icon [icon]="faEdit"></fa-icon>
                     <span class="link-text">Pending By Reviewer</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a href="javascipt: void(0)" class="nav-link" (click)="getReviews(3)">
+                <a href="javascipt: void(0)" routerLink="pendingByQAer" class="nav-link">
                     <fa-icon [icon]="faEdit"></fa-icon>
                     <span class="link-text">Pending By QAer</span>
                 </a>
             </li>
         
             <li class="nav-item">
-                <a href="javascipt: void(0)" class="nav-link" (click)="getReviews(4)">
+                <a href="javascipt: void(0)" routerLink="closed" class="nav-link">
                     <fa-icon [icon]="faFileSignature"></fa-icon>
                     <span class="link-text">Closed</span>
                 </a>
@@ -45,7 +41,7 @@
     </div>
     
     <div class="col-md-9 col-lg-9 p-1 table">
-        <app-review-table></app-review-table>
+        <router-outlet></router-outlet>
     </div>
 </div>
 

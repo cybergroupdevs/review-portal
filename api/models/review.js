@@ -7,8 +7,9 @@ class Review{
         this.model = mongoose.model('Review', reviewSchema)
     }
 
-    async get(criteria={}){
-        return this.model.find(criteria)
+    async get(criteria={}, columns={}){
+        let fields = 'cgiCode firstName lastName designation totalExperience';
+        return this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
     }
     
     async update(criteria={}, updateObj){

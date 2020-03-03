@@ -1,120 +1,75 @@
-<div>
-  <app-header></app-header>
-</div>
+<div class="container update-profile">
+    <div class="row">
+        <form>
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>First Name	</label>
+                        <input type="text" #ufirstName class="form-control input-sm" value="{{firstName}}" >
+                </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-4 control-label">First Name:</label>
-          <div class="col-lg-8">
-            <input
-              class="form-control input-sm"
-              [value]="firstName"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Email:</label>
-          <div class="col-lg-8">
-            <input class="form-control input-sm" [value]="email" type="text" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Designation:</label>
-          <div class="col-lg-8">
-            <select
-              class="form-control input-sm"
-              [value]="designation"
-              type="text"
-            >
-              <option>Consultant 1</option>
-              <option>Consultant 2</option>
-              <option>Associate 1</option>
-              <option>Associate 2</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Total Experience:</label>
-          <div class="col-lg-8">
-            <input class="form-control input-sm" [value]="totalExperience" type="text" />
-          </div>
-        </div>
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>Last Name	</label>
+                        <input type="text" #ulastName class="form-control input-sm"value="{{lastName}}">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label >Email</label>
+                    <input type="email" #uemail class="form-control input-sm" value="{{email}}">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label >Password</label>
+                    <input type="text" #upassword class="form-control input-sm" value="{{password}}">
+                </div>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Address:</label>
-          <div class="col-md-8">
-            <textarea
-              class="form-control input-sm"
-              [value]="location"
-              type="text"
-            ></textarea>
-          </div>
-        </div>
-      </form>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label >Skills</label>
+                    <input type="text" #uskills class="form-control input-sm datepicker" value="{{skills}}">
+                </div>                
+                
+                <div class="form-group col-md-6 col-sm-6">
+                        <label >Designation</label>
+                        <input type="text" #udesignation class="form-control input-sm" value="{{designation}}" >
+                </div>
+                
+                <div class="form-group col-md-6 col-sm-6">
+                        <label >Division</label>
+                        <input type="text" #udivision class="form-control input-sm" value="{{division}}" >
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>Total Experience</label>
+                        <input type="text" #utotalExperience class="form-control input-sm" value="{{totalExperience}}">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                        <label >Date of Joining</label>
+                        <input type="text" #ujoined class="form-control input-sm" value="{{joined}}">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label>Previous Experience</label>
+                    <input type="text" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}">
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label>Address</label>
+                    <textarea #ulocation class="form-control input-sm" id="address" rows="3" value="{{location}}"></textarea>
+                </div>
+                <div class="form-group col-md-3 col-sm-3">
+                    <label>Resume*</label>
+                    <input type="file" id="resume">
+                    <p class="help-block">Please upload individual photo. Group photo is not acceptable.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-12 col-sm-12" id="addblock">
+                <div class="form-group col-md-3 col-sm-3">
+                    <input type='button' class="btn btn-primary" value="Update" (click)="updateData()"/>
+                </div>
+            </div>
+        </form>
     </div>
-
-    <div class="col-sm-6">
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Last Name:</label>
-          <div class="col-lg-8">
-            <input
-              class="form-control input-sm"
-              [value]="lastName"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Skills:</label>
-          <div class="col-lg-8">
-            <input class="form-control input-sm" [value]="skills" type="text" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Division Name:</label>
-          <div class="col-lg-8">
-            <input
-              class="form-control input-sm"
-              [value]="divisionName"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Date of Joining:</label>
-          <div class="col-lg-8">
-            <input class="form-control input-sm" [value]="joined" type="text" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-4 control-label">Resume:</label>
-          <div class="col-lg-8">
-            <input type="file" id="resume" />
-            <p class="help-block">
-              Please upload your photo in JPG format, be sure that the total
-              size does not exceed 2 megabytes.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-12 col-sm-12" id="addblock">
-          <div class="form-group col-md-3 col-sm-3">
-            <input
-              type="button"
-              class="btn btn-primary btn-lg"
-              value="Update"
-              id="update"
-              style="margin-left: 390px; margin-top: 5px;"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+</div>     
+<div class="panel-body">
+     
 </div>
