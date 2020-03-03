@@ -1,11 +1,20 @@
-.bs-example{
-    margin: 20px;
+.accordion{
+    font-family: Roboto;
 }
-.accordion .fa{
-    margin-right: 0.5rem;
+.card{
+    background-color:#6745c2;
 }
+
 .container-fluid{
-height:200px;
-border: none;
-line-height: 1.2;
+    height:200px;
+    line-height: 2;
+}
+.btn{
+    padding: 2px 0;
+    color: white;
+    background-color: #6745c2;
+    border: none;
+}
+.row{
+    color: white;
 }
