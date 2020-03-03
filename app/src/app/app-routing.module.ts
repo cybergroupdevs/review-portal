@@ -1,3 +1,5 @@
+
+import { ActionBarComponent } from './action-bar/action-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { ReviewTableComponent } from './review-table/review-table.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
@@ -10,12 +12,13 @@ import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.compo
 import { ReviewerQaerComponent } from './reviewer-qaer/reviewer-qaer.component';
 import { AdminOptionsComponent } from './admin-options/admin-options.component';
 import { AddUpdateUserComponent } from './add-update-user/add-update-user.component';
-import { AddUserComponent} from './add-user/add-user.component'
+import { AddUserComponent} from './add-user/add-user.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UpdatePersonalInfoComponent} from './update-personal-info/update-personal-info.component';
+
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
@@ -68,6 +71,8 @@ const routes: Routes = [
   {path: "createReview", component: CreateReviewComponent},
   {path: "adminHeader", component: AdminHeaderComponent},
   {path: "selfReview", component:SelfReviewComponent},
+  {path: "createReview", component:CreateReviewComponent},
+  {path: "actionBar", component:ActionBarComponent},
   {path: "personal-info", component:UpdatePersonalInfoComponent},
 ];
 

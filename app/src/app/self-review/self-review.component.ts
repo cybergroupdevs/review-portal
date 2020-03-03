@@ -46,9 +46,11 @@ export class SelfReviewComponent implements OnInit {
       .subscribe(res => {
         this.reviewArray = res;
         console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
-//console.log(this.reviewArray.technicalSkill.selfEvaluation.comment, "here");
+
     this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
     this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
+
+    
     
     this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
     this.assessmentSelfCS=this.reviewArray.communication.selfEvaluation.assessment;
