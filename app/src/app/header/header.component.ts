@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +22,11 @@ export class HeaderComponent implements OnInit {
 
   getUserName(){
     let name = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.firstName;
+    console.log(name);
     this.firstName = name;
   }
 
+  createReview(){
+    this._router.navigate(["/createReview"])
+  }
 }

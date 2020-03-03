@@ -3,6 +3,7 @@ const config = require('config');
 // const Employee = require('../schemas/employee');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
+
 class Employee {
     
     constructor(){
@@ -58,7 +59,6 @@ class Employee {
     }
  
     async login(req, res) {
-        //Verify token here
         let user = await model.employee.get({$and : [{"email": req.body.email},{"password": req.body.password}]
                                                 }, 
                                                 {"email": 1,
@@ -73,13 +73,15 @@ class Employee {
         if(user != null || user != []){
             let token = jwtHandler.tokenGenerator(user);
             if(token != null){
-                res.status(200).send(token);
-                console.log(token);   //mine
+                let resBody = {
+                    "token": token
+                };
+                res.status(200).json(resBody);
             }
         }
         else{
             res.status(401).send("Unauthorized, Invalid Username or Password");
-            console.log("token is null");    //mine
+            console.log("token is null");
         }
     }
 }

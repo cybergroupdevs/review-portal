@@ -9,6 +9,11 @@ const reviewSchema = new mongoose.Schema({
         ref: "Employee",
         required:true
     },
+    divisionName:{
+        type:String,
+        default:null
+    },
+    
     reviewer: {
         type: Schema.Types.ObjectId,
         ref: "Employee",
@@ -19,100 +24,112 @@ const reviewSchema = new mongoose.Schema({
         ref: "Employee",
         required:true
     },
+    formName: {
+        type: String,
+        required: true
+    },
     technicalSkill:{
         selfEvaluation:{
             comment:{
-                type:String,
-                default:null
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         },
         reviewerEvaluation:{
             comment:{
-                type:String,
-                default:null
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         }
     },
     personality:{
         selfEvaluation:{
             comment:{
-                type:String,
-                default:null
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         },
         reviewerEvaluation:{
             comment:{
-                type:String,
-                default:null
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         }
     },
     communication:{
         selfEvaluation:{
             comment:{
-                type:String,
-                default:null
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         },
         reviewerEvaluation:{
-            comment:{
-                type:String,
-                default:null
+            comment: {
+                type: String,
+                default: null
             },
             assessment:{
-                type:String,
-                default:' Needs Improvement',
-                enum: ['Needs Improvement','Meets expectation']
+                type: String,
+                default: null,
+                enum: [null, 'Needs Improvement', 'Meets expectation']
             }
         }
     },
 
     date: {
         type: Date,
-        default:Date.now()
+        default: Date.now()
     },
-    
-    submitted:{
-        type:Boolean,
-        default:false
+
+    targetDate: {
+        type: Date,
+        required
     },
+
     status:{
         type:String,
-        default:"saved self appraisal",
-        enum:["saved self appraisal","Pending-Reviewer","Pending-QAer", "close"]
+        default:"Pending-Self-Appraisal",
+        enum:["Pending-Self-Appraisal","Pending-Reviewer","Pending-QAer", "Close"]
     },
+
     reviewCycle:{
-        type:String,
-        default:null
+        type: String,
+        default: null
     },
+
     promotionCycle:{
-        type:String,
-        default:null
+        type: String,
+        default: null
+    },
+
+    flag:{
+        type: Number,
+        default: 0
     }
 
 });

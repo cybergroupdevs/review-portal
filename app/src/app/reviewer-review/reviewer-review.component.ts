@@ -36,7 +36,6 @@ export class ReviewerReviewComponent implements OnInit {
   selectedAssessment: String = this.assessmentReviewerTS
   selectedAssessmentCS: String = this.assessmentReviewerCS
   selectedAssessmentP: String = this.assessmentReviewerP
-  assessmentSelected: String = ''
 
   ngOnInit() {
     this.loadExistingData()
@@ -74,7 +73,7 @@ export class ReviewerReviewComponent implements OnInit {
         "technicalSkill": {
           "selfEvaluation": {
               "comment": this.rsTS.nativeElement.value,
-              //"assessment": " Needs Improvement"
+              "assessment": this.assessmentSelfTS
           },
           "reviewerEvaluation": {
               "comment": this.rrTS.nativeElement.value,
@@ -84,7 +83,7 @@ export class ReviewerReviewComponent implements OnInit {
        "communication": {
          "selfEvaluation": {
              "comment": this.rsCS.nativeElement.value,
-             //"assessment": "needs improvement"
+             "assessment": this.assessmentSelfCS
           },
         "reviewerEvaluation": {
             "comment": this.rrCS.nativeElement.value,
@@ -94,7 +93,7 @@ export class ReviewerReviewComponent implements OnInit {
     "personality": {
       "selfEvaluation": {
           "comment": this.rsP.nativeElement.value,
-          //"assessment": " Needs Improvement"
+          "assessment": this.assessmentSelfP
       },
       "reviewerEvaluation": {
           "comment": this.rrP.nativeElement.value,
