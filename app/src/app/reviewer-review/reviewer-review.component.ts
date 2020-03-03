@@ -143,6 +143,7 @@ export class ReviewerReviewComponent implements OnInit {
           console.log('unsuccessful');
          
         }
+        
       
       });
       this.updateReviewDetails();
