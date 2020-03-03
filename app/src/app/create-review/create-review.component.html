@@ -1,65 +1,68 @@
-<app-header></app-header>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="createReviewDiv">
-    <h3>Create Review</h3>
-    <br>
+    <h3 class="createReviewHeading">Create Review</h3>
+    <br><br>
     <form>
 
         <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
                 <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="">
             </div>
         </div>
-
+        <br>
         <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" value="">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
             </div>
         </div>
+        <br>
         <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" value="">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
             </div>
         </div>
-        
+        <br>
         <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #email class="form-control input-medium" value="">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Email:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #email class="form-control input-medium" id="emailField" value="" readonly >
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Reviewer:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #reviewer class="form-control input-medium" value="" #searchBox id="search-box" (input)="search(searchBox.value)">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">QA'er:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #qaer class="form-control input-medium" value="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Cycle:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12">
+                <input type="text" #cycle class="form-control input-medium" value="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Target Date:</label>
+            <div class="col-md-6 col-sm-9 col-xs-12 datepicker">
+                <input type="date" #targetDate class="form-control input-medium" value="">
             </div>
         </div>
     
         <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Reviewer:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #reviewer class="form-control input-medium" value="">
-            </div>
-        </div>
-        <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">QA'er:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #qaer class="form-control input-medium" value="">
-            </div>
-        </div>
-        <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Cycle:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" #cycle class="form-control input-medium" value="">
-            </div>
-        </div>
-        <div class="row">
-            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Target Date:</label>
-            <div class="col-md-8 col-sm-9 col-xs-12 datepicker">
-                <input type="date" #targetDate class="form-control input-medium" value="">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-sm-9 col-xs-12 col-md-offset-2 col-sm-offset-3">
+            <div class="col-md-8 col-sm-9 col-xs-12 col-md-offset-4 col-sm-offset-3">
                 <button type="button" class="btn btn-success" (click)="createReview()"> Create Review </button>
             </div>
         </div>

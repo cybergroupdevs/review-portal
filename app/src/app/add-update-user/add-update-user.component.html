@@ -1,75 +1,86 @@
-<app-header></app-header>
-
-       
-    <div class="panel-body">
-        <form>
-    <div class="col-md-12 col-sm-12">
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="name">First Name	</label>
-                <input type="text" class="form-control input-sm" id="firstName" placeholder="">
-            </div>
-
-           <div class="form-group col-md-6 col-sm-6">
-                <label for="name">Last Name	</label>
-                <input type="text" class="form-control input-sm" id="lastName" placeholder="">
-            </div>
-       
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="email">Email</label>
-                <input type="email" class="form-control input-sm" id="email" placeholder="">
-            </div>
-    
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="mobile">Password</label>
-                <input type="text" class="form-control input-sm" id="password" placeholder="">
-            </div>
-
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="arrival">Skills</label>
-                <input type="text" class="form-control input-sm datepicker" id="skills" placeholder="">
-            </div>
-    
-        
-        
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="city">Designation</label>
-                <input type="text" class="form-control input-sm" id="designation" placeholder="">
-            </div>
-        
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="state">Division</label>
-                <input type="text" class="form-control input-sm" id="devision" placeholder="">
-            </div>
-    
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="country">Total Experience</label>
-                <input type="text" class="form-control input-sm" id="totalExperience" placeholder="">
-            </div>
-    
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="pincode">Date of Joining</label>
-                <input type="text" class="form-control input-sm" id="joined" placeholder="">
-            </div>
-    
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="arrival">Previous Experience</label>
-                <input type="text" class="form-control input-sm datepicker" id="previousExperience" placeholder="">
-            </div>
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="address">Address</label>
-                <textarea class="form-control input-sm" id="address" rows="3"></textarea>
-             </div>
-    <div class="form-group col-md-3 col-sm-3">
-        <label for="photo">Resume*</label>
-        <input type="file" id="resume">
-        <p class="help-block">Please upload individual photo. Group photo is not acceptable.</p>
+<!-- <div class="row employee-details">
+    <div class="col-lg-3">
+        <h4>&#x26F9; EMPLOYEE DETAILS</h4>
+        <br>
     </div>
 </div>
-    
-    <div class="col-md-12 col-sm-12" id="addblock">
-        <div class="form-group col-md-3 col-sm-3">
-            <input type='button' class="btn btn-primary" value="Update" id="update"/>
-        </div>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="options">
+    <input type="button" value="update" (click)="updateData()">
+</div> -->  
+<div class="container update-profile">
+    <div class="row">
+        <form>
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="name">First Name	</label>
+                        <input type="text" class="form-control input-sm" id="firstName" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="name">Last Name	</label>
+                        <input type="text" class="form-control input-sm" id="lastName" placeholder="">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control input-sm" id="email" placeholder="">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="mobile">Password</label>
+                    <input type="text" class="form-control input-sm" id="password" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="arrival">Skills</label>
+                    <input type="text" class="form-control input-sm datepicker" id="skills" placeholder="">
+                </div>                
+                
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="city">Designation</label>
+                        <input type="text" class="form-control input-sm" id="designation" placeholder="">
+                </div>
+                
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="state">Division</label>
+                        <input type="text" class="form-control input-sm" id="devision" placeholder="">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="country">Total Experience</label>
+                        <input type="text" class="form-control input-sm" id="totalExperience" placeholder="">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                        <label for="pincode">Date of Joining</label>
+                        <input type="text" class="form-control input-sm" id="joined" placeholder="">
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="arrival">Previous Experience</label>
+                    <input type="text" class="form-control input-sm datepicker" id="previousExperience" placeholder="">
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="address">Address</label>
+                    <textarea class="form-control input-sm" id="address" rows="3"></textarea>
+                </div>
+                <div class="form-group col-md-3 col-sm-3">
+                    <label for="photo">Resume*</label>
+                    <input type="file" id="resume">
+                    <p class="help-block">Please upload individual photo. Group photo is not acceptable.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-12 col-sm-12" id="addblock">
+                <div class="form-group col-md-3 col-sm-3">
+                    <input type='button' class="btn btn-primary" value="Update" id="update"/>
+                </div>
+            </div>
+        </form>
     </div>
-    
-</form>
+</div>     
+    <div class="panel-body">
+        
+</div>
