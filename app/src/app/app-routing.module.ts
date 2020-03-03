@@ -1,3 +1,4 @@
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: "reviewerqaer", component: ReviewerQaerComponent},
   {path: "nav", component: ReviewNavbarComponent},
   {path: "review", component: ReviewerReviewComponent},
-  {path: "selfReview", component:SelfReviewComponent}
+  {path: "selfReview", component:SelfReviewComponent},
+  {path: "changePassword", component:ChangePasswordComponent}
 ];
 
 @NgModule({
@@ -30,3 +32,4 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents=[AdminCrudComponent]
+

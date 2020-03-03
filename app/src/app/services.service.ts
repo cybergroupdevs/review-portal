@@ -57,7 +57,6 @@ export class ServicesService {
     );
   }
 
-
   updateData(object): Observable<any>{
     return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
       tap(_ => this.log("updating details")),

@@ -1,60 +1,3 @@
-<style>
-    table, th, td { 
-     border: 1px solid white; 
-     border-collapse: collapse; 
-     padding: 6px; 
-
- } 
- table{
-     width: 100%;
-     background-color: #1c314d;
-     
- }
- #headers{
-     background-color: #1c314d;
-     color:  white;
-     height: 5rem;
-      font-weight: bold;
- }
- textarea{
-     border: hidden;
-     outline: none;
-     resize: none;
- }
- .form{
-     padding: 4em 5em;
- }
-
- .buttons{
-     display: flex;
-     align-items: right !important;
-      padding: 1rem ;
-      
- }
-
- button{
-     /* padding: 1rem 1rem 0 1rem; */
-     font-weight: bold;
-     background-color: #1c314d !important; 
-     margin-left: 1rem;
-     margin-right: 1rem;
- }
-
-select{
- width: 17rem;
-    height: 3rem;
-}
-
-textarea{
-    width: 87rem;
-}
-
-.col1{
-    color: white;
-}
- 
-</style> 
-
  <form  >
  <form #reviewerForm class="form">  
      <table >  
@@ -81,9 +24,9 @@ textarea{
              <td align="center" >
                 
                     <select  required (change)="selectChangeHandlerTS($event)"> 
-                        <option #assessmentSelfT>{{assessmentSelfTS}}</option>          
-                         <option value="meets expectations">meets expectations</option>
-                         <option value="needs improvement">needs improvement</option>
+                        <option #assessmentSelfT class= "selected">{{assessmentSelfTS}}</option>          
+                         <option value="meets expectations">Meets Epectations</option>
+                         <option value="needs improvement">Needs Improvement</option>
                     </select>
                          
              </td>  
@@ -99,8 +42,8 @@ textarea{
              <td align="center" >
                 <select  required>        
                     <!-- <option>{{assessmentSelfCS}}</option>    -->
-                     <option value="meets expectations">meets expectations</option>
-                     <option value="needs improvement">needs improvement</option>
+                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="needs improvement">Needs Improvement</option>
                 </select>
                      
             </td>   
@@ -115,8 +58,8 @@ textarea{
              <td align="center" >
                 <select #assessment required >
                     <!-- <option></option>            -->
-                     <option value="meets expectations">meets expectations</option>
-                     <option value="needs improvement">needs improvement</option>
+                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="needs improvement">Needs Improvement</option>
                 </select>
                      
             </td> 
@@ -130,9 +73,9 @@ textarea{
              </td>  
              <td align="center" >
                 <select  required (change)="selectChangeHandlerCS($event)">  
-                    <option #assessmentSelfC>{{assessmentSelfCS}}</option>      
-                     <option value="meets expectations">meets expectations</option>
-                     <option value="needs improvement">needs improvement</option>
+                    <option #assessmentSelfC class= "selected">{{assessmentSelfCS}}</option>      
+                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="needs improvement">Needs Improvement</option>
                 </select>
                      
          </td> 
@@ -146,9 +89,9 @@ textarea{
              </td>  
              <td align="center" >
                 <select  required (change)="selectChangeHandlerPS($event)">   
-                         <option #assessmentSelfP>{{assessmentSelfPS}}</option>
-                     <option value="meets expectations">meets expectations</option>
-                     <option value="needs improvement">needs improvement</option>
+                         <option #assessmentSelfP class= "selected">{{assessmentSelfPS}}</option>
+                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="needs improvement">Needs Improvement</option>
                 </select>
                      
          </td> 
