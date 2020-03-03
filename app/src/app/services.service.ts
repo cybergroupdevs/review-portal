@@ -37,8 +37,8 @@ export class ServicesService {
   }
 
   employeeData(): Observable<any>{
-    const params: any = new HttpParams().set('id', this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id);
-    return this.http.get("http://localhost:3001/employees").pipe(
+    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+    return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -81,22 +81,23 @@ export class ServicesService {
   }
 
   updateReviewData(userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/5e5bc9889dafbe6380096ca6",userObj).pipe(
+    return this.http.patch("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06",userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));
   }
 
-  empData(): Observable<any>{
-    return this.http.get("http://localhost:3001/employees/5e5c905453b4ed3cda5b1d8e").pipe(
-      tap(_ => this.log("received employee details")),
-      catchError(this.handleError<any>('error in details')
-    ));
-  }
+  // empData(): Observable<any>{
+  //   return this.http.get("http://localhost:3001/employees/5e579020a961b2f91f6be7f4").pipe(
+  //     tap(_ => this.log("received employee details")),
+  //     catchError(this.handleError<any>('error in details')
+  //   ));
+  // }
 
   reviewerData(): Observable<any>{
-    return this.http.get(`http://localhost:3001/review/show/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`).pipe(
-      tap(_ => this.log("received reviewer details")),
+    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+    return this.http.get(`http://localhost:3001/review/${id}`).pipe(
+      tap(_ => this.log("reviewer details")),
       catchError(this.handleError<any>('error in details')
     ));
   }

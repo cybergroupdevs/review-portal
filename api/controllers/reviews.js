@@ -7,7 +7,6 @@ class Review {
     constructor(){
         console.log("reached controller")
     }
-      
     // async show(req,res){
     //     const review = await model.review.get({"_id": req.params.id});
     //     console.log(review);
@@ -15,13 +14,7 @@ class Review {
     // }
 
     async show(req,res){
-        // let searchParameter1 = "_id";
-        // let searchParameter2 = "employeeId";
-        // let searchParameter3 = "cgiCode";
-        // let searchParameter4 = "reviewer";
-        // let searchParameter5 = "qualityAnalyst";
         var searchParam = req.query.searchParameter;
-
         console.log(searchParam);
         console.log(req.params.id);
         let criteria = { };

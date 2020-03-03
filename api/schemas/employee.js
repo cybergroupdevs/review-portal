@@ -57,6 +57,22 @@ const employeeSchema = new mongoose.Schema({
     project: [{
         type: String
     }],
+    aadharNumber:{
+        type: String
+    },
+    pancardNumber:{
+        type: String
+    },
+    passportNumber:{
+        type: String
+    },
+    bloodGroup:{
+        type: String
+    },
+    personalEmailId:{
+        type: String
+    },
+    
     
 })
 

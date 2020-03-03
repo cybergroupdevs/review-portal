@@ -1,43 +1,13 @@
-body{
-    color: grey;
-    margin-left: 50vw;
+#deceased{
+    background-color:#FFF3F5;
+	padding-top:10px;
+	margin-bottom:10px;
 }
-.form-control{
-    background-color: #eeeeee;
-    height: 3vh;
-    width: 33vw;
-    border-radius: 9%;
-    border: hidden !important;
-    font-size: 1rem;
+.remove_field{
+	float:right;	
+	cursor:pointer;
+	position : absolute;
 }
-
-
-.required{
-    color: #e02222;
-    font-size: 12px    
-}
-.row{
-    margin-left: 10vw;
-}
-label{
-    font-weight: 400;
-    font-size: 1rem;
-    color: #333333;
-}
-input[type=file]
-{
-    background-color: white;
-    
-}
-input[type=textbox]{
-    height: 15vh;
-}
-input[type=button]{
-    border-radius: 20%;
-    background-color: blue;
-    font-size: 1rem;
-    color: white;
-    border: none;
-    margin-left: 3rem;
-    
+.remove_field:hover{
+	text-decoration:none;
 }

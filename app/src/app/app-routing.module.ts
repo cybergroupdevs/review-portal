@@ -2,6 +2,7 @@ import { HeaderComponent } from './header/header.component';
 import { ReviewTableComponent } from './review-table/review-table.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { from } from 'rxjs';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
@@ -14,6 +15,7 @@ import { AdminCrudComponent } from './admin-crud/admin-crud.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {UpdatePersonalInfoComponent} from './update-personal-info/update-personal-info.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
@@ -43,11 +45,30 @@ const routes: Routes = [
   },
   {path: "addUser", component: AddUserComponent},
   {path: "reviewerqaer", component: ReviewerQaerComponent},
-  {path: "nav", component: ReviewNavbarComponent},
+  {
+    path: "nav", component: ReviewNavbarComponent, children: [
+      {
+        path: "", redirectTo: 'allReviews', pathMatch: 'full'
+      },
+      {
+        path: "allReviews", component: ReviewTableComponent
+      },
+      {
+        path: "pendingByReviewer", component: ReviewTableComponent
+      },
+      {
+        path: "pendingByQAer", component: ReviewTableComponent
+      },
+      {
+        path: "closed", component: ReviewTableComponent
+      }
+    ]
+  },
   {path: "review", component: ReviewerReviewComponent},
-  {path: "selfReview", component: SelfReviewComponent},
   {path: "createReview", component: CreateReviewComponent},
   {path: "adminHeader", component: AdminHeaderComponent}
+  {path: "selfReview", component:SelfReviewComponent},
+  {path: "personal-info", component:UpdatePersonalInfoComponent},
 ];
 
 @NgModule({

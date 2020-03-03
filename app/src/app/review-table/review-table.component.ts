@@ -2,6 +2,7 @@ import { ServicesService } from './../services.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-review-table',
@@ -10,7 +11,6 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 
 export class ReviewTableComponent implements OnInit {
-
   constructor(
     private _router: Router, 
     private _service: ServicesService
@@ -42,7 +42,6 @@ export class ReviewTableComponent implements OnInit {
         "Status": res[0].status
       }
     });
-  }
 
   getValues(temp: any){
     return (Object.values(temp));
