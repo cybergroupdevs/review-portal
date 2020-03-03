@@ -1,8 +1,9 @@
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { HeaderComponent } from './header/header.component';
 import { ReviewTableComponent } from './review-table/review-table.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
-import { from } from 'rxjs';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewNavbarComponent } from './review-navbar/review-navbar.component';
 import { SelfReviewComponent } from './self-review/self-review.component';
@@ -18,33 +19,63 @@ import { Routes, RouterModule } from '@angular/router';
 import {UpdatePersonalInfoComponent} from './update-personal-info/update-personal-info.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "login", pathMatch: "full"},
-  {path: "login", component: LoginComponent},
-  {path: "employees", component:AdminCrudComponent},
-  {path: "user", component: HeaderComponent, children: [
-    {path: "", redirectTo: "profile", pathMatch:"full"},
-    {path: "profile", component: AddUpdateUserComponent},
-    {path: "reviews", component: ReviewNavbarComponent, children: [
-      {path: "", redirectTo: "allReviews", pathMatch: "full"},
-      {path: "allReviews", component: ReviewTableComponent},
-      {path: "pendingByReviewer", component:  ReviewTableComponent},
-      {path: "pendingByQAer", component: ReviewTableComponent},
-      {path: "closed", component: ReviewTableComponent}
-    ]}
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+  { path: "404", component: ErrorPageComponent},
+  { path: "user", canActivate: [AuthGuardService], component: HeaderComponent, children: [
+    {
+      path: "", redirectTo: "profile", pathMatch:"full"
+    },
+    {
+      path: "profile", component: AddUpdateUserComponent
+    },
+    {
+      path: "reviews", component: ReviewNavbarComponent, children: [
+        {
+          path: "", redirectTo: "allReviews", pathMatch: "full"
+        },
+        {
+          path: "allReviews", component: ReviewTableComponent
+        },
+        {
+          path: "pendingByReviewer", component:  ReviewTableComponent
+        },
+        {
+          path: "pendingByQAer", component: ReviewTableComponent
+        },
+        {
+          path: "closed", component: ReviewTableComponent
+        }
+      ]
+    }
   ]},
 
-  {path: "admin", component: AdminMainComponent, children: [
-    {path: "", redirectTo: "home", pathMatch: 'full'},
-    {path: "home", component: AdminOptionsComponent},
-    {path: "profile", component: AddUpdateUserComponent},
-    {path: "review", component: CreateReviewComponent},
-    {path: "employees", component: AdminCrudComponent},
-    {path: "newEmployee", component: AddUserComponent},
-    {path: "updateEmployee", component: AddUpdateUserComponent}
+  { path: "admin", canActivate: [AuthGuardService], data: {role: "Admin"},component: AdminMainComponent, children: [
+    {
+      path: "", redirectTo: "home", pathMatch: 'full'
+    },
+    {
+      path: "home", component: AdminOptionsComponent
+    },
+    {
+      path: "profile", component: AddUpdateUserComponent
+    },
+    {
+      path: "review", component: CreateReviewComponent
+    },
+    {
+      path: "employees", component: AdminCrudComponent
+    },
+    {
+      path: "newEmployee", component: AddUserComponent
+    },
+    {
+      path: "updateEmployee", component: AddUpdateUserComponent
+    }
   ]
   },
-  {path: "addUser", component: AddUserComponent},
-  {path: "reviewerqaer", component: ReviewerQaerComponent},
+  { path: "addUser", component: AddUserComponent },
+  { path: "reviewerqaer", component: ReviewerQaerComponent },
   {
     path: "nav", component: ReviewNavbarComponent, children: [
       {
@@ -64,11 +95,11 @@ const routes: Routes = [
       }
     ]
   },
-  {path: "review", component: ReviewerReviewComponent},
-  {path: "createReview", component: CreateReviewComponent},
-  {path: "adminHeader", component: AdminHeaderComponent}
-  {path: "selfReview", component:SelfReviewComponent},
-  {path: "personal-info", component:UpdatePersonalInfoComponent},
+  { path: "review", component: ReviewerReviewComponent },
+  { path: "createReview", component: CreateReviewComponent },
+  { path: "adminHeader", component: AdminHeaderComponent },
+  { path: "selfReview", component:SelfReviewComponent },
+  { path: "personal-info", component:UpdatePersonalInfoComponent },
 ];
 
 @NgModule({
