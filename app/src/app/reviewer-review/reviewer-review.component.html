@@ -1,11 +1,4 @@
 <style>
-        /* table, th, td { 
-            border: 2px solid black ; 
-            border-collapse: collapse; 
-            padding: 6px; 
-            width: 80%;
-
-        }  */
         table { 
              width: 100%; 
              border-collapse: collapse; 
@@ -24,6 +17,7 @@
         tr:nth-of-type(odd) { 
              background: #f5f5f6;
         }
+        
         tr:nth-of-type(even) {
              background: #e1e2e1; 
         }
@@ -31,9 +25,7 @@
             background-color: white;
             color: black;
         }
-        t{
-            background-color: white;
-        }
+        
         #headers{
             height: 10vh;
             font-size: medium;
@@ -91,8 +83,10 @@
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
 		display: block; 
-	}
-	
+    }
+    textarea{
+        width: -webkit-fill-available;
+    }
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
@@ -102,7 +96,8 @@
 
 	}
 	
-	tr { border: 1px solid #ccc; }
+    tr { border: 1px solid #ccc; 
+        margin-bottom: 5rem;}
 	
 	td { 
 		/* Behave  like a "row" */
