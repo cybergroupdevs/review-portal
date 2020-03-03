@@ -133,6 +133,8 @@ th {
 //    height: 3rem;
 // }
 
+
+
 textarea{
    width: 96rem;
 }
@@ -197,6 +199,56 @@ textarea{
 
         }
 
+        .model{
+            height: 17rem;
+        }
 
+        .myFont{
+            font-size: 6rem;
+            color: #6745C2;
+            align-self: center;
+            position: absolute;
+            bottom: 9rem;
+        }
 
+        .myFont2{
+            font-size: 6rem;
+            color: green;
+            align-self: center;
+            position: absolute;
+            bottom: 9rem;
+            
+        }
 
+        .heading{
+            font-weight: bold;
+            margin-top: 5rem;
+            
+        }
+
+        .modal-content{
+            position: relative;
+        }
+
+        .modal-header{
+            background-color: #311a91 ;
+            height: 5rem;
+        }
+
+        .modal-title{
+            color: white;
+        }
+
+        // .close{
+        //     position: absolute;
+        //  top: 0rem;
+        // right: 2rem;
+        // }
+
+        .button1{
+            background-color:  #dc3545 !important;
+        }
+
+        .button2{
+        background-color:#28a745 !important ;
+        }

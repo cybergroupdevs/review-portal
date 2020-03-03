@@ -1,4 +1,82 @@
- <form  >
+<!-- The Modal 1-->
+<div class="modal" id="saveModel" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont">
+            <i class="fa fa-check-circle " ></i>
+        </div>
+
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Saved!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+        <!-- Modal footer -->
+        <div >
+          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal 2-->
+<div class="modal" id="submitVerficationModel" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont2">
+            <i class="fa fa-check-circle " ></i>
+        </div>
+
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Submitted!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+        <!-- Modal footer -->
+        <div >
+          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal 2-->
+  <div class="modal" id="submitModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Are you sure you want to submit? Once submitted it cannot be resubmitted.
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" data-dismiss="modal" (click)="submitReview()">Submit</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+
+<form  >
  <form #reviewerForm class="form">
     <div class="container-fluid mt-3">
     <div class="panel-body">
@@ -105,12 +183,16 @@
     </div> 
 </div>   
      <div class="buttons" >
-     <div><button type="Submit" class="btn btn-primary">Cancel</button></div>
-     <div><button type="Submit" class="btn btn-primary" (click)="updateSelfReview()">Save</button></div>
-     <div><button type="Submit" class="btn btn-primary" (click)="submitReview()">Submit</button></div>
+     <div><button type="button" class="btn btn-primary"  >Cancel</button></div>
+     <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel" (click)="updateSelfReview()">Save</button></div>
+     <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel" >Submit</button></div>
     </div>
     
+    
  </form>
+
+ 
+
 
 
                 
