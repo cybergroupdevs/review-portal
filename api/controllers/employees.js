@@ -59,6 +59,7 @@ class Employee {
     }
  
     async login(req, res) {
+        console.log(req.body);
         let user = await model.employee.get({$and : [{"email": req.body.email},{"password": req.body.password}]
                                                 }, 
                                                 {"email": 1,
@@ -70,7 +71,8 @@ class Employee {
                                                 "designation": 1
                                             });
         console.log(user);
-        if(user != null || user != []){
+        // debugger
+        if(JSON.stringify(user) != JSON.stringify([])){
             let token = jwtHandler.tokenGenerator(user);
             if(token != null){
                 let resBody = {

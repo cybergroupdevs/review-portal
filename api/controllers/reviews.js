@@ -17,6 +17,7 @@ class Review {
         var searchParam = req.query.searchParameter;
         console.log(searchParam);
         console.log(req.params.id);
+        
         let criteria = { };
         criteria[searchParam] = req.params.id;
         console.log(criteria);

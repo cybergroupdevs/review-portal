@@ -3,13 +3,13 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { identifierModuleUrl, analyzeAndValidateNgModules } from '@angular/compiler';
 import { stringify } from 'querystring';
-
+ 
 @Component({
   selector: 'app-review-table',
   templateUrl: './review-table.component.html',
   styleUrls: ['./review-table.component.scss']
 })
-
+ 
 export class ReviewTableComponent implements OnInit {
   constructor(
     private _router: Router, 
@@ -18,7 +18,6 @@ export class ReviewTableComponent implements OnInit {
 
   reviewArray = ["...", "...", "...", "...", "..."];
   keys = ["FormName", "Cycle", "TargetDate", "Status", "CreatedAt"];
-
   ngOnInit() {
     let current_route = this._router.url.split("/")[3];
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
@@ -33,7 +32,7 @@ export class ReviewTableComponent implements OnInit {
       this.sendRequest(id, "qualityAnalyst");
     }
   }
-
+ 
   sendRequest(id, searchBy){
     this._service.reviewData2(id, searchBy).subscribe(res => {
       console.log(res);
