@@ -1,7 +1,8 @@
-
-body{
+  body{
     color: grey;
     margin-left: 50vw;
+    font: Roboto;
+    font-size: medium;
 }
 .form-control{
     background-color: #eeeeee;
@@ -10,8 +11,8 @@ body{
     border-radius: 9%;
     border: hidden !important;
     outline: none;
-    /* font-size: 1rem; */
-}
+     }
+
 
 
 .required{
@@ -22,9 +23,11 @@ body{
     margin-left: 10vw;
 }
 label{
-    font-weight: 400;
-    /* font-size: 1rem; */
-    color: #333333;
+    /* font-weight: 1000; */
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
 }
 input[type=file]
 {
@@ -35,23 +38,35 @@ input[type=file]
 input[type=textbox]{
     height: 15vh;
     
+    
 }
 input[type=button]{
     border-radius: 20%;
     background-color: blue;
-    font-size: 1rem;
     color: white;
     border: none;
-    margin-left: 3rem;
+    margin-left: 75vw;
     
     
 }
-
-form{
+input [type=textbox]{
+    border: none ;
+    resize: none;
+}
+/* form{
     width: 2rem;
+} 
+ 
+ #deceased{
+    background-color:#FFF3F5;
+	padding-top:10px;
+	margin-bottom:10px;
 }
-
-/* .col-md-2 col-sm-3 col-xs-12{
-    font-size: 90%;
-    font-weight: bolder;
+.remove_field{
+	float:right;	
+	cursor:pointer;
+	position : absolute;
+}
+.remove_field:hover{
+	text-decoration:none;
 } */
