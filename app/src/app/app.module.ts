@@ -26,6 +26,8 @@ import { UpdatePersonalInfoComponent } from './update-personal-info/update-perso
 
 
 import { CreateReviewComponent } from './create-review/create-review.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminMainComponent } from './admin-main/admin-main.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { CreateReviewComponent } from './create-review/create-review.component';
     MyReviewsComponent,
     ReviewTableComponent,
     SelfReviewComponent,
+    AdminHeaderComponent,
+    AdminMainComponent
     UpdatePersonalInfoComponent
   ],
   imports: [
