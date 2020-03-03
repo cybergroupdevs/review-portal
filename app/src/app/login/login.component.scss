@@ -25,7 +25,7 @@
 .panel > .panel-heading h5{
     font-size: large;
     text-align: center;
-    color: #C3CEDD;
+    color: white;
     font-family: Roboto;   
 }
 .panel-body{
@@ -50,9 +50,12 @@
   }
 
 #loginBtn{
+    
+    color: white;
     margin: auto;
     justify-content: center;
     border-radius: 10px;
+    background-color: #6745C2;
 }
 .logo-img{
     width: 10rem; 
