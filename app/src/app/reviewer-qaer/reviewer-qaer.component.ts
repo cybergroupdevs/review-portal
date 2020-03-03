@@ -16,14 +16,12 @@ export class ReviewerQaerComponent implements OnInit {
   empCode: string = null;
   reviewerName: string=null;
   rDesignation: string=null;
-  divisionName: string=null;
   rJoined:Date=null;
   rcgExperience:number=null;
   empName: string=null;
   qaerName: string=null;
   eDesignation: string=null;
   reviewCycle: string=null;
-  promotionCycle: string=null;
   ecgExperience: number=null;
  
   
@@ -55,15 +53,13 @@ export class ReviewerQaerComponent implements OnInit {
 setData(){
   this.empCode= this.reviewQaerArray.cgiCode;
   this.reviewerName=this.reviewQaerArray.reviewerName;
-  this.rDesignation =this.reviewQaerArray.designation;
-  this.divisionName=this.reviewQaerArray.divisionName;
+  this.rDesignation =this.reviewQaerArray.designation;;
   this.rJoined=this.reviewQaerArray.joined;
   this.rcgExperience=this.reviewQaerArray.totalExperience;
   this.empName=this.reviewQaerArray.firstName;
   this.qaerName=this.reviewQaerArray.qaerName;
   this.eDesignation=this.reviewQaerArray.designation;
   this.reviewCycle=this.reviewQaerArray.reviewCycle;
-  this.promotionCycle=this.reviewQaerArray.promotionCycle;
   this.ecgExperience=this.reviewQaerArray.totalExperience;
  }
 

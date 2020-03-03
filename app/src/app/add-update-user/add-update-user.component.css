@@ -1,8 +1,4 @@
-#deceased{
-    background-color:#FFF3F5;
-	padding-top:10px;
-	margin-bottom:10px;
-}
+
 .remove_field{
 	float:right;	
 	cursor:pointer;
@@ -14,7 +10,6 @@
 
 label {
     float: left;
-    font-size: large;
 }
 span {
     display: block;
