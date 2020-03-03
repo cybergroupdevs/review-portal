@@ -87,6 +87,11 @@
     textarea{
         width: -webkit-fill-available;
     }
+    select{
+        width: -webkit-fill-available;
+        
+        margin: auto;
+    }
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
@@ -129,8 +134,6 @@
 	
 }
        
-
-
 </style> 
 
         <div class="container-fluid mt-3">
@@ -178,7 +181,7 @@
                      
                     <td align="center">
                            <select  required (change)="selectChangeHandler($event)"> 
-                               <option>{{assessmentReviewerTS}}</option> 
+                                <option [ngValue]="selected" selected hidden>{{assessmentReviewerTS}}</option>
                                 <option value="Meets Expectations">Meets Expectations</option>
                                 <option value="Needs Improvement">Needs Improvement</option>
                            </select>
@@ -262,7 +265,8 @@
                
                  <td align="center">
                         <select required (change)="selectChangeHandlerCS($event)"> 
-                             <option>{{assessmentReviewerCS}}</option>       
+                             <option [ngValue]="selected" selected hidden>{{assessmentReviewerCS}}</option>
+                                  
                              <option value="Meets Expectations">Meets Expectations</option>
                              <option value="Needs Improvement">Needs Improvement</option>
                         </select>
@@ -289,8 +293,9 @@
                  </td>                      
                
                  <td align="center">
-                        <select  required (change)="selectChangeHandlerP($event)"> 
-                             <option>{{assessmentReviewerP}}</option>       
+                        <select  required (change)="selectChangeHandlerP($event)">
+                             <option [ngValue]="selected" selected hidden>{{assessmentReviewerP}}</option> 
+                                
                              <option value="Meets Expectations">Meets Expectations</option>
                              <option value="Needs Improvement">Needs Improvement</option>
                         </select>
@@ -299,7 +304,7 @@
                 </tr>
                 <div class="buttons">
                     <button class="btn btn-primary add-user-btn"(click)=updateReviewDetails()>save</button> 
-                    <button class="btn btn-primary add-user-btn"(click)=updateReviewDetails()>submit</button>
+                    <button class="btn btn-primary add-user-btn"(click)=submitReviewDetails()>submit</button>
                   </div>
                 </table> 
                 </div>

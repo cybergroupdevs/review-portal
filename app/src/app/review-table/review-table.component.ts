@@ -52,7 +52,6 @@ export class ReviewTableComponent implements OnInit {
       this.getKeys(this.reviewArray[0]);
     });
   }
-
   getValues(temp: any){
     if(temp != null || temp != undefined)
       return (Object.values(temp));

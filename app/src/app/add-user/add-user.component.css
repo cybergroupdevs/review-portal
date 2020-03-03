@@ -5,11 +5,11 @@
     font-size: medium;
 }
 .form-control{
-    background-color: #eeeeee;
-    height: 3vh;
-    width: 33vw;
-    border-radius: 9%;
-    border: hidden !important;
+    /* background-color: #eeeeee; */
+    /* height: 3vh; */
+    width: 40vw;
+    /* border-radius: 9%; */
+    /* border: hidden !important; */
     outline: none;
      }
 
@@ -53,20 +53,3 @@ input [type=textbox]{
     border: none ;
     resize: none;
 }
-/* form{
-    width: 2rem;
-} 
- 
- #deceased{
-    background-color:#FFF3F5;
-	padding-top:10px;
-	margin-bottom:10px;
-}
-.remove_field{
-	float:right;	
-	cursor:pointer;
-	position : absolute;
-}
-.remove_field:hover{
-	text-decoration:none;
-} */

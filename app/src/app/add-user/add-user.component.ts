@@ -20,6 +20,9 @@ export class AddUserComponent implements OnInit {
   @ViewChild('division', {static: false}) division: ElementRef;
   @ViewChild('joined', {static: false}) joined: ElementRef;
   @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
+  @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
+  @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
+
 
   
   
@@ -39,18 +42,20 @@ createUser(){
       designation: this.designation.nativeElement.value,
       division: this.division.nativeElement.value,
       joined: this.joined.nativeElement.value,
-      cgiCode: this.cgiCode.nativeElement.value
+      cgiCode: this.cgiCode.nativeElement.value,
+      previousExperience: this.previousExperience.nativeElement.value,
+      totalExperience: this.totalExperience.nativeElement.value
     }
     // console.log(userObj);
-    this._service.createUser(userObj).subscribe(res => this.res = res);
-    console.log(this.res);
-    if (this.res.status==200){
-
+    this._service.createUser(userObj).subscribe(res => 
+    {console.log(res);
+    if (res.status!=''){
+      console.log("successfully added")
     }
     else{
       console.log("error occured");
       
     }
 
-  }
-}
+  });
+}}

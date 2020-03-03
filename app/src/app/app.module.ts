@@ -49,7 +49,6 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     ActionBarComponent,
     AdminHeaderComponent,
     AdminMainComponent,
-
     UpdatePersonalInfoComponent
   ],
   imports: [
