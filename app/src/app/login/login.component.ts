@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       "password": this.password.nativeElement.value
     };
     let token = this._service.checkUser(user).subscribe(res => {
-      console.log(res.status);
+      console.log("-------------------------");
       console.log(res);
       // if(res.status == 200){
         this.onLogin(res.token);
