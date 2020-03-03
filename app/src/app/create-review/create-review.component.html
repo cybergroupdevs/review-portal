@@ -1,14 +1,14 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+<app-header></app-header>
 <div class="createReviewDiv">
     <h3 class="createReviewHeading">Create Review</h3>
-    <br><br>
+    <br>
     <form>
 
         <div class="row">
             <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-6 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="">
+                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
+                #input (input)="input.value=$event.target.value.toUpperCase()">
             </div>
         </div>
         <br>
@@ -36,7 +36,14 @@
         <div class="row">
             <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Reviewer:</label>
             <div class="col-md-6 col-sm-9 col-xs-12">
-                <input type="text" #reviewer class="form-control input-medium" value="">
+            <input type="text" #reviewer class="form-control input-medium" value="" #searchBox id="search-box" (input)="search(searchBox.value)">
+                <ul class="search-result">
+                    <li *ngFor="let user of emp$ | async" >
+                      <a routerLink="/">
+                        {{emp.firstName}}
+                      </a>
+                    </li>
+                </ul> 
             </div>
         </div>
         <br>
@@ -53,17 +60,16 @@
                 <input type="text" #cycle class="form-control input-medium" value="">
             </div>
         </div>
-        <br>
-        <div class="row">
+        <!-- <div class="row">
             <label class="col-md-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Target Date:</label>
             <div class="col-md-6 col-sm-9 col-xs-12 datepicker">
                 <input type="date" #targetDate class="form-control input-medium" value="">
             </div>
-        </div>
+        </div> -->
     
         <div class="row">
-            <div class="col-md-8 col-sm-9 col-xs-12 col-md-offset-4 col-sm-offset-3">
-                <button type="button" class="btn btn-success" (click)="createReview()"> Create Review </button>
+            <div class="col-md-2 col-sm-9 col-xs-12 col-md-offset-5 ">
+                <button type="button" class="btn btn-success" (click)="createReview()"> Create </button>
             </div>
         </div>
     </form>

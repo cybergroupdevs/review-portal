@@ -7,78 +7,83 @@ import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 @Component({
   selector: 'app-add-update-user',
   templateUrl: './add-update-user.component.html',
-  styleUrls: ['./add-update-user.component.css']
+  styleUrls: ['./add-update-user.component.scss']
 })
 export class AddUpdateUserComponent implements OnInit {
-  @ViewChild('firstName', {static: false}) firstName: ElementRef;
-  @ViewChild('lastName', {static: false}) lastName: ElementRef;
-  @ViewChild('password', {static: false}) password: ElementRef;
-  @ViewChild('email', {static: false}) email: ElementRef;
-  @ViewChild('location', {static: false}) location: ElementRef;
-  @ViewChild('designation', {static: false}) designation: ElementRef;
-  @ViewChild('division', {static: false}) division: ElementRef;
-  @ViewChild('joined', {static: false}) joined: ElementRef;
-  @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
-  @ViewChild('skills', {static: false}) skills: ElementRef;
-  @ViewChild('competenceManager', {static: false}) competenceManager: ElementRef;
-  @ViewChild('projectOwners', {static: false}) projectOwners: ElementRef;
   res:any;
+  @ViewChild('uemail', {static: false}) uemail: ElementRef;
+  @ViewChild('upassword', {static: false}) upassword: ElementRef;
+  @ViewChild('ufirstName', {static: false}) ufirstName: ElementRef;
+  @ViewChild('ulastName', {static: false}) ulastName: ElementRef;
+  @ViewChild('ulocation', {static: false}) ulocation: ElementRef;
+  @ViewChild('udesignation', {static: false}) udesignation: ElementRef;
+  @ViewChild('udivision', {static: false}) udivision: ElementRef;
+  @ViewChild('ujoined', {static: false}) ujoined: ElementRef;
+  @ViewChild('upreviousExperience', {static: false}) upreviousExperience: ElementRef;
+  @ViewChild('utotalExperience', {static: false}) utotalExperience: ElementRef;
+ 
+  
   
   constructor(private _service:ServicesService) { }
   
   userArray: any;
-  // firstName: String;
-  // lastName: String;
-  // email: String;
-  // password: String;
-  // location:String;
-  // designation:String;
-  // division: String;
-  // joined: String;
+  firstName: any;
+  lastName: any;
+  email: any;
+  //password: any;
+  location:any;
+  designation:any;
+  //division: any;
+  joined: any;
+  previousExperience: any;
+  totalExperience: any;
  
-  
-   ngOnInit() {
+ 
+  ngOnInit() {
      this.loadEmployeeData()
  }
  loadEmployeeData(){
   this._service.employeeData().subscribe(res => {
     console.log(res);
 
-    this.userArray = res[0];
+    this.userArray = res;
+    console.log(this.userArray)
     this.setEmployeeData();
   });
 }
 setEmployeeData(){
+  console.log(this.userArray);
   this.firstName= this.userArray.firstName;
-  this.lastName=this.userArray.lastName;
-  this.email =this.userArray.email;
-  this.location=this.userArray.location;
-  this.designation=this.userArray.designation;
-  this.division=this.userArray.division;
-  this.joined=this.userArray.joined;
-  this.previousExperience=this.userArray.previousExperience;
-  this.skills=this.userArray.skills;
-  this.competenceManager=this.userArray.competenceManager;
-  this.projectOwners=this.userArray.projectOwners;
+  this.lastName= this.userArray.lastName;
+  this.email= this.userArray.email;
+  //this.password= this.userArray.password.value;
+  this.location= this.userArray.location;
+  this.designation= this.userArray.designation;
+  //this.division= this.userArray.division.value;
+  this.joined= this.userArray.joined;
+  this.previousExperience= this.userArray.previousExperience;
+  this.totalExperience= this.userArray.totalExperience;
+ 
+  
   }
   
 
   updateData(){
     let userObj = {
-      firstName: this.firstName.nativeElement.value,
-      lastName: this.lastName.nativeElement.value,
-      password: this. password.nativeElement.value,
-      email: this.email.nativeElement.value,
-      location: this.location.nativeElement.value,
-      designation: this.designation.nativeElement.value,
-      division: this.division.nativeElement.value,
-      joined: this.joined.nativeElement.value,
-      previousExperience: this.previousExperience.nativeElement.value,
-      skills: this.skills.nativeElement.value,
-      competenceManager: this.competenceManager.nativeElement.value,
-      projectOwners: this.projectOwners.nativeElement.value,
+      firstName: this.ufirstName.nativeElement.value,
+      lastName: this.ulastName.nativeElement.value,
+      email: this.uemail.nativeElement.value,
+      password: this.upassword.nativeElement.value,
+      location: this.ulocation.nativeElement.value,
+      designation: this.udesignation.nativeElement.value,
+      division: this.udivision.nativeElement.value,
+      joined: this.ujoined.nativeElement.value,
+      previousExperience: this.upreviousExperience.nativeElement.value,
+      totalExperience: this.utotalExperience.nativeElement.value,
+      
+     
       }
-    //console.log(userObj);
+    console.log(userObj);
     this._service.updateData(userObj).subscribe(res =>  {
     console.log(this.res);
     if(res.status==200){
