@@ -6,17 +6,24 @@
     background-color: #000062 !important; 
     width: 16rem;
 }
-.remove_field{
-	float:right;	
-	cursor:pointer;
-	position : absolute;
+
+label {
+    float: left;
 }
-.remove_field:hover{
-	text-decoration:none;
+span {
+    display: block;
+    overflow: hidden;
+    padding: 0 4px 0 6px;
 }
-.update-profile{
+.form-control {
+    width: 100%;
+}
+
+
+.add-profile{
 	margin-top: 5rem;
 }
+
 .btn-primary:hover{
     background-color: #000062; 
 }
