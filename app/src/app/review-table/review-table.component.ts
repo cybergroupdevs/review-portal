@@ -23,25 +23,26 @@ export class ReviewTableComponent implements OnInit {
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     console.log(current_route);
     if(current_route === "allReviews"){
-      this.sendRequest(id, "employeeId");
+      this.sendRequest(id, "employeeId", "0");
     }
     else if(current_route === "pendingByReviewer"){
-      this.sendRequest(id, "reviewer");
+      console.log("current route is same");
+      this.sendRequest(id, "reviewer", "1");
     }
     else if(current_route === "pendingByQAer"){
-      this.sendRequest(id, "qualityAnalyst");
+      this.sendRequest(id, "qualityAnalyst", "2");
     }
   }
  
-  sendRequest(id, searchBy){
-    this._service.reviewData(id, searchBy).subscribe(res => {
+  sendRequest(id, searchBy, flag){
+    this._service.reviewData(id, searchBy, flag).subscribe(res => {
       console.log(res);
       let customObject = [];
       for(let i=0; i<res.length; i++){
         customObject[i] = {
             "FormName": res[i].formName,
             "Cycle": res[i].reviewCycle,
-            "TargetDate": res[i].targetDate,
+            "TargetDate": res[i].targetDate.substring(0, 10),
             "Status": res[i].status,
             "CreatedAt": res[i].date
           };
