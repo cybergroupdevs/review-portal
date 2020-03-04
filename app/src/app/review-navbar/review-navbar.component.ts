@@ -20,8 +20,6 @@ export class ReviewNavbarComponent implements OnInit {
 
   ngOnInit(){
 
-    this._service.reviewData2(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId").subscribe(res => {
-      console.log(res);
-    })
-}
   }
+  
+}

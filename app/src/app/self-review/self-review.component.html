@@ -1,5 +1,5 @@
 <!-- The Modal 1-->
-<div class="modal" id="saveModel" >
+<div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
   
@@ -49,7 +49,7 @@
   </div>
 
 
-  <!-- The Modal 2-->
+  <!-- The Modal 3-->
   <div class="modal" id="submitModel">
     <div class="modal-dialog">
       <div class="modal-content">

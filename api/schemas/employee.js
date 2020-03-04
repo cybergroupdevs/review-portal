@@ -23,6 +23,7 @@ const employeeSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+        default: "cybergroup@noida"
     },
     location:{
         type:String,
@@ -47,12 +48,6 @@ const employeeSchema = new mongoose.Schema({
     },
     skills:[{
         type:String
-    }],
-    competenceManager: {
-        type: String
-    },
-    project: [{
-        type: String
     }]
 })
 
