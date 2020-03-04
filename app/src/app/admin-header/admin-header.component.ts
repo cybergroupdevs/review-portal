@@ -16,10 +16,13 @@ export class AdminHeaderComponent implements OnInit {
     this.getUserName();
   }
 
+  logout(){
+    localStorage.removeItem("JwtHrms");
+  }
+
   getUserName(){
     let name = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.firstName;
     console.log(name);
     this.firstName = name;
   }
-
 }

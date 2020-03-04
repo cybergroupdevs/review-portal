@@ -1,23 +1,22 @@
 .page-header{
-    
     height: 4rem;
 }
 .navbar{
     color: white;
+    border-radius: 0;
     background-color: #000062;
+
 }
-.header-profileImage{
-    width: 4rem;
-    height: 4rem;}
+.user-name{
+    margin-left: 3rem;
+}
 .bg{
     background-color: #000062;
     border-radius: 0;
 }
-.nav-link, .user-name{
-    color: #fafafa;
+.nav-item{
+    margin:0 3rem 0 1rem;
 }
-
-.user-name{
-    font-weight: bold;
-    font-size: larger;
+.nav-link{
+    color: #E1E2E1;
 }

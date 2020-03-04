@@ -2,53 +2,60 @@
         <form>
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
+                    <label>CG Code</label>
+                    <input type="text" #cgiCode class="form-control input-sm">
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" #ufirstName class="form-control input-sm" value="{{firstName}}" >
+                        <input type="text" #firstName class="form-control input-sm">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" #ulastName class="form-control input-sm"value="{{lastName}}">
+                        <input type="text" #lastName class="form-control input-sm">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Email</label>
-                    <input type="email" #uemail class="form-control input-sm" value="{{email}}">
+                    <input type="email" #email class="form-control input-sm">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Skills</label>
-                    <input type="text" #uskills class="form-control input-sm datepicker" value="{{skills}}">
+                    <input type="text" #skills class="form-control input-sm datepicker">
 
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
                         <label >Designation</label>
-                        <input type="text" #udesignation class="form-control input-sm" value="{{designation}}" >
+                        <input type="text" #designation class="form-control input-sm">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Total Experience</label>
-                        <input type="text" #utotalExperience class="form-control input-sm" value="{{totalExperience}}">
+                        <input type="text" #totalExperience class="form-control input-sm">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
-                    <textarea #ulocation class="form-control input-sm" id="address" rows="5" value="{{location}}"></textarea>
+                    <textarea #location class="form-control input-sm" id="address" rows="5"></textarea>
                 </div>
                 
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Previous Experience</label>
-                    <input type="text" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}">
+                    <input type="text" #previousExperience class="form-control input-sm datepicker">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                         <label >Date of Joining</label>
-                        <input type="text" #ujoined class="form-control input-sm" value="{{joined}}">
+                        <input type="text" #joined class="form-control input-sm">
                 </div>
-                
-                
             </div>
-            
+            <div class="col-md-12 col-sm-12" id="addblock">
+                <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
+                    <input type='button' class="btn btn-primary" value="Add"  (click)="createUser()"/>
+                </div>
+            </div>
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
                     <input type='button' class="btn btn-primary" value="Add" (click)="createUser()"/>

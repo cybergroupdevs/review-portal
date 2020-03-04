@@ -8,12 +8,7 @@ const reviewSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Employee",
         required:true
-    },
-    divisionName:{
-        type:String,
-        default:null
-    },
-    
+    },    
     reviewer: {
         type: Schema.Types.ObjectId,
         ref: "Employee",
@@ -37,7 +32,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets Expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         },
         reviewerEvaluation:{
@@ -48,7 +43,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         }
     },
@@ -61,7 +56,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         },
         reviewerEvaluation:{
@@ -72,7 +67,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         }
     },
@@ -85,7 +80,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         },
         reviewerEvaluation:{
@@ -96,7 +91,7 @@ const reviewSchema = new mongoose.Schema({
             assessment:{
                 type: String,
                 default: null,
-                enum: [null, 'Needs Improvement', 'Meets expectation']
+                enum: [null, 'Needs Improvement', 'Meets expectation', 'Exceeds Expectation', 'Not Applicable']
             }
         }
     },
@@ -108,28 +103,25 @@ const reviewSchema = new mongoose.Schema({
 
     targetDate: {
         type: Date,
+        default: () => new Date(+new Date() + 7*24*60*60*1000),
         required: true
     },
 
     status:{
         type:String,
         default:"Pending-Self-Appraisal",
-        enum:["Pending-Self-Appraisal","Pending-Reviewer","Pending-QAer", "Close"]
+        enum:["Pending-Self-Appraisal", "Pending-Reviewer", "Pending-QAer", "Close"]
     },
 
     reviewCycle:{
         type: String,
-        default: null
-    },
-
-    promotionCycle:{
-        type: String,
-        default: null
+        required: true
     },
 
     flag:{
-        type: Number,
-        default: 0
+        type: String,
+        default: "0",
+        enum: ["0", "1", "2", "3"]
     }
 
 });

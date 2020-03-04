@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     };
     let token = this._service.checkUser(user).subscribe(res => {
       console.log("-------------------------");
+
       console.log(res);
       // if(res.status == 200){
         this.onLogin(res.token);
@@ -42,9 +43,8 @@ export class LoginComponent implements OnInit {
     if(token != null){
       localStorage.setItem("JwtHrms", token);
       let decodedToken = this._service.jsonDecoder(token);
-      // console.log(decodedToken, "my token");
       let designation = decodedToken.data.designation;
-      if(designation == "Associate 2"){
+      if(designation == "ADMIN"){
         this._router.navigate(['/admin']);
       }
       else{

@@ -47,6 +47,7 @@ export class AddUpdateUserComponent implements OnInit {
  
  
   ngOnInit() {
+    this.loadEmployeeData();
     let current_route = this._router.url.split("/");
     console.log(current_route);
     console.log(current_route[1]+"/"+current_route[2]);
@@ -58,8 +59,7 @@ export class AddUpdateUserComponent implements OnInit {
       this.temp = false;
       this.temp2 = false;
     }
-    // else if(current_route == "");
-    //  this.loadEmployeeData();
+    
   }
 
  loadEmployeeData(){

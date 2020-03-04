@@ -23,6 +23,7 @@ const employeeSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+        default: "cybergroup@noida"
     },
     location:{
         type:String,
@@ -47,33 +48,7 @@ const employeeSchema = new mongoose.Schema({
     },
     skills:[{
         type:String
-    }],
-    competenceManager: {
-        type: String
-    },
-    projectOwners: {
-        type: String
-    },
-    project: [{
-        type: String
-    }],
-    aadharNumber:{
-        type: String
-    },
-    pancardNumber:{
-        type: String
-    },
-    passportNumber:{
-        type: String
-    },
-    bloodGroup:{
-        type: String
-    },
-    personalEmailId:{
-        type: String
-    },
-    
-    
+    }]
 })
 
 const Employee = mongoose.model('Employee', employeeSchema);

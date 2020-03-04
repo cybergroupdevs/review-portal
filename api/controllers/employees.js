@@ -11,23 +11,34 @@ class Employee {
     }
 
     async create(req,res) {
-    
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
         let employeeObj ={
             firstName: req.body.firstName,
             lastName : req.body.lastName,
             email: req.body.email,
             designation: req.body.designation,
-            password:req.body.password,
-            reviewer : req.body.reviewer,
-            qualityAnalyst : req.body.qualityAnalyst,
+            skills: [req.body.skills],
+            cgiCode: req.body.cgiCode,
+            previousExperience: req.body.previousExperience,
+            totalExperience: req.body.totalExperience,
+            location: req.body.location
         }
         console.log(employeeObj);
         const employee= await model.employee.save(employeeObj)
         res.send(employee)
     }
   
+    async getEmployeeDetails(req, res){
+        let criteria = {"cgiCode": req.params.cgiCode}
+        const empId = await model.employee.get(criteria, 
+                                    {"email": 1,
+                                    "firstName": 1,
+                                    "lastName": 1,
+                                    "_id": 1,
+                                    "cgiCode": 1,
+                                    "designation": 1});
+        res.send(empId);
+    }
+
     async show(req,res){
         console.log("Reached SHOW");
         const employee = await model.employee.getUserData({"_id": req.params.id})
