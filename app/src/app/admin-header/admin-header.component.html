@@ -1,17 +1,49 @@
-<nav class="navbar navbar-expand-lg bg">
+<nav class="navbar navbar-expand-md bg navbar-dark">
     <a class="navbar-brand user-name">{{firstName}}</a>
-    <button class="navbar-toggler bg-color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a href="javascript: void(0)" routerLink="profile" class="nav-link">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Employee Operations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="javascript: void(0)" routerLink="employees" class="dropdown-item">View All Employees</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="javascript: void(0)" routerLink="newEmployee" class="dropdown-item">Create New Employee</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="javascript: void(0)" routerLink="updateEmployee" class="dropdown-item">Update Employee</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="javascript: void(0)" routerLink="review" class="dropdown-item">Create Review</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Logout</a>
+            </li>    
+        </ul>
+    </div>  
+  </nav>
+
+<!-- 
+<nav class="navbar navbar-expand-sm bg">
+    <a class="navbar-brand user-name">{{firstName}}</a>
+    <button class="navbar-toggler collapsed bg-color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>    
     </button>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-right">
   
-            <li class="nav-item mr-4">
+            <li class="nav-item">
                 <a href="javascript: void(0)" routerLink="profile" class="nav-link">My Profile</a>
             </li>
 
-            <li class="nav-item dropdown mr-4">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Employee Operations
                 </a>
@@ -33,4 +65,4 @@
         </ul>
     </div>
   
-  </nav>
+  </nav> -->
