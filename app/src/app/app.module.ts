@@ -52,8 +52,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ActionBarComponent,
     AdminHeaderComponent,
     AdminMainComponent,
+
     UpdatePersonalInfoComponent,
     ErrorPageComponent
+
   ],
   imports: [
     RouterModule,

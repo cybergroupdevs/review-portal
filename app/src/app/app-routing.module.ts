@@ -1,3 +1,5 @@
+
+
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ActionBarComponent } from './action-bar/action-bar.component';
@@ -98,11 +100,22 @@ const routes: Routes = [
     ]
   },
   {path: "review", component: ReviewerReviewComponent},
+
+
+  {path: "selfReview", component:SelfReviewComponent},
+
+
   {path: "createReview", component: CreateReviewComponent},
   {path: "adminHeader", component: AdminHeaderComponent},
-  {path: "selfReview", component:SelfReviewComponent},
+  
+  {path: "personal-info", component:UpdatePersonalInfoComponent},
+
+
+  {path: "createReview", component: CreateReviewComponent},
+  {path: "adminHeader", component: AdminHeaderComponent},
   {path: "actionBar", component:ActionBarComponent},
   {path: "personal-info", component:UpdatePersonalInfoComponent}
+
 ];
 
 @NgModule({
@@ -112,3 +125,4 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents=[AdminCrudComponent]
+
