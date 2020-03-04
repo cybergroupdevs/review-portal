@@ -17,6 +17,7 @@ export class RoleGuardService implements CanActivate {
     if (user === next.data.role) {
       return true;
     }
+    // else if(user)
 
     // navigate to not found page
     this._router.navigate(['/404']);
