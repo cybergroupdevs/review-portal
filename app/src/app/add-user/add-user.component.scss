@@ -1,7 +1,7 @@
-#update:hover{
+#add:hover{
     background-color: #000062; 
 }
-#update{
+#add{
     margin-top: 3rem;
     background-color: #000062 !important; 
     width: 16rem;
@@ -16,4 +16,12 @@
 }
 .update-profile{
 	margin-top: 5rem;
+}
+.btn-primary:hover{
+    background-color: #000062; 
+}
+.btn-primary{
+    margin-top: 3rem;
+    background-color: #000062; 
+    width: 16rem;
 }
