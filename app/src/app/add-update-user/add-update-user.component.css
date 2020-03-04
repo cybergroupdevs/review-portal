@@ -1,8 +1,4 @@
-#deceased{
-    background-color:#FFF3F5;
-	padding-top:10px;
-	margin-bottom:10px;
-}
+
 .remove_field{
 	float:right;	
 	cursor:pointer;
@@ -14,7 +10,6 @@
 
 label {
     float: left;
-    font-size: large;
 }
 span {
     display: block;
@@ -28,4 +23,13 @@ span {
 
 .update-profile{
 	margin-top: 5rem;
+}
+
+.btn-primary:hover{
+    background-color: #000062; 
+}
+.btn-primary{
+    margin-top: 3rem;
+    background-color: #000062; 
+    width: 16rem;
 }
