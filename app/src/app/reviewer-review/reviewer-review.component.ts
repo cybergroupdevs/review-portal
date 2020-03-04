@@ -47,7 +47,6 @@ export class ReviewerReviewComponent implements OnInit {
       this.reviewArray = res[0];
       console.log(this.reviewArray)
       this.setExistingData();
-
     });
 
   }
