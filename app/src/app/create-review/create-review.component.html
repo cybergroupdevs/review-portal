@@ -8,35 +8,35 @@
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                #input (input)="input.value=$event.target.value.toUpperCase()">
+                <input type="text" #empCgiCode class="form-control input-medium" id="empCgiCodeField" value="" maxlength="6"
+                (input)="empCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #empFirstName class="form-control input-medium" id="empFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #empDesignation class="form-control input-medium" id="empDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #empLastName class="form-control input-medium" id="empLastNameField" value="" readonly >
             </div>
         </div>
 
         <div class="row form-and-cycle">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Form Name:</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #email class="form-control input-medium" id="emailField" value="">
+                <input type="text" #formName class="form-control input-medium" id="formNameField" value="">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Cycle</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #email class="form-control input-medium" id="emailField" value="">
+                <input type="text" #cycle class="form-control input-medium" id="cycleField" value="">
             </div>
         </div>
         
@@ -49,24 +49,24 @@
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                >
+                <input type="text" #reviewerCgiCode class="form-control input-medium" id="reviewerCgiCodeField" value="" maxlength="6"
+                (input)="reviewerCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #reviewerFirstName class="form-control input-medium" id="reviewerFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #reviewerDesignation class="form-control input-medium" id="reviewerDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #reviewerLastName class="form-control input-medium" id="reviewerLastNameField" value="" readonly >
             </div>
         </div>
 
@@ -79,24 +79,24 @@
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                >
+                <input type="text" #qaerCgiCode class="form-control input-medium" id="qaerCgiCodeField" value="" maxlength="6"
+                (input)="qaerCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #qaerFirstName class="form-control input-medium" id="qaerFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #qaerDesignation class="form-control input-medium" id="qaerDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #qaerLastName class="form-control input-medium" id="qaerLastNameField" value="" readonly >
             </div>
         </div>        
     

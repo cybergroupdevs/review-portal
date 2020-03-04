@@ -19,6 +19,7 @@ export class ReviewNavbarComponent implements OnInit {
   faRight = faAngleDoubleRight;
 
   ngOnInit(){
+
   }
   
 }

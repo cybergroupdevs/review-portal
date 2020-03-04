@@ -40,11 +40,13 @@ class Review {
     }  
 
     async createReview(req, res) {
+        console.log(req.body);
         let addReview={
             employeeId: req.body.employeeId,
             reviewer: req.body.reviewer,
             qualityAnalyst: req.body.qualityAnalyst,
-            reviewCycle: req.body.reviewCycle
+            reviewCycle: req.body.reviewCycle,
+            formName: req.body.formName
         };
         console.log("reached create review");
         const review = await model.review.save(addReview);
