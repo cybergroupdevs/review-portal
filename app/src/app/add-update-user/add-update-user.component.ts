@@ -21,6 +21,7 @@ export class AddUpdateUserComponent implements OnInit {
   @ViewChild('ujoined', {static: false}) ujoined: ElementRef;
   @ViewChild('upreviousExperience', {static: false}) upreviousExperience: ElementRef;
   @ViewChild('utotalExperience', {static: false}) utotalExperience: ElementRef;
+  @ViewChild('uskills', {static: false}) uskills: ElementRef;
  
   
   
@@ -37,6 +38,7 @@ export class AddUpdateUserComponent implements OnInit {
   joined: any;
   previousExperience: any;
   totalExperience: any;
+  skills:any;
  
  
   ngOnInit() {
@@ -63,6 +65,7 @@ setEmployeeData(){
   this.joined= this.userArray.joined;
   this.previousExperience= this.userArray.previousExperience;
   this.totalExperience= this.userArray.totalExperience;
+  this.skills= this.userArray.skills;
  
   
   }
@@ -80,6 +83,8 @@ setEmployeeData(){
       joined: this.ujoined.nativeElement.value,
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
+      skills: this.uskills.nativeElement.value,
+      
       
      
       }

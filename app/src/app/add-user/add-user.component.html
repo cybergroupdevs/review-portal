@@ -1,65 +1,52 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="panel-body">
+        <form>
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>First Name	</label>
+                        <input type="text" #ufirstName class="form-control input-sm" value="{{firstName}}" >
+                </div>
 
-    <div class="panel-body">
-    <form>
-    <div class="col-md-12 col-sm-12">
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="name">First Name	</label>
-                <input type="text" class="form-control input-sm" #firstName placeholder="">
-            </div>
-
-           <div class="form-group col-md-6 col-sm-6">
-                <label for="name">Last Name	</label>
-                <input type="text" class="form-control input-sm" #lastName placeholder="">
-            </div>
-       
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="email">Email</label>
-                <input type="email" class="form-control input-sm" #email placeholder="">
-            </div>
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="cgiCode">CGI code</label>
-                <input type="email" class="form-control input-sm" #cgiCode placeholder="">
-            </div>
-    
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="mobile">Password</label>
-                <input type="text" class="form-control input-sm" #password placeholder="">
-            </div>
-
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>Last Name	</label>
+                        <input type="text" #ulastName class="form-control input-sm"value="{{lastName}}">
+                </div>
             
-        
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="city">Designation</label>
-                <input type="text" class="form-control input-sm" #designation placeholder="">
-            </div>
-        
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="state">Division</label>
-                <input type="text" class="form-control input-sm" #division placeholder="">
-            </div>
-    
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="country">Total Experience</label>
-                <input type="text" class="form-control input-sm" #totalExperience placeholder="">
-            </div>
-    
-        <div class="form-group col-md-6 col-sm-6">
-                <label for="pincode">Date of Joining</label>
-                <input type="text" class="form-control input-sm" #joined placeholder="">
-            </div>
-    
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="arrival">Previous Experience</label>
-                <input type="text" class="form-control input-sm datepicker" #previousExperience placeholder="">
-            </div>
-            <div class="form-group col-md-6 col-sm-6">
-                <label for="Location">Location</label>
-                <input type="text" class="form-control input-sm" #location rows="3">
-             </div>
-             <div class="form-group col-md-6 col-sm-6">
-                <label for="arrival">Skills</label>
-                <textarea class="form-control input-sm datepicker" #skills placeholder=""></textarea>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label >Email</label>
+                    <input type="email" #uemail class="form-control input-sm" value="{{email}}">
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+                    <label >Skills</label>
+                    <input type="text" #uskills class="form-control input-sm datepicker" value="{{skills}}">
+
+                </div>                
+                
+                <div class="form-group col-md-6 col-sm-6">
+                        <label >Designation</label>
+                        <input type="text" #udesignation class="form-control input-sm" value="{{designation}}" >
+                </div>
+            
+                <div class="form-group col-md-6 col-sm-6">
+                        <label>Total Experience</label>
+                        <input type="text" #utotalExperience class="form-control input-sm" value="{{totalExperience}}">
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label>Address</label>
+                    <textarea #ulocation class="form-control input-sm" id="address" rows="5" value="{{location}}"></textarea>
+                </div>
+                
+            
+                <div class="form-group col-md-6 col-sm-6">
+                    <label>Previous Experience</label>
+                    <input type="text" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}">
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                        <label >Date of Joining</label>
+                        <input type="text" #ujoined class="form-control input-sm" value="{{joined}}">
+                </div>
+                
+                
             </div>
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
@@ -67,6 +54,17 @@
                 </div>
             </div>
             
+<<<<<<< HEAD
 </div>
     
 </form>
+=======
+            <div class="col-md-12 col-sm-12" id="addblock">
+                <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
+                    <input type='button' class="btn btn-primary" value="Add" (click)="createUser()"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+>>>>>>> d23f39a421f7457cce7e31eece609bf44e64a806
