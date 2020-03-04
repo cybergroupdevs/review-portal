@@ -10,4 +10,5 @@ module.exports=(app) =>
     app.post("/createReview", controller.reviews.createReview);
     app.get("/review/:id", controller.reviews.show);
     app.patch("/reviews/update/:parameter", controller.reviews.update);
+    app.get("/employeeData/:cgiCode", controller.employees.getEmployeeDetails);
 }

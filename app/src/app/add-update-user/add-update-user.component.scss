@@ -1,9 +1,9 @@
-#update:hover{
+.btn-primary:hover{
     background-color: #000062; 
 }
-#update{
+.btn-primary{
     margin-top: 3rem;
-    background-color: #000062 !important; 
+    background-color: #000062; 
     width: 16rem;
 }
 
@@ -19,6 +19,20 @@
 }
 .remove_field:hover{
 	text-decoration:none;
+}
+.update-profile{
+	margin-top: 5rem;
+}
+label {
+    float: left;
+}
+span {
+    display: block;
+    overflow: hidden;
+    padding: 0 4px 0 6px;
+}
+.form-control {
+    width: 100%;
 }
 .update-profile{
 	margin-top: 5rem;

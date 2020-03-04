@@ -35,6 +35,7 @@ export class CreateReviewComponent implements OnInit {
 
   sendReq(cgiCodeValue){
     return this._service.getByCgiCodeReviewValues(cgiCodeValue);
+    // return this._service.reviewData2(cgiCodeValue, "cgiCode");
   }
 
   ngOnInit() {
