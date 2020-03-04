@@ -16,18 +16,17 @@ class Review {
     async show(req,res){
         let arr = [];
         let criteria;
+        let i = 0; 
         for (const key in req.query) {
-            // console.log(key, req.query[key]);
             criteria = { };
-            let i = 0;
             criteria[key] = req.query[key];
             arr[i] = criteria;
             i = i + 1;
         }        
-        console.log(arr);
+        //console.log(arr);
 
         const review = await model.review.get({$and : arr});
-        // console.log(review);
+        //console.log(review);
         res.send(review);
     }
 
