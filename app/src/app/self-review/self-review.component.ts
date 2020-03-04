@@ -67,8 +67,8 @@ export class SelfReviewComponent implements OnInit {
       "submitted" :true
     }
     this._service.updateSelfReview(this.id, reviwObj).subscribe(res =>  {
-      console.log(this.res , "this is res");
-      if(this.res.status==200){
+      console.log(res , "this is res");
+      if(res.status==200){
         console.log('Successful update!!');
     
       }
@@ -83,7 +83,7 @@ export class SelfReviewComponent implements OnInit {
   }
 
   updateSelfReview(){
-    console.log((this.rsTS , "idhar dekh"));
+    console.log((this.rsTS , "printing"));
     let reviewObj = {
       "technicalSkill": {
         "selfEvaluation": {

@@ -107,8 +107,10 @@
                 
                     <select  required (change)="selectChangeHandlerTS($event)"> 
                         <option #assessmentSelfT class= "selected">{{assessmentSelfTS}}</option>          
-                         <option value="meets expectations">Meets Epectations</option>
+                         <option value="meets expectations" selected>Meets Epectations</option>
                          <option value="needs improvement">Needs Improvement</option>
+                         <option value="Exceedes expectations">Exceeds expectations</option>
+                         <option value="Not applicable">Not applicable</option>
                     </select>
                          
              </td>  
@@ -124,8 +126,11 @@
              <td align="center" >
                 <select  required>        
                     <!-- <option>{{assessmentSelfCS}}</option>    -->
-                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="meets expectations" selected>Meets Expectations</option>
                      <option value="needs improvement">Needs Improvement</option>
+                     <option value="Exceddes expectations">Exceeds expectations</option>
+                     <option value="Not applicable">Not applicable</option>
+
                 </select>
                      
             </td>   
@@ -140,8 +145,10 @@
              <td align="center" >
                 <select #assessment required >
                     <!-- <option></option>            -->
-                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="meets expectations" selected>Meets Expectations</option>
                      <option value="needs improvement">Needs Improvement</option>
+                     <option value="Exceddes expectations">Exceeds expectations</option>
+                     <option value="Not applicable">Not applicable</option>
                 </select>
                      
             </td> 
@@ -156,8 +163,10 @@
              <td align="center" >
                 <select  required (change)="selectChangeHandlerCS($event)">  
                     <option #assessmentSelfC class= "selected">{{assessmentSelfCS}}</option>      
-                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="meets expectations" selected>Meets Expectations</option>
                      <option value="needs improvement">Needs Improvement</option>
+                     <option value="Exceddes expectations">Exceeds expectations</option>
+                     <option value="Not applicable">Not applicable</option>
                 </select>
                      
          </td> 
@@ -172,8 +181,10 @@
              <td align="center" >
                 <select  required (change)="selectChangeHandlerPS($event)">   
                          <option #assessmentSelfP class= "selected">{{assessmentSelfPS}}</option>
-                     <option value="meets expectations">Meets Expectations</option>
+                     <option value="meets expectations" selected>Meets Expectations</option>
                      <option value="needs improvement">Needs Improvement</option>
+                     <option value="Exceddes expectations">Exceeds expectations</option>
+                     <option value="Not applicable">Not applicable</option>
                 </select>
                      
          </td> 
@@ -185,7 +196,7 @@
      <div class="buttons" >
      <div><button type="button" class="btn btn-primary"  >Cancel</button></div>
      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel" (click)="updateSelfReview()">Save</button></div>
-     <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel" >Submit</button></div>
+     <div><button type="submit" class="btn btn-success" data-toggle="modal" data-target="#submitModel" >Submit</button></div>
     </div>
     
     

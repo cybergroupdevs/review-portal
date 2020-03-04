@@ -49,7 +49,7 @@ p{
 }
 
 button{
-    background-color: #311a91;
+    background-color: #000062;
     color: white;
     border-radius: 10%;
     border: none;
@@ -63,6 +63,7 @@ button{
     position: absolute;
     float: left;
     display: flex;
+    margin-left: 4rem;
 }
 
 select{
@@ -254,10 +255,10 @@ textarea{
         // right: 2rem;
         // }
 
-        .button1{
-            background-color:  #dc3545 !important;
-        }
+        // .button1{
+        //     background-color:  #dc3545 !important;
+        // }
 
-        .button2{
-        background-color:#28a745 !important ;
-        }
+        // .button2{
+        // background-color:#28a745 !important ;
+        // }
