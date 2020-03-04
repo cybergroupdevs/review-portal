@@ -11,17 +11,16 @@ class Employee {
     }
 
     async create(req,res) {
-    
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
         let employeeObj ={
             firstName: req.body.firstName,
             lastName : req.body.lastName,
             email: req.body.email,
             designation: req.body.designation,
-            password:req.body.password,
-            reviewer : req.body.reviewer,
-            qualityAnalyst : req.body.qualityAnalyst,
+            skills: [req.body.skills],
+            cgiCode: req.body.cgiCode,
+            previousExperience: req.body.previousExperience,
+            totalExperience: req.body.totalExperience,
+            location: req.body.location
         }
         console.log(employeeObj);
         const employee= await model.employee.save(employeeObj)

@@ -119,8 +119,9 @@ const reviewSchema = new mongoose.Schema({
     },
 
     flag:{
-        type: Number,
-        default: 0
+        type: String,
+        default: "0",
+        enum: ["0", "1", "2", "3"]
     }
 
 });

@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   { path: "404", component: ErrorPageComponent},
-  { path: "user", canActivate: [AuthGuardService], component: HeaderComponent, children: [
+  { path: "user", canActivate: [AuthGuardService, RoleGuardService], data: {role: "User"}, component: HeaderComponent, children: [
     {
       path: "", redirectTo: "profile", pathMatch:"full"
     },
@@ -53,7 +53,8 @@ const routes: Routes = [
     }
   ]},
 
-  { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "Associate 2"},component: AdminMainComponent, children: [
+  { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "ADMIN"},component: AdminMainComponent, children: [
+
     {
       path: "", redirectTo: "home", pathMatch: 'full'
     },
