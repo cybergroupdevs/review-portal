@@ -13,9 +13,10 @@ export class RoleGuardService implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const user = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.designation;
 
-    if (user.Role === next.data.role) {
+    if (user === next.data.role) {
       return true;
     }
+    // else if(user)
 
     // navigate to not found page
     this._router.navigate(['/404']);

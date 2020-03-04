@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.firstName = name;
   }
 
-  createReview(){
-    this._router.navigate(["/createReview"])
+  logout(){
+    localStorage.removeItem("JwtHrms");
   }
 }

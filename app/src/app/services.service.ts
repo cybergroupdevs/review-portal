@@ -80,14 +80,14 @@ export class ServicesService {
     ));
   }
 
-  reviewData(): Observable<any>{
-    return this.http.get("http://localhost:3001/review/5e5b85cdb4f6bcd838db5e06").pipe(
-      tap(_ => this.log("showing review details")),
-      catchError(this.handleError<any>('error in details')
-    ));
-  }
+  // reviewData(): Observable<any>{
+  //   return this.http.get("http://localhost:3001/review/5e5b85cdb4f6bcd838db5e06").pipe(
+  //     tap(_ => this.log("showing review details")),
+  //     catchError(this.handleError<any>('error in details')
+  //   ));
+  // }
 
-  reviewData2(id: string, searchBy: string): Observable<any>{
+  reviewData(id: string, searchBy: string): Observable<any>{
     return this.http.get("http://localhost:3001/review/"+id+"?searchParameter="+searchBy).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
