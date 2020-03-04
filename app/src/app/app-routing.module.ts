@@ -1,5 +1,4 @@
-
-
+import { RoleGuardService } from './guards/role-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ActionBarComponent } from './action-bar/action-bar.component';
@@ -54,7 +53,7 @@ const routes: Routes = [
     }
   ]},
 
-  { path: "admin", canActivate: [AuthGuardService], data: {role: "Admin"},component: AdminMainComponent, children: [
+  { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "Admin"},component: AdminMainComponent, children: [
     {
       path: "", redirectTo: "home", pathMatch: 'full'
     },

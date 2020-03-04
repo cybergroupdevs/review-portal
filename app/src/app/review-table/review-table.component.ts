@@ -34,7 +34,7 @@ export class ReviewTableComponent implements OnInit {
   }
  
   sendRequest(id, searchBy){
-    this._service.reviewData2(id, searchBy).subscribe(res => {
+    this._service.reviewData(id, searchBy).subscribe(res => {
       console.log(res);
       let customObject = [];
       for(let i=0; i<res.length; i++){

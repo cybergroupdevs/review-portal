@@ -22,7 +22,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
   @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
   @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
-
+  message : String=''
 
   
   
@@ -51,9 +51,12 @@ createUser(){
     {console.log(res);
     if (res.status!=''){
       console.log("successfully added")
+      this.message="success"
+
     }
     else{
       console.log("error occured");
+      this.message="unsuccessful"
       
     }
 

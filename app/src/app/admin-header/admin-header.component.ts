@@ -21,5 +21,4 @@ export class AdminHeaderComponent implements OnInit {
     console.log(name);
     this.firstName = name;
   }
-
 }

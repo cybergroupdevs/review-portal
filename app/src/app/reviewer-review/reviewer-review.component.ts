@@ -41,13 +41,12 @@ export class ReviewerReviewComponent implements OnInit {
     this.loadExistingData()
   }
   loadExistingData(){
-    this._service.reviewData().subscribe(res => {
+    this._service.reviewData2("5e57c9918967bb4fe8a52a97","reviewer").subscribe(res => {
       console.log(res);
       
-      this.reviewArray = res;
+      this.reviewArray = res[0];
       console.log(this.reviewArray)
       this.setExistingData();
-
     });
 
   }
