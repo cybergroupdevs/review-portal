@@ -34,7 +34,7 @@ export class CreateReviewComponent implements OnInit {
   userArray: any;
 
   sendReq(cgiCodeValue){
-    return this._service.getByCgiCodeReviewValues(cgiCodeValue);
+    // return this._service.getByCgiCodeReviewValues(cgiCodeValue);
     // return this._service.reviewData2(cgiCodeValue, "cgiCode");
   }
 
@@ -59,18 +59,18 @@ export class CreateReviewComponent implements OnInit {
     console.log(e.target.value);
     let cgiCodeValue = e.target.value;
 
-    this.sendReq(cgiCodeValue).subscribe( res => {
-      this.userArray =res[0]
-      this.setEmployeeData()
-      console.log(res);
-      if (res.status===200){
-        console.log(res);
-      }
-      else{
-        console.log("error occured");
+    // this.sendReq(cgiCodeValue).subscribe( res => {
+    //   this.userArray =res[0]
+    //   this.setEmployeeData()
+    //   console.log(res);
+    //   if (res.status===200){
+    //     console.log(res);
+    //   }
+    //   else{
+    //     console.log("error occured");
         
-      }
-    });
+    //   }
+    // });
   }
 
   onKey(getReviewer: any) { 
