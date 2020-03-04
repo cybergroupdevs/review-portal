@@ -9,6 +9,7 @@ import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
   styleUrls: ['./self-review.component.scss']
 })
 export class SelfReviewComponent implements OnInit {
+  message: any;
   res:any;
   @ViewChild('rsTS', {static: false}) rsTS: ElementRef;
   @ViewChild('rsCS', {static: false}) rsCS: ElementRef;
@@ -111,8 +112,15 @@ export class SelfReviewComponent implements OnInit {
 }
 console.log(reviewObj);
 this._service.updateSelfReview(this.id, reviewObj).subscribe(res =>  {
-  console.log(this.res , "this is res");
-  if(this.res.ok==1){
+  console.log(res.ok , "this is res");
+  if(res.ok==1){
+    console.log(res, 'Here');
+    const response = res;
+    this.message = res;
+
+    setTimeout(() => {
+      this.message = null;
+    }, 5000);
     console.log('Successful update!!');
 
   }
