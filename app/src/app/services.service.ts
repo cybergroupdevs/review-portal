@@ -147,14 +147,14 @@ export class ServicesService {
     }
 
     createReview(object): Observable<any>{
-      return this.http.post("http://localhost:3001/createReview", object).pipe(
+      return this.http.post("http://localhost:3001/review/create", object).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
     }
 
-    getByCgiCodeReviewValues(searchParam, searchParamValue): Observable<any>{
-      return this.http.get("http://localhost:3001/employeeId/"+searchParam+"?searchParameter="+searchParamValue).pipe(
+    getByCgiCode(cgiCode): Observable<any>{
+      return this.http.get("http://localhost:3001/employeeData/"+ cgiCode).pipe(
       tap(_ => this.log("got cgi code for review values")),
       catchError(this.handleError<any>('error in details'))
       );

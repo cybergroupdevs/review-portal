@@ -1,15 +1,25 @@
-.createReviewDiv{
-    margin: 4rem 5rem;
+// .createReviewDiv{
+//     margin: 4rem 5rem;
+// }
+.form-and-cycle{
+    padding: 2rem 0;
 }
 .btn-success:hover{
     background-color: #000062; 
 }
 .btn-success{
-    margin-top: 5rem;
-    margin-left: 2rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
     background-color: #000062; 
-    width: 16rem;
+    width: 20rem;
 }
 .createReviewHeading{
    text-align: center;
+}
+.row{
+    margin-bottom: 0.5rem;
+}
+h4{
+    color: #000062;
+    font-family: sans-serif;
 }
