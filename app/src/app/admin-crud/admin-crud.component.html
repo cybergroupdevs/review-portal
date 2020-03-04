@@ -4,7 +4,6 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<strong>ADMIN</strong>
-					<button class="btn btn-primary add-user-btn" type="button">Add User</button>
 				</div>
 				
 				<div class="panel-body">
@@ -16,7 +15,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Name</th>
                             <th scope="col">Designation</th>
-                            <th scope="col">Competence Manager</th>
 						</tr>
 						</thead>
 						<tbody id="adminTable" *ngFor = "let employee of usersArray">
@@ -32,9 +30,6 @@
 								</td>
 								<td>
 									{{employee.designation}}
-								</td>
-								<td>
-									{{employee.competenceManager}}
 								</td>
 								<td>
 									<a class="btn btn-primary btn-sm" routerLink="/user" id={{employee.email}}>Edit</a>

@@ -14,10 +14,17 @@ export class RoleGuardService implements CanActivate {
     const user = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.designation;
     console.log(user);
 
-    if (user === next.data.role) {
+    if (user == next.data.role) {
       return true;
     }
-    // else if(user)
+    else{
+      if(user == "Intern" || user == "Associate 1" || user == "Associate 2" || user == "Consultant 1" || user == "Consultant 1"){
+        let tempUser = "User";
+        if(tempUser == next.data.role){
+          return true;
+        }
+      }
+    }
 
     // navigate to not found page
     this._router.navigate(['/404']);

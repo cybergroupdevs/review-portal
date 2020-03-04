@@ -14,15 +14,20 @@ class Review {
     // }
 
     async show(req,res){
-        var searchParam = req.query.searchParameter;
-        console.log(searchParam);
-        console.log(req.params.id);
-        
-        let criteria = { };
-        criteria[searchParam] = req.params.id;
-        console.log(criteria);
-        const review = await model.review.get(criteria);
-        console.log(review);
+        let arr = [];
+        let criteria;
+        for (const key in req.query) {
+            // console.log(key, req.query[key]);
+            criteria = { };
+            let i = 0;
+            criteria[key] = req.query[key];
+            arr[i] = criteria;
+            i = i + 1;
+        }        
+        console.log(arr);
+
+        const review = await model.review.get({$and : arr});
+        // console.log(review);
         res.send(review);
     }
 
