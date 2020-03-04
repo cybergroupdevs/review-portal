@@ -14,20 +14,20 @@ export class ReviewerQaerComponent implements OnInit {
   
   reviewQaerArray: any;
   empCode: string = null;
-  reviewerName: string=null;
+  reviewer: string=null;
   designation: string=null;
   joined:Date=null;
   totalExperience:number=null;
   revieweeName: string=null;
-  qaerName: string=null;
-  reviewCycle: number=null;
+  qualityAnalyst: string=null;
+  reviewCycle: string=null;
  
   
    ngOnInit() {
      this.loadData()
  }
  loadData(){
-  this._service.reviewerData().subscribe(res => {
+  this._service.reviewData().subscribe(res => {
   
     console.log(res);
 
@@ -50,11 +50,11 @@ export class ReviewerQaerComponent implements OnInit {
 // }
 setData(){
   this.empCode= this.reviewQaerArray.cgiCode;
-  this.reviewerName=this.reviewQaerArray.reviewerName;
+  this.reviewer=this.reviewQaerArray.reviewer;
   this.joined=this.reviewQaerArray.joined;
   this.totalExperience=this.reviewQaerArray.totalExperience;
   this.revieweeName=this.reviewQaerArray.firstName;
-  this.qaerName=this.reviewQaerArray.qaerName;
+  this.qualityAnalyst=this.reviewQaerArray.qualityAnalyst;
   this.designation=this.reviewQaerArray.designation;
   this.reviewCycle=this.reviewQaerArray.reviewCycle;
  }
