@@ -12,8 +12,9 @@ export class RoleGuardService implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const user = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.designation;
+    console.log(user);
 
-    if (user.Role === next.data.role) {
+    if (user === next.data.role) {
       return true;
     }
 
