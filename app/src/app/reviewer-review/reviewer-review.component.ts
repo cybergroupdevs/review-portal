@@ -104,7 +104,7 @@ export class ReviewerReviewComponent implements OnInit {
 
   }
       console.log(userObj);
-      this._service.updateReviewData(userObj).subscribe(res =>  {
+      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
         console.log(res);
         if(res!=''){
           console.log('Successful update!!');
@@ -134,7 +134,7 @@ export class ReviewerReviewComponent implements OnInit {
       let userObj =  {
         "submitted" :true
       }
-      this._service.updateReviewData(userObj).subscribe(res =>  {
+      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
         console.log(res);
         if(this.res.status!=0){
           console.log('Successful update!!');
