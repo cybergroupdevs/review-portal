@@ -1,6 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -25,7 +26,7 @@ export class AddUpdateUserComponent implements OnInit {
  
   
   
-  constructor(private _service:ServicesService) { }
+  constructor(private _service:ServicesService, private _router:Router) { }
   
   userArray: any;
   firstName: any;
@@ -39,11 +40,28 @@ export class AddUpdateUserComponent implements OnInit {
   previousExperience: any;
   totalExperience: any;
   skills:any;
+
+  isReadonly = true;
+  temp = true;
+  temp2 = true;
  
  
   ngOnInit() {
-     this.loadEmployeeData()
- }
+    this.loadEmployeeData();
+    let current_route = this._router.url.split("/");
+    console.log(current_route);
+    console.log(current_route[1]+"/"+current_route[2]);
+    let calRoute = current_route[1]+"/"+current_route[2];
+    if(calRoute == "user/profile"){
+      this.temp = false;
+    }
+    else if(calRoute == "admin/profile"){
+      this.temp = false;
+      this.temp2 = false;
+    }
+    
+  }
+
  loadEmployeeData(){
   this._service.employeeData().subscribe(res => {
     console.log(res);
