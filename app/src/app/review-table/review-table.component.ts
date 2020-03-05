@@ -17,6 +17,7 @@ export class ReviewTableComponent implements OnInit {
     ) { }
 
   reviewArray = ["...", "...", "...", "...", "..."];
+  toJump: string;
   idArray = [];
   keys = ["FormName", "Cycle", "TargetDate", "Status", "CreatedAt"];
   ngOnInit() {
@@ -25,14 +26,17 @@ export class ReviewTableComponent implements OnInit {
     console.log(current_route);
     if(current_route === "allReviews"){
       this.sendRequest(id, "employeeId", "0");
+      this.toJump = "/user/pendingBySelf/edit";
     }
     else if(current_route === "pendingByReviewer"){
-      console.log("current route is same");
       this.sendRequest(id, "reviewer", "1");
+      this.toJump = "/user/pendingByReviewer/edit";
     }
     else if(current_route === "pendingByQAer"){
       this.sendRequest(id, "qualityAnalyst", "2");
+      this.toJump = "/user/pendingByReviewer/edit";
     }
+    // else if(current_route === "")
   }
  
   sendRequest(id, searchBy, flag){
@@ -46,9 +50,10 @@ export class ReviewTableComponent implements OnInit {
             "Cycle": res[i].reviewCycle,
             "TargetDate": res[i].targetDate.substring(0, 10),
             "Status": res[i].status,
-            "CreatedAt": res[i].date
+            "CreatedAt": res[i].date,
+            "Edit": res[i].employeeId._id+"-"+res[i].flag
           };
-      customObject2[i] = res[i].employeeId._id;
+      // customObject2[i] = res[i].employeeId._id;
       }
       console.log(customObject);
       this.reviewArray = customObject;

@@ -36,6 +36,12 @@ const routes: Routes = [
       path: "pendingByReviewer/edit/:id", component: ReviewerReviewComponent
     },
     {
+      path: "pendingBySelf/edit/:id", component: SelfReviewComponent
+    },
+    {
+      path: "pendingByQa/edit/:id", component: ReviewerReviewComponent
+    },
+    {
       path: "reviews", component: ReviewNavbarComponent, children: [
         {
           path: "", redirectTo: "allReviews", pathMatch: "full"
