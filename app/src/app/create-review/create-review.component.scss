@@ -1,8 +1,8 @@
-// .createReviewDiv{
-//     margin: 4rem 5rem;
-// }
+.createReviewDiv{
+    font-family:Roboto;
+}
 .form-and-cycle{
-    padding: 2rem 0;
+    padding-top: 2rem;
 }
 .btn-success:hover{
     background-color: #000062; 
@@ -14,12 +14,25 @@
     width: 20rem;
 }
 .createReviewHeading{
-   text-align: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 .row{
     margin-bottom: 0.5rem;
 }
 h4{
+    
     color: #000062;
-    font-family: sans-serif;
+    font-family: Roboto sans-serif;
 }
+h4 {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid rgb(201, 199, 199); 
+    line-height: 0.1em;
+    margin: 3rem 13rem 2rem; 
+ } 
+ h4 strong{
+    background:#fff; 
+    padding:0 10px;}
