@@ -6,8 +6,14 @@
     </thead>
     <tbody>
         <tr *ngFor = "let row of reviewArray">
-            <td *ngFor = "let td of getValues(row)">{{td}}</td>
-            <td *ngFor = "let idUser of idArray" [routerLink]="['/user/pendingByReviewer/edit', idUser]"  #{{idUser}}><img src="../../assets/images/edit-btn.png" ></td>
+            <!-- <td *ngFor = "let td of getValues(row)">{{td}}</td> -->
+            <td>{{row.FormName}}</td>
+            <td>{{row.Cycle}}</td>
+            <td>{{row.TargetDate}}</td>
+            <td>{{row.Status}}</td>
+            <td>{{row.CreatedAt}}</td>
+
+            <td [routerLink]="[toJump, row.Edit]"><img src="../../assets/images/edit-btn.png"></td>
         </tr>
     </tbody>
 </table>
