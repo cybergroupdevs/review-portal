@@ -1,22 +1,12 @@
-.btn-primary:hover{
+#update:hover{
     background-color: #000062; 
 }
-.btn-primary{
+#update{
     margin-top: 3rem;
-    background-color: #000062; 
+    background-color: #000062 !important; 
     width: 16rem;
 }
-.remove_field{
-	float:right;	
-	cursor:pointer;
-	position : absolute;
-}
-.remove_field:hover{
-	text-decoration:none;
-}
-.update-profile{
-	margin-top: 5rem;
-}
+
 label {
     float: left;
 }
@@ -28,6 +18,17 @@ span {
 .form-control {
     width: 100%;
 }
+
+
 .update-profile{
 	margin-top: 5rem;
+}
+
+.btn-primary:hover{
+    background-color: #000062; 
+}
+.btn-primary{
+    margin-top: 3rem;
+    background-color: #000062; 
+    width: 16rem;
 }
