@@ -74,7 +74,7 @@ export class ReviewerReviewComponent implements OnInit {
     this.reviewReviewerP= this.reviewArray.personality.reviewerEvaluation.comment;
     this.assessmentReviewerP= this.reviewArray.personality.reviewerEvaluation.assessment;
     console.log(this.reviewArray.personality.reviewerEvaluation.assessment);
-    this.selectedAssessmentP= this.assessmentReviewerTS;
+    this.selectedAssessment= this.assessmentReviewerTS;
     this.selectedAssessmentCS=this.assessmentReviewerCS;
     this.selectedAssessmentP=this.assessmentReviewerP;
 
