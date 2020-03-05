@@ -53,7 +53,10 @@ const routes: Routes = [
     }
   ]},
 
+
   { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "ADMIN"},component: AdminMainComponent, children: [
+
+
     {
       path: "", redirectTo: "home", pathMatch: 'full'
     },

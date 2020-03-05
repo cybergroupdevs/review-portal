@@ -27,6 +27,7 @@ export class ReviewerQaerComponent implements OnInit {
      this.loadData()
  }
  loadData(){
+
   // this._service.reviewData().subscribe(res => {
   
   //   console.log(res);
@@ -36,13 +37,13 @@ export class ReviewerQaerComponent implements OnInit {
   //   this.setData();
   // });
 
-  this._service.employeeData().subscribe(res=> {
-    console.log(res);
+//   this._service.employeeData().subscribe(res=> {
+//     console.log(res);
 
-    this.reviewQaerArray = res;
-    console.log(this.reviewQaerArray)
-    this.setData();
-});
+//     this.reviewQaerArray = res;
+//     console.log(this.reviewQaerArray)
+//     this.setData();
+// });
 }
 
 // onChange(ev) {

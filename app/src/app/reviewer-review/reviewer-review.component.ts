@@ -41,7 +41,9 @@ export class ReviewerReviewComponent implements OnInit {
     this.loadExistingData()
   }
   loadExistingData(){
+
     this._service.reviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1").subscribe(res => {
+
       console.log(res);
       
       this.reviewArray = res[0];
