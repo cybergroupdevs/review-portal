@@ -39,14 +39,15 @@ export class SelfReviewComponent implements OnInit {
   ngOnInit() {
     console.log("inside oninit")
     
-    this.getReview(this.id);
+    this.getReview();
   }
 
-  getReview(id:any) {
-    this._service.getReviewById(id)
-      .subscribe(res => {
-        this.reviewArray = res;
-        console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
+  getReview() {
+    this._service.getReviewById(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId", "1").subscribe(res => {
+      console.log(res);
+      
+      this.reviewArray = res[0];
+        // console.log(this.reviewArray ,  "my dataaaaaaaaaaaaaa");
 
     this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
     this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
