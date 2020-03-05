@@ -8,7 +8,7 @@ class Review{
     }
 
     async get(criteria={}, columns={}){
-        let fields = 'cgiCode firstName lastName designation totalExperience';
+        let fields = 'cgiCode firstName lastName designation totalExperience joined';
         console.log(criteria);
         let reviewdata = await this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
         //Nitesh - 8860752681
@@ -19,13 +19,10 @@ class Review{
     async update(criteria={}, updateObj){
         return this.model.update(criteria, updateObj)
     }
+
     async save(reviewObject){
         return this.model.create(reviewObject)
     }
-    // async delete(criteria={})
-    // {
-    //     return this.model.deleteOne(criteria)
-    // }
 }
 
 module.exports = new Review();

@@ -51,7 +51,7 @@ export class ReviewTableComponent implements OnInit {
             "TargetDate": res[i].targetDate.substring(0, 10),
             "Status": res[i].status,
             "CreatedAt": res[i].date,
-            "Edit": res[i].employeeId._id+"-"+res[i].flag
+            "Edit": res[i]._id
           };
       // customObject2[i] = res[i].employeeId._id;
       }

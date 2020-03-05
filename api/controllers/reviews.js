@@ -7,11 +7,12 @@ class Review {
     constructor(){
         console.log("reached controller")
     }
-    // async show(req,res){
-    //     const review = await model.review.get({"_id": req.params.id});
-    //     console.log(review);
-    //     res.send(review);
-    // }
+
+    async getById(req,res){
+        const reviewData = await model.review.get({"_id": req.params.id});
+        console.log(reviewData);
+        res.send(reviewData);
+    }
 
     async show(req,res){
         let arr = [];
@@ -23,10 +24,7 @@ class Review {
             arr[i] = criteria;
             i = i + 1;
         }        
-        //console.log(arr);
-
         const review = await model.review.get({$and : arr});
-        //console.log(review);
         res.send(review);
     }
 
