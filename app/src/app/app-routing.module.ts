@@ -33,6 +33,9 @@ const routes: Routes = [
       path: "profile", component: AddUpdateUserComponent
     },
     {
+      path: "pendingByReviewer/edit/:id", component: ReviewerReviewComponent
+    },
+    {
       path: "reviews", component: ReviewNavbarComponent, children: [
         {
           path: "", redirectTo: "allReviews", pathMatch: "full"
@@ -53,7 +56,10 @@ const routes: Routes = [
     }
   ]},
 
+
   { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "ADMIN"},component: AdminMainComponent, children: [
+
+
     {
       path: "", redirectTo: "home", pathMatch: 'full'
     },

@@ -17,6 +17,7 @@ export class ReviewTableComponent implements OnInit {
     ) { }
 
   reviewArray = ["...", "...", "...", "...", "..."];
+  idArray = [];
   keys = ["FormName", "Cycle", "TargetDate", "Status", "CreatedAt"];
   ngOnInit() {
     let current_route = this._router.url.split("/")[3];
@@ -38,6 +39,7 @@ export class ReviewTableComponent implements OnInit {
     this._service.reviewData(id, searchBy, flag).subscribe(res => {
       console.log(res);
       let customObject = [];
+      let customObject2 = [];
       for(let i=0; i<res.length; i++){
         customObject[i] = {
             "FormName": res[i].formName,
@@ -46,12 +48,15 @@ export class ReviewTableComponent implements OnInit {
             "Status": res[i].status,
             "CreatedAt": res[i].date
           };
+      customObject2[i] = res[i].employeeId._id;
       }
       console.log(customObject);
       this.reviewArray = customObject;
+      this.idArray = customObject2;
       this.getKeys(this.reviewArray[0]);
     });
   }
+
   getValues(temp: any){
     if(temp != null || temp != undefined)
       return (Object.values(temp));

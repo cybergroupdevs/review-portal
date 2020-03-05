@@ -90,8 +90,8 @@ export class ServicesService {
     ));
   }
 
-  updateReviewData(userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/5e5b85cdb4f6bcd838db5e06",userObj).pipe(
+  updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
+    return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));
@@ -140,14 +140,14 @@ export class ServicesService {
     }
 
     createReview(object): Observable<any>{
-      return this.http.post("http://localhost:3001/createReview", object).pipe(
+      return this.http.post("http://localhost:3001/review/create", object).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
     }
 
-    getByCgiCodeReviewValues(cgiCode): Observable<any>{
-      return this.http.get("http://localhost:3001/review/values/" + cgiCode).pipe(
+    getByCgiCode(cgiCode): Observable<any>{
+      return this.http.get("http://localhost:3001/employeeData/"+ cgiCode).pipe(
       tap(_ => this.log("got cgi code for review values")),
       catchError(this.handleError<any>('error in details'))
       );

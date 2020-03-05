@@ -64,10 +64,12 @@ export class SelfReviewComponent implements OnInit {
   }
 
   submitReview(){
-    let reviwObj =  {
-      "submitted" :true
+    let reviewObj =  {
+      "submitted" :true,
+      "flag":"1",
+        "status":"Pending-Reviewer"
     }
-    this._service.updateSelfReview(this.id, reviwObj).subscribe(res =>  {
+    this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "0",reviewObj).subscribe(res =>  {
       console.log(res , "this is res");
       if(res.status==200){
         console.log('Successful update!!');
@@ -112,16 +114,16 @@ export class SelfReviewComponent implements OnInit {
 
 }
 console.log(reviewObj);
-this._service.updateSelfReview(this.id, reviewObj).subscribe(res =>  {
+this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId", "0",reviewObj).subscribe(res =>  {
   console.log(res.ok , "this is res");
   if(res.ok==1){
     console.log(res, 'Here');
     const response = res;
     this.message = res;
 
-    setTimeout(() => {
-      this.message = null;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.message = null;
+    // }, 5000);
     console.log('Successful update!!');
 
   }

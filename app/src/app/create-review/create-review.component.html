@@ -1,108 +1,192 @@
-<div class="container-fluid createReviewDiv">
-    <div class="row">
-        <div class="col-lg-3 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 employee-heading">
-            <h4><strong>Employee</strong></h4>
+<!-- The Modal 1-->
+<div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont">
+            <i class="fa fa-check-circle " ></i>
         </div>
+
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Saved!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+        <!-- Modal footer -->
+        <div >
+          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal 2-->
+<div class="modal" id="submitVerficationModel" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont2">
+            <i class="fa fa-check-circle " ></i>
+        </div>
+
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Review Created!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+        <!-- Modal footer -->
+        <div >
+          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal 3-->
+  <div class="modal" id="submitModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Are you sure you want to create?
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" 
+          data-dismiss="modal" (click)="createReview()">Create</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid createReviewDiv">
+    <!-- <h3 class="createReviewHeading">Create Review</h3> -->
+    <div class="row">
+        <h4><strong>Employee</strong></h4>
+        <!-- <div class="col-lg-12 col-lg-offset-5 col-md-2 col-sm-3 col-xs-12 employee-heading">
+            <h4><strong>Employee</strong></h4>
+        </div> -->
     </div>
     <form>
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                #input (input)="input.value=$event.target.value.toUpperCase()">
+                <input type="text" #empCgiCode class="form-control input-medium" id="empCgiCodeField" value="" maxlength="6"
+                (input)="empCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #empFirstName class="form-control input-medium" id="empFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #empDesignation class="form-control input-medium" id="empDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #empLastName class="form-control input-medium" id="empLastNameField" value="" readonly >
             </div>
         </div>
 
         <div class="row form-and-cycle">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Form Name:</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #email class="form-control input-medium" id="emailField" value="">
+                <input type="text" #formName class="form-control input-medium" id="formNameField" value="" maxlength="20">
             </div>
-            <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Cycle</label>
+            <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label" >Cycle</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #email class="form-control input-medium" id="emailField" value="">
+                <input type="text" #cycle class="form-control input-medium" id="cycleField" value="" maxlength="20">
             </div>
         </div>
         
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 employee-heading">
-                <h4><strong>Reviewer</strong></h4>
-            </div>
+            <h4><strong>Reviewer</strong></h4>
+            <!-- <div class="col-lg-12 col-lg-offset-5 col-md-2 col-sm-3 col-xs-12 employee-heading">
+                
+            </div> -->
         </div>
 
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                >
+                <input type="text" #reviewerCgiCode class="form-control input-medium" id="reviewerCgiCodeField" value="" maxlength="6"
+                (input)="reviewerCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #reviewerFirstName class="form-control input-medium" id="reviewerFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #reviewerDesignation class="form-control input-medium" id="reviewerDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #reviewerLastName class="form-control input-medium" id="reviewerLastNameField" value="" readonly >
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-1 col-lg-3 col-lg-offset-1 col-md-offset-2 col-md-2 col-sm-3 col-xs-12 employee-heading">
+            <h4><strong>QAer</strong></h4>
+            <!-- <div class="col-lg-12 col-lg-offset-5 col-md-offset-2 col-md-2 col-sm-3 col-xs-12 employee-heading">
                 <h4><strong>QAer</strong></h4>
-            </div>
+            </div> -->
         </div>
 
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cgiCode class="form-control input-medium" id="cgiCodeField" value="" maxlength="6"
-                >
+                <input type="text" #qaerCgiCode class="form-control input-medium" id="qaerCgiCodeField" value="" maxlength="6"
+                (input)="qaerCgiCode.value=$event.target.value.toUpperCase()">
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #firstName class="form-control input-medium" id="firstNameField" value="" readonly >
+                <input type="text" #qaerFirstName class="form-control input-medium" id="qaerFirstNameField" value="" readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #designation class="form-control input-medium" id="designationField" value="" readonly >
+                <input type="text" #qaerDesignation class="form-control input-medium" id="qaerDesignationField" value="" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #lastName class="form-control input-medium" id="lastNameField" value="" readonly >
+                <input type="text" #qaerLastName class="form-control input-medium" id="qaerLastNameField" value="" readonly >
             </div>
         </div>        
-    
+        <br>
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5 col-md-2 col-sm-9 col-xs-12">
-                <button type="button" class="btn btn-success" (click)="createReview()"> Create </button>
+
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#submitModel"> Create Review </button>
+
             </div>
         </div>
     </form>

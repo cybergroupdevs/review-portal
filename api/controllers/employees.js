@@ -27,6 +27,18 @@ class Employee {
         res.send(employee)
     }
   
+    async getEmployeeDetails(req, res){
+        let criteria = {"cgiCode": req.params.cgiCode}
+        const empId = await model.employee.get(criteria, 
+                                    {"email": 1,
+                                    "firstName": 1,
+                                    "lastName": 1,
+                                    "_id": 1,
+                                    "cgiCode": 1,
+                                    "designation": 1});
+        res.send(empId);
+    }
+
     async show(req,res){
         console.log("Reached SHOW");
         const employee = await model.employee.getUserData({"_id": req.params.id})

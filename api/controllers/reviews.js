@@ -14,15 +14,22 @@ class Review {
     // }
 
     async show(req,res){
-        var searchParam = req.query.searchParameter;
-        console.log(searchParam);
-        console.log(req.params.id);
-        
-        let criteria = { };
-        criteria[searchParam] = req.params.id;
-        console.log(criteria);
-        const review = await model.review.get(criteria);
-        console.log(review);
+        console.log(req.query, "jhhhhhhhhhhhhhh");
+        let arr = [];
+        let criteria;
+        let i = 0; 
+        for (const key in req.query) {
+            criteria = { };
+            criteria[key] = req.query[key];
+            console.log(criteria ,"criteria");
+            arr[i] = criteria;
+            i = i + 1;
+            
+        }        
+        console.log(arr);
+
+        const review = await model.review.get({$and : arr});
+        // console.log(review, "hereeeeeeeeeeeeeee");
         res.send(review);
     }
 
@@ -30,16 +37,29 @@ class Review {
         console.log("Reached UPDATE");
         let updateObj= req.body
         console.log(updateObj)
-        const review= await model.review.update({_id: req.params.parameter},  updateObj)
+        let arr = [];
+        let criteria;
+        for (const key in req.query) {
+            // console.log(key, req.query[key]);
+            criteria = { };
+            let i = 0;
+            criteria[key] = req.query[key];
+            arr[i] = criteria;
+            i = i + 1;
+        }        
+        console.log(arr);
+        const review= await model.review.update({$and : arr}, updateObj);
         res.send(review)
     }  
 
     async createReview(req, res) {
+        console.log(req.body);
         let addReview={
             employeeId: req.body.employeeId,
             reviewer: req.body.reviewer,
             qualityAnalyst: req.body.qualityAnalyst,
-            reviewCycle: req.body.reviewCycle
+            reviewCycle: req.body.reviewCycle,
+            formName: req.body.formName
         };
         console.log("reached create review");
         const review = await model.review.save(addReview);
