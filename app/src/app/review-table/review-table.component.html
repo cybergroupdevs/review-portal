@@ -7,6 +7,8 @@
     <tbody>
         <tr *ngFor = "let row of reviewArray">
             <td *ngFor = "let td of getValues(row)">{{td}}</td>
+            <td *ngFor = "let idUser of idArray" [routerLink]="['/user/pendingByReviewer/edit', idUser]"  #{{idUser}}><img src="../../assets/images/edit-btn.png" ></td>
         </tr>
     </tbody>
 </table>
+<router-outlet></router-outlet>

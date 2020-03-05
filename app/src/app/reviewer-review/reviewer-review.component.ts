@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
@@ -18,7 +19,7 @@ export class ReviewerReviewComponent implements OnInit {
   @ViewChild('rsP', {static: false}) rsP: ElementRef;
   @ViewChild('rrP', {static: false}) rrP: ElementRef;
   
-  constructor(private _service : ServicesService) { }
+  constructor(private _service : ServicesService, private _activatedRoute: ActivatedRoute) { }
   reviewArray:any;
   reviewSelfTS:String;
   assessmentSelfTS: String;
@@ -33,11 +34,17 @@ export class ReviewerReviewComponent implements OnInit {
   reviewReviewerP: String;
   assessmentReviewerP: String;
 
-  selectedAssessment: String = this.assessmentReviewerTS
+  employeeId: string;
+  selectedAssessment: String = this.assessmentReviewerTS; 
   selectedAssessmentCS: String = this.assessmentReviewerCS
   selectedAssessmentP: String = this.assessmentReviewerP
 
   ngOnInit() {
+    this._activatedRoute.params.subscribe(param => {
+      console.log(param.id);
+      this.employeeId = param.id;
+    });
+    console.log(this.employeeId);
     this.loadExistingData()
   }
   loadExistingData(){
@@ -66,6 +73,11 @@ export class ReviewerReviewComponent implements OnInit {
     this.assessmentSelfP=this.reviewArray.personality.selfEvaluation.assessment;
     this.reviewReviewerP= this.reviewArray.personality.reviewerEvaluation.comment;
     this.assessmentReviewerP= this.reviewArray.personality.reviewerEvaluation.assessment;
+    console.log(this.reviewArray.personality.reviewerEvaluation.assessment);
+    this.selectedAssessmentP= this.assessmentReviewerTS;
+    this.selectedAssessmentCS=this.assessmentReviewerCS;
+    this.selectedAssessmentP=this.assessmentReviewerP;
+
     }
 
 
@@ -121,6 +133,7 @@ export class ReviewerReviewComponent implements OnInit {
     }
     selectChangeHandler(event: any){
       this.selectedAssessment = event.target.value;
+      
     }
   
     selectChangeHandlerCS(event: any){
