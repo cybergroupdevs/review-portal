@@ -132,8 +132,8 @@ export class ServicesService {
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
 
-    updateSelfReview(id,reviwObj): Observable<any>{
-      return this.http.patch("http://localhost:3001/reviews/update/" + id ,reviwObj).pipe(
+    updateSelfReview(id:string,searchBy:string,flag,userObj): Observable<any>{
+      return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
         tap(_ => this.log("updated review details")),
         catchError(this.handleError<any>('error in updating details')
       ));
