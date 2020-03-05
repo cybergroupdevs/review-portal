@@ -35,8 +35,7 @@ export class ReviewerReviewComponent implements OnInit {
   assessmentReviewerP: String;
 
   employeeId: string;
-
-  selectedAssessment: String = this.assessmentReviewerTS
+  selectedAssessment: String = this.assessmentReviewerTS; 
   selectedAssessmentCS: String = this.assessmentReviewerCS
   selectedAssessmentP: String = this.assessmentReviewerP
 
@@ -74,6 +73,11 @@ export class ReviewerReviewComponent implements OnInit {
     this.assessmentSelfP=this.reviewArray.personality.selfEvaluation.assessment;
     this.reviewReviewerP= this.reviewArray.personality.reviewerEvaluation.comment;
     this.assessmentReviewerP= this.reviewArray.personality.reviewerEvaluation.assessment;
+    console.log(this.reviewArray.personality.reviewerEvaluation.assessment);
+    this.selectedAssessmentP= this.assessmentReviewerTS;
+    this.selectedAssessmentCS=this.assessmentReviewerCS;
+    this.selectedAssessmentP=this.assessmentReviewerP;
+
     }
 
 
@@ -112,7 +116,7 @@ export class ReviewerReviewComponent implements OnInit {
 
   }
       console.log(userObj);
-      this._service.updateReviewData(userObj).subscribe(res =>  {
+      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
         console.log(res);
         if(res!=''){
           console.log('Successful update!!');
@@ -129,6 +133,7 @@ export class ReviewerReviewComponent implements OnInit {
     }
     selectChangeHandler(event: any){
       this.selectedAssessment = event.target.value;
+      
     }
   
     selectChangeHandlerCS(event: any){
@@ -140,9 +145,11 @@ export class ReviewerReviewComponent implements OnInit {
     }
     submitReviewDetails(){
       let userObj =  {
-        "submitted" :true
+        "submitted" :true,
+        "flag":"2",
+        "status":"Pending-QAer"
       }
-      this._service.updateReviewData(userObj).subscribe(res =>  {
+      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
         console.log(res);
         if(this.res.status!=0){
           console.log('Successful update!!');

@@ -1,4 +1,3 @@
-<!-- The Modal 1-->
 <app-reviewer-qaer></app-reviewer-qaer>
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
     <div class="modal-dialog modal-sm">
@@ -14,186 +13,174 @@
             <h1 class="heading" align="center">Saved!</h1>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
-      </div>
+
+
     </div>
   </div>
+</div>
 
-  <!-- The Modal 2-->
-<div class="modal" id="submitVerficationModel" >
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont2">
-            <i class="fa fa-check-circle " ></i>
-        </div>
+<!-- The Modal 2-->
+<div class="modal" id="submitVerficationModel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Submitted!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
+      <!-- Modal body -->
+      <div class="myFont2">
+        <i class="fa fa-check-circle "></i>
       </div>
+
+      <!-- Modal Header -->
+      <div>
+        <h1 class="heading" align="center">Submitted!</h1>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
     </div>
   </div>
+</div>
 
 
-  <!-- The Modal 3-->
-  <div class="modal" id="submitModel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          Are you sure you want to submit? Once submitted it cannot be edited.
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" data-dismiss="modal" (click)="submitReview()">Submit</button>
-        </div>
-  
+<!-- The Modal 3-->
+<div class="modal" id="submitModel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure?</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want to submit? Once submitted it cannot be edited.
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel"
+          data-dismiss="modal" (click)="submitReview()">Submit</button>
+      </div>
+
     </div>
   </div>
-  
+</div>
 
-<form  >
- <form #reviewerForm class="form">
-    <div class="container-fluid mt-3">
+
+<form #reviewerForm class="form">
+  <div class="container-fluid">
     <div class="panel-body">
-     <table class="table">
-         <thead>
-         <tr id="headers">  
-             <th colspan="2">
-                 Key Result Area
-             </th>
-             <th colspan=5>  
-                 Self Evaluation 
-             </th>  
-             <th colspan=3>  
-                Self Assessment  
-             </th>  
-         </tr>  
+      <table class="table">
+        <thead>
+          <tr id="headers">
+            <th colspan="2">
+              Key Result Area
+            </th>
+            <th colspan=5>
+              Self Evaluation
+            </th>
+            <th colspan=3>
+              Self Assessment
+            </th>
+          </tr>
         </thead>
-         <tr > 
-             <td colspan="2">  
-                 <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>  
-             </td> 
-             <td colspan="5">  
-                 <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>  
-             </td>   
-             
-                    
-             <td align="center" >
-                
-                    <select  required (change)="selectChangeHandlerTS($event)"> 
-                        <option #assessmentSelfT class= "selected">{{assessmentSelfTS}}</option>          
-                         <option value="meets expectations">Meets Epectations</option>
-                         <option value="needs improvement">Needs Improvement</option>
-                    </select>
-                         
-             </td>  
-         </tr> 
-         
-         <tr>
-             <td colspan="2" class="col1">  
-                 <p #review rows="4" cols="50" align="center"></p>  
-             </td>   
-             <td colspan="5">  
-                 <textarea #review rows="4" cols="50"></textarea>  
-             </td>
-             <td align="center" >
-                <select  required>        
-                    <!-- <option>{{assessmentSelfCS}}</option>    -->
-                     <option value="meets expectations">Meets Expectations</option>
-                     <option value="needs improvement">Needs Improvement</option>
-                </select>
-                     
-            </td>   
-         </tr>
-         <tr>  
-             <td colspan="2" class="col1">  
-                 <p #review rows="4" cols="50" align="center"></p>  
-             </td> 
-             <td colspan="5">  
-                 <textarea #review rows="4" cols="50"></textarea>  
-             </td>  
-             <td align="center" >
-                <select #assessment required >
-                    <!-- <option></option>            -->
-                     <option value="meets expectations">Meets Expectations</option>
-                     <option value="needs improvement">Needs Improvement</option>
-                </select>
-                     
-            </td> 
-         </tr>
-         <tr class="communicationSkill"> 
-             <td colspan="2" class="col1">  
-                 <p #review rows="4" cols="50" align="center">Communication Skills</p>  
-             </td>  
-             <td colspan="5">  
-                 <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>  
-             </td>  
-             <td align="center" >
-                <select  required (change)="selectChangeHandlerCS($event)">  
-                    <option #assessmentSelfC class= "selected">{{assessmentSelfCS}}</option>      
-                     <option value="meets expectations">Meets Expectations</option>
-                     <option value="needs improvement">Needs Improvement</option>
-                </select>
-                     
-         </td> 
-         </tr>
-         <tr class="personality">  
-             <td colspan="2" class="col1">  
-                 <p #review rows="4" cols="50" align="center">Personality</p>  
-             </td> 
-             <td colspan="5">  
-                 <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>  
-             </td>  
-             <td align="center" >
-                <select  required (change)="selectChangeHandlerPS($event)">   
-                         <option #assessmentSelfP class= "selected">{{assessmentSelfPS}}</option>
-                     <option value="meets expectations">Meets Expectations</option>
-                     <option value="needs improvement">Needs Improvement</option>
-                </select>
-                     
-         </td> 
-         </tr>
+        <tr>
+          <td colspan="2">
+            <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
+          </td>
+          <td colspan="5">
+            <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>
+          </td>
 
-     </table>
-    </div> 
-</div>   
-     <div class="buttons" >
-     <div><button type="button" class="btn btn-primary"  >Cancel</button></div>
-     <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel" (click)="updateSelfReview()">Save</button></div>
-     <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel" >Submit</button></div>
+
+          <td align="center">
+
+            <select required (change)="selectChangeHandlerTS($event)">
+              <option #assessmentSelfT class="selected">{{assessmentSelfTS}}</option>
+              <option value="meets expectations">Meets Expectations</option>
+              <option value="needs improvement">Needs Improvement</option>
+            </select>
+
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="col1">
+            <p #review rows="4" cols="50" align="center"></p>
+          </td>
+          <td colspan="5">
+            <textarea #review rows="4" cols="50"></textarea>
+          </td>
+          <td align="center">
+            <select required>
+              <!-- <option>{{assessmentSelfCS}}</option>    -->
+              <option value="meets expectations">Meets Expectations</option>
+              <option value="needs improvement">Needs Improvement</option>
+            </select>
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="col1">
+            <p #review rows="4" cols="50" align="center"></p>
+          </td>
+          <td colspan="5">
+            <textarea #review rows="4" cols="50"></textarea>
+          </td>
+          <td align="center">
+            <select #assessment required>
+              <!-- <option></option>            -->
+              <option value="meets expectations">Meets Expectations</option>
+              <option value="needs improvement">Needs Improvement</option>
+            </select>
+
+          </td>
+        </tr>
+        <tr class="communicationSkill">
+          <td colspan="2" class="col1">
+            <p #review rows="4" cols="50" align="center">Communication Skills</p>
+          </td>
+          <td colspan="5">
+            <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>
+          </td>
+          <td align="center">
+            <select required (change)="selectChangeHandlerCS($event)">
+              <option #assessmentSelfC class="selected">{{assessmentSelfCS}}</option>
+              <option value="meets expectations">Meets Expectations</option>
+              <option value="needs improvement">Needs Improvement</option>
+            </select>
+
+          </td>
+        </tr>
+        <tr class="personality">
+          <td colspan="2" class="col1">
+            <p #review rows="4" cols="50" align="center">Personality</p>
+          </td>
+          <td colspan="5">
+            <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>
+          </td>
+          <td align="center">
+            <select required (change)="selectChangeHandlerPS($event)">
+              <option #assessmentSelfP class="selected">{{assessmentSelfPS}}</option>
+              <option value="meets expectations">Meets Expectations</option>
+              <option value="needs improvement">Needs Improvement</option>
+            </select>
+
+          </td>
+        </tr>
+      </table>
     </div>
-    
-    
- </form>
+    <div class="buttons">
+      <div><button type="button" class="btn btn-primary">Cancel</button></div>
+      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
+          (click)="updateSelfReview()">Save</button>
+      </div>
+      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
+      </div>
+    </div>
+  </div>
+  
 
- 
 
-
-
-                
+</form>
