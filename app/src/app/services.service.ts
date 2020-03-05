@@ -140,7 +140,7 @@ export class ServicesService {
     }
 
     createReview(object): Observable<any>{
-      return this.http.post("http://localhost:3001/review/create", object).pipe(
+      return this.http.post("http://localhost:3001/review/", object).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
