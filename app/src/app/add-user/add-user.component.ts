@@ -7,7 +7,7 @@ import { ViewChild, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
   constructor(private _service:ServicesService) { }
@@ -44,12 +44,12 @@ createUser(){
     this._service.createUser(userObj).subscribe(res => 
     {console.log(res);
     if (res.status!=''){
-      alert("successfully added")
-      this.message="success"
+      //alert("successfully added")
+      this.message="Added User!!"
     }
     else{
-      alert("successfully added");
-      this.message="unsuccessful"
+      //alert("successfully added");
+      this.message="Could not add User!!"
     }
   });
 

@@ -1,23 +1,19 @@
-<!-- The Modal 1-->
-<div class="modal" id="saveModel" *ngIf="message === null ? false : true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+<app-reviewer-qaer></app-reviewer-qaer>
+<div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont">
+            <i class="fa fa-check-circle " ></i>
+        </div>
 
-      <!-- Modal body -->
-      <div class="myFont">
-        <i class="fa fa-check-circle "></i>
-      </div>
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Saved!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
 
-      <!-- Modal Header -->
-      <div>
-        <h1 class="heading" align="center">Saved!</h1>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal footer -->
-      <div>
-        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-      </div>
 
     </div>
   </div>
@@ -37,11 +33,6 @@
       <div>
         <h1 class="heading" align="center">Submitted!</h1>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal footer -->
-      <div>
-        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
       </div>
 
     </div>
@@ -107,8 +98,8 @@
 
             <select required (change)="selectChangeHandlerTS($event)">
               <option #assessmentSelfT class="selected">{{assessmentSelfTS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
@@ -124,8 +115,8 @@
           <td align="center">
             <select required>
               <!-- <option>{{assessmentSelfCS}}</option>    -->
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
@@ -140,8 +131,8 @@
           <td align="center">
             <select #assessment required>
               <!-- <option></option>            -->
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
@@ -156,8 +147,8 @@
           <td align="center">
             <select required (change)="selectChangeHandlerCS($event)">
               <option #assessmentSelfC class="selected">{{assessmentSelfCS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
@@ -172,8 +163,8 @@
           <td align="center">
             <select required (change)="selectChangeHandlerPS($event)">
               <option #assessmentSelfP class="selected">{{assessmentSelfPS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>

@@ -37,10 +37,39 @@ export class SelfReviewComponent implements OnInit {
   //  assessmentSelected: String = ''
 
   ngOnInit() {
-    console.log("inside oninit")
     
-    this.getReview();
+    this.loadExistingData()
   }
+  loadExistingData(){
+
+    this._service.reviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId", "0").subscribe(res => {
+
+      console.log(res);
+      
+      this.reviewArray = res[0];
+      console.log(this.reviewArray)
+      this.setExistingData();
+    });
+
+  }
+  setExistingData(){
+    console.log(this.reviewArray);
+    this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
+    this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
+    
+    this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
+    this.assessmentSelfCS=this.reviewArray.communication.selfEvaluation.assessment;
+    
+    this.reviewSelfPS= this.reviewArray.personality.selfEvaluation.comment;
+    this.assessmentSelfPS=this.reviewArray.personality.selfEvaluation.assessment;
+    
+    console.log(this.reviewArray.personality.reviewerEvaluation.assessment);
+    this.selectedAssessmentTS= this.assessmentSelfTS;
+    this.selectedAssessmentCS=this.assessmentSelfCS;
+    this.selectedAssessmentPS=this.assessmentSelfPS;
+
+    }
+
 
   getReview() {
     this._service.getReviewById(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId", "1").subscribe(res => {
@@ -65,13 +94,11 @@ export class SelfReviewComponent implements OnInit {
 
   submitReview(){
     let reviewObj =  {
-      "submitted" :true,
-      "flag":"1",
-        "status":"Pending-Reviewer"
+      "submitted" :true
     }
-    this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "0",reviewObj).subscribe(res =>  {
-      console.log(res , "this is res");
-      if(res.status==200){
+    this._service.updateSelfReview(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "0", reviewObj).subscribe(res =>  {
+      console.log(this.res , "this is res");
+      if(this.res.status==200){
         console.log('Successful update!!');
     
       }
@@ -114,7 +141,7 @@ export class SelfReviewComponent implements OnInit {
 
 }
 console.log(reviewObj);
-this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "employeeId", "0",reviewObj).subscribe(res =>  {
+this._service.updateSelfReview(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "0", reviewObj).subscribe(res =>  {
   console.log(res.ok , "this is res");
   if(res.ok==1){
     console.log(res, 'Here');
