@@ -90,6 +90,8 @@ export class ServicesService {
     ));
   }
 
+
+
   updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
     return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
       tap(_ => this.log("updated review details")),
@@ -104,9 +106,8 @@ export class ServicesService {
   //   ));
   // }
 
-  reviewerData(): Observable<any>{
-    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
-    return this.http.get(`http://localhost:3001/review/${id}`).pipe(
+  reviewerData(id: string): Observable<any>{
+    return this.http.get("http://localhost:3001/review/"+id).pipe(
       tap(_ => this.log("reviewer details")),
       catchError(this.handleError<any>('error in details')
     ));

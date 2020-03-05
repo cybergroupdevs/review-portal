@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reviewer-qaer',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ReviewerQaerComponent implements OnInit {
   res:any;
-  constructor(private _service:ServicesService) { }
+  constructor(private _service: ServicesService, private _activatedRoute: ActivatedRoute) { }
   
   reviewQaerArray: any;
   empCode: string = null;
@@ -22,42 +22,37 @@ export class ReviewerQaerComponent implements OnInit {
   qualityAnalyst: string=null;
   reviewCycle: string=null;
  
+  reviewId: string;
   
-   ngOnInit() {
-     this.loadData()
- }
- loadData(){
+    ngOnInit() {
+      this.loadData();
+    }
 
-  this._service.reviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1").subscribe(res => {
-  
-    console.log(res);
-
-    this.reviewQaerArray = res[0];
-    console.log(this.reviewQaerArray);
-    this.setData();
-  });
-
-//   this._service.employeeData().subscribe(res=> {
-//     console.log(res);
-
-//     this.reviewQaerArray = res;
-//     console.log(this.reviewQaerArray)
-//     this.setData();
-// });
-}
+    loadData(){
+      this._activatedRoute.params.subscribe(param => {
+        console.log(param.id);
+        this.reviewId = param.id;
+      });
+      this._service.reviewerData(this.reviewId).subscribe(res => {
+        console.log(res);
+        this.reviewQaerArray = res[0];
+        console.log(this.reviewQaerArray);
+        this.setData();
+      });
+    }
 
 // onChange(ev) {
 //   console.log(ev);
 // }
 setData(){
-  this.empCode= this.reviewQaerArray.employeeId.cgiCode;
-  this.reviewer=this.reviewQaerArray.reviewer.firstName;
-  this.joined=this.reviewQaerArray.employeeId.joined;
-  this.totalExperience=this.reviewQaerArray.reviewer.totalExperience;
-  this.revieweeName=this.reviewQaerArray.employeeId.firstName;
-  this.qualityAnalyst=this.reviewQaerArray.qualityAnalyst.firstName;
-  this.designation=this.reviewQaerArray.reviewer.designation;
-  this.reviewCycle=this.reviewQaerArray.reviewCycle;
+  this.empCode = this.reviewQaerArray.employeeId.cgiCode;
+  this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
+  this.joined = this.reviewQaerArray.employeeId.joined;
+  this.totalExperience = this.reviewQaerArray.reviewer.totalExperience;
+  this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
+  this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;
+  this.designation = this.reviewQaerArray.reviewer.designation;
+  this.reviewCycle = this.reviewQaerArray.reviewCycle;
  }
 
 }
