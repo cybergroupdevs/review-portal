@@ -123,23 +123,23 @@ export class CreateReviewComponent implements OnInit {
   }
   
   createReview(){
-    let reviewObject = {
-      employeeId: this.employeeId,
-      reviewer: this.reviewerId,
-      qualityAnalyst: this.qaerId,
-      reviewCycle: this.cycle.nativeElement.value,
-      formName: this.formName.nativeElement.value,
-    }
-    console.log(reviewObject);
-    this._service.createReview(reviewObject).subscribe(res => this.res = res);
-    console.log(this.res);
+    // let reviewObject = {
+    //   employeeId: this.employeeId,
+    //   reviewer: this.reviewerId,
+    //   qualityAnalyst: this.qaerId,
+    //   reviewCycle: this.cycle.nativeElement.value,
+    //   formName: this.formName.nativeElement.value,
+    // }
+    // console.log(reviewObject);
+    // this._service.createReview(reviewObject).subscribe(res => this.res = res);
+    // console.log(this.res);
     // if (this.res.status==200){
 
     // }
     // else{
     //   console.log("error occured");
     // }
-
+    console.log("review created")
   }
 
 }
