@@ -29,28 +29,28 @@ export class AddUserComponent implements OnInit {
  }
  
 createUser(){
-  //   let userObj = {
-  //     firstName: this.firstName.nativeElement.value,
-  //     lastName: this.lastName.nativeElement.value,
-  //     email: this.email.nativeElement.value,
-  //     location: this.location.nativeElement.value,
-  //     designation: this.designation.nativeElement.value,
-  //     cgiCode: this.cgiCode.nativeElement.value,
-  //     skills: this.skills.nativeElement.value,
-  //     joined: this.joined.nativeElement.value,
-  //     previousExperience: this.previousExperience.nativeElement.value,
-  //     totalExperience: this.totalExperience.nativeElement.value
-  //   };
-  //   this._service.createUser(userObj).subscribe(res => 
-  //   {console.log(res);
-  //   if (res.status!=''){
-  //     //alert("successfully added")
-  //     this.message="Added User!!"
-  //   }
-  //   else{
-  //     //alert("successfully added");
-  //     this.message="Could not add User!!"
-  //   }
-  // });
+    let userObj = {
+      firstName: this.firstName.nativeElement.value,
+      lastName: this.lastName.nativeElement.value,
+      email: this.email.nativeElement.value,
+      location: this.location.nativeElement.value,
+      designation: this.designation.nativeElement.value,
+      cgiCode: this.cgiCode.nativeElement.value,
+      skills: this.skills.nativeElement.value,
+      joined: this.joined.nativeElement.value,
+      previousExperience: this.previousExperience.nativeElement.value,
+      totalExperience: this.totalExperience.nativeElement.value
+    };
+    this._service.createUser(userObj).subscribe(res => 
+    {console.log(res);
+    if (res.status!=''){
+      //alert("successfully added")
+      this.message="Added User!!"
+    }
+    else{
+      //alert("successfully added");
+      this.message="Could not add User!!"
+    }
+  });
 
 }}
