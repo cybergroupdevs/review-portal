@@ -35,7 +35,18 @@ class Review {
         console.log("Reached UPDATE");
         let updateObj= req.body
         console.log(updateObj)
-        const review= await model.review.update({_id: req.params.parameter},  updateObj)
+        let arr = [];
+        let criteria;
+        for (const key in req.query) {
+            // console.log(key, req.query[key]);
+            criteria = { };
+            let i = 0;
+            criteria[key] = req.query[key];
+            arr[i] = criteria;
+            i = i + 1;
+        }        
+        console.log(arr);
+        const review= await model.review.update({$and : arr}, updateObj);
         res.send(review)
     }  
 

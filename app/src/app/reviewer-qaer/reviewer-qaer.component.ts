@@ -28,14 +28,14 @@ export class ReviewerQaerComponent implements OnInit {
  }
  loadData(){
 
-  // this._service.reviewData().subscribe(res => {
+  this._service.reviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1").subscribe(res => {
   
-  //   console.log(res);
+    console.log(res);
 
-  //   this.reviewQaerArray = res;
-  //   console.log(this.reviewQaerArray);
-  //   this.setData();
-  // });
+    this.reviewQaerArray = res[0];
+    console.log(this.reviewQaerArray);
+    this.setData();
+  });
 
 //   this._service.employeeData().subscribe(res=> {
 //     console.log(res);
@@ -50,13 +50,13 @@ export class ReviewerQaerComponent implements OnInit {
 //   console.log(ev);
 // }
 setData(){
-  this.empCode= this.reviewQaerArray.cgiCode;
-  this.reviewer=this.reviewQaerArray.reviewer;
-  this.joined=this.reviewQaerArray.joined;
-  this.totalExperience=this.reviewQaerArray.totalExperience;
-  this.revieweeName=this.reviewQaerArray.firstName;
-  this.qualityAnalyst=this.reviewQaerArray.qualityAnalyst;
-  this.designation=this.reviewQaerArray.designation;
+  this.empCode= this.reviewQaerArray.employeeId.cgiCode;
+  this.reviewer=this.reviewQaerArray.reviewer.firstName;
+  this.joined=this.reviewQaerArray.employeeId.joined;
+  this.totalExperience=this.reviewQaerArray.reviewer.totalExperience;
+  this.revieweeName=this.reviewQaerArray.employeeId.firstName;
+  this.qualityAnalyst=this.reviewQaerArray.qualityAnalyst.firstName;
+  this.designation=this.reviewQaerArray.reviewer.designation;
   this.reviewCycle=this.reviewQaerArray.reviewCycle;
  }
 
