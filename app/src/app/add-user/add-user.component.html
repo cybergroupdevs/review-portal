@@ -2,28 +2,29 @@
         <form>
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
-                    <label>CG Code</label>
-                    <input type="text" #cgiCode class="form-control input-sm">
+                    <label>CGI Code</label>
+                    <input type="text" #cgiCode class="form-control input-sm" maxlength="6"
+                    (input)="cgiCode.value=$event.target.value.toUpperCase()">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" #firstName class="form-control input-sm">
+                        <input type="text" #firstName class="form-control input-sm" maxlength="20">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" #lastName class="form-control input-sm">
+                        <input type="text" #lastName class="form-control input-sm" maxlength="20">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Email</label>
-                    <input type="email" #email class="form-control input-sm">
+                    <input type="email" #email class="form-control input-sm" maxlength="20">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Skills</label>
-                    <input type="text" #skills class="form-control input-sm datepicker">
+                    <input type="text" #skills class="form-control input-sm" maxlength="100">
 
                 </div>                
                 
@@ -34,7 +35,7 @@
             
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Total Experience</label>
-                        <input type="text" #totalExperience class="form-control input-sm">
+                        <input type="number" #totalExperience class="form-control input-sm">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
@@ -49,11 +50,6 @@
                 <div class="form-group col-md-6 col-sm-6">
                         <label >Date of Joining</label>
                         <input type="text" #joined class="form-control input-sm">
-                </div>
-            </div>
-            <div class="col-md-12 col-sm-12" id="addblock">
-                <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Add"  (click)="createUser()"/>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12" id="addblock">
