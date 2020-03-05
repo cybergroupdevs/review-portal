@@ -10,21 +10,10 @@ class Review{
     async get(criteria={}, columns={}){
         let fields = 'cgiCode firstName lastName designation totalExperience';
         console.log(criteria);
-        debugger
-        //let reviewsdata = await this.model.find({"employeeId": '5e5f737d593eb50c6c524b8f'})
-        // let reviewsdata = await this.model.find({});
-        const reviewdata = await this.model.find({employeeId: "5e5f737d593eb50c6c524b8f"})//, columns, function(err, docs){
-        //     console.log("========================>>>>>>");
-        //     console.log(docs);
-        //  });
-//Nitesh - 8860752681
-        console.log(JSON.stringify(reviewdata))
-        // let somevar = await this.model.find({$and: [ { employeeId: '5e5f737d593eb50c6c524b8f' }, { flag: '0' } ] }, columns, function(err,data){
-        //     if(err){console.log(err);}
-        //     console.log("=================")
-        //     console.log(data)
-        // });
-        // //return this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
+        let reviewdata = await this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
+        //Nitesh - 8860752681
+        console.log(JSON.stringify(reviewdata));
+        return (JSON.stringify(reviewdata));
     }
     
     async update(criteria={}, updateObj){
