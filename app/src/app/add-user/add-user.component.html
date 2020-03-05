@@ -1,3 +1,51 @@
+ <!-- The Modal 2-->
+ <div class="modal" id="submitVerficationModel" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont2">
+            <i class="fa fa-check-circle " ></i>
+        </div>
+
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Added!!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+        
+  
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal 3-->
+  <div class="modal" id="submitModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Are you sure you want to add employee? 
+        </div>
+       <!-- Modal footer -->
+       <div class="modal-footer">
+         <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+         <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" data-dismiss="modal" (click)="submitReviewDetails()">Submit</button>
+       </div>
+        
+  
+      </div>
+    </div>
+  </div>
 <div class="panel-body">
         <form>
             <div class="col-md-12 col-sm-12">
@@ -58,7 +106,7 @@
             </div>
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Add" (click)="createUser()"/>
+                    <input type='button' class="btn btn-primary" value="Add" data-toggle="modal" data-target="#submitModel" data-dismiss="modal" (click)="createUser()"/>
                 </div>
             </div>
         </form>
