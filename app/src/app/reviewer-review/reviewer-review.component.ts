@@ -116,7 +116,7 @@ export class ReviewerReviewComponent implements OnInit {
 
   }
       console.log(userObj);
-      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
+      this._service.updateReviewData("1",this.employeeId,userObj,).subscribe(res =>  {
         console.log(res);
         if(res!=''){
           console.log('Successful update!!');
@@ -129,8 +129,10 @@ export class ReviewerReviewComponent implements OnInit {
     
     });
       
-      
-    }
+}
+
+
+
     selectChangeHandler(event: any){
       this.selectedAssessment = event.target.value;
       
@@ -143,13 +145,13 @@ export class ReviewerReviewComponent implements OnInit {
     selectChangeHandlerP(event: any){
       this.selectedAssessmentP = event.target.value;
     }
-    submitReviewDetails(){
+    submitReview(){
       let userObj =  {
         "submitted" :true,
         "flag":"2",
         "status":"Pending-QAer"
       }
-      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
+      this._service.updateReviewData("1",this.employeeId, userObj).subscribe(res =>  {
         console.log(res);
         if(this.res.status!=0){
           console.log('Successful update!!');

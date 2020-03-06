@@ -36,8 +36,8 @@ export class ServicesService {
     ));
   }
 
-  employeeData(id: string): Observable<any>{
-    //const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+  employeeData(): Observable<any>{
+    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
@@ -45,14 +45,14 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
   
   createUser(obj): Observable<any>{
-    return this.http.post("http://localhost:3001/employee/signup", obj, {observe: 'response'}).pipe(
+    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
@@ -76,8 +76,8 @@ export class ServicesService {
   }
 
 
-  updateData(object: any, id:string): Observable<any>{
-    return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response'}).pipe(
+  updateData(object): Observable<any>{
+    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -92,8 +92,8 @@ export class ServicesService {
 
 
 
-  updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
+  updateReviewData(flag,param:string,userObj): Observable<any>{
+    return this.http.patch("http://localhost:3001/reviews/update/?"+"flag="+flag+'&_id='+param,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));
