@@ -36,8 +36,8 @@ export class ServicesService {
     ));
   }
 
-  employeeData(): Observable<any>{
-    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+  employeeData(id: string): Observable<any>{
+    //const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
@@ -45,14 +45,14 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
   
   createUser(obj): Observable<any>{
-    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
+    return this.http.post("http://localhost:3001/employee/signup", obj, {observe: 'response'}).pipe(
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
@@ -76,8 +76,8 @@ export class ServicesService {
   }
 
 
-  updateData(object): Observable<any>{
-    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+  updateData(object: any, id:string): Observable<any>{
+    return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response'}).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
