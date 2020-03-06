@@ -99,23 +99,6 @@ export class AddUpdateUserComponent implements OnInit {
 
   updateData(){
     let userObj = {
-<<<<<<< HEAD
-      firstName: this.ufirstName.nativeElement.value,
-      lastName: this.ulastName.nativeElement.value,
-      email: this.uemail.nativeElement.value,
-      //password: this.upassword.nativeElement.value,
-      location: this.ulocation.nativeElement.value,
-      designation: this.udesignation.nativeElement.value,
-      //division: this.udivision.nativeElement.value,
-      joined: this.ujoined.nativeElement.value,
-      previousExperience: this.upreviousExperience.nativeElement.value,
-      totalExperience: this.utotalExperience.nativeElement.value,
-      skills: this.uskills.nativeElement.value,
-      
-      
-     
-      }
-=======
       firstName : this.ufirstName.nativeElement.value,
       lastName : this.ulastName.nativeElement.value,
       email : this.uemail.nativeElement.value,
@@ -126,7 +109,6 @@ export class AddUpdateUserComponent implements OnInit {
       totalExperience : this.utotalExperience.nativeElement.value,
       skills : this.uskills.nativeElement.value,
     }
->>>>>>> c2568b97a5921d5bdd816b588cd82a8fc8e1bfd0
     console.log(userObj);
     if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
       this.sendUpdateRequest(userObj, this.loggedinUserId);
