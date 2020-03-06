@@ -64,8 +64,6 @@ const routes: Routes = [
 
 
   { path: "admin", canActivate: [AuthGuardService, RoleGuardService], data: {role: "ADMIN"},component: AdminMainComponent, children: [
-
-
     {
       path: "", redirectTo: "home", pathMatch: 'full'
     },
@@ -79,13 +77,13 @@ const routes: Routes = [
       path: "review", component: CreateReviewComponent
     },
     {
+      path: "employee/edit/:id", component: AddUpdateUserComponent
+    },
+    {
       path: "employees", component: AdminCrudComponent
     },
     {
       path: "newEmployee", component: AddUserComponent
-    },
-    {
-      path: "updateEmployee", component: AddUpdateUserComponent
     }
   ]
   },
