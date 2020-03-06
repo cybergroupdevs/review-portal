@@ -71,7 +71,7 @@ export class CreateReviewComponent implements OnInit {
     let reviewerCgiCodeValue = e.target.value;
     this.sendReq(reviewerCgiCodeValue).subscribe( res => {
       this.userArray =res[0]
-      this.setReviewerData()
+      this.setReviewerData();
     });
   }
 
@@ -79,7 +79,7 @@ export class CreateReviewComponent implements OnInit {
     console.log(e.target.value);
     let qaerCgiCodeValue = e.target.value;
     this.sendReq(qaerCgiCodeValue).subscribe( res => {
-      this.userArray =res[0]
+      this.userArray = res[0]
       this.setQaerData()
     });
   }
