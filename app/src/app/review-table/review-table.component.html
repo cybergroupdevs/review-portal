@@ -13,6 +13,7 @@
             <td>{{row.Status}}</td>
             <td>{{row.CreatedAt}}</td>
 
+            <!-- row.Edit contains _id of each employee-->
             <td [routerLink]="[toJump, row.Edit]"><img src="../../assets/images/edit-btn.png"></td>
         </tr>
     </tbody>

@@ -116,8 +116,7 @@ export class SelfReviewComponent implements OnInit {
     let reviewObj = {
       "technicalSkill": {
         "selfEvaluation": {
-        
-          
+                 
             "comment": this.rsTS.nativeElement.value,
             "assessment": this.selectedAssessmentTS
         },

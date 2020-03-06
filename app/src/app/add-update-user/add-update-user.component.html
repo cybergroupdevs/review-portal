@@ -79,12 +79,12 @@
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" [readonly]="isReadonly" #ufirstName class="form-control input-sm" value="{{firstName}}" >
+                        <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" >
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" [readonly]="isReadonly" #ulastName class="form-control input-sm"value="{{lastName}}">
+                        <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
@@ -127,7 +127,7 @@
             
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" data-target="#submitModel" (click)="updateData()"/>
+                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" data-target="#submitModel"/>
                 </div>
             </div>
         </form>

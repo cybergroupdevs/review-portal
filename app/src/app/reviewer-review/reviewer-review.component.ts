@@ -84,30 +84,30 @@ export class ReviewerReviewComponent implements OnInit {
     updateReviewDetails(){
       let userObj = {
         "technicalSkill": {
-          "selfEvaluation": {
-              "comment": this.rsTS.nativeElement.value,
-              "assessment": this.assessmentSelfTS
-          },
+          // "selfEvaluation": {
+          //     "comment": this.rsTS.nativeElement.value,
+          //     "assessment": this.assessmentSelfTS
+          // },
           "reviewerEvaluation": {
               "comment": this.rrTS.nativeElement.value,
               "assessment": this.selectedAssessment
           }
         },
        "communication": {
-         "selfEvaluation": {
-             "comment": this.rsCS.nativeElement.value,
-             "assessment": this.assessmentSelfCS
-          },
+        //  "selfEvaluation": {
+        //      "comment": this.rsCS.nativeElement.value,
+        //      "assessment": this.assessmentSelfCS
+        //   },
         "reviewerEvaluation": {
             "comment": this.rrCS.nativeElement.value,
             "assessment": this.selectedAssessmentCS
         }
     },
     "personality": {
-      "selfEvaluation": {
-          "comment": this.rsP.nativeElement.value,
-          "assessment": this.assessmentSelfP
-      },
+      // "selfEvaluation": {
+      //     "comment": this.rsP.nativeElement.value,
+      //     "assessment": this.assessmentSelfP
+      // },
       "reviewerEvaluation": {
           "comment": this.rrP.nativeElement.value,
           "assessment": this.selectedAssessmentP
