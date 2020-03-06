@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-options.component.scss']
 })
 export class AdminOptionsComponent implements OnInit {
-
+  
   constructor(private _router: Router) { }
 
   ngOnInit() {
@@ -20,5 +20,6 @@ export class AdminOptionsComponent implements OnInit {
   addEmployee(){
     this._router.navigate(["/addUser"]);
   }
+  
 
 }

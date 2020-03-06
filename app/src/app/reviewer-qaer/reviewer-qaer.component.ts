@@ -52,16 +52,15 @@ export class ReviewerQaerComponent implements OnInit {
       this.setData();
     });
   }
-
-  setData(){
-    this.empCode = this.reviewQaerArray.employeeId.cgiCode;
-    this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
-    this.joined = this.reviewQaerArray.employeeId.joined;
-    this.totalExperience = this.reviewQaerArray.reviewer.totalExperience;
-    this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
-    this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;
-    this.designation = this.reviewQaerArray.reviewer.designation;
-    this.reviewCycle = this.reviewQaerArray.reviewCycle;
-  }
+setData(){
+  this.empCode = this.reviewQaerArray.employeeId.cgiCode;
+  this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
+  this.joined = this.reviewQaerArray.employeeId.joined;
+  this.totalExperience = this.reviewQaerArray.employeeId.totalExperience;
+  this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
+  this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;
+  this.designation = this.reviewQaerArray.employeeId.designation;
+  this.reviewCycle = this.reviewQaerArray.reviewCycle;
+ }
 
 }

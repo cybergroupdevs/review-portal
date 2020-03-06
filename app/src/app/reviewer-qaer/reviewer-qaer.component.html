@@ -1,7 +1,7 @@
 <a class="btn btn-small" [routerLink]="backButtonRoute"><img src="../../assets/images/back-btn.png">Back</a>
 <div class="container reviewer-container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="padding-left: 3.2rem;">
       <div class="card-banner">
         <div class="card-body">
           <form class="form-horizontal" role="form">
@@ -12,9 +12,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewer Name</label>
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewee Name</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" readonly [value]="reviewer" type="text"/>
+                <input class="form-control input-sm" readonly [value]="revieweeName" type="text"/>
               </div>
             </div>
             <div class="form-group">
@@ -39,14 +39,14 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="padding-right: 3.5rem;">
       <div class="card-banner">
         <div class="card-body">
           <form class="form-horizontal" role="form">
             <div class="form-group">
-              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewee Name</label>
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewer Name</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" readonly [value]="revieweeName" type="text"/>
+                <input class="form-control input-sm" readonly [value]="reviewer" type="text"/>
               </div>
             </div>
             <div class="form-group">
