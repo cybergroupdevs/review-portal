@@ -76,184 +76,114 @@
     </div>
   </div>
 
-        <div class="container-fluid mt-3">
-            <div class="panel-body">
-            <table class="table">  
-                <thead>
-                <tr id="headers">  
-                    <th colspan="3">
-                        Key Result Area
-                    </th>
-                    <th colspan=5>  
-                        Self Evaluation 
-                    </th>
-                    <th>  
-                        Self Assessment  
-                    </th>
-                    <th colspan=5>  
-                        Reviewer Evaluation 
-                    </th>  
-                    <th colspan=3>  
-                        Reviewer Assessment  
-                    </th>  
-                
-                </tr>  
-                </thead>
+<div class="container-fluid mt-3">
+  <div class="panel-body">
+    <table class="table">  
+      <thead>
+        <tr id="headers">  
+          <th colspan="3">
+            Key Result Area
+          </th>
+          <th colspan=5>  
+            Self Evaluation 
+          </th>
+          <th>  
+            Self Assessment  
+          </th>
+          <th colspan=5>  
+            Reviewer Evaluation 
+          </th>  
+          <th colspan=3>  
+            Reviewer Assessment  
+          </th>   
+        </tr>  
+      </thead>
 
-                <tr class="technicalSkill"> 
-                    <td colspan="3">  
-                        <p rows="4" cols="50" align="center">Technical Skills</p>  
-                    </td> 
-                    <td colspan="5">  
-                        <textarea rows="4" cols="50" #rsTS class="self" maxlength="400">{{reviewSelfTS}}</textarea>  
-                    </td>                      
-                     
-                    <td align="center">
-                           <select class="self"required>   
-                                <option>{{assessmentSelfTS}}</option>     
-                                <option value="Meets Expectations">Meets Expectations</option>
-                                <option value="Needs Improvement">Needs Improvement</option>
-                           </select>
-                                
-                    </td>  
-                    <td colspan="5">  
-                        <textarea rows="4" cols="50" #rrTS maxlength="400" >{{reviewReviewerTS}}</textarea>  
-                    </td>                      
-                     
-                    <td align="center">
-                           <select  required (change)="selectChangeHandler($event)"> 
-                                <option [ngValue]="selected" selected hidden>{{assessmentReviewerTS}}</option>
-                                <option value="Meets Expectations">Meets Expectations</option>
-                                <option value="Needs Improvement">Needs Improvement</option>
-                           </select>
-                                
-                    </td>  
-                </tr> 
-                
-                <tr  class="extra1">
-                    <td colspan="3">  
-                        <p #review rows="4" cols="50" align="center"></p>  
-                    </td>   
-                    <td colspan="5">  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td>                      
-                     
-                    <td align="center">
-                           <select #assessment required>        
-                                <option value="satisfied">Meets Expectations</option>
-                                <option value="needs improvement">Needs Improvement</option>
-                           </select>
-                                
-                    </td>  
-                    <td colspan="5">  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td>                      
-                     
-                    <td align="center">
-                           <select #assessment required>        
-                                <option value="satisfied">Meets Expectations</option>
-                                <option value="needs improvement">Needs Improvement</option>
-                           </select>
-                                
-                    </td>   
-                </tr>
-                <tr class="extra2">  
-                    <td colspan="3">  
-                        <p #review rows="4" cols="50" align="center"></p>  
-                    </td>   
-                    <td colspan="5">  
-                        <textarea #review rows="4" cols="50"></textarea>  
-                    </td> 
-                    <td align="center">
-                        <select #assessment required>        
-                             <option value="satisfied">Meets Expectations</option>
-                             <option value="needs improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>  
-                 <td colspan="5">  
-                     <textarea #review rows="4" cols="50"></textarea>  
-                 </td>                      
-               
-                 <td align="center">
-                        <select #assessment required>        
-                             <option value="satisfied">Meets Expectations</option>
-                             <option value="needs improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>                        
-                     
-                    
-                </tr>
-                <tr class="communicationSkill"> 
-                    <td colspan="3">  
-                        <p  rows="4" cols="50" align="center">Communication Skills</p>  
-                    </td>   
-                    <td colspan="5">  
-                        <textarea #rsCS rows="4" cols="50" class="self">{{reviewSelfCS}}</textarea>  
-                    </td> 
-                    <td align="center">
-                        <select class="self"required>   
-                             <option>{{assessmentSelfCS}}</option>     
-                             <option value="Meets Expectations">Meets Expectations</option>
-                             <option value="Needs Improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>  
-                 <td colspan="5">  
-                     <textarea #rrCS rows="4" cols="50">{{reviewReviewerCS}}</textarea>  
-                 </td>                      
-               
-                 <td align="center">
-                        <select required (change)="selectChangeHandlerCS($event)"> 
-                             <option [ngValue]="selected" selected hidden>{{assessmentReviewerCS}}</option>
-                                  
-                             <option value="Meets Expectations">Meets Expectations</option>
-                             <option value="Needs Improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>    
-                </tr>
-                <tr class="personality">  
-                    <td colspan="3">  
-                        <p #review rows="4" cols="50" align="center">Personality</p>  
-                    </td> 
-                    <td colspan="5">  
-                        <textarea  rows="4" cols="50" #rsP class="self">{{reviewSelfP}}</textarea>  
-                    </td> 
-                    <td align="center">
-                        <select class="self"required>   
-                            <option>{{assessmentSelfP}}</option>     
-                             <option value="Meets Expectations">Meets Expectations</option>
-                             <option value="Needs Improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>  
-                 <td colspan="5">  
-                     <textarea  rows="4" cols="50" #rrP>{{reviewReviewerP}}</textarea>  
-                 </td>                      
-               
-                 <td align="center">
-                        <select  required (change)="selectChangeHandlerP($event)">
-                             <option [ngValue]="selected" selected hidden>{{assessmentReviewerP}}</option> 
-                                
-                             <option value="Meets Expectations">Meets Expectations</option>
-                             <option value="Needs Improvement">Needs Improvement</option>
-                        </select>
-                             
-                 </td>    
-                </tr>
-                <div class="buttons">
-                    <button class="btn btn-primary add-user-btn"  data-toggle="modal" data-target="#saveModel"(click)=updateReviewDetails()>save</button> 
-                    <button class="btn btn-primary add-user-btn"  data-toggle="modal" data-target="#submitModel" >submit</button>
-                  </div>
-                  
-                </table> 
-                </div>
-            </div> 
-                
-                
-      
+      <tr class="technicalSkill"> 
+        <td colspan="3">  
+          <p rows="4" cols="50" align="center">Technical Skills</p>  
+        </td> 
+        <td colspan="5">  
+          <textarea rows="4" cols="50" readonly class="self">{{reviewSelfTS}}</textarea>  
+        </td>                                 
+        <td align="center">
+          <select class="self" disabled>   
+            <option>{{assessmentSelfTS}}</option>     
+            <option value="Meets Expectations">Meets Expectations</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>                
+        </td>  
 
-                       
-    
+        <td colspan="5">  
+          <textarea rows="4" [readonly]="isReadonly" cols="50" [(ngModel)]="reviewReviewerTS" ></textarea>  
+        </td>            
+        <td align="center">
+          <select  required [disabled]="editable" (change)="selectChangeHandler($event)"> 
+              <option [ngValue]="selected" selected hidden>{{assessmentReviewerTS}}</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
+          </select>                    
+        </td>  
+      </tr>
+
+      <tr class="communicationSkill"> 
+        <td colspan="3">  
+            <p  rows="4" cols="50" align="center">Communication Skills</p>  
+        </td>   
+        <td colspan="5">  
+            <textarea #rsCS rows="4" readonly cols="50" class="self">{{reviewSelfCS}}</textarea>  
+        </td> 
+        <td align="center">
+          <select class="self" required disabled>   
+            <option>{{assessmentSelfCS}}</option>     
+            <option value="Meets Expectations">Meets Expectations</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>          
+        </td>
+
+        <td colspan="5">  
+          <textarea #rrCS [readonly]="isReadonly" rows="4" [(ngModel)]="reviewReviewerCS" cols="50"></textarea>  
+        </td>                            
+        <td align="center">
+          <select required [disabled]="editable" (change)="selectChangeHandlerCS($event)"> 
+            <option [ngValue]="selected" selected hidden>{{assessmentReviewerCS}}</option>
+            <option value="Meets Expectations">Meets Expectations</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+        </td>    
+      </tr>
+
+      <tr class="personality">  
+        <td colspan="3">  
+          <p #review rows="4" cols="50" align="center">Personality</p>  
+        </td> 
+        <td colspan="5">  
+          <textarea  rows="4" readonly cols="50" #rsP class="self">{{reviewSelfP}}</textarea>  
+        </td> 
+        <td align="center">
+          <select class="self" required disabled>   
+            <option>{{assessmentSelfP}}</option>     
+            <option value="Meets Expectations">Meets Expectations</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+        </td>
+
+        <td colspan="5">  
+            <textarea [readonly]="isReadonly" rows="4" cols="50" [(ngModel)]="reviewReviewerP" #rrP></textarea>  
+        </td>                             
+        <td align="center">
+          <select  required [disabled]="editable" (change)="selectChangeHandlerP($event)">
+            <option [ngValue]="selected" selected hidden>{{assessmentReviewerP}}</option> 
+            <option value="Meets Expectations">Meets Expectations</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>               
+        </td>    
+      </tr>
+
+      <div class="buttons">
+        <button class="btn btn-primary add-user-btn" [disabled]="editable" data-toggle="modal" data-target="#saveModel" (click)="updateReviewDetails()" >Save</button> 
+        <button class="btn btn-primary add-user-btn" [disabled]="editable"   data-toggle="modal" data-target="#submitModel">Submit</button>
+      </div>     
+    </table> 
+  </div>
+</div>

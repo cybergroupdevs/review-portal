@@ -83,16 +83,23 @@ export class ServicesService {
     ));
   }
 
-  reviewData(id: string, searchBy: string, flag): Observable<any>{
-    return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+  reviewData(id: string, searchBy: string, flag:string = ""): Observable<any>{
+    if(flag == ""){
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
+    }
+    else{
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+      tap(_ => this.log("showing review details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+    }
+    
   }
 
-
-
-  updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
+  updateReviewData(id:string, searchBy:string, flag, userObj): Observable<any>{
     return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
@@ -133,11 +140,11 @@ export class ServicesService {
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
 
-    updateSelfReview(id:string,searchBy:string,flag,userObj): Observable<any>{
-      return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
-        tap(_ => this.log("updated review details")),
-        catchError(this.handleError<any>('error in updating details')
-      ));
+    updateSelfReview(id: string, reviewObj:any){
+      return this.http.patch("http://localhost:3001/review/"+id, reviewObj, {observe: 'response'}).pipe(
+        tap(_ => this.log("added review")),
+        catchError(this.handleError<any>('Some Error Occurred'))
+      );
     }
 
     createReview(object): Observable<any>{
