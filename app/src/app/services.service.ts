@@ -99,9 +99,7 @@ export class ServicesService {
     
   }
 
-
-
-  updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
+  updateReviewData(id:string, searchBy:string, flag, userObj): Observable<any>{
     return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')

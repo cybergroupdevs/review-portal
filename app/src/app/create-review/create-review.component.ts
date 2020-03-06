@@ -58,8 +58,7 @@ export class CreateReviewComponent implements OnInit {
     let empCgiCodeValue = e.target.value;
     this.sendReq(empCgiCodeValue).subscribe( res => {
       this.userArray =res[0]
-      this.setEmployeeData()
-     
+      this.setEmployeeData();
     });
   }
 

@@ -36,7 +36,10 @@ export class ReviewTableComponent implements OnInit {
       this.sendRequest(id, "qualityAnalyst", "2");
       this.toJump = "/user/pendingByReviewer/edit";
     }
-    // else if(current_route === "")
+    else if(current_route === "closed"){
+      this.sendRequest(id, "employeeId", "3");
+      this.toJump = "/user/closed";
+    }
   }
  
   sendRequest(id, searchBy, flag){
