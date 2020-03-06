@@ -18,10 +18,10 @@ export class AddUserComponent implements OnInit {
   @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
   @ViewChild('skills', {static: false}) skills: ElementRef;
   @ViewChild('designation', {static: false}) designation: ElementRef;
-  @ViewChild('joined', {static: false}) joined: ElementRef;
   @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
   @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
   message : String=''
+  selectedDesignation: String=''
 
   res:any;
   
@@ -34,10 +34,10 @@ createUser(){
       lastName: this.lastName.nativeElement.value,
       email: this.email.nativeElement.value,
       location: this.location.nativeElement.value,
-      designation: this.designation.nativeElement.value,
+      designation: this.selectedDesignation,
       cgiCode: this.cgiCode.nativeElement.value,
       skills: this.skills.nativeElement.value,
-      joined: this.joined.nativeElement.value,
+      //joined: this.joined.nativeElement.value,
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
@@ -52,5 +52,9 @@ createUser(){
       this.message="Could not add User!!"
     }
   });
-
-}}
+}
+ selectChangeHandler(event: any){
+  this.selectedDesignation = event.target.value;
+  
+}
+}
