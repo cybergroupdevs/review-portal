@@ -89,12 +89,12 @@ class Employee {
                 let resBody = {
                     "token": token
                 };
-                res.status(200).json(resBody);
+                res.status(200).send(resBody);
             }
         }
         else{
-            res.status(401).send("Unauthorized, Invalid Username or Password");
-            console.log("token is null");
+            res.status(401).send({
+                "message": "Unauthorized, Invalid Username or Password"});
         }
     }
 }
