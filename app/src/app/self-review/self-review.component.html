@@ -1,4 +1,5 @@
 <app-reviewer-qaer></app-reviewer-qaer>
+<!-- Modal -->
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -13,8 +14,6 @@
             <h1 class="heading" align="center">Saved!</h1>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
-
     </div>
   </div>
 </div>
@@ -90,12 +89,9 @@
             <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>
+            <textarea #rsTS rows="4" [(ngModel)]="reviewSelfTS" name="tech" cols="50"></textarea>
           </td>
-
-
           <td align="center">
-
             <select required (change)="selectChangeHandlerTS($event)">
               <option #assessmentSelfT class="selected">{{assessmentSelfTS}}</option>
               <option value="Meets Expectations">Meets Expectations</option>
@@ -105,7 +101,7 @@
           </td>
         </tr>
 
-        <tr>
+        <!-- <tr>
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center"></p>
           </td>
@@ -114,14 +110,13 @@
           </td>
           <td align="center">
             <select required>
-              <!-- <option>{{assessmentSelfCS}}</option>    -->
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center"></p>
           </td>
@@ -130,19 +125,18 @@
           </td>
           <td align="center">
             <select #assessment required>
-              <!-- <option></option>            -->
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
-        </tr>
+        </tr> -->
         <tr class="communicationSkill">
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center">Communication Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>
+            <textarea #rsCS rows="4" [(ngModel)]="reviewSelfCS" name="comm" cols="50"></textarea>
           </td>
           <td align="center">
             <select required (change)="selectChangeHandlerCS($event)">
@@ -150,15 +144,15 @@
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
             </select>
-
           </td>
         </tr>
+        
         <tr class="personality">
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center">Personality</p>
           </td>
           <td colspan="5">
-            <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>
+            <textarea #rsP rows="4" [(ngModel)]="reviewSelfPS" name="personality" cols="50"></textarea>
           </td>
           <td align="center">
             <select required (change)="selectChangeHandlerPS($event)">
@@ -176,7 +170,8 @@
       <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
           (click)="updateSelfReview()">Save</button>
       </div>
-      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
+      <div>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
       </div>
     </div>
   </div>

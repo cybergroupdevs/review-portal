@@ -28,23 +28,29 @@ class Review {
         res.send(review);
     }
 
-    async update(req,res) {
-        console.log("Reached UPDATE");
-        let updateObj= req.body
-        console.log(updateObj)
-        let arr = [];
-        let criteria;
-        for (const key in req.query) {
-            // console.log(key, req.query[key]);
-            criteria = { };
-            let i = 0;
-            criteria[key] = req.query[key];
-            arr[i] = criteria;
-            i = i + 1;
-        }        
-        console.log(arr);
-        const review= await model.review.update({$and : arr}, updateObj);
-        res.send(review)
+    async update(req, res) {
+        console.log(req.body);
+        const review = await model.review.update({"_id": req.params.id}, req.body);
+        res.status(200).send({
+            "message": "Updated",
+            "Data": review
+        });
+        // console.log("Reached UPDATE");
+        // let updateObj= req.body
+        // console.log(updateObj)
+        // let arr = [];
+        // let criteria;
+        // for (const key in req.query) {
+        //     // console.log(key, req.query[key]);
+        //     criteria = { };
+        //     let i = 0;
+        //     criteria[key] = req.query[key];
+        //     arr[i] = criteria;
+        //     i = i + 1;
+        // }        
+        // console.log(arr);
+        // const review= await model.review.update({$and : arr}, updateObj);
+        // res.send(review)
     }  
 
     async createReview(req, res) {

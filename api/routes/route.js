@@ -10,7 +10,7 @@ module.exports=(app) =>
     app.post("/review", controller.reviews.createReview);
     //app.get("/review/:id", controller.reviews.show);
     app.get("/review", controller.reviews.show);
-    app.patch("/reviews/update", controller.reviews.update);
+    app.patch("/review/:id", controller.reviews.update);
     app.get("/review/:id", controller.reviews.getById);
     app.get("/employeeData/:cgiCode", controller.employees.getEmployeeDetails);
 }
