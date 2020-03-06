@@ -40,20 +40,19 @@ export class ReviewTableComponent implements OnInit {
   }
  
   sendRequest(id, searchBy, flag){
-    this._service.reviewData(id, searchBy, flag).subscribe(res => {
+    this._service.reviewData(id, searchBy).subscribe(res => {
       console.log(res);
       let customObject = [];
       let customObject2 = [];
       for(let i=0; i<res.length; i++){
         customObject[i] = {
-            "FormName": res[i].formName,
-            "Cycle": res[i].reviewCycle,
-            "TargetDate": res[i].targetDate.substring(0, 10),
-            "Status": res[i].status,
-            "CreatedAt": res[i].date,
-            "Edit": res[i]._id
-          };
-      // customObject2[i] = res[i].employeeId._id;
+          "FormName": res[i].formName,
+          "Cycle": res[i].reviewCycle,
+          "TargetDate": res[i].targetDate.substring(0, 10),
+          "Status": res[i].status,
+          "CreatedAt": res[i].date,
+          "Edit": res[i]._id
+        };        
       }
       console.log(customObject);
       this.reviewArray = customObject;

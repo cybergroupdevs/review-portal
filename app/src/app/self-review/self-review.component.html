@@ -89,13 +89,15 @@
             <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsTS rows="4" [(ngModel)]="reviewSelfTS" name="tech" cols="50"></textarea>
+            <textarea #rsTS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfTS" name="tech" cols="50"></textarea>
           </td>
           <td align="center">
-            <select required (change)="selectChangeHandlerTS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerTS($event)">
               <option #assessmentSelfT class="selected">{{assessmentSelfTS}}</option>
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
 
           </td>
@@ -136,13 +138,15 @@
             <p #review rows="4" cols="50" align="center">Communication Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsCS rows="4" [(ngModel)]="reviewSelfCS" name="comm" cols="50"></textarea>
+            <textarea #rsCS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfCS" name="comm" cols="50"></textarea>
           </td>
           <td align="center">
-            <select required (change)="selectChangeHandlerCS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerCS($event)">
               <option #assessmentSelfC class="selected">{{assessmentSelfCS}}</option>
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
           </td>
         </tr>
@@ -152,13 +156,15 @@
             <p #review rows="4" cols="50" align="center">Personality</p>
           </td>
           <td colspan="5">
-            <textarea #rsP rows="4" [(ngModel)]="reviewSelfPS" name="personality" cols="50"></textarea>
+            <textarea #rsP rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfPS" name="personality" cols="50"></textarea>
           </td>
           <td align="center">
-            <select required (change)="selectChangeHandlerPS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerPS($event)">
               <option #assessmentSelfP class="selected">{{assessmentSelfPS}}</option>
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
 
           </td>
@@ -166,12 +172,12 @@
       </table>
     </div>
     <div class="buttons">
-      <div><button type="button" class="btn btn-primary">Cancel</button></div>
-      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
+      <div><button [disabled]="editable" type="button" class="btn btn-primary">Cancel</button></div>
+      <div><button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
           (click)="updateSelfReview()">Save</button>
       </div>
       <div>
-        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
+        <button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
       </div>
     </div>
   </div>

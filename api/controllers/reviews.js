@@ -23,9 +23,21 @@ class Review {
             criteria[key] = req.query[key];
             arr[i] = criteria;
             i = i + 1;
-        }        
-        const review = await model.review.get({$and : arr});
-        res.send(review);
+        } 
+        // console.log("---------------------------");
+        // console.log(arr);
+        // console.log(arr.length);
+        if(arr.length == 1){
+            const review = await model.review.get(arr[0]);
+            // console.log("Length 1",review);
+            // console.log(review.length);
+            res.send(review);
+        }
+        else if(arr.length == 2){
+            const review = await model.review.get({$and : arr});
+            console.log("Length 2", review);
+            res.send(review);
+        }
     }
 
     async update(req, res) {

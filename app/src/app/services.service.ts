@@ -83,11 +83,20 @@ export class ServicesService {
     ));
   }
 
-  reviewData(id: string, searchBy: string, flag): Observable<any>{
-    return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+  reviewData(id: string, searchBy: string, flag:string = ""): Observable<any>{
+    if(flag == ""){
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
+    }
+    else{
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+      tap(_ => this.log("showing review details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+    }
+    
   }
 
 

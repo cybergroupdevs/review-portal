@@ -34,6 +34,9 @@ export class SelfReviewComponent implements OnInit {
   selectedAssessmentCS: String = this.assessmentSelfCS;
   selectedAssessmentPS: String = this.assessmentSelfPS;
 
+  isReadonly = true;
+  editable = true;
+
   ngOnInit() {
     this._activatedRoute.params.subscribe(param => {
       console.log(param.id);
@@ -43,11 +46,18 @@ export class SelfReviewComponent implements OnInit {
   }
 
   loadExistingData(reviewId: string){
-    this._service.reviewData(reviewId, "_id", "0").subscribe(res => {
+    this._service.reviewData(reviewId, "_id").subscribe(res => {
       console.log(res); 
       this.reviewArray = res[0];
-      console.log(this.reviewArray)
-      this.setExistingData();
+      if(this.reviewArray.flag == "0"){
+        this.isReadonly = false;
+        this.editable = false;
+        this.setExistingData();
+      }
+      else{
+        this.setExistingData();
+      }
+      
     });
   }
 
