@@ -7,7 +7,7 @@ module.exports=(app) =>
     app.post("/employee/signup",controller.employees.create);
     app.get("/employees/:id",controller.employees.show);
     app.post("/login", controller.employees.login);
-    app.post("/review", controller.reviews.createReview);
+    app.post("/review/create", controller.reviews.createReview);
     //app.get("/review/:id", controller.reviews.show);
     app.get("/review", controller.reviews.show);
     app.patch("/review/:id", controller.reviews.update);

@@ -134,10 +134,10 @@ export class ServicesService {
       };
     }
 
-    getReviewById(id:any): Observable<any> {
+    getReviewById(id:String, searchBy:string, flag): Observable<any> {
       console.log("in service section");
-      return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
-        retry(3), catchError(this.handleError<any>('error in review details')));
+      return this.http.get("http://localhost:3001/review/?" + searchBy+"="+ id + "&flag=" + flag).pipe(
+        catchError(this.handleError<any>('error in review details')));
     }
 
     updateSelfReview(id: string, reviewObj:any){

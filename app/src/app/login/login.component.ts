@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
   
   checkUser(){
+
     let user = {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value

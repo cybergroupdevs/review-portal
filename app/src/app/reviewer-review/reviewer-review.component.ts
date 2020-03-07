@@ -146,6 +146,7 @@ export class ReviewerReviewComponent implements OnInit {
   }
 
   submitReviewDetails(){
+    this.updateReviewDetails();
     let reviewObj;
     if(this.current_route == "pendingByReviewer"){
       reviewObj = {
@@ -164,11 +165,12 @@ export class ReviewerReviewComponent implements OnInit {
       console.log(res);
       if(res.status == 200){
         console.log('Successful update!!');
+        this._router.navigate(["/user/reviews"]);
       }
       else {
         console.log('unsuccessful');
       }
     });
-    this.updateReviewDetails();
+    
   }
 }

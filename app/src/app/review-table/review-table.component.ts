@@ -48,12 +48,14 @@ export class ReviewTableComponent implements OnInit {
       let customObject = [];
       let customObject2 = [];
       for(let i=0; i<res.length; i++){
+        console.log(res[i].targetDate.substring(0, 10) , "-----> target date");
+        console.log( res[i].date.substring(0, 10), "-----> date")
         customObject[i] = {
           "FormName": res[i].formName,
           "Cycle": res[i].reviewCycle,
           "TargetDate": res[i].targetDate.substring(0, 10),
           "Status": res[i].status,
-          "CreatedAt": res[i].date,
+          "CreatedAt": res[i].date.substring(0, 10),
           "Edit": res[i]._id
         };        
       }

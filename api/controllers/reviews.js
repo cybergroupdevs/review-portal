@@ -15,12 +15,14 @@ class Review {
     }
 
     async show(req,res){
+        console.log(req.query, "jhhhhhhhhhhhhhh");
         let arr = [];
         let criteria;
         let i = 0; 
         for (const key in req.query) {
             criteria = { };
             criteria[key] = req.query[key];
+            console.log(criteria ,"criteria");
             arr[i] = criteria;
             i = i + 1;
         } 
