@@ -55,7 +55,9 @@ export class ReviewerQaerComponent implements OnInit {
 setData(){
   this.empCode = this.reviewQaerArray.employeeId.cgiCode;
   this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
-  this.joined = this.reviewQaerArray.employeeId.joined;
+  
+  this.joined = this.reviewQaerArray.employeeId.joined.substring(0, 10);
+  console.log(this.joined, "------> joined date")
   this.totalExperience = this.reviewQaerArray.employeeId.totalExperience;
   this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
   this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;

@@ -90,7 +90,7 @@ export class AddUpdateUserComponent implements OnInit {
     this.email = this.userArray.email;
     this.location = this.userArray.location;
     this.designation = this.userArray.designation;
-    this.joined = this.userArray.joined;
+    this.joined = this.userArray.joined.substring(0, 10);
     this.previousExperience = this.userArray.previousExperience;
     this.totalExperience = this.userArray.totalExperience;
     this.skills = this.userArray.skills;
