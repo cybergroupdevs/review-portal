@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ReviewerQaerComponent implements OnInit {
   res:any;
-  constructor(private _service: ServicesService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _service: ServicesService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
   
   reviewQaerArray: any;
   empCode: string = null;
@@ -23,27 +23,35 @@ export class ReviewerQaerComponent implements OnInit {
   reviewCycle: string=null;
  
   reviewId: string;
+  backButtonRoute: string;
   
-    ngOnInit() {
-      this.loadData();
+  ngOnInit() {
+    let current_route = this._router.url.split('/')[2];
+    console.log(current_route);
+    if(current_route == "pendingBySelf"){
+      this.backButtonRoute = "/user/reviews/allReviews";
     }
-
-    loadData(){
-      this._activatedRoute.params.subscribe(param => {
-        console.log(param.id);
-        this.reviewId = param.id;
-      });
-      this._service.reviewerData(this.reviewId).subscribe(res => {
-        console.log(res);
-        this.reviewQaerArray = res[0];
-        console.log(this.reviewQaerArray);
-        this.setData();
-      });
+    else if(current_route == "pendingByReviewer"){
+      this.backButtonRoute = "/user/reviews/pendingByReviewer";
     }
+    else if(current_route == "pendingByQa"){
+      this.backButtonRoute = "/user/reviews/pendingByQAer";
+    }
+    this.loadData();
+  }
 
-// onChange(ev) {
-//   console.log(ev);
-// }
+  loadData(){
+    this._activatedRoute.params.subscribe(param => {
+      console.log(param.id);
+      this.reviewId = param.id;
+    });
+    this._service.reviewerData(this.reviewId).subscribe(res => {
+      console.log(res);
+      this.reviewQaerArray = res[0];
+      console.log(this.reviewQaerArray);
+      this.setData();
+    });
+  }
 setData(){
   this.empCode = this.reviewQaerArray.employeeId.cgiCode;
   this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;

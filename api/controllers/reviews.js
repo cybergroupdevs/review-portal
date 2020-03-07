@@ -23,28 +23,46 @@ class Review {
             criteria[key] = req.query[key];
             arr[i] = criteria;
             i = i + 1;
-        }        
-        const review = await model.review.get({$and : arr});
-        res.send(review);
+        } 
+        // console.log("---------------------------");
+        // console.log(arr);
+        // console.log(arr.length);
+        if(arr.length == 1){
+            const review = await model.review.get(arr[0]);
+            // console.log("Length 1",review);
+            // console.log(review.length);
+            res.send(review);
+        }
+        else if(arr.length == 2){
+            const review = await model.review.get({$and : arr});
+            console.log("Length 2", review);
+            res.send(review);
+        }
     }
 
-    async update(req,res) {
-        console.log("Reached UPDATE");
-        let updateObj= req.body
-        console.log(updateObj)
-        let arr = [];
-        let criteria;
-        for (const key in req.query) {
-            // console.log(key, req.query[key]);
-            criteria = { };
-            let i = 0;
-            criteria[key] = req.query[key];
-            arr[i] = criteria;
-            i = i + 1;
-        }        
-        console.log(arr);
-        const review= await model.review.update({$and : arr}, updateObj);
-        res.send(review)
+    async update(req, res) {
+        console.log(req.body);
+        const review = await model.review.update({"_id": req.params.id}, req.body);
+        res.status(200).send({
+            "message": "Updated",
+            "Data": review
+        });
+        // console.log("Reached UPDATE");
+        // let updateObj= req.body
+        // console.log(updateObj)
+        // let arr = [];
+        // let criteria;
+        // for (const key in req.query) {
+        //     // console.log(key, req.query[key]);
+        //     criteria = { };
+        //     let i = 0;
+        //     criteria[key] = req.query[key];
+        //     arr[i] = criteria;
+        //     i = i + 1;
+        // }        
+        // console.log(arr);
+        // const review= await model.review.update({$and : arr}, updateObj);
+        // res.send(review)
     }  
 
     async createReview(req, res) {
