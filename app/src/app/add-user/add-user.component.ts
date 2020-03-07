@@ -40,6 +40,7 @@ export class AddUserComponent implements OnInit {
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
+    
     this._service.createUser(userObj).subscribe(res => 
     {console.log(res);
     if (res.status == 200){
@@ -51,9 +52,20 @@ export class AddUserComponent implements OnInit {
       this.message="Could not add User!!"
     }
   });
+  this._service.sendEmail(userObj).subscribe(res=>{    
+    if (res.status == 200){
+      //alert("successfully added")
+      this.message="Added User mail sent!!"
+    }
+    else{
+      //alert("successfully added");
+      this.message="Could not add User!!"
+    }
+  });
 }
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
+  }
+
   
-}
 }

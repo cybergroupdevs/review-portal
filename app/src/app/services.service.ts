@@ -1,10 +1,12 @@
+import { AddUserComponent } from './add-user/add-user.component';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { __param } from 'tslib';
 import { HttpClientModule} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +58,15 @@ export class ServicesService {
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
+  }
+  // sendMail(userObj):Observable<any>{
+  //   return this.http.post("http://localhost:3001/sendMail",userObj).pipe(
+  //     tap(_=>this.log("mail sent")),
+  //     catchError(this.handleError<any>('Some error ocured'))
+  //   );
+  // }
+  sendEmail(obj): Observable<any> {
+    return this.http.post<any>('http://localhost:3001/sendFormData', obj)
   }
 
 

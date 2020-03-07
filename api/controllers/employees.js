@@ -3,6 +3,7 @@ const config = require('config');
 // const Employee = require('../schemas/employee');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
+const nodemailer = require('nodemailer');
 
 class Employee {
     
@@ -97,6 +98,7 @@ class Employee {
                 "message": "Unauthorized, Invalid Username or Password"});
         }
     }
+    
 }
 
 module.exports = new Employee();
