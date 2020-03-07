@@ -34,7 +34,7 @@ app.post('/sendFormData', (req, res) => {
       from: 'vishal.ranjan@cygrp.com',
       to: `<${req.body.email}>`, // must be Gmail
       cc:`${req.body.firstName} <${req.body.email}>`,
-      subject: 'Sending Email using Node.js',
+      subject: 'Login Credentials to HRMS',
       html: `
               <table style="width: 100%; border: none">
                 <thead>
