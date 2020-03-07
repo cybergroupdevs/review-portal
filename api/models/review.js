@@ -9,7 +9,7 @@ class Review{
 
     async get(criteria={}, columns={}){
         let fields = 'cgiCode firstName lastName designation totalExperience joined';
-        console.log(criteria);
+        console.log("Model---------",criteria);
         let reviewdata = await this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
         //Nitesh - 8860752681
         console.log(reviewdata);
