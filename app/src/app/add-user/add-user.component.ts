@@ -21,6 +21,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
   @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
   message : String=''
+  selectedDesignation: String=''
 
   res:any;
   
@@ -33,12 +34,13 @@ export class AddUserComponent implements OnInit {
       lastName: this.lastName.nativeElement.value,
       email: this.email.nativeElement.value,
       location: this.location.nativeElement.value,
-      designation: this.designation.nativeElement.value,
+      designation: this.selectedDesignation,
       cgiCode: this.cgiCode.nativeElement.value,
       skills: this.skills.nativeElement.value,
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
+    
     this._service.createUser(userObj).subscribe(res => 
     {console.log(res);
     if (res.status == 200){
@@ -50,5 +52,20 @@ export class AddUserComponent implements OnInit {
       this.message="Could not add User!!"
     }
   });
+  this._service.sendEmail(userObj).subscribe(res=>{    
+    if (res.status == 200){
+      //alert("successfully added")
+      this.message="Added User mail sent!!"
+    }
+    else{
+      //alert("successfully added");
+      this.message="Could not add User!!"
+    }
+  });
+}
+ selectChangeHandler(event: any){
+  this.selectedDesignation = event.target.value;
+  }
 
-}}
+  
+}
