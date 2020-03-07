@@ -1,10 +1,12 @@
+import { AddUserComponent } from './add-user/add-user.component';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { __param } from 'tslib';
 import { HttpClientModule} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +38,8 @@ export class ServicesService {
     ));
   }
 
-  employeeData(id: string): Observable<any>{
-    //const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+  employeeData(_id): Observable<any>{
+    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
@@ -45,17 +47,26 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
   
   createUser(obj): Observable<any>{
-    return this.http.post("http://localhost:3001/employee/signup", obj, {observe: 'response'}).pipe(
+    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
+  }
+  // sendMail(userObj):Observable<any>{
+  //   return this.http.post("http://localhost:3001/sendMail",userObj).pipe(
+  //     tap(_=>this.log("mail sent")),
+  //     catchError(this.handleError<any>('Some error ocured'))
+  //   );
+  // }
+  sendEmail(obj): Observable<any> {
+    return this.http.post<any>('http://localhost:3001/sendFormData', obj)
   }
 
 
@@ -76,8 +87,8 @@ export class ServicesService {
   }
 
 
-  updateData(object: any, id:string): Observable<any>{
-    return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response'}).pipe(
+  updateData(_id,object): Observable<any>{
+    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -99,8 +110,10 @@ export class ServicesService {
     
   }
 
-  updateReviewData(id:string, searchBy:string, flag, userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
+
+
+  updateReviewData(flag,param:string,userObj): Observable<any>{
+    return this.http.patch("http://localhost:3001/reviews/update/?"+"flag="+flag+'&_id='+param,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
     ));

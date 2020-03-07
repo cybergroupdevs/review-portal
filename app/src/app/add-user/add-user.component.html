@@ -35,6 +35,7 @@
 
         <!-- Modal Header -->
         <div >
+
             <h1 class="heading" align="center">Employee Added!</h1>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
@@ -101,8 +102,18 @@
               </div>
               
               <div class="form-group col-md-6 col-sm-6">
-                  <label >Designation</label>
-                  <input type="text" #designation class="form-control input-sm" maxlength="40">
+                  
+                    <label>Designation</label>
+                    <select required class="form-control input-sm" (change)="selectChangeHandler($event)">
+                      <option [ngValue]="selected" selected hidden>{{selectedDesignation}}</option> 
+                      <option value="Intern">Intern</option>
+                      <option value="Consultant 1">Consultant 1</option>
+                      <option value="Consultant 2">Consultant 2</option>
+                      <option value="Associate 1">Associate 1</option>
+                      <option value="Associate 2">Consultant 2</option>
+                    </select> 
+                    
+                    
               </div>
   
               <div class="form-group col-md-6 col-sm-6">
@@ -136,3 +147,4 @@
       </form>
   </div>
 </div>
+
