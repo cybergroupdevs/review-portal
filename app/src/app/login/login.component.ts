@@ -20,6 +20,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  abc(){
+    
+    document.getElementById("psw").addEventListener("keyup", function(event) {
+      if (event.keyCode === 13 || event.which == 13) {
+        event.preventDefault();
+        document.getElementById("loginBtn").click();
+      }
+    });
+  }
+
   
   checkUser(){
     let user = {

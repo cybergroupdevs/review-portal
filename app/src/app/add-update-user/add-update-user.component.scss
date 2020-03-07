@@ -32,3 +32,6 @@ span {
     background-color: #000062; 
     width: 16rem;
 }
+input[read-only="isReadonly"]{
+    cursor:not-allowed;
+}
