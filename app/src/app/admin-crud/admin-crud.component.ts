@@ -1,5 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-admin-crud',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-crud.component.scss']
 })
 export class AdminCrudComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 10;
+  items = [];
 
-  constructor(private _service: ServicesService) { }
+  constructor(private _service: ServicesService) { 
+  }
 
   usersArray: any;
 
@@ -20,7 +27,7 @@ export class AdminCrudComponent implements OnInit {
     this._service.showAllEmployees().subscribe(res => {
       // console.log(res);
       this.usersArray = res;
-      console.log(this.usersArray);
+      console.log(this.usersArray, "my data");
     });
   }
 

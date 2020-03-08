@@ -12,6 +12,8 @@ class Employee {
     }
 
     async create(req,res) {
+        
+
         let employeeObj ={
             firstName: req.body.firstName,
             lastName : req.body.lastName,
