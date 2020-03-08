@@ -15,7 +15,8 @@ class Employee {
     async create(req,res) {
     console.log(req.body)
      const salt = await bcrypt.genSalt(10);
-     const hashedPassword = await bcrypt.hash(req.body.password, salt);
+     var defaultPassword= "cybergroup@noida"
+     const hashedPassword = await bcrypt.hash(defaultPassword, salt);
 
         let employeeObj ={
             firstName: req.body.firstName,
