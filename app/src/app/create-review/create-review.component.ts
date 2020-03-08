@@ -11,6 +11,7 @@ import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
   templateUrl: './create-review.component.html',
   styleUrls: ['./create-review.component.scss']
 })
+
 export class CreateReviewComponent implements OnInit {
 
   constructor(private _service: ServicesService) { }
@@ -37,7 +38,8 @@ export class CreateReviewComponent implements OnInit {
   employeeId: any;
   reviewerId: any;
   qaerId: any;
-
+  inputValue: string;
+  
   sendReq(cgiCodeValue){
     return this._service.getByCgiCode(cgiCodeValue);
   }
@@ -50,6 +52,7 @@ export class CreateReviewComponent implements OnInit {
     empCgiCode.addEventListener('input', this.setEmpDetails.bind(this)); 
     reviewerCgiCode.addEventListener('input', this.setReviewerDetails.bind(this));
     qaerCgiCode.addEventListener('input', this.setQaerDetails.bind(this));  
+    
 
   }
 
@@ -58,8 +61,7 @@ export class CreateReviewComponent implements OnInit {
     let empCgiCodeValue = e.target.value;
     this.sendReq(empCgiCodeValue).subscribe( res => {
       this.userArray =res[0]
-      this.setEmployeeData()
-     
+      this.setEmployeeData();
     });
   }
 
@@ -68,7 +70,7 @@ export class CreateReviewComponent implements OnInit {
     let reviewerCgiCodeValue = e.target.value;
     this.sendReq(reviewerCgiCodeValue).subscribe( res => {
       this.userArray =res[0]
-      this.setReviewerData()
+      this.setReviewerData();
     });
   }
 
@@ -76,7 +78,7 @@ export class CreateReviewComponent implements OnInit {
     console.log(e.target.value);
     let qaerCgiCodeValue = e.target.value;
     this.sendReq(qaerCgiCodeValue).subscribe( res => {
-      this.userArray =res[0]
+      this.userArray = res[0]
       this.setQaerData()
     });
   }
@@ -110,16 +112,6 @@ export class CreateReviewComponent implements OnInit {
     var qId = this.userArray._id;
     this.qaerId = qId;
   }
-
-  printID(){
-    console.log("########### printID ###################");
-    let reviewObject = {
-      employeeId: this.employeeId,
-      reviewer: this.reviewerId,
-      qaer: this.qaerId
-    }
-    console.log(reviewObject)
-  }
   
   createReview(){
     let reviewObject = {
@@ -131,14 +123,14 @@ export class CreateReviewComponent implements OnInit {
     }
     console.log(reviewObject);
     this._service.createReview(reviewObject).subscribe(res => this.res = res);
-    // console.log(this.res);
+    console.log(this.res);
     // if (this.res.status==200){
 
     // }
     // else{
     //   console.log("error occured");
     // }
-  
+    this.inputValue = " ";
   } 
 
 }

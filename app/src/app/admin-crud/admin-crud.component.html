@@ -1,47 +1,25 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<strong>ADMIN</strong>
-				</div>
-				
-				<div class="panel-body">
-				  <div>
-					<table class="table table-striped">
-						<thead>
-						<tr>
-                            <th scope="col">CGI Code</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Designation</th>
-						</tr>
-						</thead>
-						<tbody id="adminTable" *ngFor = "let employee of usersArray">
-							<tr>
-								<td>
-									{{employee.cgiCode}}
-								</td>
-								<td>
-									{{employee.email}}
-								</td>
-								<td>
-									{{employee.firstName}}
-								</td>
-								<td>
-									{{employee.designation}}
-								</td>
-								<td>
-									<a class="btn btn-primary btn-sm" routerLink="/user" id={{employee.email}}>Edit</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				  </div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+            	<th scope="col">CGI Code maxlength="6"
+					(input)="cgiCode.value=$event.target.value.toUpperCase()" required="required"</th>
+            	<th scope="col">Email</th>
+            	<th scope="col">Name</th>
+            	<th scope="col">Designation</th>
+			</tr>
+		</thead>
+		<tbody id="adminTable" *ngFor = "let employee of usersArray">
+			<tr>
+				<td>{{employee.cgiCode}}</td>
+				<td>{{employee.email}}</td>
+				<td>{{employee.firstName}}</td>
+				<td>{{employee.designation}}</td>
+				<td [routerLink]="['/admin/employee/edit', employee._id]">
+					<img src="../../assets/images/edit-btn.png">					
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
-
-<!-- <app-login></app-login> -->
+<router-outlet></router-outlet>

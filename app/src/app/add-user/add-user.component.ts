@@ -18,17 +18,16 @@ export class AddUserComponent implements OnInit {
   @ViewChild('cgiCode', {static: false}) cgiCode: ElementRef;
   @ViewChild('skills', {static: false}) skills: ElementRef;
   @ViewChild('designation', {static: false}) designation: ElementRef;
-  @ViewChild('joined', {static: false}) joined: ElementRef;
   @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
   @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
   message : String=''
 
   res:any;
   
-   ngOnInit() {
- }
+  ngOnInit() {
+  }
  
-createUser(){
+  createUser(){
     let userObj = {
       firstName: this.firstName.nativeElement.value,
       lastName: this.lastName.nativeElement.value,
@@ -37,13 +36,12 @@ createUser(){
       designation: this.designation.nativeElement.value,
       cgiCode: this.cgiCode.nativeElement.value,
       skills: this.skills.nativeElement.value,
-      joined: this.joined.nativeElement.value,
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
     this._service.createUser(userObj).subscribe(res => 
     {console.log(res);
-    if (res.status!=''){
+    if (res.status == 200){
       //alert("successfully added")
       this.message="Added User!!"
     }
