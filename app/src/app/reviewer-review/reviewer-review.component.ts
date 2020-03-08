@@ -61,12 +61,25 @@ export class ReviewerReviewComponent implements OnInit {
   }
 
   loadExistingData(){
-    this._service.reviewData(this.reviewId, "_id").subscribe(res => {
+    this._service.reviewDataById(this.reviewId, this.current_route).subscribe(res => {
+      console.log(res.status);
       console.log(res);
-      
-      this.reviewArray = res[0];
-      console.log(this.reviewArray)
-      this.setExistingData();
+      if(res.status == 200){
+        this.reviewArray = res.body[0];
+        if(this.reviewArray.flag == "3"){
+          this.isReadonly = true;
+          this.editable = true;
+        }
+        console.log(this.reviewArray)
+        this.setExistingData();
+      }
+      else if(res.status == 404){
+        this._router.navigate(['/404']);
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
     });
   }
 
@@ -124,10 +137,10 @@ export class ReviewerReviewComponent implements OnInit {
     console.log(userObj);
     this._service.updateSelfReview(this.reviewId, userObj).subscribe(res =>  {
       console.log(res);
-      if(res == 200){
+      if(res.status == 200){
         console.log('Successful update!!');   
       }
-      else {
+      else if(res.status == 401){
         console.log('unsuccessful');
       }
     });

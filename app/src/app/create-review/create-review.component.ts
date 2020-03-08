@@ -4,6 +4,7 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 export class CreateReviewComponent implements OnInit {
 
-  constructor(private _service: ServicesService) { }
+  constructor(private _service: ServicesService, private _router: Router) { }
 
 
   @ViewChild('empCgiCode', {static: false}) empCgiCode: ElementRef;
@@ -52,16 +53,21 @@ export class CreateReviewComponent implements OnInit {
     empCgiCode.addEventListener('input', this.setEmpDetails.bind(this)); 
     reviewerCgiCode.addEventListener('input', this.setReviewerDetails.bind(this));
     qaerCgiCode.addEventListener('input', this.setQaerDetails.bind(this));  
-    
-
   }
 
   setEmpDetails(e){
     console.log(e.target.value);
     let empCgiCodeValue = e.target.value;
     this.sendReq(empCgiCodeValue).subscribe( res => {
-      this.userArray =res[0]
-      this.setEmployeeData();
+      if(res.status == 200){
+        this.userArray = res.body[0];
+        this.setEmployeeData();
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        alert("Unauthorize, Token maybe expired");
+        this._router.navigate(['/login']);
+      }
     });
   }
 
@@ -69,8 +75,16 @@ export class CreateReviewComponent implements OnInit {
     console.log(e.target.value);
     let reviewerCgiCodeValue = e.target.value;
     this.sendReq(reviewerCgiCodeValue).subscribe( res => {
-      this.userArray =res[0]
-      this.setReviewerData();
+      if(res.status == 200){
+        this.userArray = res.body[0];
+        this.setReviewerData();
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        alert("Unauthorize, Token maybe expired");
+        this._router.navigate(['/login']);
+      }
+      
     });
   }
 
@@ -78,8 +92,15 @@ export class CreateReviewComponent implements OnInit {
     console.log(e.target.value);
     let qaerCgiCodeValue = e.target.value;
     this.sendReq(qaerCgiCodeValue).subscribe( res => {
-      this.userArray = res[0]
-      this.setQaerData()
+      if(res.status == 200){
+        this.userArray = res.body[0];
+        this.setQaerData();
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        alert("Unauthorize, Token maybe expired");
+        this._router.navigate(['/login']);
+      }
     });
   }
 
@@ -122,15 +143,19 @@ export class CreateReviewComponent implements OnInit {
       formName: this.formName.nativeElement.value,
     }
     console.log(reviewObject);
-    this._service.createReview(reviewObject).subscribe(res => this.res = res);
-    console.log(this.res);
-    // if (this.res.status==200){
-
-    // }
-    // else{
-    //   console.log("error occured");
-    // }
-    this.inputValue = " ";
+    this._service.createReview(reviewObject).subscribe(res => {
+      console.log(this.res);
+      if(res.status == 200){
+        alert("Created");
+      }
+      else if(res.status == 401){
+        alert("Unauthorized");
+      }
+      else{
+        alert("Some Error Occured");
+      }
+    });
+      this.inputValue = " ";
   } 
 
 }

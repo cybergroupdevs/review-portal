@@ -11,7 +11,6 @@ import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUpdateUserComponent } from '../app/add-update-user/add-update-user.component'
 import { ServicesService } from './services.service';
-import { from } from 'rxjs';
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
@@ -32,6 +31,7 @@ import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]
