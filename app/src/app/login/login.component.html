@@ -8,15 +8,15 @@
                 </div>
                 <div class="panel-body">
                     <img class="img img-responsive logo-img" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFSk7W1KUiG0w/company-logo_200_200/0?e=2159024400&v=beta&t=dToUex9P08LphNIkkj5aT6ZhSC17M8orhdt784fwwjE">
-                    <form class="form-horizontal" action="\">     
+                    <form class="form-horizontal myForm" action="\">     
 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input #email type="text" class="form-control" name="email" placeholder="Email">
+                            <input #email type="text" class="form-control" name="email" placeholder="Email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="40" required="required" >
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input #password type="password" class="form-control" name="password" placeholder="Password">
+                            <input #password type="password" class="form-control" name="password" placeholder="Password" required="required">
                         </div>
                         <input type="button" value="Log In" (click)="checkUser()" id="loginBtn" class="btn btn-primary btn-block">    
                     </form>      

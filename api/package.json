@@ -19,6 +19,7 @@
     "file-type": "^14.1.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",
+    "ng-connection-service": "^1.0.4",
     "nodemailer": "^6.4.4",
     "nodemailer-mailgun-transport": "^2.0.0",
     "xoauth2": "^1.2.0"

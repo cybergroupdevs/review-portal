@@ -79,43 +79,43 @@
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" >
+                        <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required="required" >
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}">
+                        <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20">
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Email</label>
-                    <input type="email" #uemail class="form-control input-sm" [readonly]="isReadonly" value="{{email}}">
+                    <input type="email" #uemail class="form-control input-sm" [readonly]="isReadonly" value="{{email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="40" required="required">
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Skills</label>
-                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="temp" value="{{skills}}">
+                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="temp" value="{{skills}}" maxlength="200">
 
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
                         <label >Designation</label>
-                        <input type="text" #udesignation [readonly]="temp2" class="form-control input-sm" value="{{designation}}" >
+                        <input type="text" #udesignation [readonly]="temp2" class="form-control input-sm" value="{{designation}}" maxlength="40" >
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Total Experience</label>
-                        <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}">
+                        <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}" maxlength="2">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
-                    <textarea #ulocation [readonly]="temp" class="form-control input-sm" id="address" rows="5" value="{{location}}"></textarea>
+                    <textarea #ulocation [readonly]="temp" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400"></textarea>
                 </div>
                 
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Previous Experience</label>
-                    <input type="text" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}">
+                    <input type="text" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" maxlength="2">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                         <label >Date of Joining</label>

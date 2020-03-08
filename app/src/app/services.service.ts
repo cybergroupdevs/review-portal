@@ -30,6 +30,11 @@ export class ServicesService {
     return JSON.parse(jsonPayload);
     console.log(token);
   };
+//   signinUser(UserName,Password): Observable<any>{
+//     return this.http.get('http://api.###.com/api/###/signin?
+//         username='+UserName+'&password='+Password);
+// }
+
 
   showAllEmployees(): Observable<any>{
     return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token, observe: 'response'}).pipe(
