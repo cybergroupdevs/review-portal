@@ -1,7 +1,6 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-crud',
@@ -14,8 +13,7 @@ export class AdminCrudComponent implements OnInit {
   pageSize = 10;
   items = [];
 
-  constructor(private _service: ServicesService) { 
-  }
+  constructor(private _service: ServicesService, private _router: Router) { }
 
   usersArray: any;
 
@@ -26,8 +24,14 @@ export class AdminCrudComponent implements OnInit {
   loadUsers(){
     this._service.showAllEmployees().subscribe(res => {
       // console.log(res);
-      this.usersArray = res;
-      console.log(this.usersArray, "my data");
+      if(res.status == 200){
+        this.usersArray = res.body;
+        console.log(this.usersArray);
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
     });
   }
 

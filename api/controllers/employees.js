@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const config = require('config');
-// const Employee = require('../schemas/employee');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 const nodemailer = require('nodemailer');
@@ -8,69 +7,95 @@ const nodemailer = require('nodemailer');
 class Employee {
     
     constructor(){
-        console.log("reached controller")
+        console.log("reached controller");
     }
 
     async create(req,res) {
-        
-
-        let employeeObj ={
-            firstName: req.body.firstName,
-            lastName : req.body.lastName,
-            email: req.body.email,
-            designation: req.body.designation,
-            skills: [req.body.skills],
-            cgiCode: req.body.cgiCode,
-            previousExperience: req.body.previousExperience,
-            totalExperience: req.body.totalExperience,
-            location: req.body.location
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let employeeObj ={
+                firstName: req.body.firstName,
+                lastName : req.body.lastName,
+                email: req.body.email,
+                designation: req.body.designation,
+                skills: [req.body.skills],
+                cgiCode: req.body.cgiCode,
+                previousExperience: req.body.previousExperience,
+                totalExperience: req.body.totalExperience,
+                location: req.body.location
+            }
+            console.log(employeeObj);
+            const employee = await model.employee.save(employeeObj);
+            res.status(200).send(employee);
         }
-        console.log(employeeObj);
-        const employee= await model.employee.save(employeeObj)
-        res.send(employee)
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
     }
   
     async getEmployeeDetails(req, res){
-        let criteria = {"cgiCode": req.params.cgiCode}
-        const empId = await model.employee.get(criteria, 
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let criteria = {"cgiCode": req.params.cgiCode};
+            const empId = await model.employee.get(criteria, 
                                     {"email": 1,
                                     "firstName": 1,
                                     "lastName": 1,
                                     "_id": 1,
                                     "cgiCode": 1,
                                     "designation": 1});
-        res.send(empId);
+            res.status(200).send(empId);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        
     }
 
     async show(req,res){
-        console.log("Reached SHOW");
-        const employee = await model.employee.getUserData({"_id": req.params.id})
-        res.send(employee[0]);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const employee = await model.employee.getUserData({"_id": req.params.id});
+            res.status(200).send(employee[0]);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }   
     }
-
 
     async index(req,res){
-        const employeeList = await model.employee.get();
-        res.send(employeeList);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const employeeList = await model.employee.get();
+            res.status(200).send(employeeList);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
     }
 
-    async showUser(req,res){
-        const employee = await model.employee.get({_id: req.params.parameter})
-        res.send(employee[0])
-    }
+    // async showUser(req,res){
+    //     const employee = await model.employee.get({_id: req.params.parameter})
+    //     res.send(employee[0])
+    // }
 
     async update(req,res) {
-        let updateObj= req.body;
-        console.log(updateObj);
-        const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
-        res.send(employee);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let updateObj= req.body;
+            console.log(updateObj);
+            const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
+            res.status(200).send(employee);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        
     }    
-
-    async delete(req,res){
-        console.log(req.params.parameter);
-        const employee =await model.employee.delete({_id: req.params.parameter});
-        res.send("deleted");
-    }
  
     async login(req, res) {
         console.log(req.body);

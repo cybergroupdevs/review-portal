@@ -24,17 +24,19 @@ export class ReviewerQaerComponent implements OnInit {
  
   reviewId: string;
   backButtonRoute: string;
+  current_route: string;
   
+  //It gets reviewee's data. It is the component with two cards.
   ngOnInit() {
-    let current_route = this._router.url.split('/')[2];
-    console.log(current_route);
-    if(current_route == "pendingBySelf"){
+    this.current_route = this._router.url.split('/')[2];
+    console.log(this.current_route);
+    if(this.current_route == "pendingBySelf"){
       this.backButtonRoute = "/user/reviews/allReviews";
     }
-    else if(current_route == "pendingByReviewer"){
+    else if(this.current_route == "pendingByReviewer"){
       this.backButtonRoute = "/user/reviews/pendingByReviewer";
     }
-    else if(current_route == "pendingByQa"){
+    else if(this.current_route == "pendingByQa"){
       this.backButtonRoute = "/user/reviews/pendingByQAer";
     }
     this.loadData();
@@ -45,24 +47,35 @@ export class ReviewerQaerComponent implements OnInit {
       console.log(param.id);
       this.reviewId = param.id;
     });
-    this._service.reviewerData(this.reviewId).subscribe(res => {
-      console.log(res);
-      this.reviewQaerArray = res[0];
-      console.log(this.reviewQaerArray);
-      this.setData();
+    this._service.reviewDataById(this.reviewId, this.current_route).subscribe(res => {
+      console.log(res.status);
+      if(res.status == 200){
+        console.log("INside Success", res.body);
+        this.reviewQaerArray = res.body[0];
+        console.log(this.reviewQaerArray);
+        this.setData();
+      }
+      else if(res.status == 404){
+        this._router.navigate(['/404']);
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
     });
   }
-setData(){
-  this.empCode = this.reviewQaerArray.employeeId.cgiCode;
-  this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
+
+  setData(){
+    this.empCode = this.reviewQaerArray.employeeId.cgiCode;
+    this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
   
-  this.joined = this.reviewQaerArray.employeeId.joined.substring(0, 10);
-  console.log(this.joined, "------> joined date")
-  this.totalExperience = this.reviewQaerArray.employeeId.totalExperience;
-  this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
-  this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;
-  this.designation = this.reviewQaerArray.employeeId.designation;
-  this.reviewCycle = this.reviewQaerArray.reviewCycle;
- }
+    this.joined = this.reviewQaerArray.employeeId.joined.substring(0, 10);
+    console.log(this.joined, "------> joined date")
+    this.totalExperience = this.reviewQaerArray.employeeId.totalExperience;
+    this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
+    this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;
+    this.designation = this.reviewQaerArray.employeeId.designation;
+    this.reviewCycle = this.reviewQaerArray.reviewCycle;
+  }
 
 }
