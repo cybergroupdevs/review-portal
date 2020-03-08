@@ -46,6 +46,7 @@ export class CreateReviewComponent implements OnInit {
 
   ngOnInit() {
     // const input = document.querySelector('input');
+    
     const empCgiCode = document.getElementById('empCgiCodeField');
     const reviewerCgiCode = document.getElementById('reviewerCgiCodeField');
     const qaerCgiCode = document.getElementById('qaerCgiCodeField');
