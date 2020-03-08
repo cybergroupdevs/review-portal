@@ -93,10 +93,12 @@ class Employee {
                                                 "password":1
                                             });
         console.log(user)
-        bcrypt.compare(hashedPassword, user.password, function (err, result) {
+        bcrypt.compare(hashedPassword, user[0].password, function (err, result) {
         console.log(result)
-        if (hashedPassword===user.password) {
-            if(JSON.stringify(user) != JSON.stringify([])){
+        console.log(user[0].password, hashedPassword)
+       //if (hashedPassword===user.password) {
+       if(JSON.stringify(user) != JSON.stringify([])){
+              if (hashedPassword===user[0].password) {
                 let token = jwtHandler.tokenGenerator(user);
                 if(token != null){
                     let resBody = {
@@ -104,6 +106,10 @@ class Employee {
                     };
                     res.status(200).send(resBody);
                 }
+            }
+            else{
+                console.log("error wrong ")
+                
             }
         } else {
             res.status(401).send({
