@@ -15,7 +15,7 @@ export class ReviewTableComponent implements OnInit {
   page = 1;
   pageSize = 10;
   items = [];
-  
+
   constructor(
     private _router: Router, 
     private _service: ServicesService
@@ -29,6 +29,9 @@ export class ReviewTableComponent implements OnInit {
     let current_route = this._router.url.split("/")[3];
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     console.log(current_route);
+
+    
+
     if(current_route === "allReviews"){
       this.sendRequest(id, "employeeId", "0");
       this.toJump = "/user/pendingBySelf/edit";
@@ -68,7 +71,14 @@ export class ReviewTableComponent implements OnInit {
       this.reviewArray = customObject;
       this.idArray = customObject2;
       this.getKeys(this.reviewArray[0]);
+    
+      if (res.length < 11) {
+        document.getElementById('pageNo').style.visibility = "hidden"; 
+      }
+    
     });
+
+
   }
 
   getValues(temp: any){

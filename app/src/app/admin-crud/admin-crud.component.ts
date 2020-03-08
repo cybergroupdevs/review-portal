@@ -29,6 +29,10 @@ export class AdminCrudComponent implements OnInit {
       this.usersArray = res;
       console.log(this.usersArray, "my data");
     });
+
+    if (this.usersArray.length < 11) {
+      document.getElementById('pageNo').style.visibility = "hidden"; 
+    }
   }
 
 }
