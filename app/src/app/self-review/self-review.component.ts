@@ -84,14 +84,15 @@ export class SelfReviewComponent implements OnInit {
   }
 
   submitReview(){
+    this.updateSelfReview();
     let reviewObj =  {
       "flag": "1",
       "status": "Pending-Reviewer"
+      
     }
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
       console.log(res , "this is res");
       if(res.status == 200){
-        // console.log('Successful update!!');
         this._router.navigate(["/user/reviews"]);
       }
       else if(res.status == 401) {
@@ -103,7 +104,7 @@ export class SelfReviewComponent implements OnInit {
         alert("Some Error Occured");
       }
     });
-    this.updateSelfReview();
+    
   }
 
   updateSelfReview(){
@@ -129,7 +130,7 @@ export class SelfReviewComponent implements OnInit {
     }
     console.log(reviewObj);
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res => {
-      console.log(res);
+      console.log(res, "update func res");
       console.log("---------------------");
       console.log(res.status);
     });

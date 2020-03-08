@@ -25,6 +25,7 @@ import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { UpdatePersonalInfoComponent } from './update-personal-info/update-personal-info.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
@@ -66,6 +67,7 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule
+    NgbModule
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]

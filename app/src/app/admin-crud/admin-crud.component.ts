@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-crud.component.scss']
 })
 export class AdminCrudComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 10;
+  items = [];
 
   constructor(private _service: ServicesService, private _router: Router) { }
 
@@ -28,7 +32,6 @@ export class AdminCrudComponent implements OnInit {
         localStorage.removeItem("JwtHrms");
         this._router.navigate(['/login']);
       }
-      
     });
   }
 

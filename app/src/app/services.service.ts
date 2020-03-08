@@ -1,10 +1,12 @@
+import { AddUserComponent } from './add-user/add-user.component';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { __param } from 'tslib';
 import { HttpClientModule} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +47,7 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
@@ -56,6 +58,15 @@ export class ServicesService {
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
+  }
+  // sendMail(userObj):Observable<any>{
+  //   return this.http.post("http://localhost:3001/sendMail",userObj).pipe(
+  //     tap(_=>this.log("mail sent")),
+  //     catchError(this.handleError<any>('Some error ocured'))
+  //   );
+  // }
+  sendEmail(obj): Observable<any> {
+    return this.http.post<any>('http://localhost:3001/sendFormData', obj)
   }
 
 
@@ -75,7 +86,6 @@ export class ServicesService {
     }
   }
 
-
   updateData(object: any, id:string): Observable<any>{
     return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response', headers: this.header_token}).pipe(
       tap(_ => this.log("updating details")),
@@ -90,13 +100,6 @@ export class ServicesService {
       catchError(this.handleError<any>('error in details')
     ));
   }
-
-  // updateReviewData(id:string, searchBy:string, flag, userObj): Observable<any>{
-  //   return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
-  //     tap(_ => this.log("updated review details")),
-  //     catchError(this.handleError<any>('error in updating details')
-  //   ));
-  // }
 
   // Gets review data from id.
   reviewDataById(id: string, route: string): Observable<any>{
@@ -119,12 +122,6 @@ export class ServicesService {
       return of(error as T);
       };
     }
-
-    // getReviewById(id:any): Observable<any> {
-    //   console.log("in service section");
-    //   return this.http.get("http://localhost:3001/review/" + id, {headers: this.header_token} ).pipe(
-    //     retry(3), catchError(this.handleError<any>('error in review details')));
-    // }
 
     updateSelfReview(id: string, reviewObj:any){
       return this.http.patch("http://localhost:3001/review/"+id, reviewObj, {observe: 'response', headers: this.header_token}).pipe(

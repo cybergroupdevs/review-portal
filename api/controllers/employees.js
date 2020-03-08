@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const config = require('config');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
+const nodemailer = require('nodemailer');
 
 class Employee {
     
@@ -30,8 +31,6 @@ class Employee {
             res.status(401).send({
                 "message": "Unauthorized"
             });
-        }
-        
     }
   
     async getEmployeeDetails(req, res){
@@ -126,6 +125,7 @@ class Employee {
                 "message": "Unauthorized, Invalid Username or Password"});
         }
     }
+    
 }
 
 module.exports = new Employee();

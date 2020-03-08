@@ -8,7 +8,6 @@ module.exports=(app) =>
     app.post("/login", controller.employees.login);
     app.post("/review", controller.reviews.createReview);
 
-    // These to routes are basically doing the same thing
     app.get("/review", controller.reviews.show);
     app.get("/review/:id", controller.reviews.getById);
     

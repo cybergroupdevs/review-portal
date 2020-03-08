@@ -58,7 +58,6 @@ class Review {
                 "message": "UnAuthorized"
             });
         }
-        
     }
 
     async update(req, res) {

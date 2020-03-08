@@ -11,6 +11,11 @@ import { stringify } from 'querystring';
 })
  
 export class ReviewTableComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 10;
+  items = [];
+  
   constructor(
     private _router: Router, 
     private _service: ServicesService
