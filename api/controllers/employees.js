@@ -98,7 +98,7 @@ class Employee {
         console.log(user[0].password, req.body.password)
        //if (hashedPassword===user.password) {
        if(JSON.stringify(user) != JSON.stringify([])){
-              if (result=true) {
+            if (result==true) {
                 let token = jwtHandler.tokenGenerator(user);
                 if(token != null){
                     let resBody = {

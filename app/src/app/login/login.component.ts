@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
     let token = this._service.checkUser(user).subscribe(res => {
       console.log("-------------------------");
       console.log(res.token);
-      // console.log(res["token"]);
-      // if(res.status == 200){
+       console.log(res["token"]);
+       if(res.status == 200){
         this.onLogin(res.token);
-      // }
-      // else if(res.status == 401){
-      //   alert("Unauthorized");
-      // }
+       }
+       else if(res.status == 401){
+         alert("Unauthorized");
+       }
     });    
   }
 
