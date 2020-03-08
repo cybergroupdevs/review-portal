@@ -56,7 +56,7 @@ import { ErrorPageComponent } from './error-page/error-page.component'
 
     UpdatePersonalInfoComponent,
     ErrorPageComponent,
-    ReactiveFormsModule
+    //ReactiveFormsModule
 
   ],
   imports: [
@@ -66,7 +66,7 @@ import { ErrorPageComponent } from './error-page/error-page.component'
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule,
+    //ReactiveFormsModule,
     ConnectionService
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],

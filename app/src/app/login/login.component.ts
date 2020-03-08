@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
     private connectionService: ConnectionService,
     private _service: ServicesService,
     private _router: Router
-  ) { 
+  ) 
+  { 
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
       if (this.isConnected) {
@@ -28,10 +29,28 @@ export class LoginComponent implements OnInit {
     this.status = "OFFLINE";
   }
 });
-}
+ }
 
   ngOnInit() {
+//     const email=document.getElementById("email");
+//     const password=document.getElementById("text2");
+//     email.addEventListener('input', this.validateEmail.bind(this));
+//     password.addEventListener('input', this.validatePassword.bind(this));
   }
+
+// validateEmail(){
+//   let userObj={
+//   email: this.email.nativeElement.value,
+//   };
+//   var email = document.getElementById('email');
+//         var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//         if (!filter.test(userObj.email)) {
+//             alert('Please provide a valid email address');
+//             email.focus;
+//             return false;
+//         }
+// }
+ 
   
   checkUser(){
     let user = {
@@ -50,6 +69,7 @@ export class LoginComponent implements OnInit {
       }
     });    
   }
+
 
   onLogin(token){
     if(token != null){
