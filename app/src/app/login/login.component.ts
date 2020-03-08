@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
@@ -22,23 +21,19 @@ export class LoginComponent implements OnInit {
   }
   
   checkUser(){
-
     let user = {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value
     };
     let token = this._service.checkUser(user).subscribe(res => {
-      //console.log("-------------------------");
-      console.log(res.token);
-      console.log("my response",res, res.status)
-       console.log(res["token"]);
-       if(res.token != null){
-        this.onLogin(res.token);
-       }
-       else{
-         alert("Unauthorized");
-       }
-    });    
+      console.log("-------------------------");
+      if(res.status == 200){
+        this.onLogin(res.body.token);
+      }
+      else if(res.status == 401){
+        alert("Unauthorized");
+      }
+    });
   }
 
   onLogin(token){

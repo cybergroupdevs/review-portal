@@ -11,7 +11,6 @@ import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUpdateUserComponent } from '../app/add-update-user/add-update-user.component'
 import { ServicesService } from './services.service';
-import { from } from 'rxjs';
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
@@ -26,12 +25,14 @@ import { ReviewTableComponent } from './review-table/review-table.component'
 import { SelfReviewComponent } from './self-review/self-review.component';
 import { UpdatePersonalInfoComponent } from './update-personal-info/update-personal-info.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
+    NgbModule
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]

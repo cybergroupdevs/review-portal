@@ -32,15 +32,15 @@ export class ServicesService {
   };
 
   showAllEmployees(): Observable<any>{
-    return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token}).pipe(
+    return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
 
-  employeeData(_id): Observable<any>{
-    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
-    return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
+  employeeData(id: string): Observable<any>{
+    //const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+    return this.http.get(`http://localhost:3001/employees/${id}`, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -54,7 +54,7 @@ export class ServicesService {
   }
   
   createUser(obj): Observable<any>{
-    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
+    return this.http.post("http://localhost:3001/employee/signup", obj, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
@@ -86,48 +86,24 @@ export class ServicesService {
     }
   }
 
-
-  updateData(_id,object): Observable<any>{
-    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+  updateData(object: any, id:string): Observable<any>{
+    return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response', headers: this.header_token}).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
 
-  reviewData(id: string, searchBy: string, flag:string = ""): Observable<any>{
-    if(flag == ""){
-      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id).pipe(
+  // Getting data for table
+  reviewData(id: string, searchBy: string, flag:string): Observable<any>{
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
-    }
-    else{
-      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
-      tap(_ => this.log("showing review details")),
-      catchError(this.handleError<any>('error in details')
-    ));
-    }
-    
   }
 
-
-
-  updateReviewData(flag,param:string,userObj): Observable<any>{
-    return this.http.patch("http://localhost:3001/reviews/update/?"+"flag="+flag+'&_id='+param,userObj).pipe(
-      tap(_ => this.log("updated review details")),
-      catchError(this.handleError<any>('error in updating details')
-    ));
-  }
-
-  // empData(): Observable<any>{
-  //   return this.http.get("http://localhost:3001/employees/5e579020a961b2f91f6be7f4").pipe(
-  //     tap(_ => this.log("received employee details")),
-  //     catchError(this.handleError<any>('error in details')
-  //   ));
-  // }
-
-  reviewerData(id: string): Observable<any>{
-    return this.http.get("http://localhost:3001/review/"+id).pipe(
+  // Gets review data from id.
+  reviewDataById(id: string, route: string): Observable<any>{
+    return this.http.get("http://localhost:3001/review/"+id+"?route="+route, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("reviewer details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -137,38 +113,32 @@ export class ServicesService {
     return (error: any): Observable<T> => {
   
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error.status); // log to console instead
   
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      // this.log(`${operation} failed: ${error.message}`);
   
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return of(error as T);
       };
     }
 
-    getReviewById(id:String, searchBy:string, flag): Observable<any> {
-      console.log("in service section");
-      return this.http.get("http://localhost:3001/review/?" + searchBy+"="+ id + "&flag=" + flag).pipe(
-        catchError(this.handleError<any>('error in review details')));
-    }
-
     updateSelfReview(id: string, reviewObj:any){
-      return this.http.patch("http://localhost:3001/review/"+id, reviewObj, {observe: 'response'}).pipe(
+      return this.http.patch("http://localhost:3001/review/"+id, reviewObj, {observe: 'response', headers: this.header_token}).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
     }
 
     createReview(object): Observable<any>{
-      return this.http.post("http://localhost:3001/review/", object).pipe(
+      return this.http.post("http://localhost:3001/review/", object, {headers: this.header_token, observe: 'response'}).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
     }
 
     getByCgiCode(cgiCode): Observable<any>{
-      return this.http.get("http://localhost:3001/employeeData/"+ cgiCode).pipe(
+      return this.http.get("http://localhost:3001/employeeData/"+ cgiCode, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("got cgi code for review values")),
       catchError(this.handleError<any>('error in details'))
       );
