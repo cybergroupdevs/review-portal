@@ -15,7 +15,7 @@ export class ReviewTableComponent implements OnInit {
   page = 1;
   pageSize = 10;
   items = [];
-  
+
   constructor(
     private _router: Router, 
     private _service: ServicesService
@@ -70,12 +70,14 @@ export class ReviewTableComponent implements OnInit {
         this.reviewArray = customObject;
         this.idArray = customObject2;
         this.getKeys(this.reviewArray[0]);
+        if (res.body.length < 11) {
+          document.getElementById('pageNo').style.visibility = "hidden"; 
+        }
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
         this._router.navigate(['/login']);
-      }
-      
+      }    
     });
   }
 

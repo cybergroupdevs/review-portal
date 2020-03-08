@@ -33,6 +33,12 @@ export class AdminCrudComponent implements OnInit {
         this._router.navigate(['/login']);
       }
     });
+
+    if (this.usersArray.length < 11) {
+      document.getElementById('pageNo').style.visibility = "hidden"; 
+    }
   }
 
 }
+
+
