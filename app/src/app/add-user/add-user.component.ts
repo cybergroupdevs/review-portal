@@ -44,26 +44,28 @@ export class AddUserComponent implements OnInit {
     };
     
     this._service.createUser(userObj).subscribe(res => 
-    {console.log(res);
-    if (res.status == 200){
-      this.message="Added User!!"
-    }
-    else if(res.status == 401){
-      this.message="Could not add User!!";
-      localStorage.removeItem("JwtHrms");
-      this._router.navigate(['/login']);
-    }
-  });
-  this._service.sendEmail(userObj).subscribe(res=>{    
-    if (res.status == 200){
-      //alert("successfully added")
-      this.message="Added User mail sent!!"
-    }
-    else{
-      //alert("successfully added");
-      this.message="Could not add User!!"
-    }
-  });
+    {
+      console.log(res);
+      if (res.status == 200){
+        this.message="Added User!!"
+        this._service.sendEmail(userObj).subscribe(res=>{    
+          if (res.status == 200){
+            //alert("successfully added")
+            this.message="Added User mail sent!!"
+          }
+          else{
+            //alert("successfully added");
+            this.message="Could not add User!!"
+          }
+        });
+      }
+      else if(res.status == 401){
+        this.message="Could not add User!!";
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
+    });
+    
 }
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
