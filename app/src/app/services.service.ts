@@ -104,7 +104,8 @@ export class ServicesService {
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
-  }
+    }
+  
 
   // Gets review data from id.
   reviewDataById(id: string, route: string): Observable<any>{
