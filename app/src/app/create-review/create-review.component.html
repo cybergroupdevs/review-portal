@@ -24,56 +24,51 @@
   </div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitVerficationModel" >
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont2">
-            <i class="fa fa-check-circle " ></i>
-        </div>
-
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Review Created!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="modal" id="submitReviewModel" >
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+    
+          <!-- Modal body -->
+          <div class="myFont2">
+              <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+              <button type="button" class="close" data-dismiss="modal" >&times;</button>
           </div>
   
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+          <!-- Modal Header -->
+          <div >
+              <h1 class="heading" align="center">Review created!</h1>
+          </div>
+    
         </div>
-  
-      </div>
     </div>
-  </div>
+</div>
 
 
   <!-- The Modal 3-->
   <div class="modal" id="submitModel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h3 class="modal-title">Are you sure?</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+      
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <img src="https://art.pixilart.com/646ef9826588f84.gif" class="modal-title modal-image-2">
+            <button type="button" class="close" data-dismiss="modal" >&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body text-center">
+            Are you sure you want to create a new review?
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitReviewModel" 
+            data-dismiss="modal" (click)="createReview()">Create</button>
+          </div>
+      
         </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          Are you sure you want to create?
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitVerficationModel" 
-          data-dismiss="modal" (click)="createReview()">Create</button>
-        </div>
-  
       </div>
-    </div>
   </div>
 
 <div class="container-fluid createReviewDiv">
@@ -111,23 +106,32 @@
 
         <div class="row form-and-cycle">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Form Name:</label>
-            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #formName class="form-control input-medium" id="formNameField" 
-                value={{inputValue}} maxlength="20" ng-model="somefield">
-               
+            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-designation">
+                <select #formName name="deisgnations">
+                    <option value="">---select a designation---</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Consultant 1">Consultant 1</option>
+                    <option value="Consultant 2">Consultant 2</option>
+                    <option value="Associate 1">Associate 1</option>
+                    <option value="Consultant 2">Associate 2</option>
+                    <option value="Associate 1">Manager 1</option>
+                    <option value="Consultant 2">Manager 2</option>
+                    <option value="Associate 1">Principle 1</option>
+                    <option value="Associate 1">Principle 2</option>
+                </select>   
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label" >Cycle</label>
-            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cycle class="form-control input-medium" id="cycleField" 
-                value={{inputValue}} maxlength="20">
+            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-cycle">
+                <select #cycleName name="cycle">
+                    <option value="">---select cycle---</option>
+                    <option>{{reviewCycle1}}</option>
+                    <option>{{reviewCycle2}}</option>
+                </select>
             </div>
         </div>
         
         <div class="row">
             <h4><strong>Reviewer</strong></h4>
-            <!-- <div class="col-lg-12 col-lg-offset-5 col-md-2 col-sm-3 col-xs-12 employee-heading">
-                
-            </div> -->
         </div>
 
         <div class="row">

@@ -1,3 +1,22 @@
+
+.review-table{
+    margin-top: 1rem;
+}
+i:hover{
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+}
+i{
+    color: #000062;
+}
+th, td{
+    text-align: center;
+}
+th{
+    background-color: #F5F5F6;
+}
+
 table{
     overflow: scroll;
 }
@@ -65,3 +84,4 @@ table{
 //     display: none;
 //     visibility: hidden;
 // }
+

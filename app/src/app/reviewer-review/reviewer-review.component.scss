@@ -14,12 +14,8 @@
         border: 1px solid #ccc; 
         text-align: left; 
         }
-        tr:nth-of-type(odd) { 
+        tr { 
             background: #f5f5f6;
-        }
-
-        tr:nth-of-type(even) {
-            background: #e1e2e1; 
         }
         p{
         background-color: white;
@@ -135,54 +131,140 @@
 
         }
 
-        .model{
-            height: 17rem;
+        th { 
+        background: #7745f2; 
+        color: white; 
+        font-weight: bold;
+        
+            }
+        tr > th{
+            text-align: center;
+        }
+        td, th { 
+        padding: 6px; 
+        border: 1px solid #ccc; 
+        text-align: left; 
+        }
+        tr { 
+            background: #f5f5f6;
         }
 
-        .myFont{
-            font-size: 6rem;
-            color: #6745C2;
-            align-self: center;
-            position: absolute;
-            bottom: 9rem;
-            font-family: Roboto;
+        
+        p{
+        background-color: white;
+        color: black;
         }
 
-        .myFont2{
-            font-size: 6rem;
-            color: green;
-            align-self: center;
-            position: absolute;
-            bottom: 9rem;
-            font-family: Roboto;
-            
+        #headers{
+        height: 5vh;
+        font-size: medium;
+        background-color: #7745F2;
+        color: white;
+        }
+        textarea{
+        border: hidden;
+        outline: none;
+        resize: none;
+        color: black;
+        background-color:#f5f5f6;
+        text-align: center;
+        }
+        select{
+        background-color: #f5f5f6;
+        }
+        p{
+        background-color: #f5f5f6;
+        }
+        .self{
+        cursor: not-allowed;
+        pointer-events: none; 
+        }
+        .btn-primary{
+        background-color: #7745F2;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        width: 20rem;
+
+        }
+        
+        .buttons{
+        position: absolute;
+        float: left;
+        margin-bottom: 1rem;
+        
+        }
+        select{
+        color: black;
+        }
+        #headers{
+        font-weight: bold;
+        text-align: center;
+        }
+        table{
+        position: relative;
+        margin: auto;
+        }
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr { 
+        display: block; 
+        }
+        textarea{
+        width: -webkit-fill-available;
+        }
+        select{
+        width: -webkit-fill-available;
+
+        margin: auto;
+        }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        background-color: #311a91;
+
         }
 
-        .heading{
-            // font-weight: bold;
-            margin-top: 5rem;
-            font-family: Roboto;
-            
+        tr { border: 1px solid #ccc; 
+        margin-bottom: 5rem;}
+
+        td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%; 
         }
 
-        .modal-body{
-            font-family: Roboto;
+        td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+        }
+
+        /*
+        Label the data
+        */
+        td:nth-of-type(1):before { content: "Key Result Area"; }
+        td:nth-of-type(2):before { content: "Self Evaluation"; }
+        td:nth-of-type(3):before { content: "Self Assessment"; }
+        td:nth-of-type(4):before { content: "Reviewer Evaluation"; }
+        td:nth-of-type(5):before { content: "Reviewer Assessment"; }
 
         }
 
-        .modal-content{
-            position: relative;
-        }
-
-        .modal-header{
-            background-color: #311a91 ;
-            height: 5rem;
-        }
-
-        .modal-title{
-            color: white;
-            font-family: Roboto;
-        }
+        
 
         .button1{
             background-color:  #dc3545 !important;
@@ -190,4 +272,30 @@
 
         .button2{
         background-color:#28a745 !important ;
+        }
+
+        #saveModel, #submitReviewModel{
+            color: #6745c2;
+            font-family: Roboto;
+            background-color: #6745c2;
+            opacity: 0.95;
+        }
+        
+        .modal-image-1{
+            width: 6rem;
+            height: 5rem;
+            margin-left: 40%;
+        }
+
+        #submitModel{
+            color: #6745c2;
+            font-weight: bold;
+            font-family: Roboto;
+            background-color: #6745c2;
+            opacity: 0.95;
+        }
+        .modal-image-2{
+            width: 6rem;
+            height: 6rem;
+            margin-left: 45%;
         }
