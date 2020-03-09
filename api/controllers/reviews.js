@@ -9,7 +9,7 @@ class Review {
     }
 
     async getById(req,res){
-        let decodedToken = jwtHandler.tokenVerifier(req.headers.token);
+        let decodedToken = await jwtHandler.tokenVerifier(req.headers.token);
         console.log("99999999999999999999999", decodedToken.data._id);
         console.log("88888888888888888888888", req.query["route"]);
         console.log("77777777777777777777777",req.params.id);

@@ -17,6 +17,10 @@ export class AdminOptionsComponent implements OnInit {
   public pieChartData = [120, 150, 180, 90];
   public pieChartType = 'pie';
 
+  public pieChartLabels2 = ['Pending By Self', 'Pending By Reviewer', 'Pending By Qaer', 'Closed'];
+  public pieChartData2 = [120, 150, 180, 90];
+  public pieChartType2 = 'pie';
+
   viewEmployee(){
     this._router.navigate(["/employees"]);
   }
