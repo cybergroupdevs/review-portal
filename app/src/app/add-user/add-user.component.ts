@@ -44,8 +44,9 @@ export class AddUserComponent implements OnInit {
     };
     
     this._service.createUser(userObj).subscribe(res => 
-    {console.log(res);
-    if (res.status == 200){
+    {
+      console.log(res);
+      if (res.status == 200){
       this.message="Added User!!"
       this._service.sendEmail(userObj).subscribe(res=>{    
         if (res.status == 200){
@@ -64,7 +65,7 @@ export class AddUserComponent implements OnInit {
       this._router.navigate(['/login']);
     }
   });
-  
+ 
 }
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;

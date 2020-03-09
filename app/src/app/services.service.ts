@@ -52,7 +52,7 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
@@ -104,7 +104,8 @@ export class ServicesService {
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
-  }
+    }
+  
 
   // Gets review data from id.
   reviewDataById(id: string, route: string): Observable<any>{

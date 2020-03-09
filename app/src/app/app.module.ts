@@ -1,5 +1,4 @@
 import { from } from 'rxjs';
-//import { ConnectionService } from 'ng-connection-service';
 import { RoleGuardService } from './guards/role-guard.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -34,8 +33,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
-//import { ErrorPageComponent } from './error-page/error-page.component'
-//import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -67,7 +65,6 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
-    //ConnectionService,
     ReactiveFormsModule,
     ChartsModule,
     NgbModule

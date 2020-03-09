@@ -18,9 +18,7 @@ class Review {
             let data = await jwtHandler.authenticator.verifyMeOnUpdate(req.params.id, decodedToken.data._id, req.query["route"]);
             console.log(data);
             if(data){
-                console.log("Condition is also verified");
                 const reviewData = await model.review.get({"_id": req.params.id});
-                // console.log(reviewData);
                 res.status(200).send(reviewData);
             }
             else{

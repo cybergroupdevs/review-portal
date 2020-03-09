@@ -2,7 +2,6 @@ import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -42,9 +42,7 @@ class Employee {
         res.status(401).send({
           "message": "Unauthorized"
         });
-    }
-    exports.password = password;
-
+      }
 }
   
     async getEmployeeDetails(req, res){
@@ -113,9 +111,9 @@ class Employee {
  
     async login(req, res) {
         console.log(req.body);
-        // const salt = await bcrypt.genSalt(10);
-        // const hashedPassword = await bcrypt.hash(req.body.password,salt);
-        // console.log(hashedPassword);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password,salt);
+        console.log(hashedPassword);
         let user = await model.employee.get({$and : [{"email": req.body.email}]
                                                 }, 
                                                 {"email": 1,
@@ -128,44 +126,33 @@ class Employee {
                                                 "password":1
                                             });
         console.log(user);
-        bcrypt.compare(req.body.password, user[0].password, function (err, result) {
-        console.log(result)
-        console.log(user[0].password, req.body.password)
-       //if (hashedPassword===user.password) {
-       if(JSON.stringify(user) != JSON.stringify([])){
-            if (result==true) {
-                let token = jwtHandler.tokenGenerator(user);
-                if(token != null){
-                    let resBody = {
-                        "token": token
-                    };
-                    res.status(200).send(resBody);
+        if(JSON.stringify(user) != JSON.stringify([])){
+            bcrypt.compare(req.body.password, user[0].password, function (err, result) {
+                console.log(result);
+                console.log(user[0].password, req.body.password);
+                if (result == true) {
+                    let token = jwtHandler.tokenGenerator(user);
+                    if(token != null){
+                        let resBody = {
+                            "token": token
+                        };
+                        res.status(200).send(resBody);
+                    }
                 }
-            }
-            else{
-                console.log("error wrong ")
-                
-            }
-        } else {
-            res.status(401).send({
-            "message": "Unauthorized, Invalid Username or Password"});
+                else{
+                    res.status(401).send({
+                        "message": "Unauthorized, Incorrect Password"
+                    });
+                }
+            });
         }
-      });
-        console.log(user);
-        // debugger
-        // if(JSON.stringify(user) != JSON.stringify([])){
-        //     let token = jwtHandler.tokenGenerator(user);
-        //     if(token != null){
-        //         let resBody = {
-        //             "token": token
-        //         };
-        //         res.status(200).send(resBody);
-        //     }
-        // }
-        // else{
-        //     res.status(401).send({
-        //         "message": "Unauthorized, Invalid Username or Password"});
-        // }
+        else{
+            res.status(401).send({
+                "message": "Incorrect Email or username"
+            });
+        }
+        
+        console.log(user); 
     }
     
 }
