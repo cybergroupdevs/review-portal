@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const database = require('./database/config');
 const xoauth2 = require("xoauth2");
 const nodemailer =require('nodemailer')
+var employee = require('./controllers/employees')
+var password = employee.password
 
 app.use(bodyParser.json());
 
@@ -19,15 +21,17 @@ require('./routes/route.js')(app);
 
 app.post('/sendFormData', (req, res) => {
     console.log(req.body, 'data of form');
+    console.log(password, "password")
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       host: 'smtp.gmail.com',
       secure: 'false',
       port: '465',
       auth: { 
-        user: 'nangchetnamaw@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
-        pass: 'daffodils1609'
+        user: 'mongmawchetna@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
+        pass: 'mongmaw@chetna21ok '//put your password here
       }
+      
     });
   
     var mailOptions = {
@@ -52,7 +56,7 @@ app.post('/sendFormData', (req, res) => {
                     <td style="text-align: center">${req.body.firstName}</td>
                     <td style="text-align: center">${req.body.lastName}</td>
                     <td style="text-align: center">${req.body.email}</td>
-                    <th style="text-align: center">cybergroup@noida</th>
+                    <th style="text-align: center">${password}</th>
                   </tr>
                 </tbody>
               </table>
