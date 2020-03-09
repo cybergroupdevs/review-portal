@@ -1,7 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
-import { ConnectionService } from 'ng-connection-service';
+//import { ConnectionService } from 'ng-connection-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,20 +14,20 @@ export class LoginComponent implements OnInit {
   @ViewChild('password', {static: false}) password: ElementRef;
 
   constructor(
-    private connectionService: ConnectionService,
+    //private connectionService: ConnectionService,
     private _service: ServicesService,
     private _router: Router
   ) 
   { 
-    this.connectionService.monitor().subscribe(isConnected => {
-      this.isConnected = isConnected;
-      if (this.isConnected) {
-        this.status = "ONLINE";
-  }
-  else {
-    this.status = "OFFLINE";
-  }
-});
+//     this.connectionService.monitor().subscribe(isConnected => {
+//       this.isConnected = isConnected;
+//       if (this.isConnected) {
+//         this.status = "ONLINE";
+//   }
+//   else {
+//     this.status = "OFFLINE";
+//   }
+// });
  }
 
   ngOnInit() {
