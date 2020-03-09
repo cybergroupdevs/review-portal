@@ -12,7 +12,7 @@ class Review{
         console.log("Model---------",criteria);
         let reviewdata = await this.model.find(criteria, columns).populate('employeeId', fields).populate('reviewer', fields).populate('qualityAnalyst', fields);
         //Nitesh - 8860752681
-        console.log(reviewdata);
+        // console.log(reviewdata);
         return (JSON.stringify(reviewdata));
     }
     

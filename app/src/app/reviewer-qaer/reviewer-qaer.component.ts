@@ -48,7 +48,7 @@ export class ReviewerQaerComponent implements OnInit {
       this.reviewId = param.id;
     });
     this._service.reviewDataById(this.reviewId, this.current_route).subscribe(res => {
-      console.log(res.status);
+      console.log(res);
       if(res.status == 200){
         console.log("INside Success", res.body);
         this.reviewQaerArray = res.body[0];

@@ -26,7 +26,7 @@ app.post('/sendFormData', (req, res) => {
       port: '465',
       auth: { 
         user: 'nangchetnamaw@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
-        pass: ' '//put your password here
+        pass: 'daffodils1609'
       }
     });
   
