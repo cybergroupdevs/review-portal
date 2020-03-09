@@ -121,29 +121,32 @@ class Employee {
                                                 "password":1
                                             });
         console.log(user);
-        bcrypt.compare(req.body.password, user[0].password, function (err, result) {
-        console.log(result);
-        console.log(user[0].password, req.body.password)
-       if(JSON.stringify(user) != JSON.stringify([])){
-            if (result == true) {
-                let token = jwtHandler.tokenGenerator(user);
-                if(token != null){
-                    let resBody = {
-                        "token": token
-                    };
-                    res.status(200).send(resBody);
+        if(JSON.stringify(user) != JSON.stringify([])){
+            bcrypt.compare(req.body.password, user[0].password, function (err, result) {
+                console.log(result);
+                console.log(user[0].password, req.body.password);
+                if (result == true) {
+                    let token = jwtHandler.tokenGenerator(user);
+                    if(token != null){
+                        let resBody = {
+                            "token": token
+                        };
+                        res.status(200).send(resBody);
+                    }
                 }
-            }
-            else{
-                res.status(401).send({
-                    "message": "Unauthorized, Incorrect Password"
-                });
-            }
-        } else {
-            res.status(401).send({
-            "message": "Unauthorized, Invalid Username"});
+                else{
+                    res.status(401).send({
+                        "message": "Unauthorized, Incorrect Password"
+                    });
+                }
+            });
         }
-      });
+        else{
+            res.status(401).send({
+                "message": "Incorrect Email or username"
+            });
+        }
+        
         console.log(user); 
     }
     
