@@ -1,7 +1,13 @@
 .add-user{
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
+#desigInput{
+    width: 100%;
+    height: 3rem;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
 
+}
 label {
     float: left;
 }
@@ -23,3 +29,35 @@ span {
     background-color: #000062; 
     width: 16rem;
 }
+.btn-primary:hover{
+    transform: scale(1.05);
+    background-color: #000062;
+}
+.btn-primary:focus{
+    background-color: #000062;
+}
+#submitVerficationModel{
+    color: #6745c2;
+    font-family: Roboto;
+    background-color: #6745c2;
+    opacity: 0.95;
+}
+
+.modal-image-1{
+    width: 6rem;
+    height: 5rem;
+    margin-left: 40%;
+}
+#submitModel{
+    color: #6745c2;
+    font-weight: bold;
+    font-family: Roboto;
+    background-color: #6745c2;
+    opacity: 0.95;
+}
+.modal-image-2{
+    width: 6rem;
+    height: 6rem;
+    margin-left: 45%;
+}
+

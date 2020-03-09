@@ -1,16 +1,19 @@
 .card-body{
-    background-color: #2604859d;
+    background-color: #7745f2;
     color: white;
     font: Roboto;
-    border-radius: 10px;
-    box-shadow: 3px 4px #9e9191a6;
+    border-radius: 3px;
+    box-shadow: 3px 4px #F5F5F6;
 }
 .reviewer-container{
-    margin-top:30px;
+    margin-top:4rem;
     
 }
 .form-group{
-    margin: 4px;
+    margin: 3px;
+}
+[readonly]{
+    cursor:not-allowed;
 }
 
 

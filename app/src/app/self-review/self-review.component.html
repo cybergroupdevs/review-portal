@@ -1,24 +1,19 @@
-<!-- The Modal 1-->
-<div class="modal" id="saveModel" *ngIf="message === null ? false : true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+<app-reviewer-qaer></app-reviewer-qaer>
+<!-- Modal -->
+<div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="myFont">
+            <i class="fa fa-check-circle " ></i>
+        </div>
 
-      <!-- Modal body -->
-      <div class="myFont">
-        <i class="fa fa-check-circle "></i>
-      </div>
-
-      <!-- Modal Header -->
-      <div>
-        <h1 class="heading" align="center">Saved!</h1>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal footer -->
-      <div>
-        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-      </div>
-
+        <!-- Modal Header -->
+        <div >
+            <h1 class="heading" align="center">Saved!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
     </div>
   </div>
 </div>
@@ -37,11 +32,6 @@
       <div>
         <h1 class="heading" align="center">Submitted!</h1>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal footer -->
-      <div>
-        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
       </div>
 
     </div>
@@ -99,22 +89,21 @@
             <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsTS rows="4" cols="50">{{reviewSelfTS}}</textarea>
+            <textarea #rsTS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfTS" name="tech" cols="50"></textarea>
           </td>
-
-
           <td align="center">
-
-            <select required (change)="selectChangeHandlerTS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerTS($event)">
               <option #assessmentSelfT class="selected">{{assessmentSelfTS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
 
           </td>
         </tr>
 
-        <tr>
+        <!-- <tr>
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center"></p>
           </td>
@@ -123,14 +112,13 @@
           </td>
           <td align="center">
             <select required>
-              <!-- <option>{{assessmentSelfCS}}</option>    -->
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center"></p>
           </td>
@@ -139,41 +127,44 @@
           </td>
           <td align="center">
             <select #assessment required>
-              <!-- <option></option>            -->
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
             </select>
 
           </td>
-        </tr>
+        </tr> -->
         <tr class="communicationSkill">
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center">Communication Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsCS rows="4" cols="50">{{reviewSelfCS}}</textarea>
+            <textarea #rsCS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfCS" name="comm" cols="50"></textarea>
           </td>
           <td align="center">
-            <select required (change)="selectChangeHandlerCS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerCS($event)">
               <option #assessmentSelfC class="selected">{{assessmentSelfCS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
-
           </td>
         </tr>
+        
         <tr class="personality">
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center">Personality</p>
           </td>
           <td colspan="5">
-            <textarea #rsP rows="4" cols="50">{{reviewSelfPS}}</textarea>
+            <textarea #rsP rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfPS" name="personality" cols="50"></textarea>
           </td>
           <td align="center">
-            <select required (change)="selectChangeHandlerPS($event)">
+            <select required [disabled]="editable" (change)="selectChangeHandlerPS($event)">
               <option #assessmentSelfP class="selected">{{assessmentSelfPS}}</option>
-              <option value="meets expectations">Meets Expectations</option>
-              <option value="needs improvement">Needs Improvement</option>
+              <option value="Meets Expectations">Meets Expectations</option>
+              <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
             </select>
 
           </td>
@@ -181,11 +172,12 @@
       </table>
     </div>
     <div class="buttons">
-      <div><button type="button" class="btn btn-primary">Cancel</button></div>
-      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
+      <div><button [disabled]="editable" type="button" class="btn btn-primary">Cancel</button></div>
+      <div><button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
           (click)="updateSelfReview()">Save</button>
       </div>
-      <div><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
+      <div>
+        <button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
       </div>
     </div>
   </div>

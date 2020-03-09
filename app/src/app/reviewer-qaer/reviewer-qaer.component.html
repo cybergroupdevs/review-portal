@@ -1,9 +1,6 @@
-<div>
-  <app-header></app-header>
-</div>
-
-<div class="container reviewer-container">
-  <div class="row">
+<a class="btn btn-small" [routerLink]="backButtonRoute"><img src="../../assets/images/back-btn.png">Back</a>
+<div class="container-fluid reviewer-container">
+  <div class="row" >
     <div class="col-lg-6">
       <div class="card-banner">
         <div class="card-body">
@@ -11,19 +8,19 @@
             <div class="form-group">
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">CGI Code</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="empCode" type="text"/>
+                <input class="form-control input-sm" readonly [value]="empCode" type="text"/>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewer Name</label>
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewee Name</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="reviewer" type="text"/>
+                <input class="form-control input-sm" readonly [value]="revieweeName" type="text"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">Designation</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="designation" type="text"/>
+                <input class="form-control input-sm" readonly [value]="designation" type="text"/>
               </div>
             </div>
            
@@ -31,6 +28,7 @@
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">Total Experience</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
                 <input
+                readonly
                   class="form-control input-sm"
                   [value]="totalExperience"
                   type="text"
@@ -46,28 +44,29 @@
         <div class="card-body">
           <form class="form-horizontal" role="form">
             <div class="form-group">
-              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewee Name</label>
+              <label class="col-lg-4 col-md-4 col-xs-12 control-label">Reviewer Name</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="revieweeName" type="text"/>
+                <input class="form-control input-sm" readonly [value]="reviewer" type="text"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">QA'er Name</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="qualityAnalyst" type="text"/>
+                <input class="form-control input-sm" readonly [value]="qualityAnalyst" type="text"/>
               </div>
             </div>
             
             <div class="form-group">
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">Review Cycle</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
-                <input class="form-control input-sm" [value]="reviewCycle" type="text"/>
+                <input class="form-control input-sm" readonly [value]="reviewCycle" type="text"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 col-md-4 col-xs-12 control-label">Date of Joining</label>
               <div class="col-lg-7 col-md-8 col-xs-12">
                 <input
+                readonly
                   class="form-control input-sm"
                   [value]="joined"
                   type="text"

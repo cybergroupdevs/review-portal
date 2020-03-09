@@ -15,6 +15,7 @@ main {
   width: 100%;
 }
 
+
 .nav-link-heading{
   display: flex;
   align-self: center;
@@ -31,14 +32,18 @@ main {
 }
 
 .nav-link:hover {
+  color:#311a91;
   filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+a:focus{
+  color: red($color: #000000);
 }
 
-.nav-link:active{
-  filter: none;
-}
+
 
 .active, .nav-link:active{
+  color:#311a91;
   filter: none;
 }
 

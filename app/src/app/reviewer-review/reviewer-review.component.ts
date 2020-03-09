@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
@@ -18,138 +19,156 @@ export class ReviewerReviewComponent implements OnInit {
   @ViewChild('rsP', {static: false}) rsP: ElementRef;
   @ViewChild('rrP', {static: false}) rrP: ElementRef;
   
-  constructor(private _service : ServicesService) { }
+  constructor(private _service : ServicesService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
+  
   reviewArray:any;
-  reviewSelfTS:String;
+
+  reviewSelfTS: String;
   assessmentSelfTS: String;
+  
   reviewReviewerTS: String;
   assessmentReviewerTS: String;
-  reviewSelfCS:String;
+  
+  reviewSelfCS: String;
   assessmentSelfCS: String;
+  
   reviewReviewerCS: String;
   assessmentReviewerCS: String;
-  reviewSelfP:String;
+  
+  reviewSelfP: String;
   assessmentSelfP: String;
+  
   reviewReviewerP: String;
   assessmentReviewerP: String;
 
-  selectedAssessment: String = this.assessmentReviewerTS
-  selectedAssessmentCS: String = this.assessmentReviewerCS
-  selectedAssessmentP: String = this.assessmentReviewerP
+  reviewId: string;
+
+  isReadonly = false;
+  editable = false;
+  current_route: string;
 
   ngOnInit() {
-    this.loadExistingData()
+    this._activatedRoute.params.subscribe(param => {
+      console.log(param.id);
+      this.reviewId = param.id;
+    });
+    this.current_route = this._router.url.split('/')[2];
+    if(this.current_route == "closed"){
+      this.isReadonly = true;
+      this.editable = true;
+    }
+    this.loadExistingData();
   }
+
   loadExistingData(){
-
-    this._service.reviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1").subscribe(res => {
-
+    this._service.reviewData(this.reviewId, "_id").subscribe(res => {
       console.log(res);
       
       this.reviewArray = res[0];
       console.log(this.reviewArray)
       this.setExistingData();
     });
-
   }
+
   setExistingData(){
     console.log(this.reviewArray);
-    this.reviewSelfTS= this.reviewArray.technicalSkill.selfEvaluation.comment;
-    this.assessmentSelfTS=this.reviewArray.technicalSkill.selfEvaluation.assessment;
-    this.reviewReviewerTS= this.reviewArray.technicalSkill.reviewerEvaluation.comment;
-    this.assessmentReviewerTS= this.reviewArray.technicalSkill.reviewerEvaluation.assessment;
-    this.reviewSelfCS= this.reviewArray.communication.selfEvaluation.comment;
-    this.assessmentSelfCS=this.reviewArray.communication.selfEvaluation.assessment;
-    this.reviewReviewerCS= this.reviewArray.communication.reviewerEvaluation.comment;
-    this.assessmentReviewerCS= this.reviewArray.communication.reviewerEvaluation.assessment;
-    this.reviewSelfP= this.reviewArray.personality.selfEvaluation.comment;
-    this.assessmentSelfP=this.reviewArray.personality.selfEvaluation.assessment;
-    this.reviewReviewerP= this.reviewArray.personality.reviewerEvaluation.comment;
-    this.assessmentReviewerP= this.reviewArray.personality.reviewerEvaluation.assessment;
-    }
+    this.reviewSelfTS = this.reviewArray.technicalSkill.selfEvaluation.comment;
+    this.assessmentSelfTS = this.reviewArray.technicalSkill.selfEvaluation.assessment;
+    this.reviewReviewerTS = this.reviewArray.technicalSkill.reviewerEvaluation.comment;
+    this.assessmentReviewerTS = this.reviewArray.technicalSkill.reviewerEvaluation.assessment;
 
+    this.reviewSelfCS = this.reviewArray.communication.selfEvaluation.comment;
+    this.assessmentSelfCS = this.reviewArray.communication.selfEvaluation.assessment;
+    this.reviewReviewerCS = this.reviewArray.communication.reviewerEvaluation.comment;
+    this.assessmentReviewerCS = this.reviewArray.communication.reviewerEvaluation.assessment;
 
-    updateReviewDetails(){
-      let userObj = {
-        "technicalSkill": {
-          "selfEvaluation": {
-              "comment": this.rsTS.nativeElement.value,
-              "assessment": this.assessmentSelfTS
-          },
-          "reviewerEvaluation": {
-              "comment": this.rrTS.nativeElement.value,
-              "assessment": this.selectedAssessment
-          }
+    this.reviewSelfP = this.reviewArray.personality.selfEvaluation.comment;
+    this.assessmentSelfP = this.reviewArray.personality.selfEvaluation.assessment;
+    this.reviewReviewerP = this.reviewArray.personality.reviewerEvaluation.comment;
+    this.assessmentReviewerP = this.reviewArray.personality.reviewerEvaluation.assessment;
+  }
+
+  updateReviewDetails(){
+    let userObj = {
+      "technicalSkill": {
+        "selfEvaluation": {
+          "comment": this.reviewSelfTS,
+          "assessment": this.assessmentSelfTS
         },
-       "communication": {
-         "selfEvaluation": {
-             "comment": this.rsCS.nativeElement.value,
-             "assessment": this.assessmentSelfCS
-          },
         "reviewerEvaluation": {
-            "comment": this.rrCS.nativeElement.value,
-            "assessment": this.selectedAssessmentCS
+          "comment": this.reviewReviewerTS,
+          "assessment": this.assessmentReviewerTS
         }
-    },
-    "personality": {
-      "selfEvaluation": {
-          "comment": this.rsP.nativeElement.value,
-          "assessment": this.assessmentSelfP
       },
-      "reviewerEvaluation": {
-          "comment": this.rrP.nativeElement.value,
-          "assessment": this.selectedAssessmentP
+      "communication": {
+        "selfEvaluation": {
+          "comment": this.reviewSelfCS,
+          "assessment": this.assessmentSelfCS
+        },
+        "reviewerEvaluation": {
+          "comment": this.reviewReviewerCS,
+          "assessment": this.assessmentReviewerCS
+        }
+      },
+      "personality": {
+        "selfEvaluation": {
+          "comment": this.reviewSelfP,
+          "assessment": this.assessmentSelfP
+        },
+        "reviewerEvaluation": {
+          "comment": this.reviewReviewerP,
+          "assessment": this.assessmentReviewerP
+        }
       }
-  }
-
-  }
-      console.log(userObj);
-      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
-        console.log(res);
-        if(res!=''){
-          console.log('Successful update!!');
-    
-        }
-        else {
-          console.log('unsuccessful');
-         
-        }
-    
+    }
+    console.log(userObj);
+    this._service.updateSelfReview(this.reviewId, userObj).subscribe(res =>  {
+      console.log(res);
+      if(res == 200){
+        console.log('Successful update!!');   
+      }
+      else {
+        console.log('unsuccessful');
+      }
     });
-      
-      
-    }
-    selectChangeHandler(event: any){
-      this.selectedAssessment = event.target.value;
-    }
-  
-    selectChangeHandlerCS(event: any){
-      this.selectedAssessmentCS = event.target.value;
-    }
+  }
 
-    selectChangeHandlerP(event: any){
-      this.selectedAssessmentP = event.target.value;
-    }
-    submitReviewDetails(){
-      let userObj =  {
-        "submitted" :true,
-        "flag":"2",
-        "status":"Pending-QAer"
-      }
-      this._service.updateReviewData(this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id, "reviewer", "1",userObj).subscribe(res =>  {
-        console.log(res);
-        if(this.res.status!=0){
-          console.log('Successful update!!');
-      
-        }
-        else {
-          console.log('unsuccessful');
-         
-        }
-        
-      
-      });
-      this.updateReviewDetails();
+  selectChangeHandler(event: any){
+    this.assessmentReviewerTS = event.target.value;
+  }
   
+  selectChangeHandlerCS(event: any){
+    this.assessmentReviewerCS = event.target.value;
+  }
+
+  selectChangeHandlerP(event: any){
+    this.assessmentReviewerP = event.target.value;
+  }
+
+  submitReviewDetails(){
+    let reviewObj;
+    if(this.current_route == "pendingByReviewer"){
+      reviewObj = {
+        "flag": "2",
+        "status": "Pending-QAer"
+      }
     }
+    else if(this.current_route == "pendingByQa"){
+      reviewObj = {
+        "flag": "3",
+        "status": "Close"
+      }
+    }
+    console.log("Flag Object------------------>>>>>>>>", reviewObj);
+    this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
+      console.log(res);
+      if(res.status == 200){
+        console.log('Successful update!!');
+      }
+      else {
+        console.log('unsuccessful');
+      }
+    });
+    this.updateReviewDetails();
+  }
 }

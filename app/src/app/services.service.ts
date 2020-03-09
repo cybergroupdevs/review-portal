@@ -36,8 +36,8 @@ export class ServicesService {
     ));
   }
 
-  employeeData(): Observable<any>{
-    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
+  employeeData(id: string): Observable<any>{
+    //const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     return this.http.get(`http://localhost:3001/employees/${id}`).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
@@ -45,14 +45,14 @@ export class ServicesService {
   }
 
   checkUser(object): Observable<any>{
-    return this.http.post("http://localhost:3001/login", object, {responseType: 'json'}).pipe(
+    return this.http.post("http://localhost:3001/login", object, {observe: 'response', responseType: 'json'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('checkUser ?'))
       );
   }
   
   createUser(obj): Observable<any>{
-    return this.http.post("http://localhost:3001/employee/signup", obj).pipe(
+    return this.http.post("http://localhost:3001/employee/signup", obj, {observe: 'response'}).pipe(
       tap(_ => this.log("added user")),
       catchError(this.handleError<any>('Some Error Occurred'))
     );
@@ -76,21 +76,30 @@ export class ServicesService {
   }
 
 
-  updateData(object): Observable<any>{
-    return this.http.patch(`http://localhost:3001/employee/update/${this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id}`,object).pipe(
+  updateData(object: any, id:string): Observable<any>{
+    return this.http.patch("http://localhost:3001/employee/update/"+id ,object, {observe: 'response'}).pipe(
       tap(_ => this.log("updating details")),
       catchError(this.handleError<any>('error in details')
     ));
   }
 
-  reviewData(id: string, searchBy: string, flag): Observable<any>{
-    return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+  reviewData(id: string, searchBy: string, flag:string = ""): Observable<any>{
+    if(flag == ""){
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id).pipe(
       tap(_ => this.log("showing review details")),
       catchError(this.handleError<any>('error in details')
     ));
+    }
+    else{
+      return this.http.get("http://localhost:3001/review/?"+searchBy+"="+id+"&flag="+flag).pipe(
+      tap(_ => this.log("showing review details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+    }
+    
   }
 
-  updateReviewData(id:string,searchBy:string,flag,userObj): Observable<any>{
+  updateReviewData(id:string, searchBy:string, flag, userObj): Observable<any>{
     return this.http.patch("http://localhost:3001/reviews/update/?"+searchBy+"="+id+"&flag="+flag,userObj).pipe(
       tap(_ => this.log("updated review details")),
       catchError(this.handleError<any>('error in updating details')
@@ -104,9 +113,8 @@ export class ServicesService {
   //   ));
   // }
 
-  reviewerData(): Observable<any>{
-    const id: any = this.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
-    return this.http.get(`http://localhost:3001/review/${id}`).pipe(
+  reviewerData(id: string): Observable<any>{
+    return this.http.get("http://localhost:3001/review/"+id).pipe(
       tap(_ => this.log("reviewer details")),
       catchError(this.handleError<any>('error in details')
     ));
@@ -132,15 +140,15 @@ export class ServicesService {
         retry(3), catchError(this.handleError<any>('error in review details')));
     }
 
-    updateSelfReview(id,reviwObj): Observable<any>{
-      return this.http.patch("http://localhost:3001/reviews/update/" + id ,reviwObj).pipe(
-        tap(_ => this.log("updated review details")),
-        catchError(this.handleError<any>('error in updating details')
-      ));
+    updateSelfReview(id: string, reviewObj:any){
+      return this.http.patch("http://localhost:3001/review/"+id, reviewObj, {observe: 'response'}).pipe(
+        tap(_ => this.log("added review")),
+        catchError(this.handleError<any>('Some Error Occurred'))
+      );
     }
 
     createReview(object): Observable<any>{
-      return this.http.post("http://localhost:3001/review/create", object).pipe(
+      return this.http.post("http://localhost:3001/review/", object).pipe(
         tap(_ => this.log("added review")),
         catchError(this.handleError<any>('Some Error Occurred'))
       );
