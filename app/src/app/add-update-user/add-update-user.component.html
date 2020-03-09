@@ -96,8 +96,8 @@
                 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Designation</label>
-                    <select id="profileDesignation" name="deisgnations">
-                      <option value="">---select a designation---</option>
+                    <select id="profileDesignation" [disabled]="temp2" name="deisgnations">
+                      <option value="{{designation}}">{{designation}}</option>
                       <option value="Intern">Intern</option>
                       <option value="Consultant 1">Consultant 1</option>
                       <option value="Consultant 2">Consultant 2</option>

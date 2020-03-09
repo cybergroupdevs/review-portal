@@ -64,7 +64,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitReviewModel" 
-            data-dismiss="modal" (click)="createUser()">Create</button>
+            data-dismiss="modal" (click)="createReview()">Create</button>
           </div>
       
         </div>
@@ -107,7 +107,7 @@
         <div class="row form-and-cycle">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Form Name:</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-designation">
-                <select id="formName" name="deisgnations">
+                <select #formName name="deisgnations">
                     <option value="">---select a designation---</option>
                     <option value="Intern">Intern</option>
                     <option value="Consultant 1">Consultant 1</option>
@@ -122,10 +122,10 @@
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label" >Cycle</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-cycle">
-                <select id="cycleName" name="cycle">
+                <select #cycleName name="cycle">
                     <option value="">---select cycle---</option>
-                    <option value="Intern">Annual 2020</option>
-                    <option value="Consultant 1">Mid Year 2020</option>
+                    <option>{{reviewCycle1}}</option>
+                    <option>{{reviewCycle2}}</option>
                 </select>
             </div>
         </div>

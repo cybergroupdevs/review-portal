@@ -36,11 +36,10 @@ main {
   filter: grayscale(0%) opacity(1);
   transform: scale(1.05);
 }
+
 a:focus{
   color: red($color: #000000);
 }
-
-
 
 .active, .nav-link:active{
   color:#311a91;
