@@ -47,6 +47,16 @@ export class AddUserComponent implements OnInit {
     {console.log(res);
     if (res.status == 200){
       this.message="Added User!!"
+      this._service.sendEmail(userObj).subscribe(res=>{    
+        if (res.status == 200){
+          //alert("successfully added")
+          this.message="Added User mail sent!!"
+        }
+        else{
+          //alert("successfully added");
+          this.message="Could not add User!!"
+        }
+      });
     }
     else if(res.status == 401){
       this.message="Could not add User!!";
@@ -54,16 +64,7 @@ export class AddUserComponent implements OnInit {
       this._router.navigate(['/login']);
     }
   });
-  this._service.sendEmail(userObj).subscribe(res=>{    
-    if (res.status == 200){
-      //alert("successfully added")
-      this.message="Added User mail sent!!"
-    }
-    else{
-      //alert("successfully added");
-      this.message="Could not add User!!"
-    }
-  });
+  
 }
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;

@@ -3,8 +3,9 @@ const config = require('config');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 const nodemailer = require('nodemailer');
+var generator = require('generate-password');
 const saltRounds = 10;
-
+let password ;
 class Employee {
     
     constructor(){
@@ -13,9 +14,13 @@ class Employee {
 
     async create(req,res) {
       console.log(req.body)
+      password = generator.generate({
+        length: 10,
+        numbers: true
+       });
+      console.log(password);
       const salt = await bcrypt.genSalt(10);
-      var defaultPassword= "cybergroup@noida"
-      const hashedPassword = await bcrypt.hash(defaultPassword, salt);
+      const hashedPassword = await bcrypt.hash(password, salt);
       if(jwtHandler.tokenVerifier(req.headers.token)){
         let employeeObj ={
           firstName: req.body.firstName,
@@ -38,6 +43,9 @@ class Employee {
           "message": "Unauthorized"
         });
     }
+    exports.password = password;
+
+}
   
     async getEmployeeDetails(req, res){
         if(jwtHandler.tokenVerifier(req.headers.token)){
@@ -163,3 +171,4 @@ class Employee {
 }
 
 module.exports = new Employee();
+module.exports = password;

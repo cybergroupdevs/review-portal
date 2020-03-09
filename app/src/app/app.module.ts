@@ -1,4 +1,5 @@
-import { ConnectionService } from 'ng-connection-service';
+import { from } from 'rxjs';
+//import { ConnectionService } from 'ng-connection-service';
 import { RoleGuardService } from './guards/role-guard.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -12,6 +13,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUpdateUserComponent } from '../app/add-update-user/add-update-user.component'
 import { ServicesService } from './services.service';
+import {ErrorPageComponent} from './error-page/error-page.component';
 
 import { LoginComponent } from './login/login.component';
 import { AdminCrudComponent } from './admin-crud/admin-crud.component';
@@ -32,8 +34,8 @@ import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
-import { ErrorPageComponent } from './error-page/error-page.component'
-import { ErrorPageComponent } from './error-page/error-page.component';
+//import { ErrorPageComponent } from './error-page/error-page.component'
+//import { ErrorPageComponent } from './error-page/error-page.component';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -65,7 +67,7 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
-    ConnectionService,
+    //ConnectionService,
     ReactiveFormsModule,
     ChartsModule,
     NgbModule
