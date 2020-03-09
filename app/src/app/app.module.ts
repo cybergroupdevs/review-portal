@@ -64,6 +64,7 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
+    // ConnectionService,
     ReactiveFormsModule,
     ChartsModule,
     NgbModule

@@ -121,9 +121,12 @@
                 </select>   
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label" >Cycle</label>
-            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #cycle class="form-control input-medium" id="cycleField" 
-                value={{inputValue}} maxlength="20">
+            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-cycle">
+                <select id="cycleName" name="cycle">
+                    <option value="">---select cycle---</option>
+                    <option value="Intern">Annual 2020</option>
+                    <option value="Consultant 1">Mid Year 2020</option>
+                </select>
             </div>
         </div>
         
