@@ -11,56 +11,73 @@ import { stringify } from 'querystring';
 })
  
 export class ReviewTableComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 10;
+  items = [];
+
   constructor(
     private _router: Router, 
     private _service: ServicesService
     ) { }
 
-  reviewArray = ["...", "...", "...", "...", "..."];
+  // reviewArray = ["...", "...", "...", "...", "..."];
+  reviewArray = [];
   toJump: string;
   idArray = [];
   keys = ["FormName", "Cycle", "TargetDate", "Status", "CreatedAt"];
+  current_route: string;
+  
   ngOnInit() {
-    let current_route = this._router.url.split("/")[3];
+    this.current_route = this._router.url.split("/")[3];
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
-    console.log(current_route);
-    if(current_route === "allReviews"){
+    console.log(this.current_route);
+    if(this.current_route === "allReviews"){
       this.sendRequest(id, "employeeId", "0");
       this.toJump = "/user/pendingBySelf/edit";
     }
-    else if(current_route === "pendingByReviewer"){
+    else if(this.current_route === "pendingByReviewer"){
       this.sendRequest(id, "reviewer", "1");
       this.toJump = "/user/pendingByReviewer/edit";
     }
-    else if(current_route === "pendingByQAer"){
+    else if(this.current_route === "pendingByQAer"){
       this.sendRequest(id, "qualityAnalyst", "2");
-      this.toJump = "/user/pendingByReviewer/edit";
+      this.toJump = "/user/pendingByQa/edit";
     }
-    else if(current_route === "closed"){
+    else if(this.current_route === "closed"){
       this.sendRequest(id, "employeeId", "3");
       this.toJump = "/user/closed";
     }
   }
  
   sendRequest(id, searchBy, flag){
-    this._service.reviewData(id, searchBy).subscribe(res => {
+    this._service.reviewData(id, searchBy, flag).subscribe(res => {
       console.log(res);
-      let customObject = [];
-      let customObject2 = [];
-      for(let i=0; i<res.length; i++){
-        customObject[i] = {
-          "FormName": res[i].formName,
-          "Cycle": res[i].reviewCycle,
-          "TargetDate": res[i].targetDate.substring(0, 10),
-          "Status": res[i].status,
-          "CreatedAt": res[i].date,
-          "Edit": res[i]._id
-        };        
+      if(res.status == 200){
+        let customObject = [];
+        let customObject2 = [];
+        for(let i=0; i<res.body.length; i++){
+          customObject[i] = {
+            "FormName": res.body[i].formName,
+            "Cycle": res.body[i].reviewCycle,
+            "TargetDate": res.body[i].targetDate.substring(0, 10),
+            "Status": res.body[i].status,
+            "CreatedAt": res.body[i].date,
+            "Edit": res.body[i]._id
+          };        
+        }
+        console.log(customObject);
+        this.reviewArray = customObject;
+        this.idArray = customObject2;
+        this.getKeys(this.reviewArray[0]);
+        if (res.body.length < 11) {
+          document.getElementById('pageNo').style.visibility = "hidden"; 
+        }
       }
-      console.log(customObject);
-      this.reviewArray = customObject;
-      this.idArray = customObject2;
-      this.getKeys(this.reviewArray[0]);
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }    
     });
   }
 

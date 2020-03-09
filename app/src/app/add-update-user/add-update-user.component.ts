@@ -14,12 +14,10 @@ export class AddUpdateUserComponent implements OnInit {
 
   res:any;
   @ViewChild('uemail', {static: false}) uemail: ElementRef;
-  @ViewChild('upassword', {static: false}) upassword: ElementRef;
   @ViewChild('ufirstName', {static: false}) ufirstName: ElementRef;
   @ViewChild('ulastName', {static: false}) ulastName: ElementRef;
   @ViewChild('ulocation', {static: false}) ulocation: ElementRef;
   @ViewChild('udesignation', {static: false}) udesignation: ElementRef;
-  @ViewChild('udivision', {static: false}) udivision: ElementRef;
   @ViewChild('ujoined', {static: false}) ujoined: ElementRef;
   @ViewChild('upreviousExperience', {static: false}) upreviousExperience: ElementRef;
   @ViewChild('utotalExperience', {static: false}) utotalExperience: ElementRef;
@@ -52,11 +50,6 @@ export class AddUpdateUserComponent implements OnInit {
     this.loggedinUserId = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
     this.calRoute = current_route[1]+"/"+current_route[2];
     this.calRoute2 = current_route[1]+"/"+current_route[2]+"/"+current_route[3];
-    this._activatedRoute.params.subscribe(param => {
-      console.log(param.id);
-      this.employeeId = param.id;
-    });
-
 
     if(this.calRoute == "user/profile"){
       this.temp = false;
@@ -67,6 +60,10 @@ export class AddUpdateUserComponent implements OnInit {
       this.loadEmployeeData(this.loggedinUserId);
     }
     else if(this.calRoute2 == "admin/employee/edit"){
+      this._activatedRoute.params.subscribe(param => {
+        console.log(param.id);
+        this.employeeId = param.id;
+      });
       this.temp2 = false;
       this.loadEmployeeData(this.employeeId);
     }
@@ -76,10 +73,16 @@ export class AddUpdateUserComponent implements OnInit {
   loadEmployeeData(id: string){
     this._service.employeeData(id).subscribe(res => {
       console.log(res);
-
-      this.userArray = res;
-      console.log(this.userArray);
-      this.setEmployeeData();
+      if(res.status == 200){
+        this.userArray = res.body;
+        console.log(this.userArray);
+        this.setEmployeeData();
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
+      
     });
   }
 
@@ -90,7 +93,7 @@ export class AddUpdateUserComponent implements OnInit {
     this.email = this.userArray.email;
     this.location = this.userArray.location;
     this.designation = this.userArray.designation;
-    this.joined = this.userArray.joined;
+    this.joined = this.userArray.joined.substring(0, 10);
     this.previousExperience = this.userArray.previousExperience;
     this.totalExperience = this.userArray.totalExperience;
     this.skills = this.userArray.skills;
@@ -99,16 +102,17 @@ export class AddUpdateUserComponent implements OnInit {
 
   updateData(){
     let userObj = {
-      firstName : this.ufirstName.nativeElement.value,
-      lastName : this.ulastName.nativeElement.value,
-      email : this.uemail.nativeElement.value,
-      location : this.ulocation.nativeElement.value,
-      designation : this.udesignation.nativeElement.value,
-      joined : this.ujoined.nativeElement.value,
-      previousExperience : this.upreviousExperience.nativeElement.value,
-      totalExperience : this.utotalExperience.nativeElement.value,
-      skills : this.uskills.nativeElement.value,
-    }
+      firstName: this.ufirstName.nativeElement.value,
+      lastName: this.ulastName.nativeElement.value,
+      email: this.uemail.nativeElement.value,
+      location: this.ulocation.nativeElement.value,
+      designation: this.udesignation.nativeElement.value,
+      joined: this.ujoined.nativeElement.value,
+      previousExperience: this.upreviousExperience.nativeElement.value,
+      totalExperience: this.utotalExperience.nativeElement.value,
+      skills: this.uskills.nativeElement.value,
+      }
+
     console.log(userObj);
     if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
       this.sendUpdateRequest(userObj, this.loggedinUserId);
@@ -124,7 +128,9 @@ export class AddUpdateUserComponent implements OnInit {
         console.log('Successful update!!');
       }
       else if(res.status == 401){
-        console.log('Unauthorized');
+        alert("Unauthorized");
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
       }
     });
   }

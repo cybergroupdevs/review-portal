@@ -36,8 +36,10 @@ export class SelfReviewComponent implements OnInit {
 
   isReadonly = true;
   editable = true;
+  current_route: string;
 
   ngOnInit() {
+    this.current_route = this._router.url.split('/')[2];
     this._activatedRoute.params.subscribe(param => {
       console.log(param.id);
       this.reviewId = param.id;
@@ -46,18 +48,23 @@ export class SelfReviewComponent implements OnInit {
   }
 
   loadExistingData(reviewId: string){
-    this._service.reviewData(reviewId, "_id").subscribe(res => {
-      console.log(res); 
-      this.reviewArray = res[0];
-      if(this.reviewArray.flag == "0"){
-        this.isReadonly = false;
-        this.editable = false;
-        this.setExistingData();
+    this._service.reviewDataById(reviewId, this.current_route).subscribe(res => {
+      console.log(res);
+      if(res.status == 200){
+        this.reviewArray = res.body[0];
+        if(this.reviewArray.flag == "0"){
+          this.isReadonly = false;
+          this.editable = false;
+          this.setExistingData();
+        }
+        else{
+          this.setExistingData();
+        }
       }
-      else{
-        this.setExistingData();
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
       }
-      
     });
   }
 
@@ -77,21 +84,27 @@ export class SelfReviewComponent implements OnInit {
   }
 
   submitReview(){
+    this.updateSelfReview();
     let reviewObj =  {
       "flag": "1",
       "status": "Pending-Reviewer"
+      
     }
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
-      console.log(this.res , "this is res");
-      if(this.res.status == 200){
-        console.log('Successful update!!');
+      console.log(res , "this is res");
+      if(res.status == 200){
         this._router.navigate(["/user/reviews"]);
       }
-      else {
-        console.log('unsuccessful');
+      else if(res.status == 401) {
+        alert("Token Expired");
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
+      else{
+        alert("Some Error Occured");
       }
     });
-    this.updateSelfReview();
+    
   }
 
   updateSelfReview(){
@@ -117,7 +130,7 @@ export class SelfReviewComponent implements OnInit {
     }
     console.log(reviewObj);
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res => {
-      console.log(res);
+      console.log(res, "update func res");
       console.log("---------------------");
       console.log(res.status);
     });

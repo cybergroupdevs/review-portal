@@ -89,7 +89,7 @@
             <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsTS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfTS" name="tech" cols="50"></textarea>
+            <textarea #rsTS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfTS" name="tech" cols="50" maxlength="300"></textarea>
           </td>
           <td align="center">
             <select required [disabled]="editable" (change)="selectChangeHandlerTS($event)">
@@ -138,7 +138,7 @@
             <p #review rows="4" cols="50" align="center">Communication Skills</p>
           </td>
           <td colspan="5">
-            <textarea #rsCS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfCS" name="comm" cols="50"></textarea>
+            <textarea #rsCS rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfCS" name="comm" cols="50" maxlength="300"></textarea>
           </td>
           <td align="center">
             <select required [disabled]="editable" (change)="selectChangeHandlerCS($event)">
@@ -156,7 +156,7 @@
             <p #review rows="4" cols="50" align="center">Personality</p>
           </td>
           <td colspan="5">
-            <textarea #rsP rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfPS" name="personality" cols="50"></textarea>
+            <textarea #rsP rows="4" [readonly]="isReadonly" [(ngModel)]="reviewSelfPS" name="personality" cols="50" maxlength="300"></textarea>
           </td>
           <td align="center">
             <select required [disabled]="editable" (change)="selectChangeHandlerPS($event)">

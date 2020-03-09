@@ -22,5 +22,18 @@
 			</tr>
 		</tbody>
 	</table>
+	<div class="pagination-div" id="pageNo"><ngb-pagination  [collectionSize]="usersArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+	</div>
 </div>
+
+<!-- <div style="margin:20px;">
+	<table>
+	   <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+		 <td>{{item.Name}}</td>
+  
+  
+	   </tr>
+	</table>
+	<ngb-pagination [collectionSize]="items.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  </div> -->
 <router-outlet></router-outlet>
