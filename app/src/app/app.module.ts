@@ -32,7 +32,7 @@ import { CreateReviewComponent } from './create-review/create-review.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
-import { ErrorPageComponent } from './error-page/error-page.component'
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
