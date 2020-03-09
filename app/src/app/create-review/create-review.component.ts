@@ -5,6 +5,7 @@ import { ServicesService } from './../services.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { parse } from 'querystring';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class CreateReviewComponent implements OnInit {
   @ViewChild('empLastName', {static: false}) empLastName: ElementRef;
   @ViewChild('empDesignation', {static: false}) empDesignation: ElementRef;
   @ViewChild('formName', {static: false}) formName: ElementRef;
-  @ViewChild('cycle', {static: false}) cycle: ElementRef;
+  @ViewChild('cycleName', {static: false}) cycle: ElementRef;
   @ViewChild('reviewerCgiCode', {static: false}) reviewerCgiCode: ElementRef;
   @ViewChild('reviewerFirstName', {static: false}) reviewerFirstName: ElementRef;
   @ViewChild('reviewerLastName', {static: false}) reviewerLastName: ElementRef;
@@ -40,20 +41,25 @@ export class CreateReviewComponent implements OnInit {
   reviewerId: any;
   qaerId: any;
   inputValue: string;
+  reviewCycle1: string;
+  reviewCycle2: string;
   
   sendReq(cgiCodeValue){
     return this._service.getByCgiCode(cgiCodeValue);
   }
 
-  ngOnInit() {
-    // const input = document.querySelector('input');
-    
+  ngOnInit() {  
     const empCgiCode = document.getElementById('empCgiCodeField');
     const reviewerCgiCode = document.getElementById('reviewerCgiCodeField');
     const qaerCgiCode = document.getElementById('qaerCgiCodeField');
     empCgiCode.addEventListener('input', this.setEmpDetails.bind(this)); 
     reviewerCgiCode.addEventListener('input', this.setReviewerDetails.bind(this));
     qaerCgiCode.addEventListener('input', this.setQaerDetails.bind(this));  
+    let date = new Date(); 
+    let year = date.getFullYear();
+    console.log(year); 
+    this.reviewCycle1 = "Annual "+year;
+    this.reviewCycle2 = "Mid Year "+year;
   }
 
   setEmpDetails(e){
@@ -147,7 +153,7 @@ export class CreateReviewComponent implements OnInit {
     this._service.createReview(reviewObject).subscribe(res => {
       console.log(this.res);
       if(res.status == 200){
-        alert("Created");
+        // alert("Created");
       }
       else if(res.status == 401){
         alert("Unauthorized");
