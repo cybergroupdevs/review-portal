@@ -62,3 +62,7 @@
     margin: auto;
     
 }
+
+.was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+    display: table-caption;
+}

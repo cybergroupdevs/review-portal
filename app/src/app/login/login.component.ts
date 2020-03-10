@@ -34,6 +34,20 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('form-horizontal myForm');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+        }, false);
+        });
+
   }
   
   checkUser(){
@@ -41,11 +55,7 @@ export class LoginComponent implements OnInit {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value
     };
-    if(this.email.nativeElement.value == "" || this.password.nativeElement.value == ""){
-      alert("Empty Fields !");
-      return ;
-    }
-    else{
+    
       this._service.checkUser(user).subscribe(res => {
         console.log("-------------------------");
         if(res.status == 200){
@@ -54,9 +64,7 @@ export class LoginComponent implements OnInit {
         else if(res.status == 401){
           alert("Unauthorized");
         }
-      });    
-    }
-    
+      });       
   }
 
   onLogin(token){
