@@ -22,8 +22,9 @@ export class AddUserComponent implements OnInit {
   @ViewChild('designation', {static: false}) designation: ElementRef;
   @ViewChild('previousExperience', {static: false}) previousExperience: ElementRef;
   @ViewChild('totalExperience', {static: false}) totalExperience: ElementRef;
-  message : String=''
-  selectedDesignation: String=''
+  
+  message : String='';
+  selectedDesignation: String='';
 
   res:any;
   
@@ -53,17 +54,21 @@ export class AddUserComponent implements OnInit {
       localStorage.removeItem("JwtHrms");
       this._router.navigate(['/login']);
     }
-  });
-  this._service.sendEmail(userObj).subscribe(res=>{    
-    if (res.status == 200){
-      //alert("successfully added")
-      this.message="Added User mail sent!!"
-    }
-    else{
-      //alert("successfully added");
-      this.message="Could not add User!!"
+    else if(res.status == 500){
+      this.message = "Could not add user";
+      console.log("Mail Not Sent");
     }
   });
+  // this._service.sendEmail(userObj).subscribe(res=>{    
+  //   if (res.status == 200){
+  //     //alert("successfully added")
+  //     this.message="Added User mail sent!!"
+  //   }
+  //   else{
+  //     //alert("successfully added");
+  //     this.message="Could not add User!!"
+  //   }
+  // });
 }
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;

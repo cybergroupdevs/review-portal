@@ -62,7 +62,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitVerficationModel" 
-        data-dismiss="modal" (click)="createUser()">Update</button>
+        data-dismiss="modal" (click)="updateData()">Update</button>
       </div>
   
     </div>
@@ -98,7 +98,6 @@
                     <label >Designation</label>
                     <select id="profileDesignation" [disabled]="temp2" name="deisgnations">
                       <option value="{{designation}}">{{designation}}</option>
-                      <option value="Intern">Intern</option>
                       <option value="Consultant 1">Consultant 1</option>
                       <option value="Consultant 2">Consultant 2</option>
                       <option value="Associate 1">Associate 1</option>
