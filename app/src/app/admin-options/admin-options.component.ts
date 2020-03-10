@@ -14,6 +14,7 @@ export class AdminOptionsComponent implements OnInit {
   pieChartData = [0, 0, 0, 0];
   pieChartLabels = ['Pending By Self', 'Pending By Reviewer', 'Pending By Qaer', 'Closed'];
   pieChartType = "pie";
+  chartType = "line";
 
   ngOnInit() {
     // console.log(localStorage.getItem("JwtHrms"));
