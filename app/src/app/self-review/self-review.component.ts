@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-declare var $: any;
+import $ from "jquery";
 
 
 @Component({
@@ -96,13 +96,14 @@ export class SelfReviewComponent implements OnInit {
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
       console.log(res , "this is res");
       if(res.status == 200){
-        // setTimeout(function() { 
+        
           console.log("submitted")
-          // this._router.navigate(["/user/reviews"]);
-        //   }, 1000);
-        
-        
-        // $('#submitVerficationModel').modal('hide')
+          $("#submitVerficationModel").show();
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/user/reviews"]);
+          $('#submitVerficationModel').hide()
+          }, 1000);
       }
       else if(res.status == 401) {
         alert("Token Expired");
