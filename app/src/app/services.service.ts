@@ -64,17 +64,6 @@ export class ServicesService {
       catchError(this.handleError<any>('Some Error Occurred'))
     );
   }
-  // sendMail(userObj):Observable<any>{
-  //   return this.http.post("http://localhost:3001/sendMail",userObj).pipe(
-  //     tap(_=>this.log("mail sent")),
-  //     catchError(this.handleError<any>('Some error ocured'))
-  //   );
-  // }
-  sendEmail(obj): Observable<any> {
-    return this.http.post<any>('http://localhost:3001/sendFormData', obj)
-  }
-
-
 
   isAuthenticated(){
     if(localStorage.getItem("JwtHrms") != null && this.isValid){
@@ -158,6 +147,13 @@ export class ServicesService {
       return this.http.get(`http://localhost:3001/emp?firstName=${term}`, {headers: this.header_token}).pipe(
         tap(_ => this.log("getting emp by name")),
         catchError(this.handleError<any>('error in loading'))
+      );
+    }
+
+    getReviewCount(){
+      return this.http.get("http://localhost:3001/reviewCount", {headers: this.header_token, observe: 'response'}).pipe(
+        tap(_ => this.log("getReviewCount")),
+        catchError(this.handleError<any>("Error Occured"))
       );
     }
 

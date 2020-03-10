@@ -8,6 +8,18 @@ class Review {
         console.log("reached controller")
     }
 
+    async getReviewCount(req, res){
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const count = await model.review.getCount();
+            res.status(200).send(count);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+    }
+
     async getById(req,res){
         let decodedToken = await jwtHandler.tokenVerifier(req.headers.token);
         console.log("99999999999999999999999", decodedToken.data._id);
