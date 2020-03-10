@@ -112,11 +112,11 @@ export class AddUpdateUserComponent implements OnInit {
       totalExperience: this.utotalExperience.nativeElement.value,
       skills: this.uskills.nativeElement.value,
       };
-      if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.designation == "" || this.joined.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == ""  ){
+      if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
         alert("Fields are either empty or data is incorrect !");
         return ;
       }
-      else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
+      else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
       {
       alert("Previous experience can't be more than total experience!");
       return ;
