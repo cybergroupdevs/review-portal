@@ -67,6 +67,7 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     ChartsModule,
     NgbModule
+
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]

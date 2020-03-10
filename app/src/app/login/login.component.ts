@@ -1,7 +1,9 @@
+//import { ConnectionService } from 'ng-connection-service';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +15,23 @@ export class LoginComponent implements OnInit {
   @ViewChild('password', {static: false}) password: ElementRef;
 
   constructor(
+
+    //private connectionService: ConnectionService,
     private _service: ServicesService,
     private _router: Router
-  ) { }
+  ) {}
+//   { 
+//     this.connectionService.monitor().subscribe(isConnected => {
+//       this.isConnected = isConnected;
+//       if (this.isConnected) {
+//         this.status = "ONLINE";
+//   }
+//   else {
+//     this.status = "OFFLINE";
+//   }
+// });
+//  }
+
 
   ngOnInit() {
   }
@@ -33,7 +49,7 @@ export class LoginComponent implements OnInit {
       this._service.checkUser(user).subscribe(res => {
         console.log("-------------------------");
         if(res.status == 200){
-          // console.log(res.body.token);
+          console.log(res.body.token);
           this.onLogin(res.body.token);
         }
         else if(res.status == 401){
