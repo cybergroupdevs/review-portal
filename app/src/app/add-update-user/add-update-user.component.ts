@@ -106,10 +106,20 @@ export class AddUpdateUserComponent implements OnInit {
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
       skills: this.uskills.nativeElement.value,
-      }
+      };
+
 
     console.log(userObj);
-    if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
+    if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == ""||this.location.nativeElement.value == ""||this.designation.nativeElement.value == ""||this.joined.nativeElement.value == ""||this.previousExperience.nativeElement.value == ""||this.totalExperience.nativeElement.value == ""||this.skills.nativeElement.value == "" ){
+      alert("Empty Fields !");
+      return ;
+    }
+    else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value ){
+      alert("Previous Experience can't be more than Total Experience");
+      return ;
+    }
+    
+    else if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
       this.sendUpdateRequest(userObj, this.loggedinUserId);
     }
     else if(this.calRoute2 == "admin/employee/edit"){

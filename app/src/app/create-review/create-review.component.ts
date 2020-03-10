@@ -120,7 +120,12 @@ export class CreateReviewComponent implements OnInit {
       qualityAnalyst: this.qaerId,
       reviewCycle: this.cycle.nativeElement.value,
       formName: this.formName.nativeElement.value,
+    };
+    if(this.empFirstName.nativeElement.value == "" || this.empLastName.nativeElement.value == ""|| this.empDesignation.nativeElement.value == ""|| this.reviewerFirstName.nativeElement.value == ""|| this.reviewerLastName.nativeElement.value == ""|| this.reviewerDesignation.nativeElement.value == ""|| this.qaerFirstName.nativeElement.value == ""|| this.qaerLastName.nativeElement.value == ""|| this.qaerDesignation.nativeElement.value == ""|| this.cycle.nativeElement.value == ""|| this.formName.nativeElement.value == ""|| this.empCgiCode.nativeElement.value == ""|| this.reviewerCgiCode.nativeElement.value == ""|| this.qaerCgiCode.nativeElement.value == ""){
+      alert("Empty Fields !");
+      return ;
     }
+    
     console.log(reviewObject);
     this._service.createReview(reviewObject).subscribe(res => this.res = res);
     console.log(this.res);

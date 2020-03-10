@@ -1,4 +1,4 @@
-import { ConnectionService } from 'ng-connection-service';
+//import { ConnectionService } from 'ng-connection-service';
 import { RoleGuardService } from './guards/role-guard.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ReviewerReviewComponent } from './reviewer-review/reviewer-review.component';
@@ -67,7 +67,7 @@ import { ErrorPageComponent } from './error-page/error-page.component'
     FontAwesomeModule,
     FormsModule,
     //ReactiveFormsModule,
-    ConnectionService
+    //ConnectionService
   ],
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]

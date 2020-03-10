@@ -41,13 +41,20 @@ export class AddUserComponent implements OnInit {
     };
     this._service.createUser(userObj).subscribe(res => 
     {console.log(res);
-    if (res.status == 200){
+      if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == ""||this.location.nativeElement.value == ""||this.designation.nativeElement.value == ""||this.cgiCode.nativeElement.value == ""||this.previousExperience.nativeElement.value == ""||this.totalExperience.nativeElement.value == ""||this.skills.nativeElement.value == "" ){
+        alert("Empty Fields !");
+        return ;
+      }
+      else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value ){
+        alert("Previous Experience can't be more than Total Experience");
+        return ;
+      }
+    else if (res.status == 200){
       //alert("successfully added")
       this.message="Added User!!"
     }
-    else{
-      //alert("successfully added");
-      this.message="Could not add User!!"
+    else if (res.status == 401){
+      console.log('Unauthorized');
     }
   });
 
