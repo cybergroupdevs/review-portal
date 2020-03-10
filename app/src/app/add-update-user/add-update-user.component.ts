@@ -2,7 +2,7 @@ import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import $ from "jquery";
 
 
 @Component({
@@ -141,6 +141,12 @@ export class AddUpdateUserComponent implements OnInit {
     this._service.updateData(userObj,id).subscribe(res =>  {
       if(res.status == 200){
         console.log('Successful update!!');
+        $("#submitVerficationModel").show();
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/admin/employees"]);
+          $('#submitVerficationModel').hide()
+          }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");
