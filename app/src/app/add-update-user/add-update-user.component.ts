@@ -106,7 +106,7 @@ export class AddUpdateUserComponent implements OnInit {
       lastName: this.ulastName.nativeElement.value,
       email: this.uemail.nativeElement.value,
       location: this.ulocation.nativeElement.value,
-      designation: this.udesignation.nativeElement.value,
+      designation: this.designation,
       joined: this.ujoined.nativeElement.value,
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
@@ -140,4 +140,7 @@ export class AddUpdateUserComponent implements OnInit {
     });
   }
 
+  selectChangeHandlerDesignation(event: any){
+    this.designation = event.target.value;
+  }
 }

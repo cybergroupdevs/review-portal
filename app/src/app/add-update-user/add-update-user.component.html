@@ -96,7 +96,7 @@
                 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Designation</label>
-                    <select id="profileDesignation" [disabled]="temp2" name="deisgnations">
+                    <select id="profileDesignation" [disabled]="temp2" (change)="selectChangeHandlerDesignation($event)" name="deisgnations">
                       <option value="{{designation}}">{{designation}}</option>
                       <option value="Consultant 1">Consultant 1</option>
                       <option value="Consultant 2">Consultant 2</option>
