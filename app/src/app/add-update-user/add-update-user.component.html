@@ -23,56 +23,52 @@
   </div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitVerficationModel" >
-    <div class="modal-dialog modal-sm">
+  <div class="modal" id="submitVerficationModel" >
+    <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
   
         <!-- Modal body -->
         <div class="myFont2">
-            <i class="fa fa-check-circle " ></i>
+            <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+            <button type="button" class="close" data-dismiss="modal" >&times;</button>
         </div>
 
         <!-- Modal Header -->
         <div >
-            <h1 class="heading" align="center">Updated!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+            <h1 class="heading" align="center">Details Updated!</h1>
         </div>
   
       </div>
     </div>
-  </div>
+</div>
 
-
-  <!-- The Modal 2-->
-  <div class="modal" id="submitModel">
-    <div class="modal-dialog">
-      <div class="modal-content">
+<!-- The Modal 3-->
+<div class="modal" id="updateModel">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
   
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          Are you sure you want to update? Once updated it cannot be edited.
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" data-dismiss="modal" (click)="updateData()">Submit</button>
-        </div>
-  
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <img src="https://art.pixilart.com/646ef9826588f84.gif" class="modal-title modal-image-2">
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+        Are you sure you want to update the details?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitVerficationModel" 
+        data-dismiss="modal" (click)="updateData()">Update</button>
+      </div>
+  
     </div>
   </div>
+</div>
+
 <div class="container update-profile">
     <div class="row">
         <form>
@@ -99,13 +95,23 @@
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
-                        <label >Designation</label>
-                        <input type="text" #udesignation [readonly]="temp2" class="form-control input-sm" value="{{designation}}" maxlength="40" >
+                    <label >Designation</label>
+                    <select id="profileDesignation" [disabled]="temp2" name="deisgnations">
+                      <option value="{{designation}}">{{designation}}</option>
+                      <option value="Consultant 1">Consultant 1</option>
+                      <option value="Consultant 2">Consultant 2</option>
+                      <option value="Associate 1">Associate 1</option>
+                      <option value="Consultant 2">Associate 2</option>
+                      <option value="Associate 1">Manager 1</option>
+                      <option value="Consultant 2">Manager 2</option>
+                      <option value="Associate 1">Principle 1</option>
+                      <option value="Associate 1">Principle 2</option>
+                  </select>
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
-                        <label>Total Experience</label>
-                        <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}" maxlength="2">
+                    <label>Total Experience</label>
+                    <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
@@ -118,8 +124,8 @@
                     <input type="text" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" maxlength="2">
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
-                        <label >Date of Joining</label>
-                        <input type="text" [readonly]="isReadonly" #ujoined class="form-control input-sm" value="{{joined}}">
+                    <label >Date of Joining</label>
+                    <input type="text" [readonly]="isReadonly" #ujoined class="form-control input-sm" value="{{joined}}">
                 </div>
                 
                 
@@ -127,7 +133,7 @@
             
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" data-target="#submitModel"/>
+                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" data-target="#updateModel"/>
                 </div>
             </div>
         </form>

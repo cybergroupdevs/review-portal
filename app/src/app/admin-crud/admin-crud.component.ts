@@ -1,5 +1,6 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-crud',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-crud.component.scss']
 })
 export class AdminCrudComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 10;
+  items = [];
 
-  constructor(private _service: ServicesService) { }
+  constructor(private _service: ServicesService, private _router: Router) { }
 
-  usersArray: any;
+  usersArray = [];
 
   ngOnInit() {
     this.loadUsers();
@@ -18,10 +23,21 @@ export class AdminCrudComponent implements OnInit {
   
   loadUsers(){
     this._service.showAllEmployees().subscribe(res => {
-      // console.log(res);
-      this.usersArray = res;
-      console.log(this.usersArray);
+      if(res.status == 200){
+        this.usersArray = res.body;
+        console.log(this.usersArray);
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
     });
+
+    if (this.usersArray.length < 11) {
+      document.getElementById('pageNo').style.visibility = "hidden"; 
+    }
   }
 
 }
+
+

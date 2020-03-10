@@ -1,11 +1,11 @@
-<table class="table table-striped">
+<table class="table review-table" data-searchable = true>
     <thead>
         <tr>
             <th scope="col" *ngFor = "let elem of keys">{{elem}}</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let row of reviewArray">
+        <tr *ngFor = "let row of reviewArray | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <td>{{row.FormName}}</td>
             <td>{{row.Cycle}}</td>
             <td>{{row.TargetDate}}</td>
@@ -13,8 +13,12 @@
             <td>{{row.CreatedAt}}</td>
 
             <!-- row.Edit contains _id of each employee-->
-            <td [routerLink]="[toJump, row.Edit]"><img src="../../assets/images/edit-btn.png"></td>
+            <td [routerLink]="[toJump, row.Edit]"><i class="fa fa-edit"></i></td>
         </tr>
     </tbody>
 </table>
+
+<div class="pagination-div" id="pageNo"><ngb-pagination  [collectionSize]="reviewArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+</div>
+
 <router-outlet></router-outlet>

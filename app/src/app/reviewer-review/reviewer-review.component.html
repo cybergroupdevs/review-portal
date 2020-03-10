@@ -1,82 +1,72 @@
 <!-- The Modal 1-->
 <app-reviewer-qaer></app-reviewer-qaer>
 <div class="modal" id="saveModel" >
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont">
-            <i class="fa fa-check-circle " ></i>
-        </div>
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Saved!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
+      <!-- Modal body -->
+      <div class="myFont2">
+          <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
+
+      <!-- Modal Header -->
+      <div >
+          <h1 class="heading" align="center">Saved</h1>
+      </div>
+
     </div>
   </div>
+</div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitVerficationModel" >
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont2">
-            <i class="fa fa-check-circle " ></i>
-        </div>
+<div class="modal" id="submitReviewModel" >
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Submitted!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
+      <!-- Modal body -->
+      <div class="myFont2">
+          <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
+
+      <!-- Modal Header -->
+      <div >
+          <h1 class="heading" align="center">Submitted</h1>
+      </div>
+
     </div>
   </div>
-
+</div>
 
   <!-- The Modal 2-->
   <div class="modal" id="submitModel">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-  
+    
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Are you sure?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <img src="https://art.pixilart.com/646ef9826588f84.gif" class="modal-title modal-image-2">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
         </div>
   
         <!-- Modal body -->
-        <div class="modal-body">
-          Are you sure you want to submit? Once submitted it cannot be edited.
+        <div class="modal-body text-center">
+          Are you sure you want to submit?
         </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success button2" data-toggle="modal" data-target="#submitVerficationModel" data-dismiss="modal" (click)="submitReviewDetails()">Submit</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitReviewModel" 
+          data-dismiss="modal" (click)="submitReviewDetails()">Submit</button>
         </div>
-  
+    
       </div>
     </div>
   </div>
 
-<div class="container-fluid mt-3">
+<div class="container-fluid">
   <div class="panel-body">
     <table class="table">  
       <thead>
@@ -111,6 +101,8 @@
             <option>{{assessmentSelfTS}}</option>     
             <option value="Meets Expectations">Meets Expectations</option>
             <option value="Needs Improvement">Needs Improvement</option>
+            <option value="Exceeds Expectation">Exceeds Expectation</option>
+            <option value="Not Applicable">Not Applicable</option>
           </select>                
         </td>  
 
@@ -122,6 +114,8 @@
               <option [ngValue]="selected" selected hidden>{{assessmentReviewerTS}}</option>
               <option value="Meets Expectations">Meets Expectations</option>
               <option value="Needs Improvement">Needs Improvement</option>
+              <option value="Exceeds Expectation">Exceeds Expectation</option>
+              <option value="Not Applicable">Not Applicable</option>
           </select>                    
         </td>  
       </tr>
@@ -138,6 +132,8 @@
             <option>{{assessmentSelfCS}}</option>     
             <option value="Meets Expectations">Meets Expectations</option>
             <option value="Needs Improvement">Needs Improvement</option>
+            <option value="Exceeds Expectation">Exceeds Expectation</option>
+            <option value="Not Applicable">Not Applicable</option>
           </select>          
         </td>
 
@@ -149,6 +145,8 @@
             <option [ngValue]="selected" selected hidden>{{assessmentReviewerCS}}</option>
             <option value="Meets Expectations">Meets Expectations</option>
             <option value="Needs Improvement">Needs Improvement</option>
+            <option value="Exceeds Expectation">Exceeds Expectation</option>
+            <option value="Not Applicable">Not Applicable</option>
           </select>
         </td>    
       </tr>
@@ -165,6 +163,8 @@
             <option>{{assessmentSelfP}}</option>     
             <option value="Meets Expectations">Meets Expectations</option>
             <option value="Needs Improvement">Needs Improvement</option>
+            <option value="Exceeds Expectation">Exceeds Expectation</option>
+            <option value="Not Applicable">Not Applicable</option>
           </select>
         </td>
 
@@ -176,13 +176,15 @@
             <option [ngValue]="selected" selected hidden>{{assessmentReviewerP}}</option> 
             <option value="Meets Expectations">Meets Expectations</option>
             <option value="Needs Improvement">Needs Improvement</option>
+            <option value="Exceeds Expectation">Exceeds Expectation</option>
+            <option value="Not Applicable">Not Applicable</option>
           </select>               
         </td>    
       </tr>
 
       <div class="buttons">
         <button class="btn btn-primary add-user-btn" [disabled]="editable" data-toggle="modal" data-target="#saveModel" (click)="updateReviewDetails()" >Save</button> 
-        <button class="btn btn-primary add-user-btn" [disabled]="editable"   data-toggle="modal" data-target="#submitModel">Submit</button>
+        <button class="btn btn-primary add-user-btn" [disabled]="editable" data-toggle="modal" data-target="#submitModel">Submit</button>
       </div>     
     </table> 
   </div>

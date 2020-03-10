@@ -103,36 +103,6 @@
           </td>
         </tr>
 
-        <!-- <tr>
-          <td colspan="2" class="col1">
-            <p #review rows="4" cols="50" align="center"></p>
-          </td>
-          <td colspan="5">
-            <textarea #review rows="4" cols="50"></textarea>
-          </td>
-          <td align="center">
-            <select required>
-              <option value="Meets Expectations">Meets Expectations</option>
-              <option value="Needs Improvement">Needs Improvement</option>
-            </select>
-
-          </td>
-        </tr> -->
-        <!-- <tr>
-          <td colspan="2" class="col1">
-            <p #review rows="4" cols="50" align="center"></p>
-          </td>
-          <td colspan="5">
-            <textarea #review rows="4" cols="50"></textarea>
-          </td>
-          <td align="center">
-            <select #assessment required>
-              <option value="Meets Expectations">Meets Expectations</option>
-              <option value="Needs Improvement">Needs Improvement</option>
-            </select>
-
-          </td>
-        </tr> -->
         <tr class="communicationSkill">
           <td colspan="2" class="col1">
             <p #review rows="4" cols="50" align="center">Communication Skills</p>
@@ -172,7 +142,6 @@
       </table>
     </div>
     <div class="buttons">
-      <div><button [disabled]="editable" type="button" class="btn btn-primary">Cancel</button></div>
       <div><button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
           (click)="updateSelfReview()">Save</button>
       </div>

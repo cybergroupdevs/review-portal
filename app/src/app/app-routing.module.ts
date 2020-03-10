@@ -111,22 +111,22 @@ const routes: Routes = [
       }
     ]
   },
-  {path: "review", component: ReviewerReviewComponent},
+//   {path: "review", component: ReviewerReviewComponent},
 
 
-  {path: "selfReview", component:SelfReviewComponent},
+//   {path: "selfReview", component:SelfReviewComponent},
 
 
-  {path: "createReview", component: CreateReviewComponent},
-  {path: "adminHeader", component: AdminHeaderComponent},
+//   {path: "createReview", component: CreateReviewComponent},
+//   {path: "adminHeader", component: AdminHeaderComponent},
   
-  {path: "personal-info", component:UpdatePersonalInfoComponent},
+//   {path: "personal-info", component:UpdatePersonalInfoComponent},
 
 
-  {path: "createReview", component: CreateReviewComponent},
-  {path: "adminHeader", component: AdminHeaderComponent},
-  {path: "actionBar", component:ActionBarComponent},
-  {path: "personal-info", component:UpdatePersonalInfoComponent}
+//   {path: "createReview", component: CreateReviewComponent},
+//   {path: "adminHeader", component: AdminHeaderComponent},
+//   {path: "actionBar", component:ActionBarComponent},
+//   {path: "personal-info", component:UpdatePersonalInfoComponent}
 
 ];
 

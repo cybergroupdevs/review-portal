@@ -1,77 +1,131 @@
 const bcrypt = require('bcrypt');
 const config = require('config');
-// const Employee = require('../schemas/employee');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
-
+const nodemailer = require('nodemailer');
+var generator = require('generate-password');
+const saltRounds = 10;
 class Employee {
     
     constructor(){
-        console.log("reached controller")
+        console.log("reached controller");
     }
 
     async create(req,res) {
+      console.log(req.body)
+      const password = generator.generate({
+        length: 10,
+        numbers: true
+       });
+
+       let mailObject = {
+        "email" : req.body.email,
+        "cgiCode" : req.body.cgiCode,
+        "firstName" : req.body.firstName,
+        "lastName" : req.body.lastName,
+       };
+       
+
+      console.log(password);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      if(jwtHandler.tokenVerifier(req.headers.token)){
         let employeeObj ={
-            firstName: req.body.firstName,
-            lastName : req.body.lastName,
-            email: req.body.email,
-            designation: req.body.designation,
-            skills: [req.body.skills],
-            cgiCode: req.body.cgiCode,
-            previousExperience: req.body.previousExperience,
-            totalExperience: req.body.totalExperience,
-            location: req.body.location
+          firstName: req.body.firstName,
+          lastName : req.body.lastName,
+          email: req.body.email,
+          designation: req.body.designation,
+          password: hashedPassword,
+          skills: [req.body.skills],
+          cgiCode: req.body.cgiCode,
+          previousExperience: req.body.previousExperience,
+          totalExperience: req.body.totalExperience,
+          location: req.body.location
         }
         console.log(employeeObj);
-        const employee= await model.employee.save(employeeObj)
-        res.send(employee)
-    }
+        const employee = await model.employee.save(employeeObj);
+        const mail = await new Employee().sendMail(mailObject, password);
+        if(mail == true){
+            res.status(200).send(employee);
+        }
+        else if(mail == false){
+            res.status(500).send({
+                "message": "Couldn't Generate Mail"
+            });
+        }
+      }
+      else{
+        res.status(401).send({
+          "message": "Unauthorized"
+        });
+      }
+}
   
     async getEmployeeDetails(req, res){
-        let criteria = {"cgiCode": req.params.cgiCode}
-        const empId = await model.employee.get(criteria, 
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let criteria = {"cgiCode": req.params.cgiCode};
+            const empId = await model.employee.get(criteria, 
                                     {"email": 1,
                                     "firstName": 1,
                                     "lastName": 1,
                                     "_id": 1,
                                     "cgiCode": 1,
                                     "designation": 1});
-        res.send(empId);
+            res.status(200).send(empId);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        
     }
 
     async show(req,res){
-        console.log("Reached SHOW");
-        const employee = await model.employee.getUserData({"_id": req.params.id})
-        res.send(employee[0]);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const employee = await model.employee.getUserData({"_id": req.params.id});
+            res.status(200).send(employee[0]);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }   
     }
-
 
     async index(req,res){
-        const employeeList = await model.employee.get();
-        res.send(employeeList);
-    }
-
-    async showUser(req,res){
-        const employee = await model.employee.get({_id: req.params.parameter})
-        res.send(employee[0])
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const employeeList = await model.employee.get();
+            res.status(200).send(employeeList);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
     }
 
     async update(req,res) {
-        let updateObj= req.body;
-        console.log(updateObj);
-        const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
-        res.send(employee);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let updateObj= req.body;
+            console.log(updateObj);
+            const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
+            res.status(200).send(employee);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        
     }    
-
-    async delete(req,res){
-        console.log(req.params.parameter);
-        const employee =await model.employee.delete({_id: req.params.parameter});
-        res.send("deleted");
-    }
  
     async login(req, res) {
         console.log(req.body);
-        let user = await model.employee.get({$and : [{"email": req.body.email},{"password": req.body.password}]
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password,salt);
+        console.log(hashedPassword);
+        let user = await model.employee.get({$and : [{"email": req.body.email}]
                                                 }, 
                                                 {"email": 1,
                                                 "firstName": 1,
@@ -79,24 +133,93 @@ class Employee {
                                                 "totalExperience": 1,
                                                 "phoneNo": 1,
                                                 "_id": 1,
-                                                "designation": 1
+                                                "designation": 1,
+                                                "password":1
                                             });
         console.log(user);
-        // debugger
         if(JSON.stringify(user) != JSON.stringify([])){
-            let token = jwtHandler.tokenGenerator(user);
-            if(token != null){
-                let resBody = {
-                    "token": token
-                };
-                res.status(200).send(resBody);
-            }
+            bcrypt.compare(req.body.password, user[0].password, function (err, result) {
+                console.log(result);
+                console.log(user[0].password, req.body.password);
+                if (result == true) {
+                    let token = jwtHandler.tokenGenerator(user);
+                    console.log(token);
+                    if(token != null){
+                        let resBody = {
+                            "token": token
+                        };
+                        res.status(200).send(resBody);
+                    }
+                }
+                else{
+                    res.status(401).send({
+                        "message": "Unauthorized, Incorrect Password"
+                    });
+                }
+            });
         }
         else{
             res.status(401).send({
-                "message": "Unauthorized, Invalid Username or Password"});
+                "message": "Incorrect Email or username"
+            });
         }
+        
+        console.log(user); 
     }
+
+
+    sendMail(mailObject, password){
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          host: 'smtp.gmail.com',
+          secure: 'false',
+          port: '465',
+          auth: { 
+            user: 'mongmawchetna@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
+            pass: 'mongmaw@chetna21ok '//put your password here
+          }
+        });
+    
+        var mailOptions = {
+          from: 'vishal.ranjan@cygrp.com',
+          to: `<${mailObject.email}>`, // must be Gmail
+          cc:`${mailObject.firstName} <${mailObject.email}>`,
+          subject: 'Login Credentials to HRMS',
+          html: `
+                  <table style="width: 100%; border: none">
+                    <thead>
+                      <tr style="background-color: #000; color: #fff;">
+                        <th style="padding: 10px 0">CGI code</th>
+                        <th style="padding: 10px 0">First Name</th>
+                        <th style="padding: 10px 0">Last Name</th>
+                        <th style="padding: 10px 0">E-mail</th>
+                        <th style="padding: 10px 0">Password</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align: center">${mailObject.cgiCode}</td>
+                        <td style="text-align: center">${mailObject.firstName}</td>
+                        <td style="text-align: center">${mailObject.lastName}</td>
+                        <td style="text-align: center">${mailObject.email}</td>
+                        <th style="text-align: center">${password}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                `
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log("Mail Not Send", error);
+                return false;
+            } 
+            else {
+                console.log("Mail send");
+                return true;
+            }
+        });
+      }
+    
 }
 
 module.exports = new Employee();

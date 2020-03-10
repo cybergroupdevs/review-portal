@@ -11,12 +11,8 @@ td, th {
     text-align: left; 
   }
 
-  tr:nth-of-type(odd) { 
+tr{ 
     background: #f5f5f6;
-}
-
-tr:nth-of-type(even) {
-    background: #e1e2e1; 
 }
 
 p{
@@ -52,7 +48,7 @@ p{
 }
 
 button{
-    background-color: #311a91;
+    background-color: #000062;
     color: white;
     border-radius:4px;
     border: none;
@@ -68,6 +64,7 @@ button{
 .buttons{
     position: absolute;
     display: flex;
+    margin-left: 4rem;
 }
 select{
     color: black;
@@ -255,10 +252,10 @@ textarea{
         // right: 2rem;
         // }
 
-        .button1{
-            background-color:  #dc3545 !important;
-        }
+        // .button1{
+        //     background-color:  #dc3545 !important;
+        // }
 
-        .button2{
-        background-color:#28a745 !important ;
-        }
+        // .button2{
+        // background-color:#28a745 !important ;
+        // }
