@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AddUserComponent implements OnInit {
   constructor(private _service:ServicesService, private _router: Router) { }
 
+  
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('firstName', {static: false}) firstName: ElementRef;
   @ViewChild('lastName', {static: false}) lastName: ElementRef;
@@ -57,6 +58,7 @@ export class AddUserComponent implements OnInit {
     {console.log(res);
     if (res.status == 200){
       this.message="Added User!!"
+
     }
     else if(res.status == 401){
       this.message="Could not add User!!";
@@ -78,10 +80,12 @@ export class AddUserComponent implements OnInit {
   //     this.message="Could not add User!!"
   //   }
   // });
+ 
 }
+
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
   }
-
+  
   
 }
