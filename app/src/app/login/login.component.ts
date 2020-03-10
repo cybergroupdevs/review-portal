@@ -49,10 +49,9 @@ export class LoginComponent implements OnInit {
           this.onLogin(res.body.token);
         }
         else if(res.status == 401){
-          alert("Unauthorized");
+          //alert("Unauthorized");
         }
       });    
-
     
   }
 
