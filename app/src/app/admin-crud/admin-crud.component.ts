@@ -15,7 +15,7 @@ export class AdminCrudComponent implements OnInit {
 
   constructor(private _service: ServicesService, private _router: Router) { }
 
-  usersArray: any;
+  usersArray = [];
 
   ngOnInit() {
     this.loadUsers();
@@ -23,7 +23,6 @@ export class AdminCrudComponent implements OnInit {
   
   loadUsers(){
     this._service.showAllEmployees().subscribe(res => {
-      // console.log(res);
       if(res.status == 200){
         this.usersArray = res.body;
         console.log(this.usersArray);

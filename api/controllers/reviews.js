@@ -8,8 +8,20 @@ class Review {
         console.log("reached controller")
     }
 
+    async getReviewCount(req, res){
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            const count = await model.review.getCount();
+            res.status(200).send(count);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+    }
+
     async getById(req,res){
-        let decodedToken = jwtHandler.tokenVerifier(req.headers.token);
+        let decodedToken = await jwtHandler.tokenVerifier(req.headers.token);
         console.log("99999999999999999999999", decodedToken.data._id);
         console.log("88888888888888888888888", req.query["route"]);
         console.log("77777777777777777777777",req.params.id);

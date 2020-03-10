@@ -25,17 +25,23 @@ export class LoginComponent implements OnInit {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value
     };
-    let token = this._service.checkUser(user).subscribe(res => {
-      console.log("-------------------------");
-      console.log(res.token);
-       console.log(res["token"]);
-       if(res.token != ''){
-        this.onLogin(res.token);
-       }
-       else{
-         alert("Unauthorized");
-       }
-    });    
+    if(this.email.nativeElement.value == "" || this.password.nativeElement.value == ""){
+      alert("Empty Fields !");
+      return ;
+    }
+    else{
+      this._service.checkUser(user).subscribe(res => {
+        console.log("-------------------------");
+        if(res.status == 200){
+          // console.log(res.body.token);
+          this.onLogin(res.body.token);
+        }
+        else if(res.status == 401){
+          alert("Unauthorized");
+        }
+      });    
+    }
+    
   }
 
   onLogin(token){
