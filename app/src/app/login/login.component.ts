@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       this._service.checkUser(user).subscribe(res => {
         console.log("-------------------------");
         if(res.status == 200){
+          console.log(res)
           // console.log(res.body.token);
           this.onLogin(res.body.token);
         }
