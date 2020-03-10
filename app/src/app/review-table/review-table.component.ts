@@ -62,7 +62,7 @@ export class ReviewTableComponent implements OnInit {
             "Cycle": res.body[i].reviewCycle,
             "TargetDate": res.body[i].targetDate.substring(0, 10),
             "Status": res.body[i].status,
-            "CreatedAt": res.body[i].date,
+            "CreatedAt": res.body[i].date.substring(0, 10),
             "Edit": res.body[i]._id
           };        
         }

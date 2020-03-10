@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
-
+declare var $: any;
 
 
 @Component({
@@ -163,8 +163,8 @@ export class ReviewerReviewComponent implements OnInit {
     let reviewObj;
     if(this.current_route == "pendingByReviewer"){
       reviewObj = {
-        "flag": "2",
-        "status": "Pending-QAer"
+        "flag": "1",
+        "status": "Pending-Reviewer"
       }
     }
     else if(this.current_route == "pendingByQa"){
@@ -178,7 +178,14 @@ export class ReviewerReviewComponent implements OnInit {
       console.log(res);
       if(res.status == 200){
         console.log('Successful update!!');
-        this._router.navigate(["/user/reviews"]);
+        // setTimeout(function() { 
+          // $('#submitReviewModel').modal('hide')
+          // }, 1000);
+
+          // this._router.navigate(["/user/reviews"]);
+        // this._router.navigate(["/user/reviews"]);
+        // $('#submitReviewModel').modal('show');
+        // $('#submitReviewModel').modal('hide')
       }
       else {
         console.log('unsuccessful');
