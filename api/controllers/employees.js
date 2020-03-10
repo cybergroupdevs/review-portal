@@ -186,6 +186,8 @@ class Employee {
           cc:`${mailObject.firstName} <${mailObject.email}>`,
           subject: 'Login Credentials to HRMS',
           html: `
+                  <p>Hello, ${mailObject.firstName}!! We are pleased to have you join us. Here
+                  are your login credentials. </p>
                   <table style="width: 100%; border: none">
                     <thead>
                       <tr style="background-color: #000; color: #fff;">
@@ -206,15 +208,16 @@ class Employee {
                       </tr>
                     </tbody>
                   </table>
+                  <p>Greetings from CyberGroup.</p>
                 `
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.log("Mail Not Send", error);
+                console.log("Mail Not Sent", error);
                 return false;
             } 
             else {
-                console.log("Mail send");
+                console.log("Mail sent");
                 return true;
             }
         });
