@@ -48,6 +48,7 @@ export class AddUpdateUserComponent implements OnInit {
   calRoute: string;
   calRoute2: string;
   modalName: string;
+  isVisible = false;
  
   ngOnInit() {
     let current_route = this._router.url.split("/");
@@ -154,12 +155,22 @@ export class AddUpdateUserComponent implements OnInit {
     this._service.updateData(userObj,id).subscribe(res =>  {
       if(res.status == 200){
         console.log('Successful update!!');
-        $("#submitVerficationModel").show();
+        // $("#submitVerficationModel").show();
+        //   setTimeout(()=> { 
+          
+        //   this._router.navigate(["/admin/home"]);
+        //   $('#submitVerficationModel').hide()
+        //   }, 1000);
+
+        // console.log(document.getElementById("submitVerficationModel")).display = "block";
+
+        this.isVisible = true;
           setTimeout(()=> { 
           
-          this._router.navigate(["/admin/employees"]);
-          $('#submitVerficationModel').hide()
+          this._router.navigate(["/admin/home"]);
+          this.isVisible = false;
           }, 1000);
+
       }
       else if(res.status == 401){
         alert("Unauthorized");
