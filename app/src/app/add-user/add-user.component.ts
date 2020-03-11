@@ -26,6 +26,8 @@ export class AddUserComponent implements OnInit {
   
   message : String='';
   selectedDesignation: String='';
+  isVisible : Boolean = false;
+  isShow :Boolean=false;
 
   res:any;
   
@@ -42,11 +44,15 @@ export class AddUserComponent implements OnInit {
       alert("Previous experience can't be more than total experience!");
       return ;
     }
+    else{
+      this.isVisible = true;
+    }
 
 }
 
  
   createUser(){
+    this.isVisible = false
     let userObj = {
       firstName: this.firstName.nativeElement.value,
       lastName: this.lastName.nativeElement.value,
@@ -58,23 +64,33 @@ export class AddUserComponent implements OnInit {
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
-    if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == "" ){
-      alert("Fields are either empty or data is incorrect !");
-      this.message="Fields are empty!!"
-      return ;
-    }
-      else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
-      {
-      alert("Previous experience can't be more than total experience!");
-      this.message="Previous experience can't be more than total experience!!"
-      return ;
-    }
     
+    // if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == "" ){
+    //   alert("Fields are either empty or data is incorrect !");
+    //   this.message="Fields are empty!!"
+    //   return ;
+    // }
+    //   else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
+    //   {
+    //   alert("Previous experience can't be more than total experience!");
+    //   this.message="Previous experience can't be more than total experience!!"
+    //   return ;
+    // }
+
+    console.log("hereeee------------------->>>>")
     this._service.createUser(userObj).subscribe(res => 
     { 
+      
       console.log(res);
       if (res.status == 200){
         this.message="Added User!!"
+        console.log("added")
+        this.isShow = true;
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/admin/home"]);
+          this.isShow = false;
+          }, 1000);
       }
       else if(res.status == 401){
         this.message="Could not add User!!";
