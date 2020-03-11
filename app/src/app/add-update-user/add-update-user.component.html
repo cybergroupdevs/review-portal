@@ -133,10 +133,9 @@
             
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" data-target="#updateModel"/>
+                    <input type='button' #updateButton class="btn btn-primary" value="Update" data-toggle="modal" (click) = "checkValidations()" data-target="#updateModel"/>
                 </div>
             </div>
         </form>
     </div>
 </div>     
-
