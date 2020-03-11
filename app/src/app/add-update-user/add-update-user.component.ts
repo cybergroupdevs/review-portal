@@ -1,9 +1,10 @@
+// import { stat } from 'fs';
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import $ from "jquery";
-
 
 @Component({
   selector: 'app-add-update-user',
@@ -22,6 +23,8 @@ export class AddUpdateUserComponent implements OnInit {
   @ViewChild('upreviousExperience', {static: false}) upreviousExperience: ElementRef;
   @ViewChild('utotalExperience', {static: false}) utotalExperience: ElementRef;
   @ViewChild('uskills', {static: false}) uskills: ElementRef;
+
+  @ViewChild('updateButton', {static: false}) updateButton: ElementRef;
   
   constructor(private _service:ServicesService, private _router:Router, private _activatedRoute: ActivatedRoute) { }
   
@@ -44,6 +47,7 @@ export class AddUpdateUserComponent implements OnInit {
   loggedinUserId: string;
   calRoute: string;
   calRoute2: string;
+  modalName: string;
  
   ngOnInit() {
     let current_route = this._router.url.split("/");
@@ -110,7 +114,19 @@ export class AddUpdateUserComponent implements OnInit {
     this.totalExperience = this.userArray.totalExperience;
     this.skills = this.userArray.skills;
   }
-  
+
+  checkValidations(){
+    if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
+      alert("Fields are either empty or data is incorrect !");
+      return ;
+    }
+    else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
+    {
+      alert("Previous experience can't be more than total experience!");
+      return ;
+    }
+    
+  }
 
   updateData(){
     let userObj = {
@@ -123,13 +139,10 @@ export class AddUpdateUserComponent implements OnInit {
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
       skills: this.uskills.nativeElement.value,
-      };
-      
-     
-    
-
+      };    
     console.log(userObj);
-     if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
+
+    if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
       this.sendUpdateRequest(userObj, this.loggedinUserId);
     }
     else if(this.calRoute2 == "admin/employee/edit"){
@@ -144,7 +157,7 @@ export class AddUpdateUserComponent implements OnInit {
         $("#submitVerficationModel").show();
           setTimeout(()=> { 
           
-          this._router.navigate(["/admin/employees"]);
+          this._router.navigate(["/admin/home"]);
           $('#submitVerficationModel').hide()
           }, 1000);
       }

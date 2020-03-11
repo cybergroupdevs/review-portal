@@ -1,6 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-crud',
@@ -12,10 +13,11 @@ export class AdminCrudComponent implements OnInit {
   page = 1;
   pageSize = 10;
   items = [];
+  usersArray =[];
 
   constructor(private _service: ServicesService, private _router: Router) { }
 
-  usersArray = [];
+  
 
   ngOnInit() {
     this.loadUsers();
@@ -33,9 +35,9 @@ export class AdminCrudComponent implements OnInit {
       }
     });
 
-    if (this.usersArray.length < 11) {
-      document.getElementById('pageNo').style.visibility = "hidden"; 
-    }
+    // if (this.usersArray.length < 11) {
+    //   document.getElementById('pageNo').style.visibility = "hidden"; 
+    // }
   }
 
 }
