@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { identifierModuleUrl, analyzeAndValidateNgModules } from '@angular/compiler';
 import { stringify } from 'querystring';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
  
 @Component({
   selector: 'app-review-table',
