@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
+import $ from "jquery";
 
 @Component({
   selector: 'app-add-update-user',
@@ -90,6 +89,18 @@ export class AddUpdateUserComponent implements OnInit {
       
     });
   }
+  checkInput(){
+    if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
+      alert("Fields are either empty or data is incorrect !");
+      return ;
+    }
+    else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
+    {
+    alert("Previous experience can't be more than total experience!");
+    return ;
+  }
+
+}
 
   setEmployeeData(){
     console.log(this.userArray);
@@ -128,9 +139,7 @@ export class AddUpdateUserComponent implements OnInit {
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
       skills: this.uskills.nativeElement.value,
-      };
-
-    
+      };    
     console.log(userObj);
 
     if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
@@ -145,6 +154,12 @@ export class AddUpdateUserComponent implements OnInit {
     this._service.updateData(userObj,id).subscribe(res =>  {
       if(res.status == 200){
         console.log('Successful update!!');
+        $("#submitVerficationModel").show();
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/admin/employees"]);
+          $('#submitVerficationModel').hide()
+          }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");

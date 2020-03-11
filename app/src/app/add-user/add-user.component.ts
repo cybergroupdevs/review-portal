@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AddUserComponent implements OnInit {
   constructor(private _service:ServicesService, private _router: Router) { }
 
+  
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('firstName', {static: false}) firstName: ElementRef;
   @ViewChild('lastName', {static: false}) lastName: ElementRef;
@@ -30,6 +31,18 @@ export class AddUserComponent implements OnInit {
   
   ngOnInit() {
   }
+  checkInput(){
+    if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == ""  ){
+      alert("Fields are either empty or data is incorrect !");
+      return ;
+    }
+    else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
+    {
+    alert("Previous experience can't be more than total experience!");
+    return ;
+  }
+
+}
  
   createUser(){
     let userObj = {
@@ -43,21 +56,13 @@ export class AddUserComponent implements OnInit {
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
-    if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == "" ){
-      alert("Fields are either empty or data is incorrect !");
-      return ;
-    }
-      else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
-      {
-      alert("Previous experience can't be more than total experience!");
-      return ;
-    }
+   
     
     this._service.createUser(userObj).subscribe(res => 
-    {
-      console.log(res);
-      if (res.status == 200){
+    {console.log(res);
+    if (res.status == 200){
       this.message="Added User!!"
+
     }
     else if(res.status == 401){
       this.message="Could not add User!!";
@@ -69,11 +74,22 @@ export class AddUserComponent implements OnInit {
       console.log("Mail Not Sent");
     }
   });
+  // this._service.sendEmail(userObj).subscribe(res=>{    
+  //   if (res.status == 200){
+  //     //alert("successfully added")
+  //     this.message="Added User mail sent!!"
+  //   }
+  //   else{
+  //     //alert("successfully added");
+  //     this.message="Could not add User!!"
+  //   }
+  // });
  
 }
+
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
   }
-
+  
   
 }

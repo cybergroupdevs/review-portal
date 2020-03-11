@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 
+import $ from "jquery";
 
 
 @Component({
@@ -178,7 +179,14 @@ export class ReviewerReviewComponent implements OnInit {
       console.log(res);
       if(res.status == 200){
         console.log('Successful update!!');
-        this._router.navigate(["/user/reviews"]);
+        
+          $("#submitVerficationModel").show();
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/user/reviews"]);
+          $('#submitVerficationModel').hide()
+          }, 1000);
+          
       }
       else {
         console.log('unsuccessful');

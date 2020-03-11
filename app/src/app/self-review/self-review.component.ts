@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import $ from "jquery";
+
 
 @Component({
   selector: 'app-self-review',
@@ -89,11 +91,19 @@ export class SelfReviewComponent implements OnInit {
       "flag": "1",
       "status": "Pending-Reviewer"
       
+      
     }
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
       console.log(res , "this is res");
       if(res.status == 200){
-        this._router.navigate(["/user/reviews"]);
+        
+          console.log("submitted")
+          $("#submitVerficationModel").show();
+          setTimeout(()=> { 
+          
+          this._router.navigate(["/user/reviews"]);
+          $('#submitVerficationModel').hide()
+          }, 1000);
       }
       else if(res.status == 401) {
         alert("Token Expired");
@@ -136,6 +146,12 @@ export class SelfReviewComponent implements OnInit {
     });
   }
 
+
+  // closeModal(){
+  //   $('#modal').modal('hide');
+  // }
+
+
   selectChangeHandlerTS(event: any){
     this.assessmentSelfTS = event.target.value;
   }
@@ -147,3 +163,4 @@ export class SelfReviewComponent implements OnInit {
   }
 
 }
+

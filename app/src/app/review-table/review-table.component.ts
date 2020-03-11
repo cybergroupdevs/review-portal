@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { identifierModuleUrl, analyzeAndValidateNgModules } from '@angular/compiler';
 import { stringify } from 'querystring';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
  
 @Component({
   selector: 'app-review-table',
@@ -62,7 +63,7 @@ export class ReviewTableComponent implements OnInit {
             "Cycle": res.body[i].reviewCycle,
             "TargetDate": res.body[i].targetDate.substring(0, 10),
             "Status": res.body[i].status,
-            "CreatedAt": res.body[i].date,
+            "CreatedAt": res.body[i].date.substring(0, 10),
             "Edit": res.body[i]._id
           };        
         }

@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { parse } from 'querystring';
-
+import $ from "jquery";
 
 @Component({
   selector: 'app-create-review',
@@ -159,6 +159,12 @@ export class CreateReviewComponent implements OnInit {
       console.log(this.res);
       if(res.status == 200){
         // alert("Created");
+        $("#submitReviewModel").show();
+          setTimeout(()=> { 
+          
+          // this._router.navigate(["/admin/home"]);
+          $('#submitReviewModel').hide()
+          }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");

@@ -1,9 +1,7 @@
-//import { ConnectionService } from 'ng-connection-service';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,25 +13,27 @@ export class LoginComponent implements OnInit {
   @ViewChild('password', {static: false}) password: ElementRef;
 
   constructor(
-
-    //private connectionService: ConnectionService,
     private _service: ServicesService,
     private _router: Router
-  ) {}
-//   { 
-//     this.connectionService.monitor().subscribe(isConnected => {
-//       this.isConnected = isConnected;
-//       if (this.isConnected) {
-//         this.status = "ONLINE";
-//   }
-//   else {
-//     this.status = "OFFLINE";
-//   }
-// });
-//  }
-
+  ) { }
 
   ngOnInit() {
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('form-horizontal');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        }
+        form.classList.add('was-validated');
+        }, false);
+        });
+
+
   }
   
   checkUser(){
@@ -41,22 +41,17 @@ export class LoginComponent implements OnInit {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value
     };
-    if(this.email.nativeElement.value == "" || this.password.nativeElement.value == ""){
-      alert("Empty Fields !");
-      return ;
-    }
-    else{
+   
       this._service.checkUser(user).subscribe(res => {
         console.log("-------------------------");
         if(res.status == 200){
-          console.log(res.body.token);
+          // console.log(res.body.token);
           this.onLogin(res.body.token);
         }
         else if(res.status == 401){
-          alert("Unauthorized");
+          //alert("Unauthorized");
         }
       });    
-    }
     
   }
 
