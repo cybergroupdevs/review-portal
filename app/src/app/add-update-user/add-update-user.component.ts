@@ -157,7 +157,7 @@ export class AddUpdateUserComponent implements OnInit {
         $("#submitVerficationModel").show();
           setTimeout(()=> { 
           
-          this._router.navigate(["/admin/employees"]);
+          this._router.navigate(["/admin/home"]);
           $('#submitVerficationModel').hide()
           }, 1000);
       }
