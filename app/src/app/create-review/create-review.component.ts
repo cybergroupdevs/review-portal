@@ -43,6 +43,7 @@ export class CreateReviewComponent implements OnInit {
   inputValue: string;
   reviewCycle1: string;
   reviewCycle2: string;
+  isVisible = false;
   
   sendReq(cgiCodeValue){
     return this._service.getByCgiCode(cgiCodeValue);
@@ -158,12 +159,19 @@ export class CreateReviewComponent implements OnInit {
     this._service.createReview(reviewObject).subscribe(res => {
       console.log(this.res);
       if(res.status == 200){
+        console.log("review created")
         // alert("Created");
-        $("#submitReviewModel").show();
-          setTimeout(()=> { 
+        // $("#submitReviewModel").show();
+        //   setTimeout(()=> { 
           
-          // this._router.navigate(["/admin/home"]);
-          $('#submitReviewModel').hide()
+        //   // this._router.navigate(["/admin/home"]);
+        //   $('#submitReviewModel').hide()
+        //   }, 1000);
+
+        this.isVisible = true;
+          setTimeout(()=> { 
+            
+          this.isVisible = false;
           }, 1000);
       }
       else if(res.status == 401){

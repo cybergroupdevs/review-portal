@@ -47,6 +47,7 @@ export class ReviewerReviewComponent implements OnInit {
   isReadonly = false;
   editable = false;
   current_route: string;
+  isVisible = false;
 
   ngOnInit() {
     this._activatedRoute.params.subscribe(param => {
@@ -180,11 +181,18 @@ export class ReviewerReviewComponent implements OnInit {
       if(res.status == 200){
         console.log('Successful update!!');
         
-          $("#submitVerficationModel").show();
+          // $("#submitVerficationModel").show();
+          // setTimeout(()=> { 
+          
+          // this._router.navigate(["/user/reviews"]);
+          // $('#submitVerficationModel').hide()
+          // }, 1000);
+
+          this.isVisible = true;
           setTimeout(()=> { 
           
           this._router.navigate(["/user/reviews"]);
-          $('#submitVerficationModel').hide()
+          this.isVisible = false;
           }, 1000);
           
       }
