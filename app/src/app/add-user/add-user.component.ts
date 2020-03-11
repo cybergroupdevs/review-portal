@@ -1,3 +1,4 @@
+import { faFile } from '@fortawesome/free-solid-svg-icons';
 import { ServicesService } from './../services.service';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ViewChild, AfterViewInit } from '@angular/core';
@@ -26,6 +27,8 @@ export class AddUserComponent implements OnInit {
   
   message : String='';
   selectedDesignation: String='';
+  isVisible = false;
+  isShow = false;
 
   res:any;
   
@@ -42,6 +45,10 @@ export class AddUserComponent implements OnInit {
       alert("Previous experience can't be more than total experience!");
       return ;
     }
+    else{
+      this.isVisible = true ;
+    }
+    
 
 }
 
@@ -75,6 +82,12 @@ export class AddUserComponent implements OnInit {
       console.log(res);
       if (res.status == 200){
         this.message="Added User!!"
+        this.isShow = true;
+          setTimeout(()=> { 
+          
+          // this._router.navigate(["/admin/home"]);
+          this.isShow = false;
+          }, 1000);
       }
       else if(res.status == 401){
         this.message="Could not add User!!";
