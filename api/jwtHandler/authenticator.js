@@ -6,13 +6,14 @@ class authenticator {
 
     async getReviewData(reviewId){
         let data = await review.get({_id: reviewId});
-        console.log(data);
+        // console.log(data);
         return(data);
     }
 
     async verifyMeOnUpdate(reviewId, userId, route){
         let reviewData = await this.getReviewData(reviewId);
         let tempreviewData = JSON.parse(reviewData);
+        // console.log(">>>>>>>>>>>>>>>>>>>", tempreviewData);
         if(route == "pendingBySelf" && tempreviewData[0].employeeId._id == userId){
             console.log("Inside Pending By Self");
             return true;
