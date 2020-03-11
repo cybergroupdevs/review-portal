@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { parse } from 'querystring';
-
+import $ from "jquery";
 
 @Component({
   selector: 'app-create-review',
@@ -43,6 +43,7 @@ export class CreateReviewComponent implements OnInit {
   inputValue: string;
   reviewCycle1: string;
   reviewCycle2: string;
+  isVisible = false;
   
   sendReq(cgiCodeValue){
     return this._service.getByCgiCode(cgiCodeValue);
@@ -158,7 +159,20 @@ export class CreateReviewComponent implements OnInit {
     this._service.createReview(reviewObject).subscribe(res => {
       console.log(this.res);
       if(res.status == 200){
+        console.log("review created")
         // alert("Created");
+        // $("#submitReviewModel").show();
+        //   setTimeout(()=> { 
+          
+        //   // this._router.navigate(["/admin/home"]);
+        //   $('#submitReviewModel').hide()
+        //   }, 1000);
+
+        this.isVisible = true;
+          setTimeout(()=> { 
+            
+          this.isVisible = false;
+          }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");

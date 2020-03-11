@@ -24,7 +24,7 @@
   </div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitVerficationModel" >
+<div class="modal" id="submitVerficationModel" [style.display]="isShow ? 'block' : 'none'">
     <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
   
@@ -45,7 +45,7 @@
 
 
   <!-- The Modal 3-->
-<div class="modal" id="submitModel">
+<div class="modal" id="submitModel" [style.display]="isVisible ? 'block' : 'none'">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
   
@@ -63,8 +63,8 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitVerficationModel" 
-        data-dismiss="modal" (click)="createUser()">Add</button>
+        <button type="button" class="btn btn-success" data-toggle="modal"  
+        data-dismiss="modal" (click)="createUser()" data-dismiss="modal" >Add</button>
       </div>
   
     </div>
@@ -137,7 +137,7 @@
           </div>
           <div class="col-md-12 col-sm-12" id="addblock">
               <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                  <input type='submit' class="btn btn-primary" value="Add" data-toggle="modal" (click)="checkInput()" data-target="#submitModel"/>
+                  <input type='submit' class="btn btn-primary" (click)="checkInput()" value="Add" data-toggle="modal" />
               </div>
           </div>
       </form>

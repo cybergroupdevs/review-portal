@@ -18,22 +18,18 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-        
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('form-horizontal');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        }
-        form.classList.add('was-validated');
-        }, false);
-        });
-
-
+    let jwt = localStorage.getItem("JwtHrms");
+    console.log(jwt);
+    if(jwt != null){
+      let designation = this._service.jsonDecoder(jwt).data.designation;
+      console.log(designation);
+      if(designation == "ADMIN"){
+        this._router.navigate(['/admin']);
+      }
+      else{
+        this._router.navigate(['/user']);
+      }
+    }
   }
   
   checkUser(){
@@ -41,7 +37,22 @@ export class LoginComponent implements OnInit {
       "email": this.email.nativeElement.value,
       "password": this.password.nativeElement.value
     };
-   
+     if(this.email.nativeElement.value=='' || this.password.nativeElement.value=='')
+     {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('form-horizontal');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }
+    else{
       this._service.checkUser(user).subscribe(res => {
         console.log("-------------------------");
         if(res.status == 200){
@@ -52,7 +63,7 @@ export class LoginComponent implements OnInit {
           //alert("Unauthorized");
         }
       });    
-    
+    }
   }
 
   onLogin(token){

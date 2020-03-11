@@ -24,7 +24,7 @@
   </div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitReviewModel" >
+<div class="modal" id="submitReviewModel" [style.display]="isVisible ? 'block' : 'none'">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
     
@@ -63,7 +63,7 @@
           <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submitReviewModel" 
+            <button type="button" class="btn btn-success" data-toggle="modal" 
             data-dismiss="modal" (click)="createReview()">Create</button>
           </div>
       

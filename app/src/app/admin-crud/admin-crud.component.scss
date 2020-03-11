@@ -1,10 +1,15 @@
 .data-table{
-    margin-top: 6rem;
+    margin-top: 7rem;
     
 }
 .edit-data{
     cursor: pointer;
 }
+
+.edit-data:hover{
+    transform: scale(1.05);
+}
+
 span{
     color: #000062;
 }
@@ -17,15 +22,10 @@ span{
     height: 40rem;
 }
 
-
-
-
-
-
 .pagination-div{
     display: flex !important;
     justify-content: center ;
-
+    margin-top: 2rem;
 }
 
 .pagination {

@@ -39,6 +39,7 @@ export class SelfReviewComponent implements OnInit {
   isReadonly = true;
   editable = true;
   current_route: string;
+  isVisible = false;
 
   ngOnInit() {
     this.current_route = this._router.url.split('/')[2];
@@ -98,11 +99,18 @@ export class SelfReviewComponent implements OnInit {
       if(res.status == 200){
         
           console.log("submitted")
-          $("#submitVerficationModel").show();
+          // $("#submitVerficationModel").show();
+          // setTimeout(()=> { 
+          
+          // this._router.navigate(["/user/reviews"]);
+          // $('#submitVerficationModel').hide()
+          // }, 1000);
+
+          this.isVisible = true;
           setTimeout(()=> { 
           
           this._router.navigate(["/user/reviews"]);
-          $('#submitVerficationModel').hide()
+          this.isVisible = false;
           }, 1000);
       }
       else if(res.status == 401) {

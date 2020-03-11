@@ -5,7 +5,6 @@ const jwtHandler = require('../jwtHandler');
 
 class Review {
     constructor(){
-        console.log("reached controller")
     }
 
     async getReviewCount(req, res){
@@ -22,14 +21,14 @@ class Review {
 
     async getById(req,res){
         let decodedToken = await jwtHandler.tokenVerifier(req.headers.token);
-        console.log("99999999999999999999999", decodedToken.data._id);
-        console.log("88888888888888888888888", req.query["route"]);
-        console.log("77777777777777777777777",req.params.id);
+        // console.log("99999999999999999999999", decodedToken.data._id);
+        // console.log("88888888888888888888888", req.query["route"]);
+        // console.log("77777777777777777777777",req.params.id);
         if(decodedToken){
             console.log("Token is verified");
-            let data = await jwtHandler.authenticator.verifyMeOnUpdate(req.params.id, decodedToken.data._id, req.query["route"]);
-            console.log(data);
-            if(data){
+            let status = await jwtHandler.authenticator.verifyMeOnUpdate(req.params.id, decodedToken.data._id, req.query["route"]);
+            console.log(">>>>>>>>>>>>>>>>.", status);
+            if(status){
                 const reviewData = await model.review.get({"_id": req.params.id});
                 res.status(200).send(reviewData);
             }
