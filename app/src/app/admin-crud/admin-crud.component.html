@@ -23,9 +23,9 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="pagination-div" id="pageNo"><ngb-pagination [collectionSize]="usersArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-	</div>
 </div>
 
+<div class="pagination-div container" id="pageNo"><ngb-pagination [collectionSize]="usersArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+</div>
 
 <router-outlet></router-outlet>

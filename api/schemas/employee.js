@@ -32,7 +32,7 @@ const employeeSchema = new mongoose.Schema({
     designation:{
         type:String,
         default:'Consultant 1',
-        enum: ['Intern','Consultant 1','Consultant 2','Associate 1','Associate 2','ADMIN']
+        enum: ['Intern', 'Consultant 1', 'Consultant 2', 'Associate 1', 'Associate 2', 'ADMIN', 'Manager 1', 'Manager 2', 'Principal 1', 'Principal 2']
     },
     joined: {
         type:Date,
