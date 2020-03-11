@@ -38,9 +38,9 @@ export class AddUserComponent implements OnInit {
     }
     else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
     {
-    alert("Previous experience can't be more than total experience!");
-    return ;
-  }
+      alert("Previous experience can't be more than total experience!");
+      return ;
+    }
 
 }
  
@@ -59,32 +59,21 @@ export class AddUserComponent implements OnInit {
    
     
     this._service.createUser(userObj).subscribe(res => 
-    {console.log(res);
-    if (res.status == 200){
-      this.message="Added User!!"
-
-    }
-    else if(res.status == 401){
-      this.message="Could not add User!!";
-      localStorage.removeItem("JwtHrms");
-      this._router.navigate(['/login']);
-    }
-    else if(res.status == 500){
-      this.message = "Could not add user";
-      console.log("Mail Not Sent");
-    }
-  });
-  // this._service.sendEmail(userObj).subscribe(res=>{    
-  //   if (res.status == 200){
-  //     //alert("successfully added")
-  //     this.message="Added User mail sent!!"
-  //   }
-  //   else{
-  //     //alert("successfully added");
-  //     this.message="Could not add User!!"
-  //   }
-  // });
- 
+    { 
+      console.log(res);
+      if (res.status == 200){
+        this.message="Added User!!"
+      }
+      else if(res.status == 401){
+        this.message="Could not add User!!";
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
+      else if(res.status == 500){
+        this.message = "Could not add user";
+        console.log("Mail Not Sent");
+      }
+  }); 
 }
 
  selectChangeHandler(event: any){
