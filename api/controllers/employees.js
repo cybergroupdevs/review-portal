@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const config = require('config');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
-const nodemailer = require('nodemailer');
+const mailer = require('../mailer');
 var generator = require('generate-password');
 const saltRounds = 10;
 class Employee {
@@ -25,32 +25,45 @@ class Employee {
         "lastName" : req.body.lastName,
        };
        
-
-      console.log(password);
+      console.log("Password:=================>>>>>>>>>>>>>>>>>>", password);
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
       if(jwtHandler.tokenVerifier(req.headers.token)){
         let employeeObj ={
-          firstName: req.body.firstName,
-          lastName : req.body.lastName,
-          email: req.body.email,
-          designation: req.body.designation,
-          password: hashedPassword,
-          skills: [req.body.skills],
-          cgiCode: req.body.cgiCode,
-          previousExperience: req.body.previousExperience,
-          totalExperience: req.body.totalExperience,
-          location: req.body.location
+            firstName: req.body.firstName,
+            lastName : req.body.lastName,
+            email: req.body.email,
+            designation: req.body.designation,
+            password: hashedPassword,
+            skills: [req.body.skills],
+            cgiCode: req.body.cgiCode,
+            previousExperience: req.body.previousExperience,
+            totalExperience: req.body.totalExperience,
+            location: req.body.location
         }
-        console.log(employeeObj);
+
         const employee = await model.employee.save(employeeObj);
-        const mail = await new Employee().sendMail(mailObject, password);
-        if(mail == true){
-            res.status(200).send(employee);
+        console.log("Added ===================>>>>>>>>>>.");
+
+        var cb = function(mail){
+            if(mail == true ){
+                console.log("True");
+                res.status(200).send(employee);
+            }
+            else if(mail == false){
+                console.log("False");
+                res.status(500).send({
+                    "message": "User Added, Couldn't Generate Mail"
+                });
+            }
         }
-        else if(mail == false){
+
+        if(employee){
+            await mailer.sendMail(mailObject, password, cb);
+        }
+        else{
             res.status(500).send({
-                "message": "Couldn't Generate Mail"
+                "message": "Couldn't Add User"
             });
         }
       }
@@ -168,60 +181,6 @@ class Employee {
     }
 
 
-    sendMail(mailObject, password){
-        var transporter = nodemailer.createTransport({
-          service: 'gmail',
-          host: 'smtp.gmail.com',
-          secure: 'false',
-          port: '465',
-          auth: { 
-            user: 'mongmawchetna@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
-            pass: 'mongmaw@chetna21ok '//put your password here
-          }
-        });
-    
-        var mailOptions = {
-          from: 'vishal.ranjan@cygrp.com',
-          to: `<${mailObject.email}>`, // must be Gmail
-          cc:`${mailObject.firstName} <${mailObject.email}>`,
-          subject: 'Login Credentials to HRMS',
-          html: `
-                  <p>Hello, ${mailObject.firstName}!! We are pleased to have you join us. Here
-                  are your login credentials. </p>
-                  <table style="width: 100%; border: none">
-                    <thead>
-                      <tr style="background-color: #000; color: #fff;">
-                        <th style="padding: 10px 0">CGI code</th>
-                        <th style="padding: 10px 0">First Name</th>
-                        <th style="padding: 10px 0">Last Name</th>
-                        <th style="padding: 10px 0">E-mail</th>
-                        <th style="padding: 10px 0">Password</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style="text-align: center">${mailObject.cgiCode}</td>
-                        <td style="text-align: center">${mailObject.firstName}</td>
-                        <td style="text-align: center">${mailObject.lastName}</td>
-                        <td style="text-align: center">${mailObject.email}</td>
-                        <th style="text-align: center">${password}</th>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p>Greetings from CyberGroup.</p>
-                `
-        };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log("Mail Not Sent", error);
-                return false;
-            } 
-            else {
-                console.log("Mail sent");
-                return true;
-            }
-        });
-      }
     
 }
 
