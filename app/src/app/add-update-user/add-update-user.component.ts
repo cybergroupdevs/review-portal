@@ -101,9 +101,9 @@ export class AddUpdateUserComponent implements OnInit {
 
   checkInput(){
     if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
-      //alert("Fields are either empty or data is incorrect !");
+
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('validation');
+      var forms = document.getElementsByClassName('needs-validation');
       // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
@@ -118,10 +118,12 @@ export class AddUpdateUserComponent implements OnInit {
     }
     else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
     {
+
       this.previousExperience.nativeElement.value="";
       this.totalExperience.nativeElement.value="";
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('validation');
+
       // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
