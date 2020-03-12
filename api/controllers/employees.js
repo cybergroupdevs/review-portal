@@ -5,6 +5,9 @@ const jwtHandler = require('../jwtHandler');
 const mailer = require('../mailer');
 var generator = require('generate-password');
 const saltRounds = 10;
+
+const pagination = require("../pagination")
+
 class Employee {
     
     constructor(){
@@ -123,9 +126,26 @@ class Employee {
     }
 
     async index(req,res){
+        
         if(jwtHandler.tokenVerifier(req.headers.token)){
             const employeeList = await model.employee.get();
-            res.status(200).send(employeeList);
+            // get page from query params or default to first page
+            console.log(employeeList.length, "---------------------->>> here")
+            const page = parseInt(req.query.page) || 1;
+
+            // get pager object for specified page
+            const pageSize = 10;
+            
+            const pager = await pagination.paginate(employeeList.length, page, pageSize);
+            console.log(pager, "----------->>>> pager")
+
+            // get page of items from items array
+            const pageOfItems = employeeList.slice(pager.startIndex, pager.endIndex + 1);
+            
+
+            // return pager object and current page of items
+            return res.json({ pager, pageOfItems });
+            
         }
         else{
             res.status(401).send({

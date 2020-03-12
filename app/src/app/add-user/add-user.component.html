@@ -73,32 +73,44 @@
 
 <div class="container add-user">
   <div class="row">
-      <form>
+      <form class="needs-validation">
           <div class="col-md-12 col-sm-12">
               <div class="form-group col-md-6 col-sm-6">
                   <label>CGI Code</label>
                   <input type="text" #cgiCode class="form-control input-sm" maxlength="6"
                   (input)="cgiCode.value=$event.target.value.toUpperCase()" required="required">
+                  <div class="invalid-feedback">
+                    Please enter CGI code.
+                  </div>
               </div>
   
               <div class="form-group col-md-6 col-sm-6">
                   <label >Email</label>
-                  <input type="email" #email class="form-control input-sm" maxlength="40">
+                  <input type="email" #email class="form-control input-sm" maxlength="40" required>
+                  <div class="invalid-feedback">
+                    Please enter email.
+                  </div>
               </div>
   
               <div class="form-group col-md-6 col-sm-6">
                       <label>First Name	</label>
                       <input type="text" #firstName class="form-control input-sm" maxlength="20" required>
+                      <div class="invalid-feedback">
+                        Please enter first name.
+                      </div>
               </div>
   
               <div class="form-group col-md-6 col-sm-6">
                       <label>Last Name	</label>
-                      <input type="text" #lastName class="form-control input-sm" maxlength="20">
+                      <input type="text" #lastName class="form-control input-sm" maxlength="20" required>
+                      <div class="invalid-feedback">
+                        Please enter last name.
+                      </div>
               </div>
               
               <div class="form-group col-md-6 col-sm-6">
                   <label >Designation</label>
-                  <select id="desigInput" name="deisgnations" (change)="selectChangeHandler($event)">
+                  <select id="desigInput" name="deisgnations" (change)="selectChangeHandler($event)" required>
                     <option value="">---select a designation---</option>
                     <option value="Intern">Intern</option>
                     <option value="Consultant 1">Consultant 1</option>
@@ -110,34 +122,48 @@
                     <option value="Associate 1">Principle 1</option>
                     <option value="Associate 1">Principle 2</option>
                 </select>
+                <div class="invalid-feedback">
+                  Please choose a designation.
+                </div>
               </div>
   
               <div class="form-group col-md-6 col-sm-6">
                   <label >Skills</label>
-                  <input type="text" #skills class="form-control input-sm" maxlength="200">
-  
+                  <input type="text" #skills class="form-control input-sm" maxlength="200" required>
+                  <div class="invalid-feedback">
+                    Please enter skills.
+                  </div>
               </div>                
               
               <div class="form-group col-md-6 col-sm-6">
                   <label>Address</label>
-                  <textarea #location class="form-control input-sm" id="address" rows="5" maxlength="400"></textarea>
-              </div>
+                  <textarea #location class="form-control input-sm" id="address" rows="5" maxlength="400" required></textarea>
+                  <div class="invalid-feedback">
+                    Please enter address.
+                  </div>
+                </div>
   
   
-              <div class="form-group col-md-6 col-sm-6">
+              <div class="form-group col-md-6 col-sm-6 ">
                   <label>Total Experience</label>
-                  <input type="number" #totalExperience class="form-control input-sm" min="1" max="100" maxlength="2">
+                  <input type="number" #totalExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
+                  <div class="invalid-feedback">
+                    Please enter total experience.
+                  </div>  
               </div>
               
               
-              <div class="form-group col-md-6 col-sm-6">
+              <div class="form-group col-md-6 col-sm-6 experience">
                   <label>Previous Experience</label>
-                  <input type="number" #previousExperience class="form-control input-sm" min="1" max="100" maxlength="2">
+                  <input type="number" #previousExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
+                  <div class="invalid-feedback">
+                    Please enter previous experience lesser than total experience.
+                  </div>
               </div>
           </div>
           <div class="col-md-12 col-sm-12" id="addblock">
               <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                  <input type='submit' class="btn btn-primary" (click)="checkInput()" value="Add" data-toggle="modal" />
+                  <input type='submit'id="submit" class="btn btn-primary" (click)="checkInput()" value="Add" data-toggle="modal" required/>
               </div>
           </div>
       </form>

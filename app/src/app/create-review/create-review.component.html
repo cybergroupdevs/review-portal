@@ -24,7 +24,7 @@
   </div>
 
   <!-- The Modal 2-->
-<div class="modal" id="submitReviewModel" [style.display]="isVisible ? 'block' : 'none'">
+<div class="modal" id="submitReviewModel" [style.display]="isShow ? 'block' : 'none'">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
     
@@ -45,7 +45,7 @@
 
 
   <!-- The Modal 3-->
-  <div class="modal" id="submitModel">
+  <div class="modal" id="submitModel" [style.display]="isVisible ? 'block' : 'none'">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
       
@@ -79,35 +79,38 @@
             <h4><strong>Employee</strong></h4>
         </div> -->
     </div>
-    <form>
+    <form class= "needs-validation">
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
                 <input type="text" #empCgiCode class="form-control input-medium" id="empCgiCodeField" value={{inputValue}} maxlength="6"
-                (input)="empCgiCode.value=$event.target.value.toUpperCase()">
+                (input)="empCgiCode.value=$event.target.value.toUpperCase()" required="required">
+                <div class="invalid-feedback">
+                    Please enter employee's CGI code.
+                </div>
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #empFirstName class="form-control input-medium" id="empFirstNameField" value={{inputValue}} maxlength="20" required="required" readonly >
+                <input type="text" #empFirstName class="form-control input-medium" id="empFirstNameField" value={{inputValue}} maxlength="20"  readonly >
             </div>
         </div>
         
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #empDesignation class="form-control input-medium" id="empDesignationField" value={{inputValue}} maxlength="40" readonly >
+                <input type="text" #empDesignation class="form-control input-medium" id="empDesignationField" value={{inputValue}} maxlength="40" readonly  >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #empLastName class="form-control input-medium" id="empLastNameField" value={{inputValue}} maxlength="20" readonly >
+                <input type="text" #empLastName class="form-control input-medium" id="empLastNameField" value={{inputValue}} maxlength="20"  readonly >
             </div>
         </div>
 
         <div class="row form-and-cycle">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Form Name:</label>
             <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-designation">
-                <select #formName name="deisgnations">
+                <select #formName name="deisgnations" required ="required">
                     <option value="">---select a designation---</option>
                     <option value="Intern">Intern</option>
                     <option value="Consultant 1">Consultant 1</option>
@@ -119,14 +122,21 @@
                     <option value="Associate 1">Principle 1</option>
                     <option value="Associate 1">Principle 2</option>
                 </select>   
+                <div class="invalid-feedback">
+                    Please choose employee's form name
+                </div>
             </div>
+            
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label" >Cycle</label>
-            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-cycle">
-                <select #cycleName name="cycle">
+            <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12 styled-select-cycle" >
+                <select #cycleName name="cycle" required ="required">
                     <option value="">---select cycle---</option>
                     <option>{{reviewCycle1}}</option>
                     <option>{{reviewCycle2}}</option>
                 </select>
+                <div class="invalid-feedback">
+                    Please choose review cycle
+                </div>
             </div>
         </div>
         
@@ -138,7 +148,10 @@
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
                 <input type="text" #reviewerCgiCode class="form-control input-medium" id="reviewerCgiCodeField" value={{inputValue}} maxlength="6"
-                (input)="reviewerCgiCode.value=$event.target.value.toUpperCase()">
+                (input)="reviewerCgiCode.value=$event.target.value.toUpperCase()" required="required">
+                <div class="invalid-feedback">
+                    Please enter Reviewer's CGI code.
+                </div>
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
@@ -149,12 +162,12 @@
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #reviewerDesignation class="form-control input-medium" id="reviewerDesignationField" value={{inputValue}} maxlength="40" readonly >
+                <input type="text" #reviewerDesignation class="form-control input-medium" id="reviewerDesignationField" value={{inputValue}} maxlength="40" readonly required="required">
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #reviewerLastName class="form-control input-medium" id="reviewerLastNameField" value={{inputValue}} maxlength="20" readonly >
+                <input type="text" #reviewerLastName class="form-control input-medium" id="reviewerLastNameField" value={{inputValue}} maxlength="20" readonly required="required" >
             </div>
         </div>
 
@@ -169,7 +182,10 @@
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">CGI Code:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
                 <input type="text" #qaerCgiCode class="form-control input-medium" id="qaerCgiCodeField" value={{inputValue}} maxlength="6"
-                (input)="qaerCgiCode.value=$event.target.value.toUpperCase()">
+                (input)="qaerCgiCode.value=$event.target.value.toUpperCase()" required="required">
+                <div class="invalid-feedback">
+                    Please enter QAer's CGI code.
+                </div>
             </div>
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">First Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
@@ -180,19 +196,19 @@
         <div class="row">
             <label class="col-lg-1 col-lg-offset-1 col-md-2 col-sm-3 col-xs-12 control-label">Designation:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #qaerDesignation class="form-control input-medium" id="qaerDesignationField" value={{inputValue}} maxlength="40" readonly >
+                <input type="text" #qaerDesignation class="form-control input-medium" id="qaerDesignationField" value={{inputValue}} maxlength="40" required="required" readonly >
             </div>
 
             <label class="col-lg-1 col-lg-offset-2 col-md-2 col-sm-3 col-xs-12 control-label">Last Name:</label>
             <div class="col-md-3 col-sm-9 col-xs-12">
-                <input type="text" #qaerLastName class="form-control input-medium" id="qaerLastNameField" value={{inputValue}} maxlength="20" readonly >
+                <input type="text" #qaerLastName class="form-control input-medium" id="qaerLastNameField" value={{inputValue}} maxlength="20" required="required" readonly >
             </div>
         </div>        
         <br>
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5 col-md-offset-3 col-sm-offset-4 col-md-3 col-sm-2 col-xs-12">
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModel"> Create Review </button>
+                <button type="submit" class="btn btn-primary" data-toggle="modal"  (click)="checkInput()"> Create Review </button>
 
             </div>
         </div>

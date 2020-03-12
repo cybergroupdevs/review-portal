@@ -38,11 +38,12 @@ export class ServicesService {
     ));
   }
 
-  showAllEmployees(): Observable<any>{
-    return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token, observe: 'response'}).pipe(
+  showAllEmployees(pageNo:Number): Observable<any>{
+    return this.http.get("http://localhost:3001/employee/employeeList?page=" + pageNo, {headers: this.header_token, observe: 'response'}).pipe(
       tap(_ => this.log("showing details")),
       catchError(this.handleError<any>('error in details')
     ));
+    
   }
 
   employeeData(id: string): Observable<any>{
