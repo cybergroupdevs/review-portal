@@ -154,12 +154,6 @@ export class SelfReviewComponent implements OnInit {
     });
   }
 
-
-  // closeModal(){
-  //   $('#modal').modal('hide');
-  // }
-
-
   selectChangeHandlerTS(event: any){
     this.assessmentSelfTS = event.target.value;
   }

@@ -11,6 +11,8 @@ module.exports=(app) =>
     app.get("/review", controller.reviews.show);
     app.get("/review/:id", controller.reviews.getById);
     app.get("/reviewCount", controller.reviews.getReviewCount);
+
+    app.get("/employeeByName/:name", controller.employees.searchEmployee);
     
     app.patch("/review/:id", controller.reviews.update);
     app.get("/employeeData/:cgiCode", controller.employees.getEmployeeDetails);
