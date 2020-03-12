@@ -72,32 +72,44 @@
 <form #myForm="ngForm" (ngSubmit)="addPost(); myForm.reset()">  <!--changed-->
 <div class="container update-profile">
     <div class="row">
-        <form>
+        <form class="validation">
+          
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required="required" >
-                </div>
+                        <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required>
+                        <div class="invalid-feedback">
+                 Please enter first name.
+               </div>
+                      </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20">
-                </div>
+                        <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20" required>
+                        <div class="invalid-feedback">
+                          Please enter last name.
+                        </div>
+                      </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Email</label>
-                    <input type="email" #uemail class="form-control input-sm" [readonly]="isReadonly" value="{{email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="40" required="required">
-                </div>
+                    <input type="email" #uemail class="form-control input-sm" [readonly]="isReadonly" value="{{email}}"  maxlength="40" required>
+                    <div class="invalid-feedback">
+                      Please enter email.
+                    </div>
+                  </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Skills</label>
-                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="temp" value="{{skills}}" maxlength="200">
-
+                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="temp" value="{{skills}}" maxlength="200" required>
+                    <div class="invalid-feedback">
+                      Please enter skills.
+                    </div>
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Designation</label>
-                    <select id="profileDesignation" [disabled]="temp2" (change)="selectChangeHandlerDesignation($event)" name="deisgnations">
+                    <select id="profileDesignation" [disabled]="temp2" (change)="selectChangeHandlerDesignation($event)" name="deisgnations" required>
                       <option value="{{designation}}">{{designation}}</option>
                       <option value="Consultant 1">Consultant 1</option>
                       <option value="Consultant 2">Consultant 2</option>
@@ -108,33 +120,46 @@
                       <option value="Principal 1">Principal 1</option>
                       <option value="Principal 1">Principal 2</option>
                   </select>
+                  <div class="invalid-feedback">
+                    Please choose a designation.
+                  </div>
                 </div>
             
-                <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6 experience">
                     <label>Total Experience</label>
-                    <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100">
-                </div>
+                    <input type="number" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100" required>
+                    <div class="invalid-feedback">
+                      Please enter total experience.
+                    </div>
+                  </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
-                    <textarea #ulocation [readonly]="temp" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400"></textarea>
-                </div>
+                    <textarea #ulocation [readonly]="temp" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400" required></textarea>
+                    <div class="invalid-feedback">
+                      Please enter address.
+                    </div>
+                  </div>
                 
             
-                <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6 experience">
                     <label>Previous Experience</label>
-                    <input type="text" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2">
-                </div>
+                    <input type="number" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2" required>
+                    <div class="invalid-feedback">
+                      Please enter previous experience lesser than total experience.
+                    </div>
+                  </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Date of Joining</label>
-                    <input type="text" [readonly]="isReadonly" #ujoined class="form-control input-sm" value="{{joined}}">
+                    <input type="text" [readonly]="isReadonly" #ujoined class="form-control input-sm" value="{{joined}}" required>
+                    <div class="invalid-feedback">
+                      Please enter date of joining.
+                    </div>
+                  </div>
                 </div>
-                
-                
-            </div>
             
             <div class="col-md-12 col-sm-12" id="addblock">
                 <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='button' class="btn btn-primary" value="Update" data-toggle="modal" (click)="checkInput()" data-target="#updateModel"/>
+                    <input type='submit' class="btn btn-primary" value="Update" data-toggle="modal" (click)="checkInput()" data-target="#updateModel" required/>
                 </div>
             </div>
         </form>
