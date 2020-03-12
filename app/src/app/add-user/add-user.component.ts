@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
   constructor(private _service:ServicesService, private _router: Router) { }
-
+  
   
   @ViewChild('email', {static: false}) email: ElementRef;
   @ViewChild('firstName', {static: false}) firstName: ElementRef;
@@ -28,7 +28,6 @@ export class AddUserComponent implements OnInit {
   selectedDesignation: String='';
   isVisible : Boolean = false;
   isShow :Boolean=false;
-
   res:any;
   
   ngOnInit() {
@@ -53,7 +52,20 @@ export class AddUserComponent implements OnInit {
     }
     else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
     {
-      alert("Previous experience can't be more than total experience!");
+      this.previousExperience.nativeElement.value="";
+      this.totalExperience.nativeElement.value="";
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
       return ;
     }
     else{
@@ -80,17 +92,6 @@ export class AddUserComponent implements OnInit {
       totalExperience: this.totalExperience.nativeElement.value
     };
     
-    // if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == "" ){
-    //   alert("Fields are either empty or data is incorrect !");
-    //   this.message="Fields are empty!!"
-    //   return ;
-    // }
-    //   else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
-    //   {
-    //   alert("Previous experience can't be more than total experience!");
-    //   this.message="Previous experience can't be more than total experience!!"
-    //   return ;
-    // }
 
     console.log("hereeee------------------->>>>")
     this._service.createUser(userObj).subscribe(res => 

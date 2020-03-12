@@ -69,19 +69,29 @@
   </div>
 </div>
 
-<form #myForm="ngForm" (ngSubmit)="addPost(); myForm.reset()">  <!--changed-->
+<form class="needs-validation" #myForm="ngForm" (ngSubmit)="addPost(); myForm.reset()">  <!--changed-->
 <div class="container update-profile">
     <div class="row">
         <form>
             <div class="col-md-12 col-sm-12">
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
-                        <input type="text" [readonly]="admin" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required="required" >
+                       <input type="text" [readonly]="admin" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required="required" >
+                        <div class="invalid-feedback">
+                          Please enter first name to be updated.
+                        </div>
+                        
+
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
-                        <input type="text" [readonly]="admin" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20">
+                       <input type="text" [readonly]="admin" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20"> 
+                        <div class="invalid-feedback">
+                          Please enter last name to be updated.
+                        </div>
+
+            
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
@@ -90,8 +100,11 @@
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
-                    <label >Skills</label>
-                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="user" value="{{skills}}" maxlength="200">
+                  <label >Skills</label>
+                   <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="user" value="{{skills}}" maxlength="200">
+                    <div class="invalid-feedback">
+                      Please enter skills to be updated.
+                    </div>
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
@@ -107,25 +120,43 @@
                       <option value="Principal 1">Principal 1</option>
                       <option value="Principal 1">Principal 2</option>
                   </select>
+                  <div class="invalid-feedback">
+                    Please choose designation to be updated.
+                  </div>
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Total Experience</label>
-                    <input type="number" #utotalExperience [readonly]="admin" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100">
+
+                   <input type="number" #utotalExperience [readonly]="admin" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100">
+                      Please enter total experience to be updated.
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
                     <textarea #ulocation [readonly]="user" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400"></textarea>
-                </div>
+                    <div class="invalid-feedback">
+                      Please enter address to be updated.
+                    </div>   
+               </div>
+                
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Previous Experience</label>
-                    <input type="number" [readonly]="admin" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2">
+                   <input type="number" [readonly]="admin" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2">
+                </div>
+                    <div class="invalid-feedback">
+                      Please enter previous experience to be updated.
+                    </div>  
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Date of Joining</label>
                     <input type="date" [readonly]="admin" #ujoined class="form-control input-sm" value="{{joined}}">
-                </div>
+                    <div class="invalid-feedback">
+                      Please enter date of joining to be updated.
+                    </div>   
+               </div>
+
                 
                 
             </div>
