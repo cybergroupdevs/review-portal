@@ -1,5 +1,7 @@
 import { __param } from 'tslib';
 import { ServicesService } from './../services.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,55 +14,39 @@ export class AdminCrudComponent implements OnInit {
   name = 'Angular';
   page = 1;
   pageSize = 10;
-  items = [];
+  
   usersArray =[];
+  pager = {};
   searchInput = "";
   searchField: any;
 
-  constructor(private _service: ServicesService, private _router: Router) { }
+  constructor(private _service: ServicesService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.searchField = document.getElementById("search");
     this.searchField.addEventListener('input', this.searchUser.bind(this));
-    this.loadUsers(0);
+    this.loadUsers(0, this.page);
   }
   
   searchUser(e){
     console.log(this.searchInput);
     if(this.searchInput == ""){
-      this.loadUsers(0);
+      this.loadUsers(0, 1);
     }
     else{
-      this.loadUsers(1);
+      this.loadUsers(1, 1);
     }
-    
-    //---------------------------Dont Remove these comments------------------------
-    // var filter, table, tr, td, i, txtValue;
-    // filter = this.searchInput.toUpperCase();
-    // table = document.getElementById("employeeTable");
-    // tr = table.getElementsByTagName("tr");
-
-    // // Loop through all table rows, and hide those who don't match the search query
-    // for (i = 0; i < tr.length; i++) {
-    //   td = tr[i].getElementsByTagName("td")[2];
-    //   if (td) {
-    //     txtValue = td.textContent || td.innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //       tr[i].style.display = "";
-    //       console.log(txtValue);
-    //     } 
-    //     else {
-    //       tr[i].style.display = "none";
-    //     }
-    //   }
-    // }
   }
 
-  loadUsers(status){
+  loadUsers(status, page){
     if(status == 0){
-      this._service.showAllEmployees().subscribe(res => {
+      this._service.showAllEmployees(page).subscribe(res => {
+        console.log(res, "my fav res--->>")
         if(res.status == 200){
-          this.usersArray = res.body;
+          console.log(res, "my fav res--->>")
+          this.pager = res.body.pager;
+          this.usersArray = res.body.pageOfItems;
+          //this.usersArray = res.body;
           console.log(this.usersArray);
         }
         else if(res.status == 401){
@@ -81,7 +67,6 @@ export class AdminCrudComponent implements OnInit {
         }
       });
     }
-
-  }
+}
 
 }

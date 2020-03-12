@@ -4,15 +4,28 @@
 			<input type="text" id="search" placeholder="Search..." [(ngModel)]="searchInput" >
 		</div>
 	</div>
-	<div class="row pagination-div" id="pageNo">
-        <div class="col-lg-4 col-lg-offset-4 col-md-4 offset-md-4 col-sm-10 offset-sm-2 col-xs-12">
-            <ngb-pagination [collectionSize]="usersArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-        </div>  
-    </div>
-	<!-- <div class="row">
-		 <div class="pagination-div container" id="pageNo"><ngb-pagination [collectionSize]="usersArray.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+	
+  <div class="row pagination-div" id="pageNo">
+		<div class="col-lg-4 col-lg-offset-4 col-md-4 offset-md-4 col-sm-10 offset-sm-2 col-xs-12">
+			<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+				<li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
+					<a (click)="loadUsers(1)"  class="page-link">First</a>
+				</li>
+				<li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
+					<a (click)="loadUsers(page-1)"  class="page-link">Previous</a>
+				</li>
+				<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
+					<a  (click)="loadUsers(page)"  class="page-link">{{page}}</a>
+				</li>
+				<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
+					<a (click)="loadUsers(page+1)" class="page-link">Next</a>
+				</li>
+				<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item last-item">
+					<a (click)="loadUsers(pager.endPage)" class="page-link">Last</a>
+				</li>
+			</ul>
 		</div>
-	</div> -->
+	</div>
 	
 	<table id="employeeTable" class="table table-striped table-hover table-bordered">
 		<thead>
@@ -25,7 +38,7 @@
 			</tr>
 			
 		</thead>
-		<tbody id="adminTable" *ngFor = "let employee of usersArray | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+		<tbody id="adminTable" *ngFor = "let employee of usersArray ">
 			<tr>
 				<td>{{employee.cgiCode}}</td>
 				<td>{{employee.email}}</td>
@@ -37,5 +50,6 @@
 			</tr>
 		</tbody>
 	</table>
+	
 </div>
 

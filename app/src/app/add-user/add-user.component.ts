@@ -91,7 +91,6 @@ export class AddUserComponent implements OnInit {
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
-    
 
     console.log("hereeee------------------->>>>")
     this._service.createUser(userObj).subscribe(res => 
@@ -123,6 +122,5 @@ export class AddUserComponent implements OnInit {
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
   }
-  
   
 }

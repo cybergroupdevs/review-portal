@@ -38,6 +38,25 @@ span{
     height: 40rem;
 }
 
+.row{
+    cursor: pointer;
+}
+
+// .pagination-div{
+//     display: flex !important;
+//     justify-content: center ;
+
+// }
+
+// .pagination {
+    
+//     padding-left: 0;
+//     list-style: none;
+//     border-radius: .25rem;
+//     align-items: center;
+    
+// }
+
 .page-link:hover {
     z-index: 2;
     color: #0056b3;
