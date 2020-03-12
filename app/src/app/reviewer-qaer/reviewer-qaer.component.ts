@@ -39,6 +39,9 @@ export class ReviewerQaerComponent implements OnInit {
     else if(this.current_route == "pendingByQa"){
       this.backButtonRoute = "/user/reviews/pendingByQAer";
     }
+    else if(this.current_route == "closed"){
+      this.backButtonRoute = "/user/reviews/closed"
+    }
     this.loadData();
   }
 

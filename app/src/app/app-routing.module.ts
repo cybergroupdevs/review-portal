@@ -89,28 +89,28 @@ const routes: Routes = [
       path: "newEmployee", component: AddUserComponent
     }
   ]
-  },
-  { path: "addUser", component: AddUserComponent },
-  { path: "reviewerqaer", component: ReviewerQaerComponent },
-  {
-    path: "nav", component: ReviewNavbarComponent, children: [
-      {
-        path: "", redirectTo: 'allReviews', pathMatch: 'full'
-      },
-      {
-        path: "allReviews", component: ReviewTableComponent
-      },
-      {
-        path: "pendingByReviewer", component: ReviewTableComponent
-      },
-      {
-        path: "pendingByQAer", component: ReviewTableComponent
-      },
-      {
-        path: "closed", component: ReviewTableComponent
-      }
-    ]
-  },
+  }
+  // { path: "addUser", component: AddUserComponent },
+  // { path: "reviewerqaer", component: ReviewerQaerComponent },
+  // {
+  //   path: "nav", component: ReviewNavbarComponent, children: [
+  //     {
+  //       path: "", redirectTo: 'allReviews', pathMatch: 'full'
+  //     },
+  //     {
+  //       path: "allReviews", component: ReviewTableComponent
+  //     },
+  //     {
+  //       path: "pendingByReviewer", component: ReviewTableComponent
+  //     },
+  //     {
+  //       path: "pendingByQAer", component: ReviewTableComponent
+  //     },
+  //     {
+  //       path: "closed", component: ReviewTableComponent
+  //     }
+  //   ]
+  // },
 //   {path: "review", component: ReviewerReviewComponent},
 
 

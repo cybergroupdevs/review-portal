@@ -34,6 +34,7 @@ export class AddUserComponent implements OnInit {
   }
 
   checkInput(){
+
     if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == ""  ){
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('needs-validation');
@@ -73,9 +74,12 @@ export class AddUserComponent implements OnInit {
 
 }
 
+  closeModal(){
+    this.isVisible = false;
+  }
  
   createUser(){
-    this.isVisible = false
+    this.isVisible = false;
     let userObj = {
       firstName: this.firstName.nativeElement.value,
       lastName: this.lastName.nativeElement.value,
