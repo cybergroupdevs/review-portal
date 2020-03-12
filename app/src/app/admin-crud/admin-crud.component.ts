@@ -33,27 +33,6 @@ export class AdminCrudComponent implements OnInit {
     else{
       this.loadUsers(1);
     }
-    
-    //---------------------------Dont Remove these comments------------------------
-    // var filter, table, tr, td, i, txtValue;
-    // filter = this.searchInput.toUpperCase();
-    // table = document.getElementById("employeeTable");
-    // tr = table.getElementsByTagName("tr");
-
-    // // Loop through all table rows, and hide those who don't match the search query
-    // for (i = 0; i < tr.length; i++) {
-    //   td = tr[i].getElementsByTagName("td")[2];
-    //   if (td) {
-    //     txtValue = td.textContent || td.innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //       tr[i].style.display = "";
-    //       console.log(txtValue);
-    //     } 
-    //     else {
-    //       tr[i].style.display = "none";
-    //     }
-    //   }
-    // }
   }
 
   loadUsers(status){

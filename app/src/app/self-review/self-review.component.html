@@ -142,11 +142,12 @@
         </tr>
       </table>
     </div>
-    <div class="buttons">
-      <div><button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
+    <div class="buttons row">
+      <div class="col-lg-1 col-lg-offset-9 col-md-5 col-md-offset-6 col-sm-6 col-xs-6">
+        <button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
           (click)="updateSelfReview()">Save</button>
       </div>
-      <div>
+      <div class="col-lg-2 col-md-5 col-sm-6 col-xs-6">
         <button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModel">Submit</button>
       </div>
     </div>
