@@ -61,3 +61,6 @@ span {
     margin-left: 45%;
 }
 
+.was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+    display: table-row-group;
+}
