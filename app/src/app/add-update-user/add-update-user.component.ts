@@ -116,9 +116,22 @@ export class AddUpdateUserComponent implements OnInit {
       });
       return ;
     }
-    else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
+    else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
     {
-      alert("Previous experience can't be more than total experience!");
+      this.previousExperience.nativeElement.value="";
+      this.totalExperience.nativeElement.value="";
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
       return ;
     }
     else{
