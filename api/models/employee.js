@@ -11,6 +11,7 @@ class Employee{
         return this.model.find(criteria).select("-password")
     }
     async get(criteria={}, columns={}){
+        console.log(criteria);
         return this.model.find(criteria, columns).sort({"firstName": 1});
     }
     async getEmp(criteria={}, columns={}){

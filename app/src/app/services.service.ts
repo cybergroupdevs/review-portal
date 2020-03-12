@@ -31,12 +31,12 @@ export class ServicesService {
     console.log(token);
   };
 
-  // searchEmployee(name:string): Observable<any>{
-  //   return this.http.get("http://localhost:3001/employeeByName/"+name, {headers: this.header_token, observe: "response"}).pipe(
-  //     tap(_ => this.log("showing details")),
-  //     catchError(this.handleError<any>('error in details')
-  //   ));
-  // }
+  searchEmployee(name:string): Observable<any>{
+    return this.http.get("http://localhost:3001/employeeByName/"+name, {headers: this.header_token, observe: "response"}).pipe(
+      tap(_ => this.log("showing details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
 
   showAllEmployees(): Observable<any>{
     return this.http.get("http://localhost:3001/employee/employeeList", {headers: this.header_token, observe: 'response'}).pipe(

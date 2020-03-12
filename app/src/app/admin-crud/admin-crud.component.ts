@@ -22,43 +22,65 @@ export class AdminCrudComponent implements OnInit {
   ngOnInit() {
     this.searchField = document.getElementById("search");
     this.searchField.addEventListener('input', this.searchUser.bind(this));
-    this.loadUsers();
+    this.loadUsers(0);
   }
   
   searchUser(e){
     console.log(this.searchInput);
-    var filter, table, tr, td, i, txtValue;
-    filter = this.searchInput.toUpperCase();
-    table = document.getElementById("employeeTable");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[2];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-          console.log(txtValue);
-        } 
-        else {
-          tr[i].style.display = "none";
-        }
-      }
+    if(this.searchInput == ""){
+      this.loadUsers(0);
     }
+    else{
+      this.loadUsers(1);
+    }
+    
+    //---------------------------Dont Remove these comments------------------------
+    // var filter, table, tr, td, i, txtValue;
+    // filter = this.searchInput.toUpperCase();
+    // table = document.getElementById("employeeTable");
+    // tr = table.getElementsByTagName("tr");
+
+    // // Loop through all table rows, and hide those who don't match the search query
+    // for (i = 0; i < tr.length; i++) {
+    //   td = tr[i].getElementsByTagName("td")[2];
+    //   if (td) {
+    //     txtValue = td.textContent || td.innerText;
+    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //       tr[i].style.display = "";
+    //       console.log(txtValue);
+    //     } 
+    //     else {
+    //       tr[i].style.display = "none";
+    //     }
+    //   }
+    // }
   }
 
-  loadUsers(){
-    this._service.showAllEmployees().subscribe(res => {
-      if(res.status == 200){
-        this.usersArray = res.body;
-        console.log(this.usersArray);
-      }
-      else if(res.status == 401){
-        localStorage.removeItem("JwtHrms");
-        this._router.navigate(['/login']);
-      }
-    });
+  loadUsers(status){
+    if(status == 0){
+      this._service.showAllEmployees().subscribe(res => {
+        if(res.status == 200){
+          this.usersArray = res.body;
+          console.log(this.usersArray);
+        }
+        else if(res.status == 401){
+          localStorage.removeItem("JwtHrms");
+          this._router.navigate(['/login']);
+        }
+      });
+    }
+    else if(status == 1){
+      this._service.searchEmployee(this.searchInput).subscribe(res => {
+        if(res.status == 200){
+          this.usersArray = res.body;
+          console.log(this.usersArray);
+        }
+        else if(res.status == 401){
+          localStorage.removeItem("JwtHrms");
+          this._router.navigate(['/login']);
+        }
+      });
+    }
 
   }
 
