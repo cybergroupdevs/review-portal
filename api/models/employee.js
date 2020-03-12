@@ -11,11 +11,10 @@ class Employee{
         return this.model.find(criteria).select("-password")
     }
     async get(criteria={}, columns={}){
+        
         return this.model.find(criteria, columns)
     }
     async getEmp(criteria={}, columns={}){
-        
-
         return this.model.find({"name": `/^$columns/i`}).exec(callback);
     }
 
