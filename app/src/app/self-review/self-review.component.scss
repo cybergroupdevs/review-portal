@@ -61,11 +61,10 @@ button{
 
 }
 
-.buttons{
-    position: absolute;
-    display: flex;
-    margin-left: 4rem;
+.btn-primary:focus{
+    background-color: #000062;
 }
+
 select{
     color: black;
 }

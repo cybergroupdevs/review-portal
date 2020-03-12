@@ -1,6 +1,7 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChartDataSets, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-admin-options',
@@ -12,9 +13,28 @@ export class AdminOptionsComponent implements OnInit {
   constructor(private _router: Router, private _service: ServicesService) { }
 
   pieChartData = [0, 0, 0, 0];
+  barChartData: ChartDataSets[] = [{data: [0, 0, 0, 0], label: "Reviews"}];
   pieChartLabels = ['Pending By Self', 'Pending By Reviewer', 'Pending By Qaer', 'Closed'];
   pieChartType = "pie";
-  chartType = "line";
+  chartType = "bar";
+  barChartLegend = true;
+  chartColors: [
+    {
+      backgroundColor: 'rgba(83, 51, 237, 1)'
+    }
+  ]
+
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
 
   ngOnInit() {
     // console.log(localStorage.getItem("JwtHrms"));
@@ -23,8 +43,10 @@ export class AdminOptionsComponent implements OnInit {
       if(res.status == 200){
         console.log(res.body);
         this.pieChartData = res.body;
+        this.barChartData = [{data: res.body, label: "Reviews"}];
         this.pieChartLabels = ['Pending By Self', 'Pending By Reviewer', 'Pending By Qaer', 'Closed'];
         this.pieChartType = "pie";
+        console.log(this.barChartData);
       }
       else if(res.status == 401){
         alert("Unauthorized");
