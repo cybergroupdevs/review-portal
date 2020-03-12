@@ -12,7 +12,7 @@ class mailer{
             port: '465',
             auth: { 
                 user: 'mongmawchetna@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
-                pass: 'mongmaw@chetna21ok '//put your password here
+                pass: 'mongmaw@chetna21ok'//put your password here
             }
         });
     

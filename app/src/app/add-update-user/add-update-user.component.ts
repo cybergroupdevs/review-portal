@@ -40,7 +40,7 @@ export class AddUpdateUserComponent implements OnInit {
   skills:any;
 
   //To Check for readonly in UI
-  isReadonly = true;
+  
   temp = true;
   temp2 = true;
   employeeId: string;
@@ -49,6 +49,11 @@ export class AddUpdateUserComponent implements OnInit {
   calRoute2: string;
   modalName: string;
   isVisible = false;
+  isShow = false;
+
+  user = true;
+  admin = true;
+  isReadonly = true;
  
   ngOnInit() {
     let current_route = this._router.url.split("/");
@@ -57,11 +62,12 @@ export class AddUpdateUserComponent implements OnInit {
     this.calRoute2 = current_route[1]+"/"+current_route[2]+"/"+current_route[3];
 
     if(this.calRoute == "user/profile"){
-      this.temp = false;
+      this.user = false;
       this.loadEmployeeData(this.loggedinUserId);
     }
     else if(this.calRoute == "admin/profile"){
-      this.temp = false;
+      this.admin = false;
+      this.user = false;
       this.loadEmployeeData(this.loggedinUserId);
     }
     else if(this.calRoute2 == "admin/employee/edit"){
@@ -69,7 +75,9 @@ export class AddUpdateUserComponent implements OnInit {
         console.log(param.id);
         this.employeeId = param.id;
       });
-      this.temp2 = false;
+      this.admin = false;
+      this.user = false;
+      this.isReadonly = false;
       this.loadEmployeeData(this.employeeId);
     }
     
@@ -90,6 +98,7 @@ export class AddUpdateUserComponent implements OnInit {
       
     });
   }
+
   checkInput(){
     if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
       //alert("Fields are either empty or data is incorrect !");
@@ -109,9 +118,12 @@ export class AddUpdateUserComponent implements OnInit {
     }
     else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
     {
-    alert("Previous experience can't be more than total experience!");
-    return ;
-  }
+      alert("Previous experience can't be more than total experience!");
+      return ;
+    }
+    else{
+      this.isVisible = true;
+    }
 
 }
 
@@ -142,6 +154,7 @@ export class AddUpdateUserComponent implements OnInit {
   }
 
   updateData(){
+    this.isVisible = false;
     let userObj = {
       firstName: this.ufirstName.nativeElement.value,
       lastName: this.ulastName.nativeElement.value,
@@ -163,24 +176,20 @@ export class AddUpdateUserComponent implements OnInit {
     }
   }   
 
+  closeModal(){
+    console.log("Clicked");
+    this.isVisible = false;
+  }
+
   sendUpdateRequest(userObj: any, id: string){
     this._service.updateData(userObj,id).subscribe(res =>  {
       if(res.status == 200){
         console.log('Successful update!!');
-        // $("#submitVerficationModel").show();
-        //   setTimeout(()=> { 
-          
-        //   this._router.navigate(["/admin/home"]);
-        //   $('#submitVerficationModel').hide()
-        //   }, 1000);
 
-        // console.log(document.getElementById("submitVerficationModel")).display = "block";
-
-        this.isVisible = true;
+        this.isShow = true;
           setTimeout(()=> { 
-          
           this._router.navigate(["/admin/home"]);
-          this.isVisible = false;
+          this.isShow = false;
           }, 1000);
 
       }
