@@ -1,7 +1,8 @@
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-admin-crud',
@@ -12,21 +13,29 @@ export class AdminCrudComponent implements OnInit {
   name = 'Angular';
   page = 1;
   pageSize = 10;
-  items = [];
+  
   usersArray =[];
+  pager = {};
+  // pageOfItems = [];
 
-  constructor(private _service: ServicesService, private _router: Router) { }
+  constructor(private _service: ServicesService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   
 
   ngOnInit() {
-    this.loadUsers();
+     this.loadUsers(this.page);
+    //this._activatedRoute.queryParams.subscribe(x => this.loadUsers(x.page || 1));
   }
   
-  loadUsers(){
-    this._service.showAllEmployees().subscribe(res => {
+  loadUsers(page){
+    this._service.showAllEmployees(page).subscribe(res => {
+      console.log(res, "my fav res--->>")
+
       if(res.status == 200){
-        this.usersArray = res.body;
+        console.log(res, "my fav res--->>")
+        this.pager = res.body.pager;
+      this.usersArray = res.body.pageOfItems;
+        //this.usersArray = res.body;
         console.log(this.usersArray);
       }
       else if(res.status == 401){

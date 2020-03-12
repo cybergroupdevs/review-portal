@@ -64,7 +64,7 @@ export class AddUserComponent implements OnInit {
       previousExperience: this.previousExperience.nativeElement.value,
       totalExperience: this.totalExperience.nativeElement.value
     };
-    
+
     // if(this.email.nativeElement.value == "" || this.firstName.nativeElement.value == "" || this.lastName.nativeElement.value == "" || this.location.nativeElement.value == "" || this.selectedDesignation == "" || this.cgiCode.nativeElement.value == "" || this.previousExperience.nativeElement.value == "" || this.totalExperience.nativeElement.value == "" || this.skills.nativeElement.value == "" ){
     //   alert("Fields are either empty or data is incorrect !");
     //   this.message="Fields are empty!!"
@@ -107,6 +107,5 @@ export class AddUserComponent implements OnInit {
  selectChangeHandler(event: any){
   this.selectedDesignation = event.target.value;
   }
-  
   
 }

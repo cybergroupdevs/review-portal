@@ -130,6 +130,7 @@ export class AddUpdateUserComponent implements OnInit {
   }
 
   updateData(){
+    
     let userObj = {
       firstName: this.ufirstName.nativeElement.value,
       lastName: this.ulastName.nativeElement.value,
