@@ -48,8 +48,8 @@ export class AddUpdateUserComponent implements OnInit {
   calRoute: string;
   calRoute2: string;
   modalName: string;
-  isVisible = false;
-  isShow = false;
+  isVisible : Boolean = false;
+  isShow :Boolean=false;
 
   user = true;
   admin = true;
@@ -116,11 +116,11 @@ export class AddUpdateUserComponent implements OnInit {
       });
       return ;
     }
-    else if(this.previousExperience.nativeElement.value > this.totalExperience.nativeElement.value)
+    else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
     {
 
-      this.previousExperience.nativeElement.value="";
-      this.totalExperience.nativeElement.value="";
+      this.upreviousExperience.nativeElement.value="";
+      this.utotalExperience.nativeElement.value="";
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('validation');
 
@@ -137,7 +137,9 @@ export class AddUpdateUserComponent implements OnInit {
       return ;
     }
     else{
+      console.log("reached else")
       this.isVisible = true;
+      console.log(this.isVisible)
     }
 
 }
