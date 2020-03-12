@@ -181,19 +181,17 @@ export class CreateReviewComponent implements OnInit {
       console.log(this.res);
       if(res.status == 200){
         console.log("review created")
-        // alert("Created");
-        // $("#submitReviewModel").show();
-        //   setTimeout(()=> { 
-          
-        //   // this._router.navigate(["/admin/home"]);
-        //   $('#submitReviewModel').hide()
-        //   }, 1000);
-
-        this.isVisible = true;
+        this.isShow = true;
           setTimeout(()=> { 
-            
-          this.isVisible = false;
+          this._router.navigate(["/admin/home"]);
+          this.isShow = false;
           }, 1000);
+
+        // this.isVisible = true;
+        //   setTimeout(()=> { 
+            
+        //   this.isVisible = false;
+        //   }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");
