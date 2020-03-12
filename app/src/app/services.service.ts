@@ -30,11 +30,13 @@ export class ServicesService {
     return JSON.parse(jsonPayload);
     console.log(token);
   };
-//   signinUser(UserName,Password): Observable<any>{
-//     return this.http.get('http://api.###.com/api/###/signin?
-//         username='+UserName+'&password='+Password);
-// }
 
+  searchEmployee(name:string): Observable<any>{
+    return this.http.get("http://localhost:3001/employeeByName/"+name, {headers: this.header_token, observe: "response"}).pipe(
+      tap(_ => this.log("showing details")),
+      catchError(this.handleError<any>('error in details')
+    ));
+  }
 
   showAllEmployees(pageNo:Number): Observable<any>{
     return this.http.get("http://localhost:3001/employee/employeeList?page=" + pageNo, {headers: this.header_token, observe: 'response'}).pipe(

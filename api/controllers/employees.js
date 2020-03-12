@@ -14,6 +14,22 @@ class Employee {
         console.log("reached controller");
     }
 
+    async searchEmployee(req, res){
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            console.log(req.params.name);
+            let queryObject = { $regex: req.params.name, $options: 'i'};
+            const employees = await model.employee.get({firstName: queryObject});
+            console.log("==========>>>>>>>>>>>>>", employees);
+            res.status(200).send(employees);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized, Token Expired"
+            });
+        }
+
+    }
+
     async create(req,res) {
       console.log(req.body)
       const password = generator.generate({
@@ -75,7 +91,7 @@ class Employee {
           "message": "Unauthorized"
         });
       }
-}
+    }
   
     async getEmployeeDetails(req, res){
         if(jwtHandler.tokenVerifier(req.headers.token)){

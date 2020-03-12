@@ -1,8 +1,9 @@
+import { __param } from 'tslib';
 import { ServicesService } from './../services.service';
-import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-crud',
@@ -16,39 +17,56 @@ export class AdminCrudComponent implements OnInit {
   
   usersArray =[];
   pager = {};
-  // pageOfItems = [];
+  searchInput = "";
+  searchField: any;
 
   constructor(private _service: ServicesService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
-  
-
   ngOnInit() {
-     this.loadUsers(this.page);
-    //this._activatedRoute.queryParams.subscribe(x => this.loadUsers(x.page || 1));
+    this.searchField = document.getElementById("search");
+    this.searchField.addEventListener('input', this.searchUser.bind(this));
+    this.loadUsers(0, this.page);
   }
   
-  loadUsers(page){
-    this._service.showAllEmployees(page).subscribe(res => {
-      console.log(res, "my fav res--->>")
-
-      if(res.status == 200){
-        console.log(res, "my fav res--->>")
-        this.pager = res.body.pager;
-      this.usersArray = res.body.pageOfItems;
-        //this.usersArray = res.body;
-        console.log(this.usersArray);
-      }
-      else if(res.status == 401){
-        localStorage.removeItem("JwtHrms");
-        this._router.navigate(['/login']);
-      }
-    });
-
-    // if (this.usersArray.length < 11) {
-    //   document.getElementById('pageNo').style.visibility = "hidden"; 
-    // }
+  searchUser(e){
+    console.log(this.searchInput);
+    if(this.searchInput == ""){
+      this.loadUsers(0, 1);
+    }
+    else{
+      this.loadUsers(1, 1);
+    }
   }
 
+  loadUsers(status, page){
+    if(status == 0){
+      this._service.showAllEmployees(page).subscribe(res => {
+        console.log(res, "my fav res--->>")
+        if(res.status == 200){
+          console.log(res, "my fav res--->>")
+          this.pager = res.body.pager;
+          this.usersArray = res.body.pageOfItems;
+          //this.usersArray = res.body;
+          console.log(this.usersArray);
+        }
+        else if(res.status == 401){
+          localStorage.removeItem("JwtHrms");
+          this._router.navigate(['/login']);
+        }
+      });
+    }
+    else if(status == 1){
+      this._service.searchEmployee(this.searchInput).subscribe(res => {
+        if(res.status == 200){
+          this.usersArray = res.body;
+          console.log(this.usersArray);
+        }
+        else if(res.status == 401){
+          localStorage.removeItem("JwtHrms");
+          this._router.navigate(['/login']);
+        }
+      });
+    }
 }
 
-
+}

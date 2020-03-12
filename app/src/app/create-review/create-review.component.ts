@@ -1,6 +1,8 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+// import { stat } from 'fs';
 import { ReviewerQaerComponent } from './../reviewer-qaer/reviewer-qaer.component';
-import { Component, OnInit } from '@angular/core';
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { ViewChild, AfterViewInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
@@ -43,7 +45,8 @@ export class CreateReviewComponent implements OnInit {
   inputValue: string;
   reviewCycle1: string;
   reviewCycle2: string;
-  isVisible = false;
+  isVisible : Boolean = false;
+  isShow :Boolean=false;
   
   sendReq(cgiCodeValue){
     return this._service.getByCgiCode(cgiCodeValue);
@@ -141,8 +144,29 @@ export class CreateReviewComponent implements OnInit {
     var qId = this.userArray._id;
     this.qaerId = qId;
   }
-  
+  checkInput(){
+    if(this.empFirstName.nativeElement.value == "" || this.empLastName.nativeElement.value == ""|| this.empDesignation.nativeElement.value == ""|| this.reviewerFirstName.nativeElement.value == ""|| this.reviewerLastName.nativeElement.value == ""|| this.reviewerDesignation.nativeElement.value == ""|| this.qaerFirstName.nativeElement.value == ""|| this.qaerLastName.nativeElement.value == ""|| this.qaerDesignation.nativeElement.value == ""|| this.cycle.nativeElement.value == ""|| this.formName.nativeElement.value == ""|| this.empCgiCode.nativeElement.value == ""|| this.reviewerCgiCode.nativeElement.value == ""|| this.qaerCgiCode.nativeElement.value == "" || this.cycle.nativeElement.value=="" || this.formName.nativeElement.value==""){
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+      return ;
+      
+    }
+    else {
+      this.isVisible = true;     
+    }
+  }
   createReview(){
+    this.isVisible = false
     let reviewObject = {
       employeeId: this.employeeId,
       reviewer: this.reviewerId,
@@ -150,29 +174,24 @@ export class CreateReviewComponent implements OnInit {
       reviewCycle: this.cycle.nativeElement.value,
       formName: this.formName.nativeElement.value,
     };
-    if(this.empFirstName.nativeElement.value == "" || this.empLastName.nativeElement.value == ""|| this.empDesignation.nativeElement.value == ""|| this.reviewerFirstName.nativeElement.value == ""|| this.reviewerLastName.nativeElement.value == ""|| this.reviewerDesignation.nativeElement.value == ""|| this.qaerFirstName.nativeElement.value == ""|| this.qaerLastName.nativeElement.value == ""|| this.qaerDesignation.nativeElement.value == ""|| this.cycle.nativeElement.value == ""|| this.formName.nativeElement.value == ""|| this.empCgiCode.nativeElement.value == ""|| this.reviewerCgiCode.nativeElement.value == ""|| this.qaerCgiCode.nativeElement.value == ""){
-      alert("Empty Fields !");
-      return ;
-    }
+    
     
     console.log(reviewObject);
     this._service.createReview(reviewObject).subscribe(res => {
       console.log(this.res);
       if(res.status == 200){
         console.log("review created")
-        // alert("Created");
-        // $("#submitReviewModel").show();
-        //   setTimeout(()=> { 
-          
-        //   // this._router.navigate(["/admin/home"]);
-        //   $('#submitReviewModel').hide()
-        //   }, 1000);
-
-        this.isVisible = true;
+        this.isShow = true;
           setTimeout(()=> { 
-            
-          this.isVisible = false;
+          this._router.navigate(["/admin/home"]);
+          this.isShow = false;
           }, 1000);
+
+        // this.isVisible = true;
+        //   setTimeout(()=> { 
+            
+        //   this.isVisible = false;
+        //   }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");

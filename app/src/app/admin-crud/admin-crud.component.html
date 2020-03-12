@@ -1,30 +1,11 @@
 <div class="container data-table out-div" >
-	<table class="table table-striped table-hover table-bordered">
-		<thead>
-			<tr>
-				<th scope="col">CGI Code</th>
-				<th scope="col">Email</th>
-				<th scope="col">Name</th>
-				<th scope="col">Designation</th>
-				<th scope="col">Edit</th>
-			</tr>
-			
-			
-		</thead>
-		<tbody id="adminTable" *ngFor = "let employee of usersArray ">
-			<tr>
-				<td>{{employee.cgiCode}}</td>
-				<td>{{employee.email}}</td>
-				<td>{{employee.firstName}}</td>
-				<td>{{employee.designation}}</td>
-				<td [routerLink]="['/admin/employee/edit', employee._id]" class="edit-data">
-					<span><i class="fa fa-edit"></i> Edit</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row search">
+		<div class="col-md-4 offset-md-4">
+			<input type="text" id="search" placeholder="Search..." [(ngModel)]="searchInput" >
+		</div>
+	</div>
 	
-	<div class="row pagination-div" id="pageNo">
+  <div class="row pagination-div" id="pageNo">
 		<div class="col-lg-4 col-lg-offset-4 col-md-4 offset-md-4 col-sm-10 offset-sm-2 col-xs-12">
 			<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
 				<li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
@@ -45,8 +26,30 @@
 			</ul>
 		</div>
 	</div>
+	
+	<table id="employeeTable" class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">CGI Code</th>
+				<th scope="col">Email</th>
+				<th scope="col">Name</th>
+				<th scope="col">Designation</th>
+				<th scope="col">Edit</th>
+			</tr>
+			
+		</thead>
+		<tbody id="adminTable" *ngFor = "let employee of usersArray ">
+			<tr>
+				<td>{{employee.cgiCode}}</td>
+				<td>{{employee.email}}</td>
+				<td>{{employee.firstName}}</td>
+				<td>{{employee.designation}}</td>
+				<td [routerLink]="['/admin/employee/edit', employee._id]" class="edit-data">
+					<span><i class="fa fa-edit"></i> Edit</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
 </div>
 
-
-
-<router-outlet></router-outlet>
