@@ -69,7 +69,7 @@
   </div>
 </div>
 
-<form #myForm="ngForm" (ngSubmit)="addPost(); myForm.reset()">  <!--changed-->
+<form class="needs-validation" #myForm="ngForm" (ngSubmit)="addPost(); myForm.reset()">  <!--changed-->
 <div class="container update-profile">
     <div class="row">
         <form>
@@ -77,11 +77,17 @@
                 <div class="form-group col-md-6 col-sm-6">
                         <label>First Name	</label>
                         <input type="text" [readonly]="temp2" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required="required" >
+                        <div class="invalid-feedback">
+                          Please enter first name to be updated.
+                        </div>
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
                         <label>Last Name	</label>
                         <input type="text" [readonly]="temp2" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20">
+                        <div class="invalid-feedback">
+                          Please enter last name to be updated.
+                        </div>
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
@@ -92,7 +98,9 @@
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Skills</label>
                     <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="temp" value="{{skills}}" maxlength="200">
-
+                    <div class="invalid-feedback">
+                      Please enter skills to be updated.
+                    </div>
                 </div>                
                 
                 <div class="form-group col-md-6 col-sm-6">
@@ -108,26 +116,41 @@
                       <option value="Principal 1">Principal 1</option>
                       <option value="Principal 1">Principal 2</option>
                   </select>
+                  <div class="invalid-feedback">
+                    Please choose designation to be updated.
+                  </div>
                 </div>
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Total Experience</label>
                     <input type="text" #utotalExperience [readonly]="isReadonly" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100">
+                    <div class="invalid-feedback">
+                      Please enter total experience to be updated.
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Address</label>
                     <textarea #ulocation [readonly]="temp" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400"></textarea>
-                </div>
+                    <div class="invalid-feedback">
+                      Please enter address to be updated.
+                    </div>   
+               </div>
                 
             
                 <div class="form-group col-md-6 col-sm-6">
                     <label>Previous Experience</label>
                     <input type="text" [readonly]="isReadonly" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2">
+                    <div class="invalid-feedback">
+                      Please enter previous experience to be updated.
+                    </div>  
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label >Date of Joining</label>
                     <input type="text" [readonly]="isReadonly" #ujoined class="form-control input-sm" value="{{joined}}">
-                </div>
+                    <div class="invalid-feedback">
+                      Please enter date of joining to be updated.
+                    </div>   
+               </div>
                 
                 
             </div>
