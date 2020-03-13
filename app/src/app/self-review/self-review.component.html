@@ -1,4 +1,5 @@
 <app-reviewer-qaer></app-reviewer-qaer>
+
 <!-- Modal -->
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
     <div class="modal-dialog modal-sm">
@@ -66,9 +67,8 @@
   </div>
 </div>
 
-
-
 <form #reviewerForm class="form">
+  
   <div class="container-fluid">
     <div class="panel-body">
       <table class="table">
@@ -85,6 +85,7 @@
             </th>
           </tr>
         </thead>
+
         <tr>
           <td colspan="2">
             <p #review class="col1" rows="4" cols="50" align="center">Technical Skills</p>
@@ -140,8 +141,10 @@
 
           </td>
         </tr>
+
       </table>
     </div>
+
     <div class="buttons row">
       <div class="col-lg-1 col-lg-offset-9 col-md-5 col-md-offset-6 col-sm-6 col-xs-6">
         <button [disabled]="editable" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#saveModel"
@@ -152,6 +155,5 @@
       </div>
     </div>
   </div>
-
 
 </form>

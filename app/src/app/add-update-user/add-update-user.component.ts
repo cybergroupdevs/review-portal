@@ -1,16 +1,14 @@
-// import { stat } from 'fs';
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import $ from "jquery";
 
 @Component({
   selector: 'app-add-update-user',
   templateUrl: './add-update-user.component.html',
   styleUrls: ['./add-update-user.component.scss']
 })
+
 export class AddUpdateUserComponent implements OnInit {
 
   res:any;
@@ -38,7 +36,6 @@ export class AddUpdateUserComponent implements OnInit {
   previousExperience: any;
   totalExperience: any;
   skills:any;
-
   //To Check for readonly in UI
   
   temp = true;
@@ -85,10 +82,8 @@ export class AddUpdateUserComponent implements OnInit {
 
   loadEmployeeData(id: string){
     this._service.employeeData(id).subscribe(res => {
-      console.log(res);
       if(res.status == 200){
         this.userArray = res.body;
-        console.log(this.userArray);
         this.setEmployeeData();
       }
       else if(res.status == 401){
@@ -101,7 +96,6 @@ export class AddUpdateUserComponent implements OnInit {
 
   checkInput(){
     if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
-
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('needs-validation');
       // Loop over them and prevent submission
@@ -118,12 +112,10 @@ export class AddUpdateUserComponent implements OnInit {
     }
     else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
     {
-
       this.upreviousExperience.nativeElement.value="";
       this.utotalExperience.nativeElement.value="";
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('validation');
-
       // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
@@ -137,15 +129,11 @@ export class AddUpdateUserComponent implements OnInit {
       return ;
     }
     else{
-      console.log("reached else")
       this.isVisible = true;
-      console.log(this.isVisible)
     }
-
 }
 
   setEmployeeData(){
-    console.log(this.userArray);
     this.firstName = this.userArray.firstName;
     this.lastName = this.userArray.lastName;
     this.email = this.userArray.email;
@@ -159,15 +147,12 @@ export class AddUpdateUserComponent implements OnInit {
 
   checkValidations(){
     if(this.uemail.nativeElement.value == "" || this.ufirstName.nativeElement.value == "" || this.ulastName.nativeElement.value == "" || this.ulocation.nativeElement.value == "" || this.designation == "" || this.ujoined.nativeElement.value == "" || this.upreviousExperience.nativeElement.value == "" || this.utotalExperience.nativeElement.value == "" || this.uskills.nativeElement.value == ""  ){
-      alert("Fields are either empty or data is incorrect !");
       return ;
     }
     else if(this.upreviousExperience.nativeElement.value > this.utotalExperience.nativeElement.value)
     {
-      alert("Previous experience can't be more than total experience!");
       return ;
     }
-    
   }
 
   updateData(){
@@ -182,8 +167,7 @@ export class AddUpdateUserComponent implements OnInit {
       previousExperience: this.upreviousExperience.nativeElement.value,
       totalExperience: this.utotalExperience.nativeElement.value,
       skills: this.uskills.nativeElement.value,
-      };    
-    console.log(userObj);
+    };    
 
     if(this.calRoute == "user/profile" || this.calRoute == "admin/profile"){
       this.sendUpdateRequest(userObj, this.loggedinUserId);
@@ -194,24 +178,19 @@ export class AddUpdateUserComponent implements OnInit {
   }   
 
   closeModal(){
-    console.log("Clicked");
     this.isVisible = false;
   }
 
   sendUpdateRequest(userObj: any, id: string){
     this._service.updateData(userObj,id).subscribe(res =>  {
       if(res.status == 200){
-        console.log('Successful update!!');
-
         this.isShow = true;
           setTimeout(()=> { 
-          this._router.navigate(["/admin/home"]);
-          this.isShow = false;
+            this._router.navigate(["/admin/home"]);
+            this.isShow = false;
           }, 1000);
-
       }
       else if(res.status == 401){
-        alert("Unauthorized");
         localStorage.removeItem("JwtHrms");
         this._router.navigate(['/login']);
       }
@@ -221,4 +200,5 @@ export class AddUpdateUserComponent implements OnInit {
   selectChangeHandlerDesignation(event: any){
     this.designation = event.target.value;
   }
+  
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
-import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './reviewer-qaer.component.html',
   styleUrls: ['./reviewer-qaer.component.scss']
 })
+
 export class ReviewerQaerComponent implements OnInit {
   res:any;
   constructor(private _service: ServicesService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
@@ -29,7 +29,6 @@ export class ReviewerQaerComponent implements OnInit {
   //It gets reviewee's data. It is the component with two cards.
   ngOnInit() {
     this.current_route = this._router.url.split('/')[2];
-    console.log(this.current_route);
     if(this.current_route == "pendingBySelf"){
       this.backButtonRoute = "/user/reviews/allReviews";
     }
@@ -47,15 +46,11 @@ export class ReviewerQaerComponent implements OnInit {
 
   loadData(){
     this._activatedRoute.params.subscribe(param => {
-      console.log(param.id);
       this.reviewId = param.id;
     });
     this._service.reviewDataById(this.reviewId, this.current_route).subscribe(res => {
-      console.log(res);
       if(res.status == 200){
-        console.log("INside Success", res.body);
         this.reviewQaerArray = res.body[0];
-        console.log(this.reviewQaerArray);
         this.setData();
       }
       else if(res.status == 404){
@@ -73,7 +68,6 @@ export class ReviewerQaerComponent implements OnInit {
     this.reviewer = this.reviewQaerArray.reviewer.firstName + " " + this.reviewQaerArray.reviewer.lastName;
   
     this.joined = this.reviewQaerArray.employeeId.joined.substring(0, 10);
-    console.log(this.joined, "------> joined date")
     this.totalExperience = this.reviewQaerArray.employeeId.totalExperience;
     this.revieweeName = this.reviewQaerArray.employeeId.firstName + " " + this.reviewQaerArray.employeeId.lastName;
     this.qualityAnalyst = this.reviewQaerArray.qualityAnalyst.firstName + " " + this.reviewQaerArray.qualityAnalyst.lastName;

@@ -1,6 +1,7 @@
 .user-name{
     margin-left: 3rem;
 }
+
 .bg{
     background-color: #000062;
     border-radius: 0;
@@ -13,18 +14,21 @@
 .nav-link{
     color: blue;
 }
+
 .dropdown-menu>a:hover{
     background-color: #000062;
     color: white;
     border-radius: 5px;
     
 }
+
 .dropdown-menu>a{
     font-family: Roboto, 'serif';
     text-align: center;
     
     padding: 0.6rem 0;
 }
+
 .dropdown-menu{
     margin-right: 11rem;
     background-color: #F5F5F6;

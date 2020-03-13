@@ -8,37 +8,37 @@
 				</div>
 				
 				<div class="panel-body">
-				  <div>
-					<table class="table">
-						<thead>
-						<tr>
-                            <th scope="col">FORM NAME</th>
-                            <th scope="col">CYCLE</th>
-                            <th scope="col">TARGET DATE</th>
-                            <th scope="col">STATUS</th>
-						</tr>
-						</thead>
-						<tbody id="adminTable" *ngFor = "let employee of usersArray">
-							<tr>
-								<td>
-									{{employee.cgiCode}}
-								</td>
-								<td>
-									{{employee.email}}
-								</td>
-								<td>
-									{{employee.firstName}}
-								</td>
-								<td>
-									{{employee.designation}}
-								</td>
-								<td>
-									<a routerLink="/user"><button class="btn btn-primary add-user-btn" type="button" id={{employee.email}}>Edit</button></a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				  </div>
+					<div>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">FORM NAME</th>
+									<th scope="col">CYCLE</th>
+									<th scope="col">TARGET DATE</th>
+									<th scope="col">STATUS</th>
+								</tr>
+							</thead>
+							<tbody id="adminTable" *ngFor = "let employee of usersArray">
+								<tr>
+									<td>
+										{{employee.cgiCode}}
+									</td>
+									<td>
+										{{employee.email}}
+									</td>
+									<td>
+										{{employee.firstName}}
+									</td>
+									<td>
+										{{employee.designation}}
+									</td>
+									<td>
+										<a routerLink="/user"><button class="btn btn-primary add-user-btn" type="button" id={{employee.email}}>Edit</button></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+				  	</div>
 				</div>
 			</div>
 		</div>

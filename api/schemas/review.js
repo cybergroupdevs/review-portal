@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Employee  = require('./employee').Schema;
 
 const reviewSchema = new mongoose.Schema({
 
@@ -8,21 +7,25 @@ const reviewSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Employee",
         required:true
-    },    
+    },  
+
     reviewer: {
         type: Schema.Types.ObjectId,
         ref: "Employee",
         required:true
     },
+
     qualityAnalyst: {
         type: Schema.Types.ObjectId,
         ref: "Employee",
         required:true
     },
+
     formName: {
         type: String,
         required: true
     },
+
     technicalSkill:{
         selfEvaluation:{
             comment:{
@@ -47,6 +50,7 @@ const reviewSchema = new mongoose.Schema({
             }
         }
     },
+
     personality:{
         selfEvaluation:{
             comment:{
@@ -71,6 +75,7 @@ const reviewSchema = new mongoose.Schema({
             }
         }
     },
+    
     communication:{
         selfEvaluation:{
             comment:{

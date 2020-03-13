@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './update-personal-info.component.html',
   styleUrls: ['./update-personal-info.component.scss']
 })
+
 export class UpdatePersonalInfoComponent implements OnInit {
 
   constructor() { }

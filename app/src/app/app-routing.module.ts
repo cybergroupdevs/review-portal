@@ -90,44 +90,6 @@ const routes: Routes = [
     }
   ]
   }
-  // { path: "addUser", component: AddUserComponent },
-  // { path: "reviewerqaer", component: ReviewerQaerComponent },
-  // {
-  //   path: "nav", component: ReviewNavbarComponent, children: [
-  //     {
-  //       path: "", redirectTo: 'allReviews', pathMatch: 'full'
-  //     },
-  //     {
-  //       path: "allReviews", component: ReviewTableComponent
-  //     },
-  //     {
-  //       path: "pendingByReviewer", component: ReviewTableComponent
-  //     },
-  //     {
-  //       path: "pendingByQAer", component: ReviewTableComponent
-  //     },
-  //     {
-  //       path: "closed", component: ReviewTableComponent
-  //     }
-  //   ]
-  // },
-//   {path: "review", component: ReviewerReviewComponent},
-
-
-//   {path: "selfReview", component:SelfReviewComponent},
-
-
-//   {path: "createReview", component: CreateReviewComponent},
-//   {path: "adminHeader", component: AdminHeaderComponent},
-  
-//   {path: "personal-info", component:UpdatePersonalInfoComponent},
-
-
-//   {path: "createReview", component: CreateReviewComponent},
-//   {path: "adminHeader", component: AdminHeaderComponent},
-//   {path: "actionBar", component:ActionBarComponent},
-//   {path: "personal-info", component:UpdatePersonalInfoComponent}
-
 ];
 
 @NgModule({
@@ -137,4 +99,3 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents=[AdminCrudComponent]
-

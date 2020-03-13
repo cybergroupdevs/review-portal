@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const employeeSchema = require('../schemas/employee').schema;
-//const employeeSchema = mongoose.Schema(schema.employee)
 
 class Employee{
     constructor(){
@@ -10,10 +9,11 @@ class Employee{
     async getUserData(criteria={}){
         return this.model.find(criteria).select("-password")
     }
+
     async get(criteria={}, columns={}){
-        console.log(criteria);
         return this.model.find(criteria, columns).sort({"firstName": 1});
     }
+    
     async getEmp(criteria={}, columns={}){
         return this.model.find({"name": `/^$columns/i`}).exec(callback);
     }
@@ -21,11 +21,12 @@ class Employee{
     async save(employeeObj){
         return this.model.create(employeeObj)
     }
+
     async update(criteria={}, updateObj){
         return this.model.update(criteria, updateObj)
     }
-    async delete(criteria={})
-    {
+
+    async delete(criteria={}){
         return this.model.deleteOne(criteria)
     }
 }

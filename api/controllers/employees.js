@@ -1,11 +1,8 @@
 const bcrypt = require('bcrypt');
-const config = require('config');
 const model = require('../models')
 const jwtHandler = require('../jwtHandler');
 const mailer = require('../mailer');
 var generator = require('generate-password');
-const saltRounds = 10;
-
 const pagination = require("../pagination")
 
 class Employee {
@@ -22,75 +19,70 @@ class Employee {
             console.log("==========>>>>>>>>>>>>>", employees);
             res.status(200).send(employees);
         }
-        else{
+        else
+        {
             res.status(401).send({
                 "message": "Unauthorized, Token Expired"
             });
         }
-
     }
 
     async create(req,res) {
-      console.log(req.body)
-      const password = generator.generate({
-        length: 10,
-        numbers: true
-       });
+        console.log(req.body)
+        const password = generator.generate({
+            length: 10,
+            numbers: true
+        });
 
        let mailObject = {
-        "email" : req.body.email,
-        "cgiCode" : req.body.cgiCode,
-        "firstName" : req.body.firstName,
-        "lastName" : req.body.lastName,
+            "email" : req.body.email,
+            "cgiCode" : req.body.cgiCode,
+            "firstName" : req.body.firstName,
+            "lastName" : req.body.lastName,
        };
        
-      console.log("Password:=================>>>>>>>>>>>>>>>>>>", password);
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-      if(jwtHandler.tokenVerifier(req.headers.token)){
-        let employeeObj ={
-            firstName: req.body.firstName,
-            lastName : req.body.lastName,
-            email: req.body.email,
-            designation: req.body.designation,
-            password: hashedPassword,
-            skills: [req.body.skills],
-            cgiCode: req.body.cgiCode,
-            previousExperience: req.body.previousExperience,
-            totalExperience: req.body.totalExperience,
-            location: req.body.location
-        }
-
-        const employee = await model.employee.save(employeeObj);
-        console.log("Added ===================>>>>>>>>>>.");
-
-        var cb = function(mail){
-            if(mail == true ){
-                console.log("True");
-                res.status(200).send(employee);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        if(jwtHandler.tokenVerifier(req.headers.token)){
+            let employeeObj = {
+                firstName: req.body.firstName,
+                lastName : req.body.lastName,
+                email: req.body.email,
+                designation: req.body.designation,
+                password: hashedPassword,
+                skills: [req.body.skills],
+                cgiCode: req.body.cgiCode,
+                previousExperience: req.body.previousExperience,
+                totalExperience: req.body.totalExperience,
+                location: req.body.location
             }
-            else if(mail == false){
-                console.log("False");
+
+            const employee = await model.employee.save(employeeObj);
+            var cb = function(mail){
+                if(mail == true ){
+                    res.status(200).send(employee);
+                }
+                else if(mail == false){
+                    res.status(500).send({
+                        "message": "User Added, Couldn't Generate Mail"
+                    });
+                }
+            }
+
+            if(employee){
+                await mailer.sendMail(mailObject, password, cb);
+            }
+            else{
                 res.status(500).send({
-                    "message": "User Added, Couldn't Generate Mail"
+                    "message": "Couldn't Add User"
                 });
             }
         }
-
-        if(employee){
-            await mailer.sendMail(mailObject, password, cb);
-        }
         else{
-            res.status(500).send({
-                "message": "Couldn't Add User"
+            res.status(401).send({
+            "message": "Unauthorized"
             });
         }
-      }
-      else{
-        res.status(401).send({
-          "message": "Unauthorized"
-        });
-      }
     }
   
     async getEmployeeDetails(req, res){
@@ -109,8 +101,7 @@ class Employee {
             res.status(401).send({
                 "message": "Unauthorized"
             });
-        }
-        
+        }     
     }
 
     async show(req,res){
@@ -126,26 +117,17 @@ class Employee {
     }
 
     async index(req,res){
-        
         if(jwtHandler.tokenVerifier(req.headers.token)){
             const employeeList = await model.employee.get();
             // get page from query params or default to first page
-            console.log(employeeList.length, "---------------------->>> here")
             const page = parseInt(req.query.page) || 1;
-
             // get pager object for specified page
             const pageSize = 10;
-            
             const pager = await pagination.paginate(employeeList.length, page, pageSize);
-            console.log(pager, "----------->>>> pager")
-
             // get page of items from items array
             const pageOfItems = employeeList.slice(pager.startIndex, pager.endIndex + 1);
-            
-
             // return pager object and current page of items
             return res.json({ pager, pageOfItems });
-            
         }
         else{
             res.status(401).send({
@@ -157,7 +139,6 @@ class Employee {
     async update(req,res) {
         if(jwtHandler.tokenVerifier(req.headers.token)){
             let updateObj= req.body;
-            console.log(updateObj);
             const employee= await model.employee.update({_id: req.params.parameter},  updateObj);
             res.status(200).send(employee);
         }
@@ -170,10 +151,8 @@ class Employee {
     }    
  
     async login(req, res) {
-        console.log(req.body);
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password,salt);
-        console.log(hashedPassword);
         let user = await model.employee.get({$and : [{"email": req.body.email}]
                                                 }, 
                                                 {"email": 1,
@@ -185,14 +164,10 @@ class Employee {
                                                 "designation": 1,
                                                 "password":1
                                             });
-        console.log(user);
         if(JSON.stringify(user) != JSON.stringify([])){
             bcrypt.compare(req.body.password, user[0].password, function (err, result) {
-                console.log(result);
-                console.log(user[0].password, req.body.password);
                 if (result == true) {
                     let token = jwtHandler.tokenGenerator(user);
-                    console.log(token);
                     if(token != null){
                         let resBody = {
                             "token": token
@@ -212,12 +187,7 @@ class Employee {
                 "message": "Incorrect Email or username"
             });
         }
-        
-        console.log(user); 
     }
-
-
-    
 }
 
 module.exports = new Employee();

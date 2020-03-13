@@ -1,48 +1,40 @@
 <!-- The Modal 1-->
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont">
-            <i class="fa fa-check-circle " ></i>
-        </div>
-
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Review Created</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="myFont">
+        <i class="fa fa-check-circle " ></i>
       </div>
+
+      <!-- Modal Header -->
+      <div >
+        <h1 class="heading" align="center">Review Created</h1>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
     </div>
   </div>
+</div>
 
   <!-- The Modal 2-->
 <div class="modal" id="submitVerficationModel" [style.display]="isShow ? 'block' : 'none'">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont2">
-            <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
-            <button type="button" class="close" data-dismiss="modal" >&times;</button>
-        </div>
-
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Employee Added!</h1>
-        </div>
-  
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="myFont2">
+        <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
-    </div>
-</div>
 
+      <!-- Modal Header -->
+      <div >
+        <h1 class="heading" align="center">Employee Added!</h1>
+      </div>
+
+    </div>
+  </div>
+</div>
 
   <!-- The Modal 3-->
 <div class="modal" id="submitModel" [style.display]="isVisible ? 'block' : 'none'">
@@ -64,7 +56,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger button1" data-dismiss="modal" (click)="closeModal()">Cancel</button>
         <button type="button" class="btn btn-success" data-toggle="modal"  
-        data-dismiss="modal" (click)="createUser()" data-dismiss="modal" >Add</button>
+          data-dismiss="modal" (click)="createUser()" data-dismiss="modal" >Add</button>
       </div>
   
     </div>
@@ -73,99 +65,102 @@
 
 <div class="container add-user">
   <div class="row">
-      <form class="needs-validation">
-          <div class="col-md-12 col-sm-12">
-              <div class="form-group col-md-6 col-sm-6">
-                  <label>CGI Code</label>
-                  <input type="text" #cgiCode class="form-control input-sm" maxlength="6"
-                  (input)="cgiCode.value=$event.target.value.toUpperCase()" required="required">
-                  <div class="invalid-feedback">
-                    Please enter CGI code.
-                  </div>
-              </div>
-  
-              <div class="form-group col-md-6 col-sm-6">
-                  <label >Email</label>
-                  <input type="email" #email class="form-control input-sm" maxlength="40" required>
-                  <div class="invalid-feedback">
-                    Please enter email.
-                  </div>
-              </div>
-  
-              <div class="form-group col-md-6 col-sm-6">
-                      <label>First Name	</label>
-                      <input type="text" #firstName class="form-control input-sm" maxlength="20" required>
-                      <div class="invalid-feedback">
-                        Please enter first name.
-                      </div>
-              </div>
-  
-              <div class="form-group col-md-6 col-sm-6">
-                      <label>Last Name	</label>
-                      <input type="text" #lastName class="form-control input-sm" maxlength="20" required>
-                      <div class="invalid-feedback">
-                        Please enter last name.
-                      </div>
-              </div>
-              
-              <div class="form-group col-md-6 col-sm-6">
-                  <label >Designation</label>
-                  <select id="desigInput" name="deisgnations" (change)="selectChangeHandler($event)" required>
-                    <option value="">---select a designation---</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Consultant 1">Consultant 1</option>
-                    <option value="Consultant 2">Consultant 2</option>
-                    <option value="Associate 1">Associate 1</option>
-                    <option value="Consultant 2">Associate 2</option>
-                    <option value="Associate 1">Manager 1</option>
-                    <option value="Consultant 2">Manager 2</option>
-                    <option value="Associate 1">Principle 1</option>
-                    <option value="Associate 1">Principle 2</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please choose a designation.
-                </div>
-              </div>
-  
-              <div class="form-group col-md-6 col-sm-6">
-                  <label >Skills</label>
-                  <input type="text" #skills class="form-control input-sm" maxlength="200" required>
-                  <div class="invalid-feedback">
-                    Please enter skills.
-                  </div>
-              </div>                
-              
-              <div class="form-group col-md-6 col-sm-6">
-                  <label>Address</label>
-                  <textarea #location class="form-control input-sm" id="address" rows="5" maxlength="400" required></textarea>
-                  <div class="invalid-feedback">
-                    Please enter address.
-                  </div>
-                </div>
-  
-  
-              <div class="form-group col-md-6 col-sm-6 ">
-                  <label>Total Experience</label>
-                  <input type="number" #totalExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
-                  <div class="invalid-feedback">
-                    Please enter total experience.
-                  </div>  
-              </div>
-              
-              
-              <div class="form-group col-md-6 col-sm-6 experience">
-                  <label>Previous Experience</label>
-                  <input type="number" #previousExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
-                  <div class="invalid-feedback">
-                    Please enter previous experience lesser than total experience.
-                  </div>
-              </div>
+    <form class="needs-validation">
+
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group col-md-6 col-sm-6">
+          <label>CGI Code</label>
+          <input type="text" #cgiCode class="form-control input-sm" maxlength="6"
+            (input)="cgiCode.value=$event.target.value.toUpperCase()" required="required">
+          <div class="invalid-feedback">
+            Please enter CGI code.
           </div>
-          <div class="col-md-12 col-sm-12" id="addblock">
-              <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                  <input type='submit'id="submit" class="btn btn-primary" (click)="checkInput()" value="Add" data-toggle="modal" required/>
+        </div>
+  
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Email</label>
+            <input type="email" #email class="form-control input-sm" maxlength="40" required>
+              <div class="invalid-feedback">
+                Please enter email.
               </div>
+        </div>
+  
+        <div class="form-group col-md-6 col-sm-6">
+          <label>First Name	</label>
+          <input type="text" #firstName class="form-control input-sm" maxlength="20" required>
+          <div class="invalid-feedback">
+            Please enter first name.
           </div>
-      </form>
+        </div>
+  
+        <div class="form-group col-md-6 col-sm-6">
+          <label>Last Name	</label>
+          <input type="text" #lastName class="form-control input-sm" maxlength="20" required>
+          <div class="invalid-feedback">
+            Please enter last name.
+          </div>
+        </div>
+              
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Designation</label>
+          <select id="desigInput" name="deisgnations" (change)="selectChangeHandler($event)" required>
+            <option value="">---select a designation---</option>
+            <option value="Intern">Intern</option>
+            <option value="Consultant 1">Consultant 1</option>
+            <option value="Consultant 2">Consultant 2</option>
+            <option value="Associate 1">Associate 1</option>
+            <option value="Consultant 2">Associate 2</option>
+            <option value="Associate 1">Manager 1</option>
+            <option value="Consultant 2">Manager 2</option>
+            <option value="Associate 1">Principle 1</option>
+            <option value="Associate 1">Principle 2</option>
+          </select>
+          <div class="invalid-feedback">
+            Please choose a designation.
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Skills</label>
+          <input type="text" #skills class="form-control input-sm" maxlength="200" required>
+          <div class="invalid-feedback">
+            Please enter skills.
+          </div>
+        </div>                
+              
+        <div class="form-group col-md-6 col-sm-6">
+          <label>Address</label>
+          <textarea #location class="form-control input-sm" id="address" rows="5" maxlength="400" required></textarea>
+          <div class="invalid-feedback">
+            Please enter address.
+          </div>
+        </div>
+  
+  
+        <div class="form-group col-md-6 col-sm-6 ">
+          <label>Total Experience</label>
+          <input type="number" #totalExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
+          <div class="invalid-feedback">
+            Please enter total experience.
+          </div>  
+        </div>
+              
+              
+        <div class="form-group col-md-6 col-sm-6 experience">
+          <label>Previous Experience</label>
+          <input type="number" #previousExperience class="form-control input-sm experience" min="1" max="100" maxlength="2" required>
+          <div class="invalid-feedback">
+            Please enter previous experience lesser than total experience.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 col-sm-12" id="addblock">
+        <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
+          <input type='submit'id="submit" class="btn btn-primary" (click)="checkInput()" value="Add" data-toggle="modal" required/>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

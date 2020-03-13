@@ -5,74 +5,16 @@
     border-radius: 3px;
     box-shadow: 3px 4px #F5F5F6;
 }
+
 .reviewer-container{
     margin-top:4rem;
     
 }
+
 .form-group{
     margin: 3px;
 }
+
 [readonly]{
     cursor:not-allowed;
 }
-
-
-
-
-// .card-banner {
-//     display: flex;
-//     position: relative;
-//     overflow: hidden;
-//     background-color: #6745c2;
-//     background-size: cover;
-//     border-radius: 5px;
-//     box-sizing: border-box;
-// }
-// .card-banner .card-body {
-//     background-size: cover;
-//     position: relative;
-//     z-index: 10;
-    
-  
-// }
-//  .form-group{
-//         height: 1px;  
-//  }
-
-
-
-/* overlay effects */
-// .overlay-cover {
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     position: absolute;
-//     width: 100%;
-// }
-// .overlay {
-//     background-color: rgba(0,0,0,0.65);
-//     z-index: 10;
-//     padding: 1.25rem;
-//     color: #fff;
-// }
-// .overlay-grad {
-//     position: relative;
-// }
-
-// .overlay-grad::before {
-//     position: absolute;
-//     content: "";
-//     display: block;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     background: -webkit-gradient(linear, left top, right bottom, from( #73849c), to( #C3CEDD));
-//     background: linear-gradient(to bottom right,  #73849c,  #C3CEDD);
-//     opacity: .6;
-//     transition: .5s;
-// }
-// .overlay-grad:hover:before{
-//      opacity: .9;
-// }

@@ -1,83 +1,75 @@
 <!-- The Modal 1-->
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
     <div class="modal-dialog modal-sm">
-      <div class="modal-content">
+        <div class="modal-content">
   
-        <!-- Modal body -->
-        <div class="myFont">
-            <i class="fa fa-check-circle " ></i>
-        </div>
+            <!-- Modal body -->
+            <div class="myFont">
+                <i class="fa fa-check-circle " ></i>
+            </div>
 
         <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Review Created</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
+            <div >
+                <h1 class="heading" align="center">Review Created</h1>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
   
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
         </div>
-  
-      </div>
     </div>
-  </div>
+</div>
 
   <!-- The Modal 2-->
 <div class="modal" id="submitReviewModel" [style.display]="isShow ? 'block' : 'none'">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
     
-          <!-- Modal body -->
-          <div class="myFont2">
-              <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
-              <button type="button" class="close" data-dismiss="modal" >&times;</button>
-          </div>
+            <!-- Modal body -->
+            <div class="myFont2">
+                <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+            </div>
   
-          <!-- Modal Header -->
-          <div >
-              <h1 class="heading" align="center">Review created!</h1>
-          </div>
+            <!-- Modal Header -->
+            <div >
+                <h1 class="heading" align="center">Review created!</h1>
+            </div>
     
         </div>
     </div>
 </div>
 
 
-  <!-- The Modal 3-->
-  <div class="modal" id="submitModel" [style.display]="isVisible ? 'block' : 'none'">
+<!-- The Modal 3-->
+<div class="modal" id="submitModel" [style.display]="isVisible ? 'block' : 'none'">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-      
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <img src="https://art.pixilart.com/646ef9826588f84.gif" class="modal-title modal-image-2">
-            <button type="button" class="close" data-dismiss="modal" >&times;</button>
-          </div>
     
-          <!-- Modal body -->
-          <div class="modal-body text-center">
-            Are you sure you want to create a new review?
-          </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <img src="https://art.pixilart.com/646ef9826588f84.gif" class="modal-title modal-image-2">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body text-center">
+                Are you sure you want to create a new review?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" 
+                    data-dismiss="modal" (click)="createReview()">Create</button>
+            </div>
     
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger button1" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-success" data-toggle="modal" 
-            data-dismiss="modal" (click)="createReview()">Create</button>
-          </div>
-      
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 
 <div class="container-fluid createReviewDiv">
     <!-- <h3 class="createReviewHeading">Create Review</h3> -->
     <div class="row">
         <h4><strong>Employee</strong></h4>
-        <!-- <div class="col-lg-12 col-lg-offset-5 col-md-2 col-sm-3 col-xs-12 employee-heading">
-            <h4><strong>Employee</strong></h4>
-        </div> -->
     </div>
     <form class= "needs-validation">
         <div class="row">
@@ -173,9 +165,6 @@
 
         <div class="row">
             <h4><strong>QAer</strong></h4>
-            <!-- <div class="col-lg-12 col-lg-offset-5 col-md-offset-2 col-md-2 col-sm-3 col-xs-12 employee-heading">
-                <h4><strong>QAer</strong></h4>
-            </div> -->
         </div>
 
         <div class="row">
@@ -207,9 +196,7 @@
         <br>
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5 col-md-offset-3 col-sm-offset-4 col-md-3 col-sm-2 col-xs-12">
-
                 <button type="submit" class="btn btn-primary" data-toggle="modal"  (click)="checkInput()"> Create Review </button>
-
             </div>
         </div>
     </form>

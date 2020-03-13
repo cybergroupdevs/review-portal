@@ -1,9 +1,6 @@
 import { ServicesService } from './../services.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { identifierModuleUrl, analyzeAndValidateNgModules } from '@angular/compiler';
-import { stringify } from 'querystring';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
  
 @Component({
   selector: 'app-review-table',
@@ -32,7 +29,6 @@ export class ReviewTableComponent implements OnInit {
   ngOnInit() {
     this.current_route = this._router.url.split("/")[3];
     let id = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data._id;
-    console.log(this.current_route);
     if(this.current_route === "allReviews"){
       this.sendRequest(id, "employeeId", "0");
       this.toJump = "/user/pendingBySelf/edit";
@@ -53,7 +49,6 @@ export class ReviewTableComponent implements OnInit {
  
   sendRequest(id, searchBy, flag){
     this._service.reviewData(id, searchBy, flag).subscribe(res => {
-      console.log(res);
       if(res.status == 200){
         let customObject = [];
         let customObject2 = [];
@@ -67,7 +62,6 @@ export class ReviewTableComponent implements OnInit {
             "Edit": res.body[i]._id
           };        
         }
-        console.log(customObject);
         this.reviewArray = customObject;
         this.idArray = customObject2;
         this.getKeys(this.reviewArray[0]);
