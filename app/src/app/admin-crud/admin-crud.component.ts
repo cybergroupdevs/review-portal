@@ -3,7 +3,6 @@ import { ServicesService } from './../services.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-crud',

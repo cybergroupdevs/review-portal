@@ -1,4 +1,4 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { analyzeAndValidateNgModules, compilePipeFromMetadata } from '@angular/compiler';
 // import { stat } from 'fs';
 import { ReviewerQaerComponent } from './../reviewer-qaer/reviewer-qaer.component';
 import { Component, OnInit, ElementRef } from '@angular/core';
@@ -25,12 +25,15 @@ export class CreateReviewComponent implements OnInit {
   @ViewChild('empFirstName', {static: false}) empFirstName: ElementRef;
   @ViewChild('empLastName', {static: false}) empLastName: ElementRef;
   @ViewChild('empDesignation', {static: false}) empDesignation: ElementRef;
+
   @ViewChild('formName', {static: false}) formName: ElementRef;
   @ViewChild('cycleName', {static: false}) cycle: ElementRef;
+  
   @ViewChild('reviewerCgiCode', {static: false}) reviewerCgiCode: ElementRef;
   @ViewChild('reviewerFirstName', {static: false}) reviewerFirstName: ElementRef;
   @ViewChild('reviewerLastName', {static: false}) reviewerLastName: ElementRef;
   @ViewChild('reviewerDesignation', {static: false}) reviewerDesignation: ElementRef;
+
   @ViewChild('qaerCgiCode', {static: false}) qaerCgiCode: ElementRef;
   @ViewChild('qaerFirstName', {static: false}) qaerFirstName: ElementRef;
   @ViewChild('qaerLastName', {static: false}) qaerLastName: ElementRef;
@@ -59,6 +62,7 @@ export class CreateReviewComponent implements OnInit {
     empCgiCode.addEventListener('input', this.setEmpDetails.bind(this)); 
     reviewerCgiCode.addEventListener('input', this.setReviewerDetails.bind(this));
     qaerCgiCode.addEventListener('input', this.setQaerDetails.bind(this));  
+
     let date = new Date(); 
     let year = date.getFullYear();
     console.log(year); 
@@ -72,7 +76,12 @@ export class CreateReviewComponent implements OnInit {
     this.sendReq(empCgiCodeValue).subscribe( res => {
       if(res.status == 200){
         this.userArray = res.body[0];
-        this.setEmployeeData();
+        if(res.body[0] == null){
+          this.clearData(0);
+        }
+        else{
+          this.setEmployeeData();
+        }
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
@@ -88,7 +97,12 @@ export class CreateReviewComponent implements OnInit {
     this.sendReq(reviewerCgiCodeValue).subscribe( res => {
       if(res.status == 200){
         this.userArray = res.body[0];
-        this.setReviewerData();
+        if(res.body[0] == null){
+          this.clearData(1);
+        }
+        else{
+          this.setReviewerData();
+        }
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
@@ -105,7 +119,12 @@ export class CreateReviewComponent implements OnInit {
     this.sendReq(qaerCgiCodeValue).subscribe( res => {
       if(res.status == 200){
         this.userArray = res.body[0];
-        this.setQaerData();
+        if(res.body[0] == null){
+          this.clearData(2);
+        }
+        else{
+          this.setQaerData();
+        }
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
@@ -135,6 +154,7 @@ export class CreateReviewComponent implements OnInit {
     this.reviewerId = rId;;
   
   }
+
   setQaerData(){
     console.log("set reviwer data")
     console.log(this.userArray.firstName)
@@ -144,6 +164,7 @@ export class CreateReviewComponent implements OnInit {
     var qId = this.userArray._id;
     this.qaerId = qId;
   }
+
   checkInput(){
     if(this.empFirstName.nativeElement.value == "" || this.empLastName.nativeElement.value == ""|| this.empDesignation.nativeElement.value == ""|| this.reviewerFirstName.nativeElement.value == ""|| this.reviewerLastName.nativeElement.value == ""|| this.reviewerDesignation.nativeElement.value == ""|| this.qaerFirstName.nativeElement.value == ""|| this.qaerLastName.nativeElement.value == ""|| this.qaerDesignation.nativeElement.value == ""|| this.cycle.nativeElement.value == ""|| this.formName.nativeElement.value == ""|| this.empCgiCode.nativeElement.value == ""|| this.reviewerCgiCode.nativeElement.value == ""|| this.qaerCgiCode.nativeElement.value == "" || this.cycle.nativeElement.value=="" || this.formName.nativeElement.value==""){
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -165,6 +186,7 @@ export class CreateReviewComponent implements OnInit {
       this.isVisible = true;     
     }
   }
+
   createReview(){
     this.isVisible = false
     let reviewObject = {
@@ -174,7 +196,6 @@ export class CreateReviewComponent implements OnInit {
       reviewCycle: this.cycle.nativeElement.value,
       formName: this.formName.nativeElement.value,
     };
-    
     
     console.log(reviewObject);
     this._service.createReview(reviewObject).subscribe(res => {
@@ -186,12 +207,6 @@ export class CreateReviewComponent implements OnInit {
           this._router.navigate(["/admin/home"]);
           this.isShow = false;
           }, 1000);
-
-        // this.isVisible = true;
-        //   setTimeout(()=> { 
-            
-        //   this.isVisible = false;
-        //   }, 1000);
       }
       else if(res.status == 401){
         alert("Unauthorized");
@@ -202,5 +217,23 @@ export class CreateReviewComponent implements OnInit {
     });
       this.inputValue = " ";
   } 
+
+  clearData(flag){
+    if(flag == 0){
+      this.empDesignation.nativeElement.value = "";
+      this.empFirstName.nativeElement.value = "";
+      this.empLastName.nativeElement.value = "";
+    }
+    else if(flag == 1){
+      this.reviewerDesignation.nativeElement.value = "";
+      this.reviewerFirstName.nativeElement.value = "";
+      this.reviewerLastName.nativeElement.value = "";
+    }
+    else if(flag == 2){
+      this.qaerFirstName.nativeElement.value = "";
+      this.qaerLastName.nativeElement.value = "";
+      this.qaerDesignation.nativeElement.value = "";
+    }
+  }
 
 }
