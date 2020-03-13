@@ -174,6 +174,9 @@ class Employee {
                         };
                         res.status(200).send(resBody);
                     }
+                    else{
+                        console.log("Token is Null");
+                    }
                 }
                 else{
                     res.status(401).send({

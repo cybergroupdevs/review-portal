@@ -142,5 +142,5 @@ export class ServicesService {
     );
   }
 
-  }
+}
   
