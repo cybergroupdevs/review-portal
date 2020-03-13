@@ -1,12 +1,13 @@
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { ServicesService } from './../services.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   @ViewChild('email', {static: false}) email: ElementRef;
@@ -19,10 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     let jwt = localStorage.getItem("JwtHrms");
-    console.log(jwt);
     if(jwt != null){
       let designation = this._service.jsonDecoder(jwt).data.designation;
-      console.log(designation);
       if(designation == "ADMIN"){
         this._router.navigate(['/admin']);
       }
@@ -54,9 +53,7 @@ export class LoginComponent implements OnInit {
       }
     else{
       this._service.checkUser(user).subscribe(res => {
-        console.log("-------------------------");
         if(res.status == 200){
-          console.log(res.body.token);
           this.onLogin(res.body.token);
         }
         else if(res.status == 401){
@@ -79,7 +76,7 @@ export class LoginComponent implements OnInit {
       }
     }
     else{
-      console.log("Token is null");
+      alert("Token does not exist");
     }
   }
 }

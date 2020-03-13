@@ -1,5 +1,4 @@
 import { ServicesService } from './../services.service';
-import { ReviewTableComponent } from './../review-table/review-table.component';
 import { Component,OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faEdit, faFile, faCheck, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,6 +33,4 @@ export class ReviewNavbarComponent implements OnInit {
       }
   }
 
-  
-      
 }

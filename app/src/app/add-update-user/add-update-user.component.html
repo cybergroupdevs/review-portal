@@ -2,45 +2,43 @@
 <div class="modal" id="saveModel" *ngIf="message === null ? false : true" >
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont">
-            <i class="fa fa-check-circle " ></i>
-        </div>
-
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Saved!</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-  
-        <!-- Modal footer -->
-        <div >
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-        </div>
-  
+      <!-- Modal body -->
+      <div class="myFont">
+        <i class="fa fa-check-circle " ></i>
       </div>
+
+      <!-- Modal Header -->
+      <div >
+        <h1 class="heading" align="center">Saved!</h1>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+  
+      <!-- Modal footer -->
+      <div >
+        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+      </div>
+  
     </div>
   </div>
+</div>
 
-  <!-- The Modal 2-->
-  <div class="modal" id="submitVerficationModel" [style.display]="isShow ? 'block' : 'none'">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
-  
-        <!-- Modal body -->
-        <div class="myFont2">
-            <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
-            <button type="button" class="close" data-dismiss="modal" >&times;</button>
-        </div>
-
-        <!-- Modal Header -->
-        <div >
-            <h1 class="heading" align="center">Details Updated!</h1>
-        </div>
-  
+<!-- The Modal 2-->
+<div class="modal" id="submitVerficationModel" [style.display]="isShow ? 'block' : 'none'">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="myFont2">
+        <img src="https://media.tenor.com/images/771577ac99bc46709e85e2f8ad5376ea/tenor.gif" class="modal-image-1">
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
+
+      <!-- Modal Header -->
+      <div >
+        <h1 class="heading" align="center">Details Updated!</h1>
+      </div>
+  
     </div>
+  </div>
 </div>
 
 <!-- The Modal 3-->
@@ -70,112 +68,100 @@
   </div>
 </div>
 
-
 <div class="container update-profile">
-    <div class="row">
-        <form class="needs-validation">
-          
-            <div class="col-md-12 col-sm-12">
-                <div class="form-group col-md-6 col-sm-6">
-                        <label>First Name	</label>
-                         <input type="text" [readonly]="admin" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required >
-                        <div class="invalid-feedback">
-                 Please enter first name.
-               </div>
-                      </div>
-
-                <div class="form-group col-md-6 col-sm-6">
-                        <label>Last Name	</label>
-                        <input type="text" [readonly]="admin" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20" required> 
-                      <div class="invalid-feedback">
-
-                          Please enter last name.
-                        </div>
-                      </div>
-            
-                <div class="form-group col-md-6 col-sm-6">
-                    <label >Email</label>
-                    <input type="email" #uemail class="form-control input-sm" [readonly]="admin" value="{{email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="40" required>
-                    <div class="invalid-feedback">
-                      Please enter email.
-                    </div>
-                  </div>
-
-                <div class="form-group col-md-6 col-sm-6">
-                    <label >Skills</label>
-                    <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="user" value="{{skills}}" maxlength="200" required>
-
-
-                    <div class="invalid-feedback">
-                      Please enter skills.
-                    </div>
-                </div>                
-                
-                <div class="form-group col-md-6 col-sm-6">
-                    <label >Designation</label>
-                    <select id="profileDesignation" [disabled]="isReadonly" (change)="selectChangeHandlerDesignation($event)" name="deisgnations" required>
-
-                      <option value="{{designation}}">{{designation}}</option>
-                      <option value="Consultant 1">Consultant 1</option>
-                      <option value="Consultant 2">Consultant 2</option>
-                      <option value="Associate 1">Associate 1</option>
-                      <option value="Associate 2">Associate 2</option>
-                      <option value="Manager 1">Manager 1</option>
-                      <option value="Manager 2">Manager 2</option>
-                      <option value="Principal 1">Principal 1</option>
-                      <option value="Principal 1">Principal 2</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please choose a designation.
-
-                  </div>
-                </div>
-            
-                <div class="form-group col-md-6 col-sm-6 experience">
-                    <label>Total Experience</label>
-
-                   <input type="number" #utotalExperience [readonly]="admin" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100" required>
-
-                    <div class="invalid-feedback">
-                      Please enter total experience.
-                    </div>
-                  </div>
-                <div class="form-group col-md-6 col-sm-6">
-                    <label>Address</label>
-
-                     <textarea #ulocation [readonly]="user" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400" required></textarea>
-
-
-                    <div class="invalid-feedback">
-                      Please enter address.
-                    </div>
-              </div>
-                <div class="form-group col-md-6 col-sm-6 experience">
-                    <label>Previous Experience</label>
-                    <input type="number" [readonly]="admin" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2" required>
-                    <div class="invalid-feedback">
-                      Please enter previous experience lesser than total experience.
-                    </div>
-                  </div>
-                <div class="form-group col-md-6 col-sm-6">
-                    <label >Date of Joining</label>
-                     <input type="date" [readonly]="admin" #ujoined class="form-control input-sm" value="{{joined}}" required>
-
-
-                    <div class="invalid-feedback">
-                      Please enter date of joining.
-                    </div>
-                  </div>
+  <div class="row">
+    <form class="needs-validation">     
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group col-md-6 col-sm-6">
+          <label>First Name	</label>
+          <input type="text" [readonly]="admin" #ufirstName class="form-control input-sm" value="{{firstName}}" maxlength="20" required >
+          <div class="invalid-feedback">
+            Please enter first name.
           </div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6">
+          <label>Last Name	</label>
+          <input type="text" [readonly]="admin" #ulastName class="form-control input-sm" value="{{lastName}}" maxlength="20" required> 
+          <div class="invalid-feedback">
+            Please enter last name.
+          </div>
+        </div>
             
-            <div class="col-md-12 col-sm-12" id="addblock">
-                <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
-                    <input type='submit' id="submit" class="btn btn-primary" value="Update" data-toggle="modal" (click)="checkInput()" required/>
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Email</label>
+          <input type="email" #uemail class="form-control input-sm" [readonly]="admin" value="{{email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="40" required>
+          <div class="invalid-feedback">
+            Please enter email.
+          </div>
+        </div>
 
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Skills</label>
+          <input type="text" #uskills class="form-control input-sm datepicker" [readonly]="user" value="{{skills}}" maxlength="200" required>
+          <div class="invalid-feedback">
+            Please enter skills.
+          </div>
+        </div>                
+                
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Designation</label>
+          <select id="profileDesignation" [disabled]="isReadonly" (change)="selectChangeHandlerDesignation($event)" name="deisgnations" required>
+            <option value="{{designation}}">{{designation}}</option>
+            <option value="Consultant 1">Consultant 1</option>
+            <option value="Consultant 2">Consultant 2</option>
+            <option value="Associate 1">Associate 1</option>
+            <option value="Associate 2">Associate 2</option>
+            <option value="Manager 1">Manager 1</option>
+            <option value="Manager 2">Manager 2</option>
+            <option value="Principal 1">Principal 1</option>
+            <option value="Principal 1">Principal 2</option>
+          </select>
+          <div class="invalid-feedback">
+            Please choose a designation.
+          </div>
+        </div>
+            
+        <div class="form-group col-md-6 col-sm-6 experience">
+          <label>Total Experience</label>
+          <input type="number" #utotalExperience [readonly]="admin" class="form-control input-sm" value="{{totalExperience}}" min="1" max="100" required>
+          <div class="invalid-feedback">
+            Please enter total experience.
+          </div>
+        </div>
 
-                </div>
-            </div>
-        </form>
-    </div>
+        <div class="form-group col-md-6 col-sm-6">
+          <label>Address</label>
+          <textarea #ulocation [readonly]="user" class="form-control input-sm" id="address" rows="5" value="{{location}}" maxlength="400" required></textarea>
+          <div class="invalid-feedback">
+            Please enter address.
+          </div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 experience">
+          <label>Previous Experience</label>
+          <input type="number" [readonly]="admin" #upreviousExperience class="form-control input-sm datepicker"value="{{previousExperience}}" min="1" max="100" maxlength="2" required>
+          <div class="invalid-feedback">
+            Please enter previous experience lesser than total experience.
+          </div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6">
+          <label >Date of Joining</label>
+            <input type="date" [readonly]="admin" #ujoined class="form-control input-sm" value="{{joined}}" required>
+          <div class="invalid-feedback">
+            Please enter date of joining.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 col-sm-12" id="addblock">
+        <div class="form-group col-md-3 col-lg-offset-5 col-sm-3">
+            <input type='submit' id="submit" class="btn btn-primary" value="Update" data-toggle="modal" (click)="checkInput()" required/>
+        </div>
+      </div>
+
+    </form>
+  </div>
 </div>     
-

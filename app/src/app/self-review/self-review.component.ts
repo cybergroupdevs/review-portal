@@ -1,17 +1,16 @@
-import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './../services.service';
 import { ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import $ from "jquery";
-
 
 @Component({
   selector: 'app-self-review',
   templateUrl: './self-review.component.html',
   styleUrls: ['./self-review.component.scss']
 })
+
 export class SelfReviewComponent implements OnInit {
+
   message: any;
   res:any;
   @ViewChild('rsTS', {static: false}) rsTS: ElementRef;
@@ -44,7 +43,6 @@ export class SelfReviewComponent implements OnInit {
   ngOnInit() {
     this.current_route = this._router.url.split('/')[2];
     this._activatedRoute.params.subscribe(param => {
-      console.log(param.id);
       this.reviewId = param.id;
     });
     this.loadExistingData(this.reviewId);
@@ -52,7 +50,6 @@ export class SelfReviewComponent implements OnInit {
 
   loadExistingData(reviewId: string){
     this._service.reviewDataById(reviewId, this.current_route).subscribe(res => {
-      console.log(res);
       if(res.status == 200){
         this.reviewArray = res.body[0];
         if(this.reviewArray.flag == "0"){
@@ -90,27 +87,14 @@ export class SelfReviewComponent implements OnInit {
     this.updateSelfReview();
     let reviewObj =  {
       "flag": "1",
-      "status": "Pending-Reviewer"
-      
-      
-    }
+      "status": "Pending-Reviewer" 
+    };
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
-      console.log(res , "this is res");
       if(res.status == 200){
-        
-          console.log("submitted")
-          // $("#submitVerficationModel").show();
-          // setTimeout(()=> { 
-          
-          // this._router.navigate(["/user/reviews"]);
-          // $('#submitVerficationModel').hide()
-          // }, 1000);
-
           this.isVisible = true;
           setTimeout(()=> { 
-          
-          this._router.navigate(["/user/reviews"]);
-          this.isVisible = false;
+            this._router.navigate(["/user/reviews"]);
+            this.isVisible = false;
           }, 1000);
       }
       else if(res.status == 401) {
@@ -145,12 +129,15 @@ export class SelfReviewComponent implements OnInit {
           "assessment": this.assessmentSelfPS
         }
       }
-    }
-    console.log(reviewObj);
+    };
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res => {
-      console.log(res, "update func res");
-      console.log("---------------------");
-      console.log(res.status);
+      if(res.status == 200){
+
+      }
+      else if(res.status == 401){
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
+      }
     });
   }
 
@@ -165,4 +152,3 @@ export class SelfReviewComponent implements OnInit {
   }
 
 }
-

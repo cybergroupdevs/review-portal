@@ -1,14 +1,7 @@
-import { analyzeAndValidateNgModules, compilePipeFromMetadata } from '@angular/compiler';
-// import { stat } from 'fs';
-import { ReviewerQaerComponent } from './../reviewer-qaer/reviewer-qaer.component';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ViewChild, AfterViewInit } from '@angular/core';
 import { ServicesService } from './../services.service';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { parse } from 'querystring';
-import $ from "jquery";
 
 @Component({
   selector: 'app-create-review',
@@ -19,7 +12,6 @@ import $ from "jquery";
 export class CreateReviewComponent implements OnInit {
 
   constructor(private _service: ServicesService, private _router: Router) { }
-
 
   @ViewChild('empCgiCode', {static: false}) empCgiCode: ElementRef;
   @ViewChild('empFirstName', {static: false}) empFirstName: ElementRef;
@@ -65,13 +57,11 @@ export class CreateReviewComponent implements OnInit {
 
     let date = new Date(); 
     let year = date.getFullYear();
-    console.log(year); 
     this.reviewCycle1 = "Annual "+year;
     this.reviewCycle2 = "Mid Year "+year;
   }
 
   setEmpDetails(e){
-    console.log(e.target.value);
     let empCgiCodeValue = e.target.value;
     this.sendReq(empCgiCodeValue).subscribe( res => {
       if(res.status == 200){
@@ -85,14 +75,12 @@ export class CreateReviewComponent implements OnInit {
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
-        alert("Unauthorize, Token maybe expired");
         this._router.navigate(['/login']);
       }
     });
   }
 
   setReviewerDetails(e){
-    console.log(e.target.value);
     let reviewerCgiCodeValue = e.target.value;
     this.sendReq(reviewerCgiCodeValue).subscribe( res => {
       if(res.status == 200){
@@ -106,7 +94,6 @@ export class CreateReviewComponent implements OnInit {
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
-        alert("Unauthorize, Token maybe expired");
         this._router.navigate(['/login']);
       }
       
@@ -114,7 +101,6 @@ export class CreateReviewComponent implements OnInit {
   }
 
   setQaerDetails(e){
-    console.log(e.target.value);
     let qaerCgiCodeValue = e.target.value;
     this.sendReq(qaerCgiCodeValue).subscribe( res => {
       if(res.status == 200){
@@ -128,15 +114,12 @@ export class CreateReviewComponent implements OnInit {
       }
       else if(res.status == 401){
         localStorage.removeItem("JwtHrms");
-        alert("Unauthorize, Token maybe expired");
         this._router.navigate(['/login']);
       }
     });
   }
 
   setEmployeeData(){
-    console.log("set employee data")
-    console.log(this.userArray.firstName)
     this.empFirstName.nativeElement.value = this.userArray.firstName;
     this.empLastName.nativeElement.value = this.userArray.lastName;
     this.empDesignation.nativeElement.value = this.userArray.designation;
@@ -145,19 +128,14 @@ export class CreateReviewComponent implements OnInit {
   }
 
   setReviewerData(){
-    console.log("set reviwer data")
-    console.log(this.userArray.firstName)
     this.reviewerFirstName.nativeElement.value = this.userArray.firstName;
     this.reviewerLastName.nativeElement.value = this.userArray.lastName;
     this.reviewerDesignation.nativeElement.value = this.userArray.designation;
     var rId = this.userArray._id;
     this.reviewerId = rId;;
-  
   }
 
   setQaerData(){
-    console.log("set reviwer data")
-    console.log(this.userArray.firstName)
     this.qaerFirstName.nativeElement.value = this.userArray.firstName;
     this.qaerLastName.nativeElement.value = this.userArray.lastName;
     this.qaerDesignation.nativeElement.value = this.userArray.designation;
@@ -179,8 +157,7 @@ export class CreateReviewComponent implements OnInit {
           form.classList.add('was-validated');
         }, false);
       });
-      return ;
-      
+      return ; 
     }
     else {
       this.isVisible = true;     
@@ -197,25 +174,23 @@ export class CreateReviewComponent implements OnInit {
       formName: this.formName.nativeElement.value,
     };
     
-    console.log(reviewObject);
     this._service.createReview(reviewObject).subscribe(res => {
-      console.log(this.res);
       if(res.status == 200){
-        console.log("review created")
         this.isShow = true;
           setTimeout(()=> { 
-          this._router.navigate(["/admin/home"]);
-          this.isShow = false;
+            this._router.navigate(["/admin/home"]);
+            this.isShow = false;
           }, 1000);
       }
       else if(res.status == 401){
-        alert("Unauthorized");
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
       }
       else{
         alert("Some Error Occured");
       }
     });
-      this.inputValue = " ";
+    this.inputValue = "";
   } 
 
   clearData(flag){

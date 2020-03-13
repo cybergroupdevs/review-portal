@@ -12,7 +12,7 @@ class mailer{
             port: '465',
             auth: { 
                 user: 'mongmawchetna@gmail.com', // team members allow less secure apps to acees your gmail in settings for functionality to work
-                pass: 'mongmaw@chetna21ok'//put your password here
+                pass: 'mongmaw@chetna21ok' //put your password here
             }
         });
     
@@ -49,22 +49,15 @@ class mailer{
         var status;
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.log("Mail Not Sent", error);
                 status = false;
-                console.log("1==========>>>>>>>>>>>>", status);
                 cb(status);
-                // return status;
             } 
             else {
-                console.log("Mail sent");
                 status = true;
-                console.log("1==========>>>>>>>>>>>>>", status);
                 cb(status);
             }
         });
-        // console.log("2==========>>>>>>>>>>>>>", status);
-        // return status;
-      }
+    }
 }
 
 module.exports = new mailer();

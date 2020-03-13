@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './admin-header.component.html',
   styleUrls: ['./admin-header.component.scss']
 })
+
 export class AdminHeaderComponent implements OnInit {
 
   @ViewChild("myTopnav", {static: false}) topnav: ElementRef;
@@ -22,7 +23,6 @@ export class AdminHeaderComponent implements OnInit {
 
   getUserName(){
     let name = this._service.jsonDecoder(localStorage.getItem("JwtHrms")).data.firstName;
-    console.log(name);
     this.firstName = name;
   }
 }

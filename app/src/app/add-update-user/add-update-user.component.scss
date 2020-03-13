@@ -1,6 +1,7 @@
 #update:hover{
     background-color: #000062; 
 }
+
 #update{
     margin-top: 3rem;
     background-color: #000062 !important; 
@@ -10,15 +11,16 @@
 label {
     float: left;
 }
+
 span {
     display: block;
     overflow: hidden;
     padding: 0 4px 0 6px;
 }
+
 .form-control {
     width: 100%;
 }
-
 
 .update-profile{
 	margin-top: 10rem;
@@ -28,15 +30,18 @@ span {
     background-color: #000062;
     transform: scale(1.05);
 }
+
 .btn-primary:focus{
     background-color: #000062; 
 
 }
+
 .btn-primary{
     margin-top: 3rem;
     background-color: #000062; 
     width: 16rem;
 }
+
 #profileDesignation{
     width: 100%;
     height: 3rem;
@@ -44,6 +49,7 @@ span {
     border: 1px solid #CCCCCC;
 
 }
+
 [readonly]{
     cursor:not-allowed;
 }
@@ -60,6 +66,7 @@ span {
     height: 5rem;
     margin-left: 40%;
 }
+
 #updateModel{
     color: #6745c2;
     font-weight: bold;
@@ -67,11 +74,13 @@ span {
     background-color: #6745c2;
     opacity: 0.95;
 }
+
 .modal-image-2{
     width: 6rem;
     height: 6rem;
     margin-left: 45%;
 }
+
 .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
     display: table-row-group;
 } 

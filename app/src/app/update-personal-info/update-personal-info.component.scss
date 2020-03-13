@@ -1,18 +1,14 @@
 .wrapper{
     display: flex;
     flex-direction: row;
-    
-
-    
 }
+
 label{
     display: inline-block;
     position: relative;
 }
+
 input [type=text]{
     display: inline-block;
     position: absolute;
-}
-.form-group{
-    // float: left;
 }

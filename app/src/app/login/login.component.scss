@@ -18,49 +18,53 @@
     background-color:#F5F5F6;
     
 }
+
 .panel > .panel-heading{
     border-radius: 10px 10px 0 0;
     background-color:#6745C2;   
 }
+
 .panel > .panel-heading h5{
     font-size: large;
     text-align: center;
     color: white;
     font-family: Roboto;   
 }
+
 .panel-body{
     padding: 10px 20px 40px;
 }
+
 .input-group{
     margin-bottom: 3rem;
 }
+
 .input-group-addon{
     border-radius: 10px; 
-    background-color: white;
-    
+    background-color: white;   
 }
+
 .form-control{
     border-radius: 10px;
     border-left: none;
 }
+
 .form-control:focus {
     border-color: #CCCCCC;
     box-shadow: none;
-       
-  }
+}
 
 #loginBtn{
-    
     color: white;
     margin: auto;
     justify-content: center;
     border-radius: 10px;
     background-color: #6745C2;
 }
+
 .logo-img{
     width: 10rem; 
-    margin: auto;
-    
+    margin: auto;    
 }
 
 .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {

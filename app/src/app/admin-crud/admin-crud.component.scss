@@ -16,6 +16,7 @@
     border-radius: 25px;
     background-color: #f5f5f6;
 }
+
 .search-row, .pagination-row{
     display:flex;
     justify-content:center;
@@ -44,21 +45,6 @@ span{
 .row{
     cursor: pointer;
 }
-
-// .pagination-div{
-//     display: flex !important;
-//     justify-content: center ;
-
-// }
-
-// .pagination {
-    
-//     padding-left: 0;
-//     list-style: none;
-//     border-radius: .25rem;
-//     align-items: center;
-    
-// }
 
 .page-link:hover {
     z-index: 2;

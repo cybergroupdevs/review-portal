@@ -72,4 +72,5 @@ import { ChartsModule } from 'ng2-charts';
   providers: [ServicesService, AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -1,11 +1,11 @@
 <div class="container data-table out-div" >
 	<div class="row search-row" >
-        <div>
-            <input type="text" id="search" placeholder="Search..." [(ngModel)]="searchInput" >
+    	<div>
+        	<input type="text" id="search" placeholder="Search..." [(ngModel)]="searchInput" >
         </div>  
 	</div>
 	
-  <div class="row pagination-div" id="pageNo">
+	<div class="row pagination-div" id="pageNo">
 		<div class="col-lg-4 col-lg-offset-4 col-md-4 offset-md-4 col-sm-10 offset-sm-2 col-xs-12">
 			<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
 				<li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
@@ -35,8 +35,7 @@
 				<th scope="col">Name</th>
 				<th scope="col">Designation</th>
 				<th scope="col">Edit</th>
-			</tr>
-			
+			</tr>	
 		</thead>
 		<tbody id="adminTable" *ngFor = "let employee of usersArray ">
 			<tr>
@@ -52,4 +51,3 @@
 	</table>
 	
 </div>
-

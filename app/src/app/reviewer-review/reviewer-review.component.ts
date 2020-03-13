@@ -11,7 +11,9 @@ import $ from "jquery";
   templateUrl: './reviewer-review.component.html',
   styleUrls: ['./reviewer-review.component.scss']
 })
+
 export class ReviewerReviewComponent implements OnInit {
+
   res:any;
   @ViewChild('rsTS', {static: false}) rsTS: ElementRef;
   @ViewChild('rrTS', {static: false}) rrTS: ElementRef;
@@ -51,7 +53,6 @@ export class ReviewerReviewComponent implements OnInit {
 
   ngOnInit() {
     this._activatedRoute.params.subscribe(param => {
-      console.log(param.id);
       this.reviewId = param.id;
     });
     this.current_route = this._router.url.split('/')[2];
@@ -64,15 +65,12 @@ export class ReviewerReviewComponent implements OnInit {
 
   loadExistingData(){
     this._service.reviewDataById(this.reviewId, this.current_route).subscribe(res => {
-      console.log(res.status);
-      console.log(res);
       if(res.status == 200){
         this.reviewArray = res.body[0];
         if(this.reviewArray.flag == "3"){
           this.isReadonly = true;
           this.editable = true;
         }
-        console.log(this.reviewArray)
         this.setExistingData();
       }
       else if(res.status == 404){
@@ -86,7 +84,6 @@ export class ReviewerReviewComponent implements OnInit {
   }
 
   setExistingData(){
-    console.log(this.reviewArray);
     this.reviewSelfTS = this.reviewArray.technicalSkill.selfEvaluation.comment;
     this.assessmentSelfTS = this.reviewArray.technicalSkill.selfEvaluation.assessment;
     this.reviewReviewerTS = this.reviewArray.technicalSkill.reviewerEvaluation.comment;
@@ -135,15 +132,14 @@ export class ReviewerReviewComponent implements OnInit {
           "assessment": this.assessmentReviewerP
         }
       }
-    }
-    console.log(userObj);
+    };
     this._service.updateSelfReview(this.reviewId, userObj).subscribe(res =>  {
-      console.log(res);
       if(res.status == 200){
-        console.log('Successful update!!');   
+           
       }
       else if(res.status == 401){
-        console.log('unsuccessful');
+        localStorage.removeItem("JwtHrms");
+        this._router.navigate(['/login']);
       }
     });
   }
@@ -175,29 +171,17 @@ export class ReviewerReviewComponent implements OnInit {
         "status": "Close"
       }
     }
-    console.log("Flag Object------------------>>>>>>>>", reviewObj);
     this._service.updateSelfReview(this.reviewId, reviewObj).subscribe(res =>  {
-      console.log(res);
       if(res.status == 200){
-        console.log('Successful update!!');
-        
-          // $("#submitVerficationModel").show();
-          // setTimeout(()=> { 
-          
-          // this._router.navigate(["/user/reviews"]);
-          // $('#submitVerficationModel').hide()
-          // }, 1000);
-
           this.isVisible = true;
           setTimeout(()=> { 
-          
-          this._router.navigate(["/user/reviews"]);
-          this.isVisible = false;
+            this._router.navigate(["/user/reviews"]);
+            this.isVisible = false;
           }, 1000);
           
       }
       else {
-        console.log('unsuccessful');
+        alert("Unsuccessful");
       }
     });
     

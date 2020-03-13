@@ -2,32 +2,40 @@
     font-family:Roboto;
     margin-top: 6rem;
 }
+
 .form-and-cycle{
     padding-top: 2rem;
 }
+
 .btn-primary:hover{
     background-color: #000062; 
 }
+
 .btn-primary:focus{
     background-color: #000062; 
 }
+
 .btn-primary{
     margin-top: 2rem;
     padding: 0.5rem;
     background-color: #000062; 
     width: 20rem;
 }
+
 .btn-info:active{
     background-color: #000062; 
 }
+
 .createReviewHeading{
     margin: 0;
     padding: 0;
     text-align: center;
 }
+
 .row{
     margin-bottom: 0.5rem;
 }
+
 #formName, #cycleName{
     width: 100%;
     height: 100%;
@@ -36,26 +44,28 @@
 
 }
 
-
 h4{
     
     color: #000062;
     font-family: Roboto sans-serif;
 }
+
 h4 {
     width: 100%; 
     text-align: center; 
     border-bottom: 1px solid rgb(201, 199, 199); 
     line-height: 0.1em;
     margin: 3rem 13rem 2rem; 
- } 
- h4 strong{
+} 
+
+h4 strong{
     background:#fff; 
-    padding:0 10px;}
+    padding:0 10px;
+}
+
 [readonly]{
     cursor:not-allowed;
 }
-
 
 #submitReviewModel{
     color: #6745c2;
@@ -69,6 +79,7 @@ h4 {
     height: 5rem;
     margin-left: 40%;
 }
+
 #submitModel{
     color: #6745c2;
     font-weight: bold;
@@ -76,6 +87,7 @@ h4 {
     background-color: #6745c2;
     opacity: 0.95;
 }
+
 .modal-image-2{
     width: 6rem;
     height: 6rem;

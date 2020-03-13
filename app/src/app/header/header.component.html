@@ -1,31 +1,31 @@
-  <nav class="navbar navbar-expand-md bg navbar-dark navbar-fixed-top">
+<nav class="navbar navbar-expand-md bg navbar-dark navbar-fixed-top">
   <div>
     <img src="../../assets/images/cygrp-logo.png"alt=""srcset=""style="width: 4rem; height: 4rem;">
     <a style="color: white; font-weight: bolder; vertical-align: middle;  margin-right: 3.2rem;"> HRMS</a>
   </div>
 
-
-    <a class="navbar-brand">{{firstName}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand">{{firstName}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav navbar-right">
+    <ul class="navbar-nav navbar-right">
 
-          <li class="nav-item">
-              <a href="javascript: void(0)" routerLink="profile" class="nav-link">My Profile</a>
-          </li>
-      
-          <li class="nav-item">
-            <a href="javascript: void(0)" routerLink="reviews" class="nav-link">Reviews</a>
-          </li>
+      <li class="nav-item">
+        <a href="javascript: void(0)" routerLink="profile" class="nav-link">My Profile</a>
+      </li>
+  
+      <li class="nav-item">
+        <a href="javascript: void(0)" routerLink="reviews" class="nav-link">Reviews</a>
+      </li>
 
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/login" (click)="logout()">Logout</a>
-          </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" (click)="logout()">Logout</a>
+      </li>
 
-      </ul>
+    </ul>
   </div>
-  </nav>
+</nav>
+
 <router-outlet></router-outlet>

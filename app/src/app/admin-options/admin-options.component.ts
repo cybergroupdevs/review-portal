@@ -8,6 +8,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
   templateUrl: './admin-options.component.html',
   styleUrls: ['./admin-options.component.scss']
 })
+
 export class AdminOptionsComponent implements OnInit {
   
   constructor(private _router: Router, private _service: ServicesService) { }
@@ -22,7 +23,7 @@ export class AdminOptionsComponent implements OnInit {
     {
       backgroundColor: 'rgba(83, 51, 237, 1)'
     }
-  ]
+  ];
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -37,19 +38,14 @@ export class AdminOptionsComponent implements OnInit {
   };
 
   ngOnInit() {
-    // console.log(localStorage.getItem("JwtHrms"));
     this._service.getReviewCount().subscribe(res => {
-      console.log(res);
       if(res.status == 200){
-        console.log(res.body);
         this.pieChartData = res.body;
         this.barChartData = [{data: res.body, label: "Reviews"}];
         this.pieChartLabels = ['Pending By Self', 'Pending By Reviewer', 'Pending By Qaer', 'Closed'];
         this.pieChartType = "pie";
-        console.log(this.barChartData);
       }
       else if(res.status == 401){
-        alert("Unauthorized");
         localStorage.removeItem("JwtHrms");
         this._router.navigate(['/login']);
       }
@@ -64,5 +60,4 @@ export class AdminOptionsComponent implements OnInit {
     this._router.navigate(["/addUser"]);
   }
   
-
 }
